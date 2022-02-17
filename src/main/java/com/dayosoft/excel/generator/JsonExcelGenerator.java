@@ -1,6 +1,6 @@
 package com.dayosoft.excel.generator;
 
-import com.dayosoft.excel.enums.ReportType;
+import com.dayosoft.excel.type.ReportType;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.writer.JsonExcelWriterFactory;
 import com.jsoniter.JsonIterator;

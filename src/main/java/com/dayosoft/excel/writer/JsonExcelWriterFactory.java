@@ -1,6 +1,6 @@
 package com.dayosoft.excel.writer;
 
-import com.dayosoft.excel.enums.ReportType;
+import com.dayosoft.excel.type.ReportType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

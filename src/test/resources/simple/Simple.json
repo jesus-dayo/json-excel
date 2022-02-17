@@ -3,9 +3,19 @@
         "SIMPLE_REPORT": {
             "columns": [
                 {
-                    "name": "positionDate",
+                    "name": "Position Date",
                     "type": "string",
                     "field": "positionDate"
+                },
+                {
+                    "name": "Portfolio",
+                    "type": "string",
+                    "field": "portfolio"
+                },
+                {
+                    "name": "Instrument Type",
+                    "type": "string",
+                    "field": "instrumentType"
                 },
                 {
                     "name": "ISIN",
@@ -13,59 +23,49 @@
                     "field": "ISIN"
                 },
                 {
-                    "name": "contractCode",
+                    "name": "Ticker",
+                    "type": "string",
+                    "field": "ticker"
+                },
+                {
+                    "name": "Contract Code",
                     "type": "string",
                     "field": "contractCode"
                 },
                 {
-                    "name": "coupon",
+                    "name": "Coupon",
                     "type": "double",
                     "field": "coupon"
                 },
                 {
-                    "name": "currentFace",
-                    "type": "decimal",
-                    "field": "currentFace"
-                },
-                {
-                    "name": "instrumentType",
-                    "type": "string",
-                    "field": "instrumentType"
-                },
-                {
-                    "name": "portfolio",
-                    "type": "string",
-                    "field": "portfolio"
-                },
-                {
-                    "name": "marketValue",
-                    "type": "decimal",
-                    "field": "marketValue"
-                },
-                {
-                    "name": "maturityDate",
+                    "name": "Maturity",
                     "type": "string",
                     "field": "maturityDate"
                 },
                 {
-                    "name": "originalFace",
-                    "type": "decimal",
-                    "field": "originalFace"
-                },
-                {
-                    "name": "price",
-                    "type": "decimal",
-                    "field": "price"
-                },
-                {
-                    "name": "currency",
+                    "name": "Currency",
                     "type": "string",
                     "field": "currency"
                 },
                 {
-                    "name": "ticker",
-                    "type": "string",
-                    "field": "ticker"
+                    "name": "Current Face",
+                    "type": "decimal",
+                    "field": "currentFace"
+                },
+                {
+                    "name": "Original Face",
+                    "type": "decimal",
+                    "field": "originalFace"
+                },
+                {
+                    "name": "Price",
+                    "type": "decimal",
+                    "field": "price"
+                },
+                {
+                    "name": "Market Value",
+                    "type": "decimal",
+                    "field": "marketValue"
                 }
             ],
             "rows": [

@@ -1,4 +1,4 @@
-package com.dayosoft.excel.enums;
+package com.dayosoft.excel.type;
 
 public enum ReportType {
 

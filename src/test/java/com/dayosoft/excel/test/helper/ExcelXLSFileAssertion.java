@@ -15,7 +15,7 @@ public class ExcelXLSFileAssertion {
         HSSFWorkbook workbook2 = new HSSFWorkbook(new FileInputStream(excel2));
 
         XLSAssertions.assertEqualNumOfSheets
-                .and(XLSAssertions.assertEqualSheetColumns)
+                .and(XLSAssertions.assertEqualSheetColumnsAndRows)
                 .test(workbook1, workbook2);
     }
 
