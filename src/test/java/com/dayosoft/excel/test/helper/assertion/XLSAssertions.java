@@ -3,6 +3,7 @@ package com.dayosoft.excel.test.helper.assertion;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.util.Iterator;
@@ -18,16 +19,6 @@ public class XLSAssertions {
       return w1.getNumberOfSheets() == w2.getNumberOfSheets();
    };
 
-//   public static final BiPredicate<HSSFWorkbook, HSSFWorkbook> assertEqualSheetNames = (w1, w2) ->{
-//      for(int sheetIndex = 0;sheetIndex < w1.getNumberOfSheets(); sheetIndex++){
-//         HSSFSheet sheet1 = w1.getSheetAt(sheetIndex);
-//         HSSFSheet sheet2 = w2.getSheetAt(sheetIndex);
-//         assertEquals(sheet1.getSheetName(), sheet2.getSheetName(),"Sheets names are not equal");
-//         return sheet1.getSheetName().equals(sheet2.getSheetName());
-//      }
-//      return true;
-//   };
-
    public static final BiPredicate<HSSFWorkbook, HSSFWorkbook> assertEqualSheetColumnsAndRows = (w1, w2) ->{
       for(int sheetIndex = 0;sheetIndex < w1.getNumberOfSheets();sheetIndex++){
          HSSFSheet sheet1 = w1.getSheetAt(sheetIndex);
@@ -41,6 +32,7 @@ public class XLSAssertions {
             return false;
          }
 
+         int row = 1;
          while (rowsInSheet1.hasNext()) {
             final Row rowInSheet1 = rowsInSheet1.next();
             int cellCounts1 = rowInSheet1.getPhysicalNumberOfCells();
@@ -58,11 +50,15 @@ public class XLSAssertions {
             for(int cellIndex = 0; cellIndex < cellCounts1; cellIndex++) {
                final Cell cell1 = rowInSheet1.getCell(cellIndex);
                final Cell cell2 =  rowInSheet2.getCell(cellIndex);
-               if(!cell1.getStringCellValue().equals(cell2.getStringCellValue())){
-                  fail("Cell is not equal, expected "+cell1.getStringCellValue()+" but got "+ cell2.getStringCellValue());
+               DataFormatter dataFormatter = new DataFormatter();
+               String formattedCell1Str = dataFormatter.formatCellValue(cell1);
+               String formattedCell2Str = dataFormatter.formatCellValue(cell2);
+               if(!formattedCell1Str.equals(formattedCell2Str)){
+                  fail("Cell are not equal, expected "+ formattedCell1Str +" but got "+ formattedCell2Str + " on cell "+cellIndex + " and row "+ row);
                   return false;
                }
             }
+            row++;
          }
       }
       return true;

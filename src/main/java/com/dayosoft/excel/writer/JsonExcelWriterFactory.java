@@ -12,8 +12,8 @@ public enum JsonExcelWriterFactory {
 
     XLS(ReportType.SIMPLE_REPORT, new JsonExcelXLSWriter()),XLSX(ReportType.COMPLEX_REPORT, new JsonExcelXLSXWriter());
 
-    private ReportType reportType;
-    private JsonExcelWriter writer;
+    private final ReportType reportType;
+    private final JsonExcelWriter writer;
 
     public static JsonExcelWriter getByReportType(ReportType type){
         JsonExcelWriterFactory jsonExcelWriterFactory = Arrays.stream(JsonExcelWriterFactory.values())

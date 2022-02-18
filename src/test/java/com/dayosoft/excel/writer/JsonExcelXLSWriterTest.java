@@ -3,6 +3,7 @@ package com.dayosoft.excel.writer;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.test.helper.ExcelXLSFileAssertion;
 import com.dayosoft.excel.test.helper.TestFileUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -33,6 +34,5 @@ class JsonExcelXLSWriterTest {
         File expected = new File(this.getClass().getResource("/simple/Simple.xls").getFile());
         ExcelXLSFileAssertion.isEqual(expected, actual);
     }
-
 
 }

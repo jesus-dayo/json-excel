@@ -2,8 +2,8 @@ package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.type.ReportType;
+import com.dayosoft.excel.type.XLSJsonType;
 import com.jsoniter.JsonIterator;
-import com.jsoniter.ValueType;
 import com.jsoniter.any.Any;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -32,23 +32,22 @@ public class JsonExcelXLSWriter implements JsonExcelWriter {
         final Any rows = any.get("body", ReportType.SIMPLE_REPORT.name(), "rows");
         final Iterator<Any> rowsIterator = rows.iterator();
         int rowIndex = 1;
-        while(rowsIterator.hasNext()){
+        while (rowsIterator.hasNext()) {
             final Any row = rowsIterator.next();
             Row cellRow = sheet.createRow(rowIndex);
-            for(int colIndex = 0;colIndex < columnMap.size(); colIndex++) {
-                Cell cell = cellRow.createCell(colIndex, CellType.STRING);
-                final Any field = row.get(columnMap.get(colIndex).get("field").toString());
-                if (field.valueType() != ValueType.INVALID) {
-                    cell.setCellValue(field.toString());
-                } else {
-                    cell.setCellValue("");
-                }
+            for (int colIndex = 0; colIndex < columnMap.size(); colIndex++) {
+                final Any value = row.get(columnMap.get(colIndex).get("field").toString());
+                final String type = columnMap.get(colIndex).get("type").toString();
+                final XLSJsonType xlsJsonType = XLSJsonType.getByJsonType(type);
+                Cell cell = cellRow.createCell(colIndex, xlsJsonType.getCellType().apply(value));
+                xlsJsonType.getValueSetter().accept(value, cell);
+                xlsJsonType.getDefaultStyleSetter().accept(wb,cell);
             }
             rowIndex++;
         }
 
         File file = new File(jsonExcelRequest.getDirectory() +
-                "/" +jsonExcelRequest.getFileName() +
+                "/" + jsonExcelRequest.getFileName() +
                 ".xls");
         FileOutputStream out = new FileOutputStream(file);
         wb.write(out);
@@ -57,11 +56,11 @@ public class JsonExcelXLSWriter implements JsonExcelWriter {
         return file;
     }
 
-    private Map<Integer, Any> writeHeaders(Any columns, Row headerRow){
+    private Map<Integer, Any> writeHeaders(Any columns, Row headerRow) {
         Map<Integer, Any> columnMap = new HashMap<>();
         final Iterator<Any> columnsIterator = columns.iterator();
         int cellIndex = 0;
-        while(columnsIterator.hasNext()){
+        while (columnsIterator.hasNext()) {
             final Any column = columnsIterator.next();
             String name = column.get("name").toString();
             final Cell cell = headerRow.createCell(cellIndex, CellType.STRING);
