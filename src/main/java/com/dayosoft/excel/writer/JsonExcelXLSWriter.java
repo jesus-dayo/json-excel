@@ -1,7 +1,7 @@
 package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.type.ReportType;
+import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.type.XLSJsonType;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
@@ -27,9 +27,9 @@ public class JsonExcelXLSWriter implements JsonExcelWriter {
         HSSFSheet sheet = wb.createSheet();
         Any any = JsonIterator.deserialize(jsonExcelRequest.getJson());
         Row headerRow = sheet.createRow(0);
-        final Any columns = any.get("body", ReportType.SIMPLE_REPORT.name(), "columns");
+        final Any columns = any.get("body", ExcelReportType.SIMPLE_REPORT.name(), "columns");
         Map<Integer, Any> columnMap = writeHeaders(columns, headerRow);
-        final Any rows = any.get("body", ReportType.SIMPLE_REPORT.name(), "rows");
+        final Any rows = any.get("body", ExcelReportType.SIMPLE_REPORT.name(), "rows");
         final Iterator<Any> rowsIterator = rows.iterator();
         int rowIndex = 1;
         while (rowsIterator.hasNext()) {

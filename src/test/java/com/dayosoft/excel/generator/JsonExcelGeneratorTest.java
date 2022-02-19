@@ -1,6 +1,6 @@
 package com.dayosoft.excel.generator;
 
-import com.dayosoft.excel.type.ReportType;
+import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.test.helper.TestFileUtils;
 import com.dayosoft.excel.writer.JsonExcelWriterFactory;
@@ -30,10 +30,11 @@ class JsonExcelGeneratorTest {
         String file = "src/test/resources/simple/Simple.json";
         JsonExcelRequest request =  JsonExcelRequest.builder()
                 .json(TestFileUtils.readJsonFileAsString(file))
+                .reportType(ExcelReportType.SIMPLE_REPORT)
                 .build();
         JsonExcelXLSWriter jsonExcelXLSWriter = Mockito.mock(JsonExcelXLSWriter.class);
         MockedStatic<JsonExcelWriterFactory> jsonExcelWriterFactoryMockedStatic = Mockito.mockStatic(JsonExcelWriterFactory.class);
-        jsonExcelWriterFactoryMockedStatic.when(()->JsonExcelWriterFactory.getByReportType(ReportType.SIMPLE_REPORT)).thenReturn(jsonExcelXLSWriter);
+        jsonExcelWriterFactoryMockedStatic.when(()->JsonExcelWriterFactory.getByReportType(ExcelReportType.SIMPLE_REPORT)).thenReturn(jsonExcelXLSWriter);
 
         jsonExcelGenerator.generateReport(request);
 

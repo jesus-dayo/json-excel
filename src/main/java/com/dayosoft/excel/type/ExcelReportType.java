@@ -1,6 +1,6 @@
 package com.dayosoft.excel.type;
 
-public enum ReportType {
+public enum ExcelReportType {
 
     SIMPLE_REPORT,
     COMPLEX_REPORT

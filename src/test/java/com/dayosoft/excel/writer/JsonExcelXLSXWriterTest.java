@@ -10,30 +10,29 @@ import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
 
-class JsonExcelXLSWriterTest {
+public class JsonExcelXLSXWriterTest {
 
     @TempDir
     File tempDir;
 
-    JsonExcelXLSWriter jsonExcelXLSWriter;
+    JsonExcelXLSXWriter jsonExcelXLSXWriter;
 
     @BeforeEach
     void init(){
-        jsonExcelXLSWriter = new JsonExcelXLSWriter();
+        jsonExcelXLSXWriter = new JsonExcelXLSXWriter();
     }
 
     @Test
-    void givenSimpleJson_whenWriteExcel_thenContentIsCorrect() throws Exception {
-        String file = "src/test/resources/simple/Simple.json";
+    void givenComplexJson_whenWriteExcel_thenContentIsCorrect() throws Exception {
+        String file = "src/test/resources/complex/Complex.json";
         JsonExcelRequest request =  JsonExcelRequest.builder()
                 .json(TestFileUtils.readJsonFileAsString(file))
-                .reportType(ExcelReportType.SIMPLE_REPORT)
+                .reportType(ExcelReportType.COMPLEX_REPORT)
                 .directory(tempDir.getAbsolutePath()).fileName("sample").build();
 
-        File actual = jsonExcelXLSWriter.write(request);
+        File actual = jsonExcelXLSXWriter.write(request);
 
-        File expected = new File(this.getClass().getResource("/simple/Simple.xls").getFile());
+        File expected = new File(this.getClass().getResource("/complex/Complex.xlsx").getFile());
         ExcelXLSFileAssertion.isEqual(expected, actual);
     }
-
 }

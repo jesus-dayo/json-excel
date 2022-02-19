@@ -1,11 +1,8 @@
 package com.dayosoft.excel.generator;
 
-import com.dayosoft.excel.type.ReportType;
 import com.dayosoft.excel.request.JsonExcelRequest;
+import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.writer.JsonExcelWriterFactory;
-import com.jsoniter.JsonIterator;
-import com.jsoniter.ValueType;
-import com.jsoniter.any.Any;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,15 +10,12 @@ import java.io.IOException;
 public class JsonExcelGenerator {
 
     public File generateReport(JsonExcelRequest request) throws IOException {
-        Any any = JsonIterator.deserialize(request.getJson());
-        Any complexReport = any.get("body", ReportType.COMPLEX_REPORT.name());
-        if (complexReport.valueType() != ValueType.INVALID) {
-            return JsonExcelWriterFactory.getByReportType(ReportType.COMPLEX_REPORT)
-                    .write(request);
-        } else {
-            return JsonExcelWriterFactory.getByReportType(ReportType.SIMPLE_REPORT)
+        if (ExcelReportType.SIMPLE_REPORT == request.getReportType()) {
+            return JsonExcelWriterFactory.getByReportType(ExcelReportType.SIMPLE_REPORT)
                     .write(request);
         }
+        return JsonExcelWriterFactory.getByReportType(ExcelReportType.COMPLEX_REPORT)
+                .write(request);
     }
 
 }
