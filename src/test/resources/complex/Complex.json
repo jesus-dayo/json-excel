@@ -25,6 +25,9 @@
             }
           }
         ]
+      },
+      "styles": {
+        "background": "fill"
       }
     },
     "mapping": {
@@ -54,7 +57,7 @@
         }
       }
     }
-  }
+  },
   "data": [
     {
       "body": {

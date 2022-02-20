@@ -1,7 +1,7 @@
 package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.test.helper.ExcelXLSFileAssertion;
+import com.dayosoft.excel.test.helper.ExcelXLSXFileAssertion;
 import com.dayosoft.excel.test.helper.TestFileUtils;
 import com.dayosoft.excel.type.ExcelReportType;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +33,6 @@ public class JsonExcelXLSXWriterTest {
         File actual = jsonExcelXLSXWriter.write(request);
 
         File expected = new File(this.getClass().getResource("/complex/Complex.xlsx").getFile());
-        ExcelXLSFileAssertion.isEqual(expected, actual);
+        ExcelXLSXFileAssertion.isEqual(expected, actual);
     }
 }

@@ -1,10 +1,5 @@
 package com.dayosoft.excel.test.helper.assertion;
-
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.*;
 
 import java.util.Iterator;
 import java.util.function.BiPredicate;
@@ -12,17 +7,17 @@ import java.util.function.BiPredicate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class XLSAssertions {
+public class ExcelAssertions {
 
-   public static final BiPredicate<HSSFWorkbook, HSSFWorkbook> assertEqualNumOfSheets = (w1, w2) -> {
+   public static final BiPredicate<Workbook, Workbook> assertEqualNumOfSheets = (w1, w2) -> {
       assertEquals(w1.getNumberOfSheets(), w2.getNumberOfSheets(), "number of sheets are not equal");
       return w1.getNumberOfSheets() == w2.getNumberOfSheets();
    };
 
-   public static final BiPredicate<HSSFWorkbook, HSSFWorkbook> assertEqualSheetColumnsAndRows = (w1, w2) ->{
+   public static final BiPredicate<Workbook, Workbook> assertEqualSheetColumnsAndRows = (w1, w2) ->{
       for(int sheetIndex = 0;sheetIndex < w1.getNumberOfSheets();sheetIndex++){
-         HSSFSheet sheet1 = w1.getSheetAt(sheetIndex);
-         HSSFSheet sheet2 = w2.getSheetAt(sheetIndex);
+         Sheet sheet1 = w1.getSheetAt(sheetIndex);
+         Sheet sheet2 = w2.getSheetAt(sheetIndex);
 
          Iterator<Row> rowsInSheet1 = sheet1.rowIterator();
          Iterator<Row> rowsInSheet2 = sheet2.rowIterator();

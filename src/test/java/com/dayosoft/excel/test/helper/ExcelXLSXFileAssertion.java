@@ -1,18 +1,18 @@
 package com.dayosoft.excel.test.helper;
 
 import com.dayosoft.excel.test.helper.assertion.ExcelAssertions;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ExcelXLSFileAssertion {
+public class ExcelXLSXFileAssertion {
 
     public static final void isEqual(File excel1, File excel2) throws IOException, InvalidFormatException {
-        HSSFWorkbook workbook1 = new HSSFWorkbook(new FileInputStream(excel1));
-        HSSFWorkbook workbook2 = new HSSFWorkbook(new FileInputStream(excel2));
+        XSSFWorkbook workbook1 = new XSSFWorkbook(new FileInputStream(excel1));
+        XSSFWorkbook workbook2 = new XSSFWorkbook(new FileInputStream(excel2));
 
         ExcelAssertions.assertEqualNumOfSheets
                 .and(ExcelAssertions.assertEqualSheetColumnsAndRows)
