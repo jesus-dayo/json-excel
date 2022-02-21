@@ -1,123 +1,60 @@
 {
-  "template": {
-    "global": {
-      "investmentManager": {
-        "label": {
-          "name": "Investment Manager",
-          "position": {
-            "col": 3,
-            "row": 4
-          }
+  "body": {
+    "Client Details": {
+      "columns": [
+        {
+          "name": "DateMonth",
+          "type": "string",
+          "field": "DateMonth"
         },
-        "value": [
-          {
-            "name": "Goldman Sachs Asset Management Co.",
-            "position": {
-              "col": 5,
-              "row": 4
-            }
-          },
-          {
-            "name": "1011",
-            "position": {
-              "col": 4,
-              "row": 4
-            }
-          }
-        ]
-      },
-      "styles": {
-        "background": "fill"
-      }
-    },
-    "mapping": {
-      "Client Details": {
-        "DateYear": {
-          "label": {
-            "name": "Record Date(YYYY)(MM)",
-            "position": {
-              "col": 3,
-              "row": 5
-            }
-          },
-          "value": {
-            "position": {
-              "col": 4,
-              "row": 5
-            }
-          }
+        {
+          "name": "DateYear",
+          "type": "string",
+          "field": "DateYear"
         },
-        "DateMonth": {
-          "value": {
-            "position": {
-              "col": 4,
-              "row": 5
-            }
-          }
+        {
+          "name": "TerminationDate",
+          "type": "string",
+          "field": "TerminationDate"
+        },
+        {
+          "name": "clientName",
+          "type": "string",
+          "field": "clientName"
+        },
+        {
+          "name": "clientCode1",
+          "type": "string",
+          "field": "clientCode1"
+        },
+        {
+          "name": "assetManagerCode1",
+          "type": "string",
+          "field": "assetManagerCode1"
+        },
+        {
+          "name": "assetManagerCode2",
+          "type": "string",
+          "field": "assetManagerCode2"
+        },
+        {
+          "name": "reportingMonth",
+          "type": "string",
+          "field": "reportingMonth"
         }
-      }
-    }
-  },
-  "data": [
-    {
-      "body": {
-        "Client Details": {
-          "columns": [
-            {
-              "name": "DateMonth",
-              "type": "string",
-              "field": "DateMonth"
-            },
-            {
-              "name": "DateYear",
-              "type": "string",
-              "field": "DateYear"
-            },
-            {
-              "name": "TerminationDate",
-              "type": "string",
-              "field": "TerminationDate"
-            },
-            {
-              "name": "clientName",
-              "type": "string",
-              "field": "clientName"
-            },
-            {
-              "name": "clientCode1",
-              "type": "string",
-              "field": "clientCode1"
-            },
-            {
-              "name": "assetManagerCode1",
-              "type": "string",
-              "field": "assetManagerCode1"
-            },
-            {
-              "name": "assetManagerCode2",
-              "type": "string",
-              "field": "assetManagerCode2"
-            },
-            {
-              "name": "reportingMonth",
-              "type": "string",
-              "field": "reportingMonth"
-            }
-          ],
-          "rows": [
-            {
-              "clientCode1": "1010",
-              "clientName": "ABC株式会社",
-              "assetManagerCode1": "1011",
-              "TerminationDate": "",
-              "reportingMonth": "09/30/2021",
-              "assetManagerCode2": "1",
-              "DateYear": "2021",
-              "DateMonth": "9"
-            }
-          ]
+      ],
+      "rows": [
+        {
+          "clientCode1": "1010",
+          "clientName": "ABC株式会社",
+          "assetManagerCode1": "1011",
+          "TerminationDate": "",
+          "reportingMonth": "09/30/2021",
+          "assetManagerCode2": "1",
+          "DateYear": "2021",
+          "DateMonth": "9"
         }
-      }
+      ]
     }
-  ]
+  }
 }

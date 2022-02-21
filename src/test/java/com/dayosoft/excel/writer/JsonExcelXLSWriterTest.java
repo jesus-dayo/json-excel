@@ -26,7 +26,7 @@ class JsonExcelXLSWriterTest {
     void givenSimpleJson_whenWriteExcel_thenContentIsCorrect() throws Exception {
         String file = "src/test/resources/simple/Simple.json";
         JsonExcelRequest request =  JsonExcelRequest.builder()
-                .json(TestFileUtils.readJsonFileAsString(file))
+                .data(TestFileUtils.readJsonFileAsString(file))
                 .reportType(ExcelReportType.SIMPLE_REPORT)
                 .directory(tempDir.getAbsolutePath()).fileName("sample").build();
 

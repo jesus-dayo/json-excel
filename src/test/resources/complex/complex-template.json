@@ -1,0 +1,90 @@
+{
+  "sheets": [
+    {
+      "index": 0,
+      "name": "年金運用状況表"
+    },
+    {
+      "index": 1,
+      "name": "株式残高"
+    }
+  ],
+  "global": {
+    "sheet": {
+      "styles": {
+        "backgroundColor": "red"
+      },
+    },
+    "static": [
+      {
+        "value": "年金資産運用状況表（まとめ）",
+        "merge": {
+          "start": {
+            "position": {
+              "col": 2,
+              "row": 1
+            },
+          },
+          "end": {
+            "position": {
+              "col": 9,
+              "row": 1
+            }
+          }
+        }
+      },
+      {
+        "value": "Investment Manager",
+        "position": {
+          "col": 3,
+          "row": 4
+        },
+      },
+      {
+        "value": "Goldman Sachs Asset Management Co.",
+        "position": {
+          "col": 5,
+          "row": 4
+        }
+      },
+      {
+        "value": "1011",
+        "position": {
+          "col": 4,
+          "row": 4
+        },
+        "styles": {
+          "textAlign": "right"
+        }
+      },
+    ]
+  },
+  "mapping": {
+    "Client Details": {
+      "sheet": 0,
+      "DateYear": {
+        "label": {
+          "name": "Record Date(YYYY)(MM)",
+          "position": {
+            "col": 3,
+            "row": 5
+          }
+        },
+        "value": {
+          "position": {
+            "col": 4,
+            "row": 5
+          }
+        }
+      },
+      "DateMonth": {
+        "value": {
+          "position": {
+            "col": 4,
+            "row": 5
+          }
+        }
+      }
+    }
+  }
+}

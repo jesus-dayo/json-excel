@@ -1,56 +1,65 @@
 package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.type.ExcelReportType;
-import com.dayosoft.excel.type.XLSJsonType;
+import com.dayosoft.excel.styles.Style;
+import com.dayosoft.excel.util.JsonDataTraverser;
+import com.dayosoft.excel.util.JsonTemplateTraverser;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.SpreadsheetVersion;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.xssf.usermodel.extensions.XSSFCellFill;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
-    public File write(JsonExcelRequest jsonExcelRequest) {
+    public File write(JsonExcelRequest jsonExcelRequest) throws IOException {
         XSSFWorkbook wb = new XSSFWorkbook();
-        XSSFSheet sheet = wb.createSheet();
-        Any any = JsonIterator.deserialize(jsonExcelRequest.getJson());
-        Row headerRow = sheet.createRow(0);
-        final Any columns = any.get("body", ExcelReportType.SIMPLE_REPORT.name(), "columns");
-        Map<Integer, Any> columnMap = null;
-        final Any rows = any.get("body", ExcelReportType.SIMPLE_REPORT.name(), "rows");
-        final Iterator<Any> rowsIterator = rows.iterator();
-        int rowIndex = 1;
-        while (rowsIterator.hasNext()) {
-            final Any row = rowsIterator.next();
-            Row cellRow = sheet.createRow(rowIndex);
-            for (int colIndex = 0; colIndex < columnMap.size(); colIndex++) {
-                final Any value = row.get(columnMap.get(colIndex).get("field").toString());
-                final String type = columnMap.get(colIndex).get("type").toString();
-                final XLSJsonType xlsJsonType = XLSJsonType.getByJsonType(type);
-                Cell cell = cellRow.createCell(colIndex, xlsJsonType.getCellType().apply(value));
-                xlsJsonType.getValueSetter().accept(value, cell);
-//                xlsJsonType.getDefaultStyleSetter().accept(wb,cell);
-            }
-            rowIndex++;
+        Any template = JsonIterator.deserialize(jsonExcelRequest.getTemplate());
+        JsonTemplateTraverser jsonTemplateTraverser = new JsonTemplateTraverser(template);
+
+        Map<Integer, XSSFSheet> sheetMap = new HashMap<>();
+        final Iterator<Any> sheets = jsonTemplateTraverser.sheets();
+        final Map<String, Any> globalSheetStyles = jsonTemplateTraverser.globalSheetStyles();
+        final XSSFCellStyle defaultCellStyle = wb.createCellStyle();
+        globalSheetStyles.entrySet().forEach(style->{
+            Style.valueOf(style.getKey()).getFormatter().accept(defaultCellStyle, style.getValue().toString());
+        });
+
+        int sheetIndex = 0;
+        while (sheets.hasNext()) {
+            final Any sheetJson = sheets.next();
+            XSSFSheet sheet = wb.createSheet(jsonTemplateTraverser.sheetName(sheetJson));
+            applyGlobalStyles(sheet, defaultCellStyle);
+            sheetMap.put(sheetIndex, sheet);
+            sheetIndex++;
         }
+
+        Any data = JsonIterator.deserialize(jsonExcelRequest.getData());
+        JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);
+
 
         File file = new File(jsonExcelRequest.getDirectory() +
                 "/" + jsonExcelRequest.getFileName() +
-                ".xls");
-//        FileOutputStream out = new FileOutputStream(file);
-//        wb.write(out);
-//        out.close();
-//        wb.close();
+                ".xlsx");
+        FileOutputStream out = new FileOutputStream(file);
+        wb.write(out);
+        out.close();
         return file;
+    }
+
+    private void applyGlobalStyles(XSSFSheet sheet, CellStyle defaultStyle) {
+        for(int x = 0; x < SpreadsheetVersion.EXCEL2007.getMaxRows();x++){
+            final XSSFRow row = sheet.createRow(x);
+            row.setRowStyle(defaultStyle);
+        }
     }
 
 }

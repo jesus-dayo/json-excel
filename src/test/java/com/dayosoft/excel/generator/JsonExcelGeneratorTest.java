@@ -29,7 +29,7 @@ class JsonExcelGeneratorTest {
     void givenJsonRequestSimpleReport_whenGenerateReport_shouldCallXLSWriter() throws Exception {
         String file = "src/test/resources/simple/Simple.json";
         JsonExcelRequest request =  JsonExcelRequest.builder()
-                .json(TestFileUtils.readJsonFileAsString(file))
+                .data(TestFileUtils.readJsonFileAsString(file))
                 .reportType(ExcelReportType.SIMPLE_REPORT)
                 .build();
         JsonExcelXLSWriter jsonExcelXLSWriter = Mockito.mock(JsonExcelXLSWriter.class);

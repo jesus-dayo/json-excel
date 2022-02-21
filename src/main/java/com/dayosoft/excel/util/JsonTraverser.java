@@ -1,50 +1,21 @@
 package com.dayosoft.excel.util;
 
+import com.dayosoft.excel.exception.JsonMappingException;
+import com.jsoniter.ValueType;
 import com.jsoniter.any.Any;
+import com.jsoniter.spi.JsonException;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class JsonTraverser {
+public abstract class JsonTraverser {
 
-    private Any json;
+    protected Any json;
 
-    public final Any body() {
-        return json.get("body");
-    }
-
-    public final Any global() {
-        return json.get("template", "global");
-    }
-
-    public final Any globalStyles() {
-        return json.get("template", "global", "styles");
-    }
-
-    public final Any globalFieldLabelName(String field) {
-        return json.get("template", "global", field, "label", "name");
-    }
-
-    public final Any globalFieldLabelPosition(String field) {
-        return json.get("template", "global", field, "label", "position");
-    }
-
-    public final Any globalFieldValues(String field) {
-        return json.get("template", "global", field, "value");
-    }
-
-    public final Any name(Any value) {
-        return value.get( "name");
-    }
-
-    public final Any position(Any value) {
-        return json.get("position");
-    }
-
-    public final Integer column(Any position) {
-        return json.get("col").toInt();
-    }
-
-    public final Integer row(Any position) {
-        return json.get("row").toInt();
+    protected final Any getJsonIfExist(Any any) {
+        if (any.valueType() == ValueType.INVALID) {
+            JsonException jsonException = (JsonException)any.get("exception").object();
+            throw new JsonMappingException("Error finding property in the json request."+ jsonException.getMessage());
+        }
+        return any;
     }
 }

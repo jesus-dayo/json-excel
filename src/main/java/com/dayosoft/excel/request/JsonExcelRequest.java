@@ -8,7 +8,8 @@ import lombok.Getter;
 @Getter
 public class JsonExcelRequest {
 
-    private String json;
+    private String data;
+    private String template;
     private String fileName;
     private String directory;
     private ExcelReportType reportType;
