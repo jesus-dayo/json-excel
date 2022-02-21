@@ -1,7 +1,7 @@
 package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.type.XLSJsonType;
+import com.dayosoft.excel.type.ExcelJsonType;
 import com.dayosoft.excel.util.JsonDataTraverser;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
@@ -43,7 +43,7 @@ public class JsonExcelXLSWriter implements JsonExcelWriter {
                 for (int colIndex = 0; colIndex < columnMap.size(); colIndex++) {
                     final Any value = row.get(jsonTraverser.field(columnMap.get(colIndex)));
                     final String type = jsonTraverser.type(columnMap.get(colIndex));
-                    final XLSJsonType xlsJsonType = XLSJsonType.getByJsonType(type);
+                    final ExcelJsonType xlsJsonType = ExcelJsonType.getByJsonType(type);
                     Cell cell = cellRow.createCell(colIndex, xlsJsonType.getCellType().apply(value));
                     xlsJsonType.getValueSetter().accept(value, cell);
                     xlsJsonType.getDefaultStyleSetter().accept(wb,cell);

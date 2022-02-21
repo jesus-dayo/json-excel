@@ -4,9 +4,9 @@ import com.jsoniter.ValueType;
 import com.jsoniter.any.Any;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.function.Function;
 
 @AllArgsConstructor
 @Getter
-public enum XLSJsonType {
+public enum ExcelJsonType {
 
     STR("string",
             value -> {
@@ -40,9 +40,9 @@ public enum XLSJsonType {
             },
             (wb, cell) -> {
                 if (isNotBlank(cell)) {
-                    final HSSFCellStyle hssfCellStyle = wb.createCellStyle();
-                    hssfCellStyle.setDataFormat(wb.createDataFormat().getFormat("0.00"));
-                    cell.setCellStyle(hssfCellStyle);
+                    final CellStyle cellStyle = wb.createCellStyle();
+                    cellStyle.setDataFormat(wb.createDataFormat().getFormat("0.00"));
+                    cell.setCellStyle(cellStyle);
                 }
             }),
     DECIMAL("decimal",
@@ -54,9 +54,9 @@ public enum XLSJsonType {
             },
             (wb, cell) -> {
                 if (isNotBlank(cell)) {
-                    final HSSFCellStyle hssfCellStyle = wb.createCellStyle();
-                    hssfCellStyle.setDataFormat(wb.createDataFormat().getFormat("#,##0.00;(#,##0.00)"));
-                    cell.setCellStyle(hssfCellStyle);
+                    final CellStyle cellStyle = wb.createCellStyle();
+                    cellStyle.setDataFormat(wb.createDataFormat().getFormat("#,##0.00;(#,##0.00)"));
+                    cell.setCellStyle(cellStyle);
                 }
             });
 
@@ -73,8 +73,8 @@ public enum XLSJsonType {
     private final BiConsumer<Any, Cell> valueSetter;
     private final BiConsumer<HSSFWorkbook, Cell> defaultStyleSetter;
 
-    public static XLSJsonType getByJsonType(String jsonType) {
-        return Arrays.stream(XLSJsonType.values())
+    public static ExcelJsonType getByJsonType(String jsonType) {
+        return Arrays.stream(ExcelJsonType.values())
                 .filter(xlsJsonType -> xlsJsonType.getJsonType().equals(jsonType))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("jsonType not supported " + jsonType));
     }

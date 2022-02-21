@@ -12,13 +12,13 @@
   "global": {
     "sheet": {
       "styles": {
-        "backgroundColor": "red"
+        "backgroundColor": "white",
+        "fontFamily": "MS P明朝"
       },
     },
-    "static": [
+    "axis": [
       {
-        "value": "年金資産運用状況表（まとめ）",
-        "merge": {
+        "position": {
           "start": {
             "position": {
               "col": 2,
@@ -30,33 +30,75 @@
               "col": 9,
               "row": 1
             }
-          }
-        }
-      },
-      {
-        "value": "Investment Manager",
-        "position": {
-          "col": 3,
-          "row": 4
-        },
-      },
-      {
-        "value": "Goldman Sachs Asset Management Co.",
-        "position": {
-          "col": 5,
-          "row": 4
-        }
-      },
-      {
-        "value": "1011",
-        "position": {
-          "col": 4,
-          "row": 4
+          },
         },
         "styles": {
-          "textAlign": "right"
+          "backgroundColor": "white"
+        }
+      }
+    ],
+    "static": [
+      {
+        "sheet": 0,
+        "value": "年金資産運用状況表（まとめ）",
+        "type": "string",
+        "position": {
+          "merge": {
+            "start": {
+              "position": {
+                "col": 1,
+                "row": 1
+              },
+            },
+            "end": {
+              "position": {
+                "col": 9,
+                "row": 1
+              }
+            }
+          },
+        },
+        "styles": {
+          "textAlign": "center"
         }
       },
+      {
+        "sheet": 0,
+        "value": "Investment Manager",
+        "type": "string",
+        "position": {
+          "col": 2,
+          "row": 3
+        },
+        "styles": {
+          "border": "none"
+        }
+      },
+      {
+        "sheet": 0,
+        "value": "Goldman Sachs Asset Management Co.",
+        "type": "string",
+        "position": {
+          "col": 3,
+          "row": 3
+        },
+        "styles": {
+          "border": "none"
+        }
+      },
+      {
+        "sheet": 0,
+        "value": "1011",
+        "type": "string",
+        "position": {
+          "col": 4,
+          "row": 3
+        },
+        "styles": {
+          "textAlign": "right",
+          "border": "none"
+        }
+      }
     ]
   },
   "mapping": {
