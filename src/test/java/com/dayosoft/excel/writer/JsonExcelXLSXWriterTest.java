@@ -27,7 +27,7 @@ public class JsonExcelXLSXWriterTest {
         String file = "src/test/resources/complex/Complex.json";
         JsonExcelRequest request =  JsonExcelRequest.builder()
                 .data(TestFileUtils.readJsonFileAsString(file))
-                .reportType(ExcelReportType.COMPLEX_REPORT)
+                .reportType(ExcelReportType.EXCEL_2007)
                 .directory(tempDir.getAbsolutePath()).fileName("sample").build();
 
         File actual = jsonExcelXLSXWriter.write(request);

@@ -10,11 +10,11 @@ import java.io.IOException;
 public class JsonExcelGenerator {
 
     public File generateReport(JsonExcelRequest request) throws IOException {
-        if (ExcelReportType.SIMPLE_REPORT == request.getReportType()) {
-            return JsonExcelWriterFactory.getByReportType(ExcelReportType.SIMPLE_REPORT)
+        if (ExcelReportType.EXCEL_2003 == request.getReportType()) {
+            return JsonExcelWriterFactory.getByReportType(ExcelReportType.EXCEL_2003)
                     .write(request);
         }
-        return JsonExcelWriterFactory.getByReportType(ExcelReportType.COMPLEX_REPORT)
+        return JsonExcelWriterFactory.getByReportType(ExcelReportType.EXCEL_2007)
                 .write(request);
     }
 

@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class Position {
 
+    private Merge merge;
     private int col;
     private int row;
 

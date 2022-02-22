@@ -2,20 +2,22 @@
   "sheets": [
     {
       "index": 0,
-      "name": "年金運用状況表"
-    },
-    {
-      "index": 1,
-      "name": "株式残高"
-    }
-  ],
-  "global": {
-    "sheet": {
+      "name": "年金運用状況表",
       "styles": {
         "backgroundColor": "white",
         "fontFamily": "MS P明朝"
-      },
+      }
     },
+    {
+      "index": 1,
+      "name": "株式残高",
+      "styles": {
+        "backgroundColor": "white",
+        "fontFamily": "MS P明朝"
+      }
+    }
+  ],
+  "global": {
     "axis": [
       {
         "position": {
@@ -37,7 +39,7 @@
         }
       }
     ],
-    "static": [
+    "staticData": [
       {
         "sheet": 0,
         "value": "年金資産運用状況表（まとめ）",

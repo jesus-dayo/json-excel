@@ -1,8 +1,14 @@
 package com.dayosoft.excel.type;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public enum ExcelReportType {
 
-    SIMPLE_REPORT,
-    COMPLEX_REPORT
+    EXCEL_2003("xls"),
+    EXCEL_2007("xlsx");
 
+    private String extension;
 }

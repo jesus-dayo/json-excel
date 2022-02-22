@@ -15,7 +15,7 @@ public class ComplexReportTestGenerator {
         JsonExcelRequest request =  JsonExcelRequest.builder()
                 .directory("/tmp")
                 .fileName(("complex_"+System.currentTimeMillis()).substring(0,12))
-                .reportType(ExcelReportType.COMPLEX_REPORT)
+                .reportType(ExcelReportType.EXCEL_2007)
                 .data(new String(Files.readAllBytes(Paths.get(sampleData))))
                 .template(new String(Files.readAllBytes(Paths.get(sampleTemplate))))
                 .build();

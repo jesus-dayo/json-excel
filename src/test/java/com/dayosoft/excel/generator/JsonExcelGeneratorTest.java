@@ -30,11 +30,11 @@ class JsonExcelGeneratorTest {
         String file = "src/test/resources/simple/Simple.json";
         JsonExcelRequest request =  JsonExcelRequest.builder()
                 .data(TestFileUtils.readJsonFileAsString(file))
-                .reportType(ExcelReportType.SIMPLE_REPORT)
+                .reportType(ExcelReportType.EXCEL_2003)
                 .build();
         JsonExcelXLSWriter jsonExcelXLSWriter = Mockito.mock(JsonExcelXLSWriter.class);
         MockedStatic<JsonExcelWriterFactory> jsonExcelWriterFactoryMockedStatic = Mockito.mockStatic(JsonExcelWriterFactory.class);
-        jsonExcelWriterFactoryMockedStatic.when(()->JsonExcelWriterFactory.getByReportType(ExcelReportType.SIMPLE_REPORT)).thenReturn(jsonExcelXLSWriter);
+        jsonExcelWriterFactoryMockedStatic.when(()->JsonExcelWriterFactory.getByReportType(ExcelReportType.EXCEL_2003)).thenReturn(jsonExcelXLSWriter);
 
         jsonExcelGenerator.generateReport(request);
 

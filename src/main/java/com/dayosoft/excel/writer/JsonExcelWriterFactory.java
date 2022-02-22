@@ -10,7 +10,7 @@ import java.util.Arrays;
 @Getter
 public enum JsonExcelWriterFactory {
 
-    XLS(ExcelReportType.SIMPLE_REPORT, new JsonExcelXLSWriter()),XLSX(ExcelReportType.COMPLEX_REPORT, new JsonExcelXLSXWriter());
+    XLS(ExcelReportType.EXCEL_2003, new JsonExcelXLSWriter()),XLSX(ExcelReportType.EXCEL_2007, new JsonExcelXLSXWriter());
 
     private final ExcelReportType reportType;
     private final JsonExcelWriter writer;
