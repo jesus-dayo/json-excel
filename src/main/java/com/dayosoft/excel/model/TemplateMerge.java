@@ -1,8 +1,12 @@
 package com.dayosoft.excel.model;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class TemplateMerge {
 
     private TemplatePosition start;

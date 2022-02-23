@@ -34,28 +34,23 @@ public class ExcelTemplateReader {
 
                 List<TemplateMerge> merges = new ArrayList<>();
                 sheet.getMergedRegions().stream().forEach(cellAddresses -> {
-                    merges.add(TemplateMerge.builder()
-                            .start(TemplatePosition.builder()
+                    merges.add(new TemplateMerge(TemplatePosition.builder()
                                     .col(cellAddresses.getFirstColumn())
                                     .row(cellAddresses.getFirstRow())
-                                    .build())
-                            .end(TemplatePosition.builder()
+                                    .build(), TemplatePosition.builder()
                                     .col(cellAddresses.getLastColumn())
-                                    .row(cellAddresses.getLastRow()).build())
-                            .build());
+                                    .row(cellAddresses.getLastRow()).build()));
                 });
                 templateSheet.setMergeRegions(merges);
                 sheets.add(templateSheet);
                 sheetIndex++;
             }
-            return JsonStream.serialize(Template.builder()
-                    .name("Add Unique Template Name")
-                            .description("Add description")
-                    .format(ExcelReportType.EXCEL_2007.getExtension())
-                    .sheets(sheets)
-                    .build());
+            return JsonStream.serialize(new Template(
+                    "Add Unique Template Name",
+                    "Add description",
+                    ExcelReportType.EXCEL_2007.getExtension(),
+                    sheets));
         } else{
-
             return "";
         }
     }
@@ -101,13 +96,13 @@ public class ExcelTemplateReader {
                     }
                     final CellAddress address = cell.getAddress();
 
-                    Map<String, Object> cellStyles = new HashMap<>();
+                    Map<String, String> cellStyles = new HashMap<>();
                     final CellStyle cellStyle = cell.getCellStyle();
                     if(cellStyle != null) {
                         final short fillForegroundColor = cellStyle.getFillForegroundColor();
                         final FillPatternType fillPatternType = cellStyle.getFillPattern();
                         final short fillBackgroundColor = cellStyle.getFillBackgroundColor();
-                        final String dataFormatString = cellStyle.getDataFormatString();
+                        final short dataFormat = cellStyle.getDataFormat();
                         final HorizontalAlignment alignment = cellStyle.getAlignment();
                         final VerticalAlignment verticalAlignment = cellStyle.getVerticalAlignment();
                         final BorderStyle borderBottom = cellStyle.getBorderBottom();
@@ -126,7 +121,7 @@ public class ExcelTemplateReader {
                         addToStyles(cellStyles, "fillForegroundColorColor", fillForegroundColor);
                         addToStyles(cellStyles, "fillPatternType", fillPatternType);
                         addToStyles(cellStyles, "fillBackgroundColorColor", fillBackgroundColor);
-                        addToStyles(cellStyles,"dataFormatString", dataFormatString);
+                        addToStyles(cellStyles,"dataFormat", dataFormat);
                         addToStyles(cellStyles,"alignment", alignment);
                         addToStyles(cellStyles,"verticalAlignment", verticalAlignment);
                         addToStyles(cellStyles,"borderBottom", borderBottom);
@@ -178,9 +173,9 @@ public class ExcelTemplateReader {
         templateSheet.setRows(rows);
     }
 
-    private void addToStyles(Map<String, Object> cellStyles, String key, Object value){
+    private void addToStyles(Map<String, String> cellStyles, String key, Object value){
         if(value != null){
-            cellStyles.put(key, value);
+            cellStyles.put(key, String.valueOf(value));
         }
     }
 }

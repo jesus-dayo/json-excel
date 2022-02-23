@@ -1,11 +1,9 @@
 package com.dayosoft.excel.writer;
 
-import com.dayosoft.excel.model.TemplatePosition;
+import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.styles.Style;
-import com.dayosoft.excel.type.ExcelJsonType;
+import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.util.JsonDataTraverser;
-import com.dayosoft.excel.util.JsonTemplateTraverser;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
 import org.apache.poi.ss.SpreadsheetVersion;
@@ -16,83 +14,57 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
     public File write(JsonExcelRequest jsonExcelRequest) throws IOException {
         XSSFWorkbook wb = new XSSFWorkbook();
-        Any template = JsonIterator.deserialize(jsonExcelRequest.getTemplate());
-        JsonTemplateTraverser jsonTemplateTraverser = new JsonTemplateTraverser(template);
+        Template template = JsonIterator.deserialize(jsonExcelRequest.getTemplate(), Template.class);
 
-        Map<Integer, XSSFSheet> sheetMap = new HashMap<>();
-        final Iterator<Any> sheets = jsonTemplateTraverser.sheets();
-        final Map<String, Any> globalSheetStyles = jsonTemplateTraverser.globalSheetStyles();
-        final XSSFCellStyle defaultCellStyle = wb.createCellStyle();
-        defaultCellStyle.setFont(wb.createFont());
-        globalSheetStyles.entrySet().forEach(style->{
-            Style.valueOf(style.getKey()).getFormatter().accept(defaultCellStyle, style.getValue().toString());
+        final List<TemplateSheet> sheets = template.getSheets();
+
+        sheets.stream().forEach(sheet->{
+            XSSFSheet xssfSheet = wb.createSheet(sheet.getName());
+            final List<TemplateRow> templateRows = sheet.getRows();
+            templateRows.stream().forEach(templateRow -> {
+                final XSSFRow row = xssfSheet.createRow(templateRow.getRowNum());
+                final List<TemplateColumn> templateColumns = templateRow.getColumns();
+                templateColumns.stream().forEach(templateColumn -> {
+                    final XSSFCell cell = row.createCell(templateColumn.getPosition().getCol());
+                    if(templateColumn.getValue() instanceof String) {
+                        cell.setCellValue(templateColumn.getValue().toString());
+                    }
+                    if(templateColumn.getValue() instanceof Double) {
+                        cell.setCellValue((Double)templateColumn.getValue());
+                    }
+                    if(templateColumn.getValue() instanceof Integer) {
+                        cell.setCellValue((Integer)templateColumn.getValue());
+                    }
+
+                    final Map<String, String> styles = templateColumn.getStyles();
+                    if(!styles.isEmpty()){
+                        XSSFCellStyle newCellStyle = wb.createCellStyle();
+                        final XSSFFont font = wb.createFont();
+                        newCellStyle.setFont(font);
+                        StylesMapper.applyStyles(newCellStyle, styles);
+                        newCellStyle.setFont(font);
+                        cell.setCellStyle(newCellStyle);
+                    }
+                });
+            });
+            final List<TemplateMerge> templateMerges = sheet.getMergeRegions();
+            templateMerges.stream().forEach(templateMerge -> {
+                CellRangeAddress cellRangeAddress = new CellRangeAddress(
+                        templateMerge.getStart().getRow(),
+                        templateMerge.getEnd().getRow(),
+                        templateMerge.getStart().getCol(),
+                        templateMerge.getEnd().getCol());
+                xssfSheet.addMergedRegion(cellRangeAddress);
+            });
         });
 
-        int sheetIndex = 0;
-        while (sheets.hasNext()) {
-            final Any sheetJson = sheets.next();
-            XSSFSheet sheet = wb.createSheet(jsonTemplateTraverser.sheetName(sheetJson));
-            applyGlobalStyles(sheet, defaultCellStyle);
-            sheetMap.put(sheetIndex, sheet);
-            sheetIndex++;
-        }
-
-        final Any staticDataJson = jsonTemplateTraverser.globalStaticData();
-        final Iterator<Any> staticDataJsonIterator = staticDataJson.iterator();
-        while(staticDataJsonIterator.hasNext()){
-            final Any staticData = staticDataJsonIterator.next();
-            final XSSFSheet sheet = sheetMap.get(jsonTemplateTraverser.sheetIndex(staticData));
-            final Any type = jsonTemplateTraverser.type(staticData);
-            final Any value = jsonTemplateTraverser.value(staticData);
-            final ExcelJsonType excelJsonType = ExcelJsonType.getByJsonType(type.toString());
-            if(jsonTemplateTraverser.isPositionMerger(staticData)){
-                final TemplatePosition start = jsonTemplateTraverser.positionStart(staticData);
-                final TemplatePosition end = jsonTemplateTraverser.positionEnd(staticData);
-                final XSSFRow row = sheet.getRow(start.getRow());
-                final XSSFCell cell = row.createCell(start.getCol(), excelJsonType.getCellType().apply(value));
-                excelJsonType.getValueSetter().accept(value, cell);
-                final CellRangeAddress cellAddresses = new CellRangeAddress(start.getRow(), end.getRow(), start.getCol(), end.getCol());
-                sheet.addMergedRegion(cellAddresses);
-
-                final XSSFCellStyle cellStyle = wb.createCellStyle();
-                cellStyle.cloneStyleFrom(defaultCellStyle);
-                final XSSFFont font = wb.createFont();
-                font.setFontName(defaultCellStyle.getFont().getFontName());
-                cellStyle.setFont(font);
-                final Map<String, Any> styles = jsonTemplateTraverser.styles(staticData);
-                styles.entrySet().forEach(style->{
-                    Style.valueOf(style.getKey()).getFormatter().accept(cellStyle, style.getValue().toString());
-                });
-                cell.setCellStyle(cellStyle);
-            } else {
-                final TemplatePosition position = jsonTemplateTraverser.position(staticData);
-                final XSSFRow row = sheet.getRow(position.getRow());
-                final XSSFCell cell = row.createCell(position.getCol(), excelJsonType.getCellType().apply(value));
-                excelJsonType.getValueSetter().accept(value, cell);
-
-                final XSSFCellStyle cellStyle = wb.createCellStyle();
-                final Map<String, Any> styles = jsonTemplateTraverser.styles(staticData);
-                cellStyle.cloneStyleFrom(defaultCellStyle);
-                final XSSFFont font = wb.createFont();
-                font.setFontName(defaultCellStyle.getFont().getFontName());
-                cellStyle.setFont(font);
-
-                styles.entrySet().forEach(style->{
-                    Style.valueOf(style.getKey()).getFormatter().accept(cellStyle, style.getValue().toString());
-                });
-                cell.setCellStyle(cellStyle);
-
-                sheet.autoSizeColumn(position.getCol());
-            }
-        }
 
         Any data = JsonIterator.deserialize(jsonExcelRequest.getData());
         JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);

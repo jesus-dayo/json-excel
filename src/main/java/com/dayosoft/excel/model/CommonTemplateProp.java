@@ -9,6 +9,6 @@ import java.util.Map;
 @Setter
 public abstract class CommonTemplateProp {
 
-    protected Map<String, Object> styles;
+    protected Map<String, String> styles;
 
 }

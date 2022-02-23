@@ -1,10 +1,14 @@
 package com.dayosoft.excel.model;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Template {
 
     private String name;
