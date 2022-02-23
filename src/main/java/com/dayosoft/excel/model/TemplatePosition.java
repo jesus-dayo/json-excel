@@ -5,9 +5,8 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class Position {
+public class TemplatePosition {
 
-    private Merge merge;
     private int col;
     private int row;
 

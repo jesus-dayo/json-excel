@@ -1,6 +1,6 @@
 package com.dayosoft.excel.writer;
 
-import com.dayosoft.excel.model.Position;
+import com.dayosoft.excel.model.TemplatePosition;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.styles.Style;
 import com.dayosoft.excel.type.ExcelJsonType;
@@ -54,8 +54,8 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
             final Any value = jsonTemplateTraverser.value(staticData);
             final ExcelJsonType excelJsonType = ExcelJsonType.getByJsonType(type.toString());
             if(jsonTemplateTraverser.isPositionMerger(staticData)){
-                final Position start = jsonTemplateTraverser.positionStart(staticData);
-                final Position end = jsonTemplateTraverser.positionEnd(staticData);
+                final TemplatePosition start = jsonTemplateTraverser.positionStart(staticData);
+                final TemplatePosition end = jsonTemplateTraverser.positionEnd(staticData);
                 final XSSFRow row = sheet.getRow(start.getRow());
                 final XSSFCell cell = row.createCell(start.getCol(), excelJsonType.getCellType().apply(value));
                 excelJsonType.getValueSetter().accept(value, cell);
@@ -73,7 +73,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                 });
                 cell.setCellStyle(cellStyle);
             } else {
-                final Position position = jsonTemplateTraverser.position(staticData);
+                final TemplatePosition position = jsonTemplateTraverser.position(staticData);
                 final XSSFRow row = sheet.getRow(position.getRow());
                 final XSSFCell cell = row.createCell(position.getCol(), excelJsonType.getCellType().apply(value));
                 excelJsonType.getValueSetter().accept(value, cell);

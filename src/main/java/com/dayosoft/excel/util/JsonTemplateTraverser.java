@@ -1,6 +1,6 @@
 package com.dayosoft.excel.util;
 
-import com.dayosoft.excel.model.Position;
+import com.dayosoft.excel.model.TemplatePosition;
 import com.jsoniter.ValueType;
 import com.jsoniter.any.Any;
 
@@ -45,9 +45,9 @@ public class JsonTemplateTraverser extends JsonTraverser {
         return getJsonIfExist(obj.get("type"));
     }
 
-    public final Position position(Any obj){
+    public final TemplatePosition position(Any obj){
         final Any positionJson = getJsonIfExist(obj.get("position"));
-        return Position.builder().col(positionJson.get("col").toInt()).row(positionJson.get("row").toInt()).build();
+        return TemplatePosition.builder().col(positionJson.get("col").toInt()).row(positionJson.get("row").toInt()).build();
     }
 
     public final boolean isPositionMerger(Any obj){
@@ -58,11 +58,11 @@ public class JsonTemplateTraverser extends JsonTraverser {
         return false;
     }
 
-    public final Position positionStart(Any obj){
+    public final TemplatePosition positionStart(Any obj){
         return position(getJsonIfExist(obj.get("position", "merge","start")));
     }
 
-    public final Position positionEnd(Any obj){
+    public final TemplatePosition positionEnd(Any obj){
         return position(getJsonIfExist(obj.get("position", "merge","end")));
     }
 

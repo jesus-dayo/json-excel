@@ -10,7 +10,7 @@ public class ComplexReportTemplateTestReader {
 
     public static void main(String[] args) throws IOException, InvalidFormatException {
         ExcelTemplateReader excelTemplateReader = new ExcelTemplateReader();
-        File sampleExcel = new File("src/test/resources/complex/Complex.xlsx");
+        File sampleExcel = new File("src/test/resources/complex/Complex_template.xlsx");
         final FileInputStream excelFileStream = new FileInputStream(sampleExcel);
 
         final String json = excelTemplateReader.excelToJsonTemplate(excelFileStream, ExcelReportType.EXCEL_2007);

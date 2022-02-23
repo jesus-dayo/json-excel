@@ -1,134 +1,47 @@
 {
   "sheets": [
     {
-      "index": 0,
       "name": "年金運用状況表",
-      "styles": {
-        "backgroundColor": "white",
-        "fontFamily": "MS P明朝"
-      }
-    },
-    {
-      "index": 1,
-      "name": "株式残高",
-      "styles": {
-        "backgroundColor": "white",
-        "fontFamily": "MS P明朝"
-      }
-    }
-  ],
-  "global": {
-    "axis": [
-      {
-        "position": {
-          "start": {
-            "position": {
-              "col": 2,
-              "row": 1
-            },
-          },
-          "end": {
-            "position": {
-              "col": 9,
-              "row": 1
-            }
+      "index": 0,
+      "merge": [{
+        "start": {
+          "position": {
+            "col": 1,
+            "row": 1
           },
         },
-        "styles": {
-          "backgroundColor": "white"
+        "end": {
+          "position": {
+            "col": 9,
+            "row": 1
+          }
         }
-      }
-    ],
-    "staticData": [
-      {
-        "sheet": 0,
-        "value": "年金資産運用状況表（まとめ）",
-        "type": "string",
-        "position": {
-          "merge": {
-            "start": {
+      }],
+      "rows": [
+        {
+          "rowNum": 0,
+          "styles": {
+            "backgroundColor": "white",
+            "fontFamily": "MS P明朝",
+          },
+          "columns": [
+            {
+              "index": 0,
+              "value": "年金資産運用状況表（まとめ）",
+              "type": "string",
               "position": {
                 "col": 1,
-                "row": 1
+                "row": 1,
               },
-            },
-            "end": {
-              "position": {
-                "col": 9,
-                "row": 1
+              "styles": {
+                "textAlign": "center",
+                "backgroundColor": "white",
+                "fontFamily": "MS P明朝"
               }
-            }
-          },
-        },
-        "styles": {
-          "textAlign": "center"
+            },
+          ]
         }
-      },
-      {
-        "sheet": 0,
-        "value": "Investment Manager",
-        "type": "string",
-        "position": {
-          "col": 2,
-          "row": 3
-        },
-        "styles": {
-          "border": "none"
-        }
-      },
-      {
-        "sheet": 0,
-        "value": "Goldman Sachs Asset Management Co.",
-        "type": "string",
-        "position": {
-          "col": 3,
-          "row": 3
-        },
-        "styles": {
-          "border": "none"
-        }
-      },
-      {
-        "sheet": 0,
-        "value": "1011",
-        "type": "string",
-        "position": {
-          "col": 4,
-          "row": 3
-        },
-        "styles": {
-          "textAlign": "right",
-          "border": "none"
-        }
-      }
-    ]
-  },
-  "mapping": {
-    "Client Details": {
-      "sheet": 0,
-      "DateYear": {
-        "label": {
-          "name": "Record Date(YYYY)(MM)",
-          "position": {
-            "col": 3,
-            "row": 5
-          }
-        },
-        "value": {
-          "position": {
-            "col": 4,
-            "row": 5
-          }
-        }
-      },
-      "DateMonth": {
-        "value": {
-          "position": {
-            "col": 4,
-            "row": 5
-          }
-        }
-      }
+      ],
     }
-  }
+  ]
 }

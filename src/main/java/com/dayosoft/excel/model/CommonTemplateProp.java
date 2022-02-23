@@ -1,14 +1,14 @@
 package com.dayosoft.excel.model;
 
 import lombok.Getter;
-import lombok.experimental.SuperBuilder;
+import lombok.Setter;
 
 import java.util.Map;
 
 @Getter
-@SuperBuilder
+@Setter
 public abstract class CommonTemplateProp {
 
-    protected Map<String, String> styles;
+    protected Map<String, Object> styles;
 
 }
