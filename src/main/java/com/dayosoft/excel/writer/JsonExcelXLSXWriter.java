@@ -2,6 +2,7 @@ package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.request.JsonExcelRequest;
+import com.dayosoft.excel.styles.Style;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.util.JsonDataTraverser;
 import com.jsoniter.JsonIterator;
@@ -27,6 +28,11 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
         sheets.stream().forEach(sheet->{
             XSSFSheet xssfSheet = wb.createSheet(sheet.getName());
+            if(sheet.getBackgroundColor() != null){
+                XSSFCellStyle newCellStyle = wb.createCellStyle();
+                Style.defaultBlankColor.getFormatter().accept(newCellStyle, sheet.getBackgroundColor());
+                applyBackground(xssfSheet, newCellStyle);
+            }
             final List<TemplateRow> templateRows = sheet.getRows();
             templateRows.stream().forEach(templateRow -> {
                 final XSSFRow row = xssfSheet.createRow(templateRow.getRowNum());
@@ -49,7 +55,6 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                         final XSSFFont font = wb.createFont();
                         newCellStyle.setFont(font);
                         StylesMapper.applyStyles(newCellStyle, styles);
-                        newCellStyle.setFont(font);
                         cell.setCellStyle(newCellStyle);
                     }
                 });
@@ -79,7 +84,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         return file;
     }
 
-    private void applyGlobalStyles(XSSFSheet sheet, CellStyle defaultStyle) {
+    private void applyBackground(XSSFSheet sheet, CellStyle defaultStyle) {
         for(int x = 0; x < SpreadsheetVersion.EXCEL2007.getMaxRows();x++){
             final XSSFRow row = sheet.createRow(x);
             row.setRowStyle(defaultStyle);

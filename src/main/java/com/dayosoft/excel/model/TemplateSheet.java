@@ -11,5 +11,6 @@ public class TemplateSheet {
     private String name;
     private List<TemplateRow> rows;
     private List<TemplateMerge> mergeRegions;
+    private String backgroundColor;
 
 }
