@@ -10,4 +10,5 @@ public class TemplateColumn extends CommonTemplateProp {
     private TemplateRange arrayFormulaRange;
     private String cellFormula;
     private String cellComment;
+    private int columnWidth;
 }

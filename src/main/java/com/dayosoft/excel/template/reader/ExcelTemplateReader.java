@@ -31,6 +31,11 @@ public class ExcelTemplateReader {
                 fillSheetMapping(xssfWorkbook, sheet, templateSheet);
                 templateSheet.setIndex(sheetIndex);
                 templateSheet.setName(sheet.getSheetName());
+                templateSheet.setPrintGridlines(sheet.isPrintGridlines());
+                templateSheet.setFitToPage(sheet.getFitToPage());
+                templateSheet.setDisplayGuts(sheet.getDisplayGuts());
+                templateSheet.setDisplayGridlines(sheet.isDisplayGridlines());
+                templateSheet.setDefaultColumnWidth(sheet.getDefaultColumnWidth());
 
                 List<TemplateMerge> merges = new ArrayList<>();
                 sheet.getMergedRegions().stream().forEach(cellAddresses -> {
@@ -76,6 +81,7 @@ public class ExcelTemplateReader {
                 final Cell cell = cellIterator.next();
                 final CellType cellType = cell.getCellType();
                 TemplateColumn templateColumn = new TemplateColumn();
+                templateColumn.setColumnWidth(sheet.getColumnWidth(cell.getColumnIndex()));
                 if (cellType != CellType.BLANK) {
                     switch (cellType) {
                         case STRING: {
@@ -94,79 +100,79 @@ public class ExcelTemplateReader {
                             break;
                         }
                     }
+                }
 
-                    final CellAddress address = cell.getAddress();
+                final CellAddress address = cell.getAddress();
 
-                    Map<String, String> cellStyles = new HashMap<>();
-                    final CellStyle cellStyle = cell.getCellStyle();
-                    if (cellStyle != null) {
-                        final short fillForegroundColor = cellStyle.getFillForegroundColor();
-                        final FillPatternType fillPatternType = cellStyle.getFillPattern();
-                        final short fillBackgroundColor = cellStyle.getFillBackgroundColor();
-                        final short dataFormat = cellStyle.getDataFormat();
-                        final HorizontalAlignment alignment = cellStyle.getAlignment();
-                        final VerticalAlignment verticalAlignment = cellStyle.getVerticalAlignment();
-                        final BorderStyle borderBottom = cellStyle.getBorderBottom();
-                        final BorderStyle borderLeft = cellStyle.getBorderLeft();
-                        final BorderStyle borderRight = cellStyle.getBorderRight();
-                        final BorderStyle borderTop = cellStyle.getBorderTop();
-                        final short bottomBorderColor = cellStyle.getBottomBorderColor();
-                        final short leftBorderColor = cellStyle.getLeftBorderColor();
-                        final short rightBorderColor = cellStyle.getRightBorderColor();
-                        final short topBorderColor = cellStyle.getTopBorderColor();
-                        final boolean shrinkToFit = cellStyle.getShrinkToFit();
-                        final boolean wrapText = cellStyle.getWrapText();
+                Map<String, String> cellStyles = new HashMap<>();
+                final CellStyle cellStyle = cell.getCellStyle();
+                if (cellStyle != null) {
+                    final short fillForegroundColor = cellStyle.getFillForegroundColor();
+                    final FillPatternType fillPatternType = cellStyle.getFillPattern();
+                    final short fillBackgroundColor = cellStyle.getFillBackgroundColor();
+                    final short dataFormat = cellStyle.getDataFormat();
+                    final HorizontalAlignment alignment = cellStyle.getAlignment();
+                    final VerticalAlignment verticalAlignment = cellStyle.getVerticalAlignment();
+                    final BorderStyle borderBottom = cellStyle.getBorderBottom();
+                    final BorderStyle borderLeft = cellStyle.getBorderLeft();
+                    final BorderStyle borderRight = cellStyle.getBorderRight();
+                    final BorderStyle borderTop = cellStyle.getBorderTop();
+                    final short bottomBorderColor = cellStyle.getBottomBorderColor();
+                    final short leftBorderColor = cellStyle.getLeftBorderColor();
+                    final short rightBorderColor = cellStyle.getRightBorderColor();
+                    final short topBorderColor = cellStyle.getTopBorderColor();
+                    final boolean shrinkToFit = cellStyle.getShrinkToFit();
+                    final boolean wrapText = cellStyle.getWrapText();
 
-                        final XSSFFont font = xssfWorkbook.getFontAt(cellStyle.getFontIndex());
+                    final XSSFFont font = xssfWorkbook.getFontAt(cellStyle.getFontIndex());
 
 
-                        addToStyles(cellStyles, "fillForegroundColorColor", fillForegroundColor);
-                        addToStyles(cellStyles, "fillPatternType", fillPatternType);
-                        addToStyles(cellStyles, "fillBackgroundColorColor", fillBackgroundColor);
-                        addToStyles(cellStyles, "dataFormat", dataFormat);
-                        addToStyles(cellStyles, "alignment", alignment);
-                        addToStyles(cellStyles, "verticalAlignment", verticalAlignment);
-                        addToStyles(cellStyles, "borderBottom", borderBottom);
-                        addToStyles(cellStyles, "borderLeft", borderLeft);
-                        addToStyles(cellStyles, "borderRight", borderRight);
-                        addToStyles(cellStyles, "borderTop", borderTop);
-                        addToStyles(cellStyles, "bottomBorderColor", bottomBorderColor);
-                        addToStyles(cellStyles, "leftBorderColor", leftBorderColor);
-                        addToStyles(cellStyles, "rightBorderColor", rightBorderColor);
-                        addToStyles(cellStyles, "topBorderColor", topBorderColor);
-                        addToStyles(cellStyles, "shrinkToFit", shrinkToFit);
-                        addToStyles(cellStyles, "wrapText", wrapText);
-                        addToStyles(cellStyles, "fontFamily", font.getFontName());
-                        addToStyles(cellStyles, "bold", font.getBold());
-                        addToStyles(cellStyles, "fontColor", font.getColor());
-                        addToStyles(cellStyles, "italic", font.getItalic());
-                        addToStyles(cellStyles, "fontHeight", font.getFontHeight());
+                    addToStyles(cellStyles, "fillForegroundColorColor", fillForegroundColor);
+                    addToStyles(cellStyles, "fillPatternType", fillPatternType);
+                    addToStyles(cellStyles, "fillBackgroundColorColor", fillBackgroundColor);
+                    addToStyles(cellStyles, "dataFormat", dataFormat);
+                    addToStyles(cellStyles, "alignment", alignment);
+                    addToStyles(cellStyles, "verticalAlignment", verticalAlignment);
+                    addToStyles(cellStyles, "borderBottom", borderBottom);
+                    addToStyles(cellStyles, "borderLeft", borderLeft);
+                    addToStyles(cellStyles, "borderRight", borderRight);
+                    addToStyles(cellStyles, "borderTop", borderTop);
+                    addToStyles(cellStyles, "bottomBorderColor", bottomBorderColor);
+                    addToStyles(cellStyles, "leftBorderColor", leftBorderColor);
+                    addToStyles(cellStyles, "rightBorderColor", rightBorderColor);
+                    addToStyles(cellStyles, "topBorderColor", topBorderColor);
+                    addToStyles(cellStyles, "shrinkToFit", shrinkToFit);
+                    addToStyles(cellStyles, "wrapText", wrapText);
+                    addToStyles(cellStyles, "fontFamily", font.getFontName());
+                    addToStyles(cellStyles, "bold", font.getBold());
+                    addToStyles(cellStyles, "fontColor", font.getColor());
+                    addToStyles(cellStyles, "italic", font.getItalic());
+                    addToStyles(cellStyles, "fontHeight", font.getFontHeight());
 
-                        templateColumn.setStyles(cellStyles);
+                    templateColumn.setStyles(cellStyles);
 
-                        if (cell.isPartOfArrayFormulaGroup()) {
-                            final CellRangeAddress arrayFormulaRange = cell.getArrayFormulaRange();
-                            if (arrayFormulaRange != null) {
-                                templateColumn.setArrayFormulaRange(TemplateRange.builder()
-                                        .start(TemplatePosition
-                                                .builder().col(arrayFormulaRange.getFirstColumn())
-                                                .row(arrayFormulaRange.getFirstRow()).build())
-                                        .end(TemplatePosition.builder().col(arrayFormulaRange.getLastColumn())
-                                                .row(arrayFormulaRange.getLastRow()).build())
-                                        .build());
-                            }
+                    if (cell.isPartOfArrayFormulaGroup()) {
+                        final CellRangeAddress arrayFormulaRange = cell.getArrayFormulaRange();
+                        if (arrayFormulaRange != null) {
+                            templateColumn.setArrayFormulaRange(TemplateRange.builder()
+                                    .start(TemplatePosition
+                                            .builder().col(arrayFormulaRange.getFirstColumn())
+                                            .row(arrayFormulaRange.getFirstRow()).build())
+                                    .end(TemplatePosition.builder().col(arrayFormulaRange.getLastColumn())
+                                            .row(arrayFormulaRange.getLastRow()).build())
+                                    .build());
                         }
-
-                        if (cell.getCellComment() != null) {
-                            templateColumn.setCellComment(cell.getCellComment().getString().getString());
-                        }
-                        templateColumn.setPosition(
-                                TemplatePosition.builder()
-                                        .col(address.getColumn())
-                                        .row(address.getRow())
-                                        .build());
-                        columns.add(templateColumn);
                     }
+
+                    if (cell.getCellComment() != null) {
+                        templateColumn.setCellComment(cell.getCellComment().getString().getString());
+                    }
+                    templateColumn.setPosition(
+                            TemplatePosition.builder()
+                                    .col(address.getColumn())
+                                    .row(address.getRow())
+                                    .build());
+                    columns.add(templateColumn);
                 }
 
             }

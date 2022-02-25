@@ -11,6 +11,9 @@ public class TemplateSheet {
     private String name;
     private List<TemplateRow> rows;
     private List<TemplateMerge> mergeRegions;
-    private String backgroundColor;
-
+    private boolean isPrintGridlines;
+    private boolean fitToPage;
+    private boolean displayGuts;
+    private boolean displayGridlines;
+    private int defaultColumnWidth;
 }

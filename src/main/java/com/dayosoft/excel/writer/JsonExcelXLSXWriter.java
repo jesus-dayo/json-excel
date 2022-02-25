@@ -2,13 +2,10 @@ package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.styles.Style;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.util.JsonDataTraverser;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
-import org.apache.poi.ss.SpreadsheetVersion;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -28,11 +25,10 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
         sheets.stream().forEach(sheet->{
             XSSFSheet xssfSheet = wb.createSheet(sheet.getName());
-            if(sheet.getBackgroundColor() != null){
-                XSSFCellStyle newCellStyle = wb.createCellStyle();
-                Style.defaultBlankColor.getFormatter().accept(newCellStyle, sheet.getBackgroundColor());
-                applyBackground(xssfSheet, newCellStyle);
-            }
+            xssfSheet.setDisplayGridlines(sheet.isDisplayGridlines());
+            xssfSheet.setPrintGridlines(sheet.isPrintGridlines());
+            xssfSheet.setFitToPage(sheet.isFitToPage());
+            xssfSheet.setDisplayGuts(sheet.isDisplayGuts());
             final List<TemplateRow> templateRows = sheet.getRows();
             templateRows.stream().forEach(templateRow -> {
                 final XSSFRow row = xssfSheet.createRow(templateRow.getRowNum());
@@ -48,7 +44,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                     if(templateColumn.getValue() instanceof Integer) {
                         cell.setCellValue((Integer)templateColumn.getValue());
                     }
-
+                    xssfSheet.setColumnWidth(cell.getColumnIndex(), templateColumn.getColumnWidth());
                     final Map<String, String> styles = templateColumn.getStyles();
                     if(!styles.isEmpty()){
                         XSSFCellStyle newCellStyle = wb.createCellStyle();
@@ -82,13 +78,6 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         wb.write(out);
         out.close();
         return file;
-    }
-
-    private void applyBackground(XSSFSheet sheet, CellStyle defaultStyle) {
-        for(int x = 0; x < SpreadsheetVersion.EXCEL2007.getMaxRows();x++){
-            final XSSFRow row = sheet.createRow(x);
-            row.setRowStyle(defaultStyle);
-        }
     }
 
 }

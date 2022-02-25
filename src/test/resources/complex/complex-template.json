@@ -4,1428 +4,10 @@
   "format": "xlsx",
   "sheets": [
     {
-      "backgroundColor": "white",
-      "rows": [
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Pension Asset Investment Results (Summary)",
-              "position": {
-                "row": 1,
-                "col": 1
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 2
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 3
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 4
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 5
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 7
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 8
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 9
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 1,
-                "col": 10
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "240",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 1,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Shareholder Name",
-              "position": {
-                "row": 2,
-                "col": 2
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${clientCode1}",
-              "position": {
-                "row": 2,
-                "col": 3
-              },
-              "styles": {
-                "fillForegroundColorColor": "65",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${clientName}",
-              "position": {
-                "row": 2,
-                "col": 4
-              },
-              "styles": {
-                "fillForegroundColorColor": "65",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "LEFT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 2,
-                "col": 5
-              },
-              "styles": {
-                "fillForegroundColorColor": "65",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Accounting Standard(2)",
-              "position": {
-                "row": 2,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 2,
-                "col": 7
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Contract Basis/Accrual Basis",
-              "position": {
-                "row": 2,
-                "col": 8
-              },
-              "styles": {
-                "fillForegroundColorColor": "43",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "LEFT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 2,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Investment Manager",
-              "position": {
-                "row": 3,
-                "col": 2
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": 1011,
-              "position": {
-                "row": 3,
-                "col": 3
-              },
-              "styles": {
-                "fillForegroundColorColor": "65",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Goldman Sachs Asset Management Co.",
-              "position": {
-                "row": 3,
-                "col": 4
-              },
-              "styles": {
-                "fillForegroundColorColor": "65",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "LEFT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "1",
-              "position": {
-                "row": 3,
-                "col": 5
-              },
-              "styles": {
-                "fillForegroundColorColor": "65",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "true",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Department",
-              "position": {
-                "row": 3,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 3,
-                "col": 7
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Operations",
-              "position": {
-                "row": 3,
-                "col": 8
-              },
-              "styles": {
-                "fillForegroundColorColor": "43",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "38",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "LEFT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "BOTTOM",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 3,
-                "col": 9
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "38",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "BOTTOM",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 3,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Record Date(YYYY)(MM)",
-              "position": {
-                "row": 4,
-                "col": 2
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${DateYear}",
-              "position": {
-                "row": 4,
-                "col": 3
-              },
-              "styles": {
-                "fillForegroundColorColor": "43",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "true",
-                "verticalAlignment": "BOTTOM",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${DateMonth}",
-              "position": {
-                "row": 4,
-                "col": 4
-              },
-              "styles": {
-                "fillForegroundColorColor": "43",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "49",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "true",
-                "verticalAlignment": "BOTTOM",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Month End",
-              "position": {
-                "row": 4,
-                "col": 5
-              },
-              "styles": {
-                "fillForegroundColorColor": "43",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Phone/Email Address",
-              "position": {
-                "row": 4,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 4,
-                "col": 7
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "81(3)0000-0000",
-              "position": {
-                "row": 4,
-                "col": 8
-              },
-              "styles": {
-                "fillForegroundColorColor": "43",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "38",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "LEFT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "BOTTOM",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 4,
-                "col": 9
-              },
-              "styles": {
-                "fillForegroundColorColor": "43",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "38",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "MEDIUM",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "LEFT",
-                "borderBottom": "MEDIUM",
-                "wrapText": "false",
-                "verticalAlignment": "BOTTOM",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 4,
-                "col": 10
-              },
-              "styles": {
-                "fillForegroundColorColor": "65",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 4,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 6,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 6,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 7,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 7,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 8,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 8,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 9,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 9,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 10,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "38",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "RIGHT",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 10,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 11,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 11,
-          "styles": null
-        },
-        {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 12,
-                "col": 6
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "38",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "MS P明朝",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "200",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
-          "rowNum": 12,
-          "styles": null
-        }
-      ],
+      "isPrintGridlines": false,
+      "fitToPage": true,
+      "displayGuts": true,
+      "displayGridlines": false,
       "mergeRegions": [
         {
           "end": {
@@ -1468,22 +50,21 @@
           }
         }
       ],
-      "name": "Pension Investment Status",
-      "index": 0
-    },
-    {
+      "defaultColumnWidth": 10,
       "rows": [
         {
+          "rowNum": 1,
           "columns": [
             {
+              "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 0,
-                "col": 0
+                "row": 1,
+                "col": 1
               },
+              "value": "Pension Asset Investment Results (Summary)",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1497,32 +78,339 @@
                 "borderLeft": "NONE",
                 "rightBorderColor": "8",
                 "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
+                "fontFamily": "MS P明朝",
                 "leftBorderColor": "8",
                 "borderRight": "NONE",
-                "fontHeight": "220",
-                "alignment": "GENERAL",
+                "fontHeight": "240",
+                "alignment": "CENTER",
                 "borderBottom": "NONE",
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
-                "fontColor": "10"
+                "fontColor": "8"
               }
-            }
-          ],
-          "rowNum": 0,
-          "styles": null
-        },
-        {
-          "columns": [
+            },
             {
+              "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "Shareholder Name",
               "position": {
                 "row": 1,
-                "col": 0
+                "col": 2
               },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 6528,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 3
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 8405,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 4
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2474,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 5
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2005,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 7
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 7552,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 8
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 7466,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 9
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 682,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 10
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "240",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 2,
+          "columns": [
+            {
+              "columnWidth": 7594,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 2,
+                "col": 2
+              },
+              "value": "Shareholder Name",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1536,10 +424,10 @@
                 "borderLeft": "NONE",
                 "rightBorderColor": "8",
                 "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
+                "fontFamily": "MS P明朝",
                 "leftBorderColor": "8",
                 "borderRight": "NONE",
-                "fontHeight": "220",
+                "fontHeight": "200",
                 "alignment": "GENERAL",
                 "borderBottom": "NONE",
                 "wrapText": "false",
@@ -1548,14 +436,49 @@
               }
             },
             {
+              "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "ABC Company",
               "position": {
-                "row": 1,
-                "col": 1
+                "row": 2,
+                "col": 3
               },
+              "value": "${clientCode1}",
+              "styles": {
+                "fillForegroundColorColor": "65",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 8405,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 2,
+                "col": 4
+              },
+              "value": "${clientName}",
               "styles": {
                 "fillForegroundColorColor": "65",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -1581,21 +504,1046 @@
               }
             },
             {
+              "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 1,
-                "col": 2
+                "row": 2,
+                "col": 5
               },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "65",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 2,
+                "col": 6
+              },
+              "value": "Accounting Standard(2)",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
                 "topBorderColor": "8",
-                "dataFormat": "40",
+                "dataFormat": "0",
                 "bottomBorderColor": "8",
                 "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2005,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 2,
+                "col": 7
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 7552,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 2,
+                "col": 8
+              },
+              "value": "Contract Basis/Accrual Basis",
+              "styles": {
+                "fillForegroundColorColor": "43",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "LEFT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 3,
+          "columns": [
+            {
+              "columnWidth": 7594,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 2
+              },
+              "value": "Investment Manager",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 6528,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 3
+              },
+              "value": 1011,
+              "styles": {
+                "fillForegroundColorColor": "65",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 8405,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 4
+              },
+              "value": "Goldman Sachs Asset Management Co.",
+              "styles": {
+                "fillForegroundColorColor": "65",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "LEFT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2474,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 5
+              },
+              "value": "1",
+              "styles": {
+                "fillForegroundColorColor": "65",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "true",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 6
+              },
+              "value": "Department",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2005,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 7
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 7552,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 8
+              },
+              "value": "Operations",
+              "styles": {
+                "fillForegroundColorColor": "43",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "38",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "LEFT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "BOTTOM",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 7466,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 3,
+                "col": 9
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "38",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "BOTTOM",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 4,
+          "columns": [
+            {
+              "columnWidth": 7594,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 2
+              },
+              "value": "Record Date(YYYY)(MM)",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 6528,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 3
+              },
+              "value": "${DateYear}",
+              "styles": {
+                "fillForegroundColorColor": "43",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "true",
+                "verticalAlignment": "BOTTOM",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 8405,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 4
+              },
+              "value": "${DateMonth}",
+              "styles": {
+                "fillForegroundColorColor": "43",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "49",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "true",
+                "verticalAlignment": "BOTTOM",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2474,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 5
+              },
+              "value": "Month End",
+              "styles": {
+                "fillForegroundColorColor": "43",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 6
+              },
+              "value": "Phone/Email Address",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2005,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 7
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 7552,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 8
+              },
+              "value": "81(3)0000-0000",
+              "styles": {
+                "fillForegroundColorColor": "43",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "38",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "LEFT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "BOTTOM",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 7466,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 9
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "43",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "38",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "MEDIUM",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "LEFT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "BOTTOM",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 682,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 4,
+                "col": 10
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "65",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 6,
+          "columns": [
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 6,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 7,
+          "columns": [
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 7,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 8,
+          "columns": [
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 8,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 9,
+          "columns": [
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 9,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 10,
+          "columns": [
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 10,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "38",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "RIGHT",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 11,
+          "columns": [
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 11,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 12,
+          "columns": [
+            {
+              "columnWidth": 14933,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 12,
+                "col": 6
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "38",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        }
+      ],
+      "name": "Pension Investment Status",
+      "index": 0
+    },
+    {
+      "isPrintGridlines": false,
+      "fitToPage": true,
+      "displayGuts": true,
+      "displayGridlines": false,
+      "mergeRegions": [],
+      "defaultColumnWidth": 10,
+      "rows": [
+        {
+          "rowNum": 0,
+          "columns": [
+            {
+              "columnWidth": 4266,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 0,
+                "col": 0
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "true",
                 "fillBackgroundColorColor": "64",
                 "borderTop": "NONE",
                 "italic": "false",
@@ -1610,24 +1558,25 @@
                 "borderBottom": "NONE",
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
-                "fontColor": "0"
+                "fontColor": "10"
               }
             }
           ],
-          "rowNum": 1,
           "styles": null
         },
         {
+          "rowNum": 1,
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "Investment Manager",
               "position": {
-                "row": 2,
+                "row": 1,
                 "col": 0
               },
+              "value": "Shareholder Name",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1653,14 +1602,123 @@
               }
             },
             {
+              "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "Goldman Sachs Asset Management Co.",
+              "position": {
+                "row": 1,
+                "col": 1
+              },
+              "value": "ABC Company",
+              "styles": {
+                "fillForegroundColorColor": "65",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "MS P明朝",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "200",
+                "alignment": "LEFT",
+                "borderBottom": "MEDIUM",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 3626,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 1,
+                "col": 2
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "40",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "0"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 2,
+          "columns": [
+            {
+              "columnWidth": 4266,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 2,
+                "col": 0
+              },
+              "value": "Investment Manager",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 15658,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
               "position": {
                 "row": 2,
                 "col": 1
               },
+              "value": "Goldman Sachs Asset Management Co.",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1686,14 +1744,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 2,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1719,20 +1778,21 @@
               }
             }
           ],
-          "rowNum": 2,
           "styles": null
         },
         {
+          "rowNum": 3,
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "Record Date",
               "position": {
                 "row": 3,
                 "col": 0
               },
+              "value": "Record Date",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1758,14 +1818,15 @@
               }
             },
             {
+              "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "09/30/2021",
               "position": {
                 "row": 3,
                 "col": 1
               },
+              "value": "09/30/2021",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1791,14 +1852,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 3,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -1824,224 +1886,21 @@
               }
             }
           ],
-          "rowNum": 3,
           "styles": null
         },
         {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Code",
-              "position": {
-                "row": 5,
-                "col": 0
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Company Name",
-              "position": {
-                "row": 5,
-                "col": 1
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "No of Shares",
-              "position": {
-                "row": 5,
-                "col": 2
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "40",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Unit Price",
-              "position": {
-                "row": 5,
-                "col": 3
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "JPY Market Value",
-              "position": {
-                "row": 5,
-                "col": 4
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "38",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Local Currency",
-              "position": {
-                "row": 5,
-                "col": 5
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
           "rowNum": 5,
-          "styles": null
-        },
-        {
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "00ABC1111111111",
               "position": {
-                "row": 6,
+                "row": 5,
                 "col": 0
               },
+              "value": "Code",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2059,22 +1918,23 @@
                 "leftBorderColor": "64",
                 "borderRight": "THIN",
                 "fontHeight": "220",
-                "alignment": "GENERAL",
+                "alignment": "CENTER",
                 "borderBottom": "THIN",
-                "wrapText": "true",
+                "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "8"
               }
             },
             {
+              "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "ANEWCOMPANY1",
               "position": {
-                "row": 6,
+                "row": 5,
                 "col": 1
               },
+              "value": "Company Name",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2092,25 +1952,26 @@
                 "leftBorderColor": "64",
                 "borderRight": "THIN",
                 "fontHeight": "220",
-                "alignment": "GENERAL",
+                "alignment": "CENTER",
                 "borderBottom": "THIN",
-                "wrapText": "true",
+                "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "8"
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 6,
+                "row": 5,
                 "col": 2
               },
+              "value": "No of Shares",
               "styles": {
-                "fillForegroundColorColor": "23",
-                "fillPatternType": "SOLID_FOREGROUND",
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
                 "topBorderColor": "64",
                 "dataFormat": "40",
                 "bottomBorderColor": "64",
@@ -2125,7 +1986,7 @@
                 "leftBorderColor": "64",
                 "borderRight": "THIN",
                 "fontHeight": "220",
-                "alignment": "GENERAL",
+                "alignment": "CENTER",
                 "borderBottom": "THIN",
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
@@ -2133,17 +1994,18 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 6,
+                "row": 5,
                 "col": 3
               },
+              "value": "Unit Price",
               "styles": {
-                "fillForegroundColorColor": "23",
-                "fillPatternType": "SOLID_FOREGROUND",
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
                 "topBorderColor": "64",
                 "dataFormat": "0",
                 "bottomBorderColor": "64",
@@ -2158,7 +2020,7 @@
                 "leftBorderColor": "64",
                 "borderRight": "THIN",
                 "fontHeight": "220",
-                "alignment": "GENERAL",
+                "alignment": "CENTER",
                 "borderBottom": "THIN",
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
@@ -2166,14 +2028,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": 1344762582,
               "position": {
-                "row": 6,
+                "row": 5,
                 "col": 4
               },
+              "value": "JPY Market Value",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2191,22 +2054,23 @@
                 "leftBorderColor": "64",
                 "borderRight": "THIN",
                 "fontHeight": "220",
-                "alignment": "GENERAL",
+                "alignment": "CENTER",
                 "borderBottom": "THIN",
-                "wrapText": "true",
+                "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "8"
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "JPY",
               "position": {
-                "row": 6,
+                "row": 5,
                 "col": 5
               },
+              "value": "Local Currency",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2224,28 +2088,29 @@
                 "leftBorderColor": "64",
                 "borderRight": "THIN",
                 "fontHeight": "220",
-                "alignment": "GENERAL",
+                "alignment": "CENTER",
                 "borderBottom": "THIN",
-                "wrapText": "true",
+                "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "8"
               }
             }
           ],
+          "styles": null
+        },
+        {
           "rowNum": 6,
-          "styles": null
-        },
-        {
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "XY0000000001",
               "position": {
-                "row": 7,
+                "row": 6,
                 "col": 0
               },
+              "value": "00ABC1111111111",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2271,14 +2136,15 @@
               }
             },
             {
+              "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "POLLPOLLOFFSHORE",
               "position": {
-                "row": 7,
+                "row": 6,
                 "col": 1
               },
+              "value": "ANEWCOMPANY1",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2304,14 +2170,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 7,
+                "row": 6,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2337,14 +2204,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 7,
+                "row": 6,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2370,14 +2238,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": 131622258,
               "position": {
-                "row": 7,
+                "row": 6,
                 "col": 4
               },
+              "value": 1344762582,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2403,14 +2272,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "USD",
               "position": {
-                "row": 7,
+                "row": 6,
                 "col": 5
               },
+              "value": "JPY",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2436,20 +2306,21 @@
               }
             }
           ],
+          "styles": null
+        },
+        {
           "rowNum": 7,
-          "styles": null
-        },
-        {
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "LMB100100101",
               "position": {
-                "row": 8,
+                "row": 7,
                 "col": 0
               },
+              "value": "XY0000000001",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2475,14 +2346,15 @@
               }
             },
             {
+              "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "OCEANWAVELP",
               "position": {
-                "row": 8,
+                "row": 7,
                 "col": 1
               },
+              "value": "POLLPOLLOFFSHORE",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2508,14 +2380,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 8,
+                "row": 7,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2541,14 +2414,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 8,
+                "row": 7,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2574,14 +2448,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": 55714753,
               "position": {
-                "row": 8,
+                "row": 7,
                 "col": 4
               },
+              "value": 131622258,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2607,14 +2482,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "USD",
               "position": {
-                "row": 8,
+                "row": 7,
                 "col": 5
               },
+              "value": "USD",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2640,20 +2516,21 @@
               }
             }
           ],
+          "styles": null
+        },
+        {
           "rowNum": 8,
-          "styles": null
-        },
-        {
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "FG120012001",
               "position": {
-                "row": 9,
+                "row": 8,
                 "col": 0
               },
+              "value": "LMB100100101",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2679,14 +2556,15 @@
               }
             },
             {
+              "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "JAMESANDCO1221",
               "position": {
-                "row": 9,
+                "row": 8,
                 "col": 1
               },
+              "value": "OCEANWAVELP",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2712,14 +2590,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 9,
+                "row": 8,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2745,14 +2624,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 9,
+                "row": 8,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2778,14 +2658,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": 93126520,
               "position": {
-                "row": 9,
+                "row": 8,
                 "col": 4
               },
+              "value": 55714753,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2811,14 +2692,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "USD",
               "position": {
-                "row": 9,
+                "row": 8,
                 "col": 5
               },
+              "value": "USD",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2844,20 +2726,21 @@
               }
             }
           ],
+          "styles": null
+        },
+        {
           "rowNum": 9,
-          "styles": null
-        },
-        {
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "1820MN444221",
               "position": {
-                "row": 10,
+                "row": 9,
                 "col": 0
               },
+              "value": "FG120012001",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2883,14 +2766,225 @@
               }
             },
             {
+              "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "APPLEPIE1010",
+              "position": {
+                "row": 9,
+                "col": 1
+              },
+              "value": "JAMESANDCO1221",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "THIN",
+                "wrapText": "true",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 3626,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 9,
+                "col": 2
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "23",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "40",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "THIN",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2816,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 9,
+                "col": 3
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "23",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "THIN",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 4266,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 9,
+                "col": 4
+              },
+              "value": 93126520,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "64",
+                "dataFormat": "38",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "THIN",
+                "wrapText": "true",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 3626,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 9,
+                "col": 5
+              },
+              "value": "USD",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "THIN",
+                "wrapText": "true",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 10,
+          "columns": [
+            {
+              "columnWidth": 4266,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 10,
+                "col": 0
+              },
+              "value": "1820MN444221",
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "THIN",
+                "wrapText": "true",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 15658,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
               "position": {
                 "row": 10,
                 "col": 1
               },
+              "value": "APPLEPIE1010",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -2916,14 +3010,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 10,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2949,14 +3044,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 10,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2982,14 +3078,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": 1561662185,
               "position": {
                 "row": 10,
                 "col": 4
               },
+              "value": 1561662185,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3015,14 +3112,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "USD",
               "position": {
                 "row": 10,
                 "col": 5
               },
+              "value": "USD",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3048,158 +3146,21 @@
               }
             }
           ],
-          "rowNum": 10,
           "styles": null
         },
         {
-          "columns": [
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 11,
-                "col": 0
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "220",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "true",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 11,
-                "col": 2
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "40",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "220",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 11,
-                "col": 3
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "0",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "220",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            },
-            {
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": null,
-              "position": {
-                "row": 11,
-                "col": 4
-              },
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "8",
-                "dataFormat": "38",
-                "bottomBorderColor": "8",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "NONE",
-                "italic": "false",
-                "borderLeft": "NONE",
-                "rightBorderColor": "8",
-                "shrinkToFit": "false",
-                "fontFamily": "ＭＳ Ｐゴシック",
-                "leftBorderColor": "8",
-                "borderRight": "NONE",
-                "fontHeight": "220",
-                "alignment": "GENERAL",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
-            }
-          ],
           "rowNum": 11,
-          "styles": null
-        },
-        {
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 12,
+                "row": 11,
                 "col": 0
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3225,14 +3186,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 12,
+                "row": 11,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3258,14 +3220,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 12,
+                "row": 11,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3291,14 +3254,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 12,
+                "row": 11,
                 "col": 4
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3324,20 +3288,55 @@
               }
             }
           ],
+          "styles": null
+        },
+        {
           "rowNum": 12,
-          "styles": null
-        },
-        {
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 13,
+                "row": 12,
+                "col": 0
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "true",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 3626,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 12,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3363,14 +3362,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 13,
+                "row": 12,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3396,14 +3396,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
-                "row": 13,
+                "row": 12,
                 "col": 4
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3429,20 +3430,129 @@
               }
             }
           ],
-          "rowNum": 13,
           "styles": null
         },
         {
+          "rowNum": 13,
           "columns": [
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
+              "position": {
+                "row": 13,
+                "col": 2
+              },
               "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "40",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 2816,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 13,
+                "col": 3
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "0",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            },
+            {
+              "columnWidth": 4266,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
+              "position": {
+                "row": 13,
+                "col": 4
+              },
+              "value": null,
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "8",
+                "dataFormat": "38",
+                "bottomBorderColor": "8",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "NONE",
+                "italic": "false",
+                "borderLeft": "NONE",
+                "rightBorderColor": "8",
+                "shrinkToFit": "false",
+                "fontFamily": "ＭＳ Ｐゴシック",
+                "leftBorderColor": "8",
+                "borderRight": "NONE",
+                "fontHeight": "220",
+                "alignment": "GENERAL",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "8"
+              }
+            }
+          ],
+          "styles": null
+        },
+        {
+          "rowNum": 14,
+          "columns": [
+            {
+              "columnWidth": 4266,
+              "cellFormula": null,
+              "arrayFormulaRange": null,
+              "cellComment": null,
               "position": {
                 "row": 14,
                 "col": 0
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3468,14 +3578,15 @@
               }
             },
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 14,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3501,14 +3612,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 14,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3534,14 +3646,15 @@
               }
             },
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 14,
                 "col": 4
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3567,20 +3680,21 @@
               }
             }
           ],
-          "rowNum": 14,
           "styles": null
         },
         {
+          "rowNum": 15,
           "columns": [
             {
+              "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 15,
                 "col": 2
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3606,14 +3720,15 @@
               }
             },
             {
+              "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 15,
                 "col": 3
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3639,20 +3754,21 @@
               }
             }
           ],
-          "rowNum": 15,
           "styles": null
         },
         {
+          "rowNum": 20,
           "columns": [
             {
+              "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": null,
               "position": {
                 "row": 20,
                 "col": 4
               },
+              "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -3678,11 +3794,9 @@
               }
             }
           ],
-          "rowNum": 20,
           "styles": null
         }
       ],
-      "mergeRegions": [],
       "name": "Stock Balance",
       "index": 1
     }
