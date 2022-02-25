@@ -64,11 +64,11 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                         templateMerge.getEnd().getCol());
                 xssfSheet.addMergedRegion(cellRangeAddress);
             });
+
+            Any data = JsonIterator.deserialize(jsonExcelRequest.getData());
+            JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);
+
         });
-
-
-        Any data = JsonIterator.deserialize(jsonExcelRequest.getData());
-        JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);
 
 
         File file = new File(jsonExcelRequest.getDirectory() +
