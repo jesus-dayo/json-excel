@@ -19,12 +19,10 @@ class ObjectRegJsonObjectPathParserTest {
     }
 
     @Test
-    void givenObjectExpression_whenParsed_shouldReturnArray() throws InvalidExpressionException {
-        final String[] actual = objectExpressionMapper.parse("Client Details:clientCode1");
+    void givenObjectExpression_whenParsed_shouldReturnArray()  {
+        final String actual = objectExpressionMapper.parse("Client Details:clientCode1");
 
-        assertEquals(2, actual.length);
-        assertEquals("Client Details", actual[0]);
-        assertEquals("clientCode1", actual[1]);
+        assertEquals("Client Details:clientCode1", actual);
     }
 
 }

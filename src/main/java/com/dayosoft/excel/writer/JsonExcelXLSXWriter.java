@@ -28,8 +28,8 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
     public File write(JsonExcelRequest jsonExcelRequest) throws IOException {
         XSSFWorkbook wb = new XSSFWorkbook();
         Template template = JsonIterator.deserialize(jsonExcelRequest.getTemplate(), Template.class);
-        Any data = JsonIterator.deserialize(jsonExcelRequest.getData());
-        JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);
+//        Any data = JsonIterator.deserialize(jsonExcelRequest.getData());
+//        JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);
 
         final List<TemplateSheet> sheets = template.getSheets();
         sheets.stream().forEach(sheet -> {
@@ -46,7 +46,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                     final XSSFCell cell = row.createCell(templateColumn.getPosition().getCol());
                     if (templateColumn.getValue() instanceof String) {
                         if (ExpressionHelper.isValidExpression(templateColumn.getValue().toString())) {
-                            interpreter.render(sheet, jsonTraverser, templateColumn.getValue().toString(), cell);
+                            interpreter.render(sheet, jsonExcelRequest.getData(), templateColumn.getValue().toString(), cell);
                         } else {
                             cell.setCellValue(templateColumn.getValue().toString());
                         }

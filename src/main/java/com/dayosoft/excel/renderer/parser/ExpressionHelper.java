@@ -15,19 +15,19 @@ public final class ExpressionHelper {
         return matchPattern.find();
     }
 
-    public static boolean isValidExpression(String value, String ... regEx){
-        return Arrays.stream(regEx).anyMatch(exp->isValidExpression(value, regEx));
+    public static boolean isValidExpressions(String value, String ... regEx){
+        return Arrays.stream(regEx).anyMatch(exp->isValidExpression(value, exp));
     }
 
     public static boolean isValidExpression(String value){
-        return isValidExpression(value, RegExpression.EXPRESSION, RegExpression.FIRST_FUNC_EXPRESSION);
+        return isValidExpressions(value, RegExpression.EXPRESSION, RegExpression.FIRST_FUNC_EXPRESSION);
     }
 
     public static String findExpressionMatch(String value){
-        if(isValidExpression(RegExpression.EXPRESSION)){
+        if(isValidExpression(value, RegExpression.EXPRESSION)){
             return RegExpression.EXPRESSION;
         }
-        if(isValidExpression(RegExpression.FIRST_FUNC_EXPRESSION)){
+        if(isValidExpression(value, RegExpression.FIRST_FUNC_EXPRESSION)){
             return RegExpression.FIRST_FUNC_EXPRESSION;
         }
         if(value.contains(RegExpression.OBJECT_EXPRESSION)){
@@ -44,20 +44,6 @@ public final class ExpressionHelper {
            throw new InvalidExpressionException(value + " is not a valid expression");
         }
         return matchPattern.group(1);
-    }
-
-    public static Parser getParserHandler(String expression){
-        final String expressionMatch = findExpressionMatch(expression);
-        if(RegExpression.EXPRESSION.equals(expressionMatch)){
-            return new ExpressionParser();
-        }
-        if(RegExpression.FIRST_FUNC_EXPRESSION.equals(expressionMatch)){
-            return new FirstFunctionParser();
-        }
-        if(RegExpression.OBJECT_EXPRESSION.equals(expressionMatch)){
-            return new ObjectExpressionParser();
-        }
-        return null;
     }
 
 }
