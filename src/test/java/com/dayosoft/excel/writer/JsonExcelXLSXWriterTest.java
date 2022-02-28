@@ -1,5 +1,6 @@
 package com.dayosoft.excel.writer;
 
+import com.dayosoft.excel.renderer.ExpressionRenderer;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.test.helper.ExcelXLSXFileAssertion;
 import com.dayosoft.excel.test.helper.TestFileUtils;
@@ -19,7 +20,7 @@ public class JsonExcelXLSXWriterTest {
 
     @BeforeEach
     void init(){
-        jsonExcelXLSXWriter = new JsonExcelXLSXWriter();
+        jsonExcelXLSXWriter = new JsonExcelXLSXWriter(new ExpressionRenderer());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.dayosoft.excel.writer;
 
+import com.dayosoft.excel.renderer.ExpressionRenderer;
 import com.dayosoft.excel.type.ExcelReportType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 @Getter
 public enum JsonExcelWriterFactory {
 
-    XLS(ExcelReportType.EXCEL_2003, new JsonExcelXLSWriter()),XLSX(ExcelReportType.EXCEL_2007, new JsonExcelXLSXWriter());
+    XLS(ExcelReportType.EXCEL_2003, new JsonExcelXLSWriter()),XLSX(ExcelReportType.EXCEL_2007, new JsonExcelXLSXWriter(new ExpressionRenderer()));
 
     private final ExcelReportType reportType;
     private final JsonExcelWriter writer;

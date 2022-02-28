@@ -9,6 +9,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -30,7 +31,8 @@ public enum ExcelJsonType {
                 }
             },
             (wb, cell) -> {
-            }),
+            },
+            String::valueOf),
     DOUBLE("double",
             value -> CellType.NUMERIC,
             (any, cell) -> {
@@ -44,7 +46,8 @@ public enum ExcelJsonType {
                     cellStyle.setDataFormat(wb.createDataFormat().getFormat("0.00"));
                     cell.setCellStyle(cellStyle);
                 }
-            }),
+            },
+            val->Double.valueOf(val)),
     DECIMAL("decimal",
             value -> CellType.NUMERIC,
             (any, cell) -> {
@@ -58,7 +61,8 @@ public enum ExcelJsonType {
                     cellStyle.setDataFormat(wb.createDataFormat().getFormat("#,##0.00;(#,##0.00)"));
                     cell.setCellStyle(cellStyle);
                 }
-            });
+            },
+            val->new BigDecimal(val));
 
     private static boolean validValue(Any any) {
         return any.valueType() != ValueType.INVALID && any.valueType() != ValueType.NULL;
@@ -72,6 +76,7 @@ public enum ExcelJsonType {
     private final Function<Any, CellType> cellType;
     private final BiConsumer<Any, Cell> valueSetter;
     private final BiConsumer<HSSFWorkbook, Cell> defaultStyleSetter;
+    private final Function<String, Object> value;
 
     public static ExcelJsonType getByJsonType(String jsonType) {
         return Arrays.stream(ExcelJsonType.values())

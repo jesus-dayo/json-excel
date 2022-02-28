@@ -1,11 +1,17 @@
 package com.dayosoft.excel.util;
 
 import com.dayosoft.excel.exception.JsonMappingException;
+import com.dayosoft.excel.type.ExcelJsonType;
 import com.jsoniter.ValueType;
 import com.jsoniter.any.Any;
 import com.jsoniter.spi.JsonException;
+import io.swagger.v3.core.util.Json;
 import lombok.AllArgsConstructor;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class JsonDataTraverser extends JsonTraverser {
@@ -30,25 +36,6 @@ public class JsonDataTraverser extends JsonTraverser {
         return getJsonIfExist(obj.get(key, "rows"));
     }
 
-    public final Any global() {
-        return getJsonIfExist(json.get("template", "global"));
-    }
-
-    public final Any globalStyles() {
-        return getJsonIfExist(json.get("template", "global", "styles"));
-    }
-
-    public final Any globalFieldLabelName(String field) {
-        return getJsonIfExist(json.get("template", "global", field, "label", "name"));
-    }
-
-    public final Any globalFieldLabelPosition(String field) {
-        return getJsonIfExist(json.get("template", "global", field, "label", "position"));
-    }
-
-    public final Any globalFieldValues(String field) {
-        return getJsonIfExist(json.get("template", "global", field, "value"));
-    }
 
     public final Any name(Any value) {
         return getJsonIfExist(value.get("name"));
@@ -64,6 +51,36 @@ public class JsonDataTraverser extends JsonTraverser {
 
     public final String field(Any obj){
         return getJsonIfExist(obj.get("field")).toString();
+    }
+
+    public final ExcelJsonType typeByField(String groupName, String field){
+        final Any columns = getJsonIfExist(json.get("body", groupName, "columns"));
+        final Iterator<Any> columnsIterator = columns.iterator();
+        while(columnsIterator.hasNext()){
+            final Any column = columnsIterator.next();
+            final String nextField = column.get("field").toString();
+            if(field.equalsIgnoreCase(nextField)){
+                return ExcelJsonType.getByJsonType(column.get("type").toString());
+            }
+        }
+
+        return null;
+    }
+
+    public final List<Object> rows(String groupName, String field){
+        List<Object> results = new ArrayList<>();
+        final Any rows = getJsonIfExist(json.get("body", groupName, "rows"));
+        final Iterator<Any> rowsIterator = rows.iterator();
+        while(rowsIterator.hasNext()){
+            final Any row = rowsIterator.next();
+            final Any value = row.get(field);
+            results.add(value.toString());
+        }
+        return results;
+    }
+
+    public final Any rows(String groupName){
+        return getJsonIfExist(json.get("body", groupName, "rows"));
     }
 
     public final String type(Any obj){
