@@ -1,26 +1,20 @@
 package com.dayosoft.excel.writer;
 
-import com.dayosoft.excel.renderer.ExpressionRenderer;
 import com.dayosoft.excel.type.ExcelReportType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+@RequiredArgsConstructor
+@Component
+public class JsonExcelWriterFactory {
 
-@AllArgsConstructor
-@Getter
-public enum JsonExcelWriterFactory {
+    private final JsonExcelXLSWriter jsonExcelXLSWriter;
+    private final JsonExcelXLSXWriter jsonExcelXLSXWriter;
 
-    XLS(ExcelReportType.EXCEL_2003, new JsonExcelXLSWriter()),XLSX(ExcelReportType.EXCEL_2007, new JsonExcelXLSXWriter(new ExpressionRenderer()));
-
-    private final ExcelReportType reportType;
-    private final JsonExcelWriter writer;
-
-    public static JsonExcelWriter getByReportType(ExcelReportType type){
-        JsonExcelWriterFactory jsonExcelWriterFactory = Arrays.stream(JsonExcelWriterFactory.values())
-                .filter(report -> report.getReportType().equals(type))
-                .findFirst()
-                .orElseThrow(() -> new UnsupportedOperationException("Unknown report type . " + type.name()));
-        return jsonExcelWriterFactory.getWriter();
+    public JsonExcelWriter getByReportType(ExcelReportType type){
+        if(ExcelReportType.EXCEL_2003 == type){
+            return jsonExcelXLSWriter;
+        }
+        return jsonExcelXLSXWriter;
     }
 }

@@ -11,6 +11,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Slf4j
+@Component
 public class JsonExcelXLSWriter implements JsonExcelWriter {
 
     public File write(JsonExcelRequest jsonExcelRequest) throws IOException {

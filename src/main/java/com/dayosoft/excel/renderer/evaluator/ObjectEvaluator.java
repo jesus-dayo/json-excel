@@ -4,9 +4,11 @@ import com.dayosoft.excel.model.JsonObjectPath;
 import com.dayosoft.excel.util.JsonDataTraverser;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ObjectEvaluator implements Evaluator<JsonObjectPath, List<Object>> {
 
     @Override

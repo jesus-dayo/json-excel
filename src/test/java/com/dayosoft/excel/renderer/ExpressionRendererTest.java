@@ -3,17 +3,19 @@ package com.dayosoft.excel.renderer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 class ExpressionRendererTest {
 
-    ExpressionRenderer interpreter;
+    ExpressionRenderer renderer;
 
     @BeforeEach
     void init(){
-        interpreter = new ExpressionRenderer();
+        renderer = new ExpressionRenderer(new ArrayList<>());
     }
 
     @Test
-    void givenTemplateAndJsonDataAndExpression_whenInterpret_shouldApplyCellValue(){
+    void givenTemplateAndJsonDataAndExpression_whenRender_shouldApplyCellValue(){
 
     }
 

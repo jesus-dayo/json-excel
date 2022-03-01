@@ -1,28 +1,30 @@
 package com.dayosoft.excel.generator;
 
-import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.test.helper.TestFileUtils;
+import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.writer.JsonExcelWriterFactory;
 import com.dayosoft.excel.writer.JsonExcelXLSWriter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.MockedStatic;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class JsonExcelGeneratorTest {
+
+    @Mock
+    JsonExcelWriterFactory jsonExcelWriterFactory;
 
     JsonExcelGenerator jsonExcelGenerator;
 
     @BeforeEach
     void init(){
-        jsonExcelGenerator = new JsonExcelGenerator();
+        jsonExcelGenerator = new JsonExcelGenerator(jsonExcelWriterFactory);
     }
 
     @Test
@@ -33,8 +35,7 @@ class JsonExcelGeneratorTest {
                 .reportType(ExcelReportType.EXCEL_2003)
                 .build();
         JsonExcelXLSWriter jsonExcelXLSWriter = Mockito.mock(JsonExcelXLSWriter.class);
-        MockedStatic<JsonExcelWriterFactory> jsonExcelWriterFactoryMockedStatic = Mockito.mockStatic(JsonExcelWriterFactory.class);
-        jsonExcelWriterFactoryMockedStatic.when(()->JsonExcelWriterFactory.getByReportType(ExcelReportType.EXCEL_2003)).thenReturn(jsonExcelXLSWriter);
+        when(jsonExcelWriterFactory.getByReportType(ExcelReportType.EXCEL_2003)).thenReturn(jsonExcelXLSWriter);
 
         jsonExcelGenerator.generateReport(request);
 

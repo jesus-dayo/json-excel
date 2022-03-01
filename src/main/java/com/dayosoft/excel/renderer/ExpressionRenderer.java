@@ -7,64 +7,58 @@ import com.dayosoft.excel.renderer.evaluator.Evaluator;
 import com.dayosoft.excel.renderer.evaluator.FirstEvaluator;
 import com.dayosoft.excel.renderer.evaluator.ObjectEvaluator;
 import com.dayosoft.excel.renderer.parser.*;
-import com.dayosoft.excel.util.JsonDataTraverser;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Stack;
 
+@Slf4j
 @Component
+@RequiredArgsConstructor
 public class ExpressionRenderer {
+
+    //parse
+    //evaluate
+    //render
+
+    private final List<Parser> registeredParsers;
 
     public void render(TemplateSheet templateSheet,
                        String data,
                        String expression,
                        Cell cell) {
         List<Object> results = null;
-        String value = expression;
         Stack<Evaluator> evaluators = new Stack<>();
-        while (value != null) {
+        String parsedValue = expression;
+        for (Parser parser : registeredParsers) {
             try {
-                final String expressionMatch = ExpressionHelper.findExpressionMatch(value);
-                if (expressionMatch == null) {
-                    break;
-                }
-                if (RegExpression.EXPRESSION.equals(expressionMatch)) {
-                    final ExpressionParser expressionParser = new ExpressionParser();
-                    value = expressionParser.parse(value);
-                    continue;
-                }
-                if (RegExpression.FIRST_FUNC_EXPRESSION.equals(expressionMatch)) {
-                    final FirstFunctionParser firstFunctionParser = new FirstFunctionParser();
-                    value = firstFunctionParser.parse(value);
-                    evaluators.add(new FirstEvaluator());
-                    continue;
-                }
-                if (RegExpression.OBJECT_EXPRESSION.equals(expressionMatch)) {
-                    final String[] jsonPath = value.split(RegExpression.OBJECT_EXPRESSION);
-                    final ObjectEvaluator objectEvaluator = new ObjectEvaluator();
-                    results = objectEvaluator.evaluate(JsonObjectPath.builder().path(jsonPath)
-                            .data(data)
-                            .build());
-                    value = null;
-                    continue;
+                if (parser.isRegExMatch(parsedValue)) {
+                    parsedValue = parser.parse(parsedValue);
+                    if (parser instanceof ObjectExpressionParser) {
+                        results = (List<Object>) ((ObjectExpressionParser) parser).evaluator()
+                                .evaluate(JsonObjectPath.builder()
+                                        .path(parsedValue.split(":")).data(data).build());
+                        break;
+                    }
+                    if (parser instanceof ParserEvaluator) {
+                        evaluators.add(((ParserEvaluator) parser).evaluator());
+                    }
                 }
             } catch (InvalidExpressionException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
             }
         }
-        if (results != null) {
-            Object evaluatedValue = null;
-            while (!evaluators.isEmpty()) {
-                final Evaluator evaluator = evaluators.pop();
-                evaluatedValue = evaluator.evaluate(results);
-            }
-            if (evaluatedValue != null) {
-                if (evaluatedValue instanceof String) {
-                    cell.setCellValue(evaluatedValue.toString());
-                }
+        Object evaluatedValue = null;
+        while (!evaluators.isEmpty()) {
+            final Evaluator evaluator = evaluators.pop();
+            evaluatedValue = evaluator.evaluate(results);
+        }
+        if (evaluatedValue != null) {
+            if (evaluatedValue instanceof String) {
+                cell.setCellValue(evaluatedValue.toString());
             }
         }
     }

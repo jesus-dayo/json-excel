@@ -4,6 +4,9 @@ import com.dayosoft.excel.exception.InvalidExpressionException;
 
 public interface Parser {
 
-    public String parse(String expression) throws InvalidExpressionException;
+    String parse(String expression) throws InvalidExpressionException;
 
+    boolean isRegExMatch(String expression);
+
+    boolean done(String expression);
 }

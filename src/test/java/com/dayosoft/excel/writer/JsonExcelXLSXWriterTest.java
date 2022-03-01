@@ -20,7 +20,7 @@ public class JsonExcelXLSXWriterTest {
 
     @BeforeEach
     void init(){
-        jsonExcelXLSXWriter = new JsonExcelXLSXWriter(new ExpressionRenderer());
+        jsonExcelXLSXWriter = new JsonExcelXLSXWriter(new ExpressionRenderer(TestFileUtils.registeredParsers()));
     }
 
     @Test

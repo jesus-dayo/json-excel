@@ -8,4 +8,14 @@ public class ExpressionParser implements Parser{
     public String parse(String value) throws InvalidExpressionException {
         return ExpressionHelper.extractStringFromExpression(value, RegExpression.EXPRESSION);
     }
+
+    @Override
+    public boolean isRegExMatch(String expression) {
+        return ExpressionHelper.isValidExpression(expression, RegExpression.EXPRESSION);
+    }
+
+    @Override
+    public boolean done(String expression) {
+        return false;
+    }
 }

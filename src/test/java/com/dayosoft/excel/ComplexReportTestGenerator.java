@@ -1,15 +1,26 @@
+package com.dayosoft.excel;
+
 import com.dayosoft.excel.generator.JsonExcelGenerator;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.type.ExcelReportType;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+@SpringBootTest
 public class ComplexReportTestGenerator {
 
-    public static void main(String[] args) throws IOException {
-        JsonExcelGenerator jsonExcelGenerator = new JsonExcelGenerator();
+    @Autowired
+    JsonExcelGenerator jsonExcelGenerator;
+
+    @DisplayName("Test Complex JSON report generation")
+    @Test
+    void testComplexReport() throws IOException {
         String sampleData = "src/test/resources/complex/Complex.json";
         String sampleTemplate = "src/test/resources/complex/complex-template.json";
         JsonExcelRequest request =  JsonExcelRequest.builder()

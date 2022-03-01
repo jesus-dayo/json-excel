@@ -1,6 +1,7 @@
 package com.dayosoft.excel.renderer.parser;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.renderer.evaluator.FirstEvaluator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ class FirstFunctionParserTest {
 
     @BeforeEach
     void init(){
-        firstFunctionParser = new FirstFunctionParser();
+        firstFunctionParser = new FirstFunctionParser(new FirstEvaluator());
     }
 
     @Test

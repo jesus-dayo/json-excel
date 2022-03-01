@@ -478,7 +478,7 @@
                 "row": 2,
                 "col": 4
               },
-              "value": "${clientName}",
+              "value": "${first(Client Details:clientName)}",
               "styles": {
                 "fillForegroundColorColor": "65",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -966,7 +966,7 @@
                 "row": 4,
                 "col": 3
               },
-              "value": "${DateYear}",
+              "value": "${first(Client Details:DateYear)}",
               "styles": {
                 "fillForegroundColorColor": "43",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -1000,7 +1000,7 @@
                 "row": 4,
                 "col": 4
               },
-              "value": "${DateMonth}",
+              "value": "${first(Client Details:DateMonth)}",
               "styles": {
                 "fillForegroundColorColor": "43",
                 "fillPatternType": "SOLID_FOREGROUND",
