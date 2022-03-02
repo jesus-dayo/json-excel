@@ -77,6 +77,9 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         XSSFRow row = xssfSheet.createRow(rowNum);
         final List<TemplateColumn> templateColumns = templateRow.getColumns();
         for (TemplateColumn templateColumn : templateColumns) {
+            if(templateColumn.isRendered()){
+                continue;
+            }
             templateRenderedLog.setTemplateRow(templateRow);
             templateRenderedLog.setTemplateColumn(templateColumn);
             writeColumns(jsonExcelRequest, templateRenderedLog, row, templateColumn);
@@ -112,13 +115,16 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
             } else {
                 cell.setCellValue(templateColumn.getValue().toString());
                 templateRenderedLog.setValue(templateColumn.getValue().toString());
+                templateColumn.setRendered(true);
             }
         }
         if (templateColumn.getValue() instanceof Double) {
             cell.setCellValue((Double) templateColumn.getValue());
+            templateColumn.setRendered(true);
         }
         if (templateColumn.getValue() instanceof Integer) {
             cell.setCellValue((Integer) templateColumn.getValue());
+            templateColumn.setRendered(true);
         }
         sheet.setColumnWidth(cell.getColumnIndex(), templateColumn.getColumnWidth());
     }
