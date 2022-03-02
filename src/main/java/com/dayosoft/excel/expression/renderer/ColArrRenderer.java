@@ -1,5 +1,7 @@
 package com.dayosoft.excel.expression.renderer;
 
+import com.dayosoft.excel.model.TemplateRenderedLog;
+import com.dayosoft.excel.util.CellUtil;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 
@@ -9,11 +11,14 @@ import java.util.List;
 public class ColArrRenderer extends CellRenderer<List<Object>> {
 
     @Override
-    public void render(Cell cell, List<Object> value) {
+    public void render(Cell cell, List<Object> value, TemplateRenderedLog templateRenderedLog) {
         if (!value.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final Workbook workbook = sheet.getWorkbook();
-            setValue(cell, value.get(0));
+            templateRenderedLog.setRenderedStartRow(cell.getRowIndex());
+            templateRenderedLog.setRenderedStartCol(cell.getColumnIndex());
+            templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());
+            CellUtil.setCellValue(cell, value.get(0));
             if (value.size() > 1) {
                 int rowIndex = cell.getAddress().getRow() + 1;
                 final Row row = cell.getRow();
@@ -37,9 +42,10 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
                             newCell.setCellStyle(cellStyle);
                         }
                     }
-                    setValue(newRow.getCell(cell.getAddress().getColumn()), value.get(i));
+                    CellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), value.get(i));
                     rowIndex++;
                 }
+                templateRenderedLog.setRenderedLastRow(rowIndex-1);
             }
         }
     }
