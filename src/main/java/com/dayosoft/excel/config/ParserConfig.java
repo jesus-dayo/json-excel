@@ -19,11 +19,13 @@ public class ParserConfig {
 
     private final ObjectExpressionParser objectExpressionParser;
     private final FirstFunctionParser firstFunctionParser;
+    private final ColArrParser colArrParser;
 
     @PostConstruct
     protected void registerParsers() {
         registeredParsers.add(objectExpressionParser);
         registeredParsers.add(firstFunctionParser);
+        registeredParsers.add(colArrParser);
     }
 
     @Bean

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class FirstRenderer extends CellRenderer{
+public class FirstRenderer extends CellRenderer<Object>{
 
     @Override
     public void render(Cell cell, Object value) {

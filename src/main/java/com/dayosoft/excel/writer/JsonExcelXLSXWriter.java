@@ -21,7 +21,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
-    private final ExpressionRenderingEngine interpreter;
+    private final ExpressionRenderingEngine renderingEngine;
 
     public File write(JsonExcelRequest jsonExcelRequest) throws IOException {
         XSSFWorkbook wb = new XSSFWorkbook();
@@ -37,14 +37,29 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
             xssfSheet.setFitToPage(sheet.isFitToPage());
             xssfSheet.setDisplayGuts(sheet.isDisplayGuts());
             final List<TemplateRow> templateRows = sheet.getRows();
-            templateRows.stream().forEach(templateRow -> {
-                final XSSFRow row = xssfSheet.createRow(templateRow.getRowNum());
+            for (TemplateRow templateRow : templateRows) {
+                int rowNum = templateRow.getRowNum();
+                XSSFRow row = xssfSheet.getRow(rowNum);
+                if (row != null) {
+                    if (xssfSheet.getLastRowNum() > rowNum) {
+                        rowNum = xssfSheet.getLastRowNum() + (xssfSheet.getLastRowNum() - rowNum);
+                    }
+                }
+                row = xssfSheet.createRow(rowNum);
                 final List<TemplateColumn> templateColumns = templateRow.getColumns();
-                templateColumns.stream().forEach(templateColumn -> {
+                for (TemplateColumn templateColumn : templateColumns) {
                     final XSSFCell cell = row.createCell(templateColumn.getPosition().getCol());
+                    final Map<String, String> styles = templateColumn.getStyles();
+                    if (!styles.isEmpty()) {
+                        XSSFCellStyle newCellStyle = wb.createCellStyle();
+                        final XSSFFont font = wb.createFont();
+                        newCellStyle.setFont(font);
+                        StylesMapper.applyStyles(newCellStyle, styles);
+                        cell.setCellStyle(newCellStyle);
+                    }
                     if (templateColumn.getValue() instanceof String) {
                         if (ExpressionHelper.isValidExpression(templateColumn.getValue().toString())) {
-                            interpreter.renderByExpression(sheet, jsonExcelRequest.getData(), templateColumn.getValue().toString(), cell);
+                            renderingEngine.renderByExpression(sheet, jsonExcelRequest.getData(), templateColumn.getValue().toString(), cell);
                         } else {
                             cell.setCellValue(templateColumn.getValue().toString());
                         }
@@ -56,16 +71,8 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                         cell.setCellValue((Integer) templateColumn.getValue());
                     }
                     xssfSheet.setColumnWidth(cell.getColumnIndex(), templateColumn.getColumnWidth());
-                    final Map<String, String> styles = templateColumn.getStyles();
-                    if (!styles.isEmpty()) {
-                        XSSFCellStyle newCellStyle = wb.createCellStyle();
-                        final XSSFFont font = wb.createFont();
-                        newCellStyle.setFont(font);
-                        StylesMapper.applyStyles(newCellStyle, styles);
-                        cell.setCellStyle(newCellStyle);
-                    }
-                });
-            });
+                }
+            }
             final List<TemplateMerge> templateMerges = sheet.getMergeRegions();
             templateMerges.stream().forEach(templateMerge -> {
                 CellRangeAddress cellRangeAddress = new CellRangeAddress(
