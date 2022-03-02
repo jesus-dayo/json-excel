@@ -1,0 +1,31 @@
+package com.dayosoft.excel.expression.renderer;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.usermodel.Cell;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Slf4j
+@Component
+public class ObjectRenderer extends CellRenderer {
+
+    @Override
+    public void render(Cell cell, Object value) {
+        if(value instanceof List){
+            List<Object> list = (List<Object>)value;
+            if(!list.isEmpty()){
+                if(list.size() == 1) {
+                    final Object first = list.get(0);
+                    log.debug("setting value "+first);
+                    setValue(cell, first);
+                } else {
+                    final String commaDelimitedString = list.stream().map(o -> o.toString()).collect(Collectors.joining(","));
+                    log.debug("setting value "+commaDelimitedString);
+                    setValue(cell, commaDelimitedString);
+                }
+            }
+        }
+    }
+}

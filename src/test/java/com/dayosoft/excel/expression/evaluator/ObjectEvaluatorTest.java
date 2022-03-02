@@ -1,6 +1,7 @@
-package com.dayosoft.excel.renderer.evaluator;
+package com.dayosoft.excel.expression.evaluator;
 
 import com.dayosoft.excel.TestDataHelper;
+import com.dayosoft.excel.expression.renderer.ObjectRenderer;
 import com.dayosoft.excel.model.JsonObjectPath;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ class ObjectEvaluatorTest {
 
     @BeforeEach
     void init(){
-        objectEvaluator = new ObjectEvaluator();
+        objectEvaluator = new ObjectEvaluator(new ObjectRenderer());
     }
 
     @Test

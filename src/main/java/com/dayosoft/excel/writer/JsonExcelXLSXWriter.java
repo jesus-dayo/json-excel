@@ -1,13 +1,11 @@
 package com.dayosoft.excel.writer;
 
-import com.dayosoft.excel.renderer.ExpressionRenderer;
+import com.dayosoft.excel.expression.ExpressionRenderingEngine;
 import com.dayosoft.excel.model.*;
-import com.dayosoft.excel.renderer.parser.ExpressionHelper;
+import com.dayosoft.excel.expression.parser.ExpressionHelper;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.styles.StylesMapper;
-import com.dayosoft.excel.util.JsonDataTraverser;
 import com.jsoniter.JsonIterator;
-import com.jsoniter.any.Any;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
@@ -23,7 +21,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
-    private final ExpressionRenderer interpreter;
+    private final ExpressionRenderingEngine interpreter;
 
     public File write(JsonExcelRequest jsonExcelRequest) throws IOException {
         XSSFWorkbook wb = new XSSFWorkbook();
@@ -46,7 +44,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                     final XSSFCell cell = row.createCell(templateColumn.getPosition().getCol());
                     if (templateColumn.getValue() instanceof String) {
                         if (ExpressionHelper.isValidExpression(templateColumn.getValue().toString())) {
-                            interpreter.render(sheet, jsonExcelRequest.getData(), templateColumn.getValue().toString(), cell);
+                            interpreter.renderByExpression(sheet, jsonExcelRequest.getData(), templateColumn.getValue().toString(), cell);
                         } else {
                             cell.setCellValue(templateColumn.getValue().toString());
                         }

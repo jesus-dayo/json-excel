@@ -1,17 +1,33 @@
 package com.dayosoft.excel.config;
 
-import com.dayosoft.excel.renderer.parser.ExpressionParser;
-import com.dayosoft.excel.renderer.parser.FirstFunctionParser;
-import com.dayosoft.excel.renderer.parser.ObjectExpressionParser;
+import com.dayosoft.excel.expression.parser.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-public class ParserConfig extends ParserEvaluatorManager {
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
-    @Override
+@Configuration
+@Slf4j
+@RequiredArgsConstructor
+public class ParserConfig {
+
+    private List<ParserEvaluator> registeredParsers = new ArrayList<>();
+
+    private final ObjectExpressionParser objectExpressionParser;
+    private final FirstFunctionParser firstFunctionParser;
+
+    @PostConstruct
     protected void registerParsers() {
-        register(ObjectExpressionParser.class);
-        register(FirstFunctionParser.class);
-        register(ExpressionParser.class);
+        registeredParsers.add(objectExpressionParser);
+        registeredParsers.add(firstFunctionParser);
+    }
+
+    @Bean
+    public List<ParserEvaluator> getRegisteredParsers() {
+        return registeredParsers;
     }
 }

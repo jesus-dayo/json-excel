@@ -1,7 +1,9 @@
-package com.dayosoft.excel.renderer.parser;
+package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExpressionParser implements Parser{
 
     @Override

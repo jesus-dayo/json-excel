@@ -1,15 +1,21 @@
-package com.dayosoft.excel.renderer.evaluator;
+package com.dayosoft.excel.expression.evaluator;
 
+import com.dayosoft.excel.expression.renderer.CellRenderer;
+import com.dayosoft.excel.expression.renderer.ObjectRenderer;
 import com.dayosoft.excel.model.JsonObjectPath;
 import com.dayosoft.excel.util.JsonDataTraverser;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Component
-public class ObjectEvaluator implements Evaluator<JsonObjectPath, List<Object>> {
+public class ObjectEvaluator implements Evaluator<JsonObjectPath, List<Object>, CellRenderer> {
+
+    private final ObjectRenderer objectRenderer;
 
     @Override
     public List<Object> evaluate(JsonObjectPath jsonObjectPath) {
@@ -22,6 +28,11 @@ public class ObjectEvaluator implements Evaluator<JsonObjectPath, List<Object>> 
         final String groupName = path[0];
         final String key = path[1];
         return jsonTraverser.rows(groupName, key);
+    }
+
+    @Override
+    public CellRenderer renderer() {
+        return objectRenderer;
     }
 
 }

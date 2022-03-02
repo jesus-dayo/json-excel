@@ -1,5 +1,6 @@
-package com.dayosoft.excel.renderer.evaluator;
+package com.dayosoft.excel.expression.evaluator;
 
+import com.dayosoft.excel.expression.renderer.FirstRenderer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ class FirstEvaluatorTest {
 
     @BeforeEach
     void init(){
-        firstEvaluator = new FirstEvaluator();
+        firstEvaluator = new FirstEvaluator(new FirstRenderer());
     }
 
     @Test
