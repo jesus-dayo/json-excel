@@ -9,10 +9,7 @@ import io.swagger.v3.core.util.Json;
 import lombok.AllArgsConstructor;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class JsonDataTraverser extends JsonTraverser {
 
@@ -75,6 +72,27 @@ public class JsonDataTraverser extends JsonTraverser {
             final Any row = rowsIterator.next();
             final Any value = row.get(field);
             results.add(value.toString());
+        }
+        return results;
+    }
+
+    public final List<Object> rows(String groupName, String field, Map<String, Object> keyVal){
+        List<Object> results = new ArrayList<>();
+        final Any rows = getJsonIfExist(json.get("body", groupName, "rows"));
+        final Iterator<Any> rowsIterator = rows.iterator();
+        while(rowsIterator.hasNext()){
+            final Any row = rowsIterator.next();
+            boolean match = true;
+            for (Map.Entry<String, Object> entry : keyVal.entrySet()) {
+                final Any key = row.get(entry.getKey());
+                if(!entry.getValue().equals(key.toString())){
+                    match = false;
+                }
+            }
+            if(match) {
+                final Any value = row.get(field);
+                results.add(value.toString());
+            }
         }
         return results;
     }

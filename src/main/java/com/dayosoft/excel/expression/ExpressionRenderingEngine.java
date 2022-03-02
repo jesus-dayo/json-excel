@@ -6,13 +6,14 @@ import com.dayosoft.excel.model.JsonObjectPath;
 import com.dayosoft.excel.model.TemplateSheet;
 import com.dayosoft.excel.expression.evaluator.Evaluator;
 import com.dayosoft.excel.expression.parser.*;
+import com.dayosoft.excel.util.CellUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 @Slf4j
 @Component
@@ -43,11 +44,34 @@ public class ExpressionRenderingEngine {
                     parsedValue = parser.parse(parsedValue);
                     if (parser instanceof ObjectExpressionParser) {
                         final Evaluator evaluator = ((ObjectExpressionParser) parser).evaluator();
-                        results = (List<Object>) evaluator
-                                .evaluate(JsonObjectPath.builder()
-                                        .path(parsedValue.split(":")).data(data).build());
-                        if(evaluators.isEmpty()){
-                            final CellRenderer renderer = (CellRenderer)evaluator.renderer();
+                        if (parsedValue.contains("#")) {
+                            final String[] splitExpression = parsedValue.split("#");
+                            final String keyDest = splitExpression[0];
+                            final String[] keyValue = keyDest.split("-");
+                            Map<String, Object> keyValueMap = new HashMap<>();
+                            int i = 0;
+                            while (i < keyValue.length) {
+                                final String cellNumber = keyValue[i + 1];
+                                final Row row = cell.getRow();
+                                final Object cellValueAsObject = CellUtil.getCellValueAsObject(row.getCell(Integer.parseInt(cellNumber)));
+                                keyValueMap.put(keyValue[i], cellValueAsObject);
+                                i = i + 2;
+                            }
+                            String path = splitExpression[1];
+                            if (path.contains(RegExpression.OBJECT_EXPRESSION)) {
+                                results = (List<Object>) evaluator
+                                        .evaluate(JsonObjectPath.builder()
+                                                .path(path.split(":"))
+                                                .data(data)
+                                                .build());
+                            }
+                        } else {
+                            results = (List<Object>) evaluator
+                                    .evaluate(JsonObjectPath.builder()
+                                            .path(parsedValue.split(":")).data(data).build());
+                        }
+                        if (evaluators.isEmpty()) {
+                            final CellRenderer renderer = (CellRenderer) evaluator.renderer();
                             renderer.render(cell, results);
                             return;
                         }

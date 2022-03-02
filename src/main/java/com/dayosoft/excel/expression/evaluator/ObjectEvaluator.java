@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -34,6 +35,10 @@ public class ObjectEvaluator implements Evaluator<JsonObjectPath, List<Object>, 
         final String groupName = path[0];
         final String key = path[1];
         try {
+            final Map<String, Object> keyValue = jsonObjectPath.getKeyValue();
+            if(keyValue !=null && !keyValue.isEmpty()){
+                return jsonTraverser.rows(groupName, key, keyValue);
+            }
             return jsonTraverser.rows(groupName, key);
         } catch (JsonException jsonException){
             log.error(Arrays.stream(jsonObjectPath.getPath()).collect(Collectors.joining(",")) + " not found");
