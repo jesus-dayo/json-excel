@@ -1,5 +1,6 @@
 package com.dayosoft.excel.expression.renderer;
 
+import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRenderedLog;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 public class ObjectRenderer extends CellRenderer {
 
     @Override
-    public void render(Cell cell, Object value, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, Object value, TemplateRenderedLog templateRenderedLog) {
         if(value instanceof List){
             List<Object> list = (List<Object>)value;
             if(!list.isEmpty()){

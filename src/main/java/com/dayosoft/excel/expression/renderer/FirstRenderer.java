@@ -1,5 +1,6 @@
 package com.dayosoft.excel.expression.renderer;
 
+import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRenderedLog;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class FirstRenderer extends CellRenderer<Object>{
 
     @Override
-    public void render(Cell cell, Object value, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, Object value, TemplateRenderedLog templateRenderedLog) {
         log.debug("setting value "+value);
         CellUtil.setCellValue(cell, value);
         templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());

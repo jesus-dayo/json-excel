@@ -1,8 +1,10 @@
 package com.dayosoft.excel.model;
 
 import com.jsoniter.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 
+@Builder
 @Data
 public class TemplateColumn extends CommonTemplateProp {
 
@@ -14,4 +16,6 @@ public class TemplateColumn extends CommonTemplateProp {
     private int columnWidth;
     @JsonIgnore
     private boolean isRendered;
+    @JsonIgnore
+    private TemplateRow templateRow;
 }

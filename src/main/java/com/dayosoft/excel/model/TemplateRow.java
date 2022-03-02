@@ -1,17 +1,17 @@
 package com.dayosoft.excel.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.jsoniter.annotation.JsonIgnore;
+import lombok.*;
 
 import java.util.List;
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Getter
+@Data
 public class TemplateRow extends CommonTemplateProp {
 
     private Integer rowNum;
     private List<TemplateColumn> columns;
+    @JsonIgnore
+    private TemplateSheet templateSheet;
 
 }

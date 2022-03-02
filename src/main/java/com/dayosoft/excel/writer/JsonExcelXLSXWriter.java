@@ -53,6 +53,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         final List<TemplateRenderedLog> templateRenderedLogs = new ArrayList<>();
         final List<TemplateRow> templateRows = sheet.getRows();
         for (TemplateRow templateRow : templateRows) {
+            templateRow.setTemplateSheet(sheet);
             writeRows(jsonExcelRequest, xssfSheet, templateRenderedLogs, templateRow);
         }
         final List<TemplateMerge> templateMerges = sheet.getMergeRegions();
@@ -80,6 +81,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
             if(templateColumn.isRendered()){
                 continue;
             }
+            templateColumn.setTemplateRow(templateRow);
             templateRenderedLog.setTemplateRow(templateRow);
             templateRenderedLog.setTemplateColumn(templateColumn);
             writeColumns(jsonExcelRequest, templateRenderedLog, row, templateColumn);
@@ -109,8 +111,8 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         if (templateColumn.getValue() instanceof String) {
             if (ExpressionHelper.isValidExpression(templateColumn.getValue().toString())) {
                 templateRenderedLog.setExpression(templateColumn.getValue().toString());
-                renderingEngine.renderCellByExpression(templateRenderedLog, jsonExcelRequest.getData(),
-                        templateColumn.getValue().toString(),
+                renderingEngine.renderByExpression(templateRenderedLog, jsonExcelRequest.getData(),
+                        templateColumn,
                         cell);
             } else {
                 cell.setCellValue(templateColumn.getValue().toString());

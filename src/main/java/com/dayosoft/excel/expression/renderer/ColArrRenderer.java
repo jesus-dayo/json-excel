@@ -1,5 +1,6 @@
 package com.dayosoft.excel.expression.renderer;
 
+import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRenderedLog;
 import com.dayosoft.excel.util.CellUtil;
 import org.apache.poi.ss.usermodel.*;
@@ -11,7 +12,7 @@ import java.util.List;
 public class ColArrRenderer extends CellRenderer<List<Object>> {
 
     @Override
-    public void render(Cell cell, List<Object> value, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, List<Object> value, TemplateRenderedLog templateRenderedLog) {
         if (!value.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final Workbook workbook = sheet.getWorkbook();

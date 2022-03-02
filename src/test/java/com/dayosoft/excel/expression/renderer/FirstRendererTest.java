@@ -1,5 +1,6 @@
 package com.dayosoft.excel.expression.renderer;
 
+import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRenderedLog;
 import org.apache.poi.ss.usermodel.Cell;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +25,7 @@ class FirstRendererTest {
         Cell cell = mock(Cell.class);
         String value = "test";
 
-        firstRenderer.render(cell, value, new TemplateRenderedLog());
+        firstRenderer.render(cell, TemplateColumn.builder().build(), value, new TemplateRenderedLog());
 
         verify(cell, times(1)).setCellValue(value);
     }

@@ -4,10 +4,7 @@ import com.dayosoft.excel.exception.InvalidExpressionException;
 import com.dayosoft.excel.expression.evaluator.Evaluator;
 import com.dayosoft.excel.expression.parser.*;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
-import com.dayosoft.excel.model.JsonObjectPath;
-import com.dayosoft.excel.model.TemplateColumn;
-import com.dayosoft.excel.model.TemplateRenderedLog;
-import com.dayosoft.excel.model.TemplateRow;
+import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,9 +13,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
@@ -34,18 +29,21 @@ public class ExpressionRenderingEngine {
     private final List<ParserEvaluator> registeredParsers;
     private final ExpressionParser expressionParser;
 
-    public void renderCellByExpression(TemplateRenderedLog templateRenderedLog,
-                                       String data,
-                                       String expression,
-                                       Cell cell) {
+    public void renderByExpression(TemplateRenderedLog templateRenderedLog,
+                                   String data,
+                                   TemplateColumn templateColumn,
+                                   Cell cell) {
+        String expression = templateColumn.getValue().toString();
         if (!expressionParser.isRegExMatch(expression)) {
             cell.setCellValue(expression);
             return;
         }
         try {
             Stack<Evaluator> evaluators = new Stack<>();
-            List<Object> results = getDataList(templateRenderedLog, data, expression, cell, evaluators);
-            evaluateAndRender(templateRenderedLog, expression, cell, evaluators, results);
+            List<Object> results = getDataList(templateRenderedLog, data, expression, cell, evaluators, templateColumn);
+            final EvaluatedResults evaluatedResults = evaluate(expression, evaluators, results);
+            evaluatedResults.getCellRenderer()
+                    .render(cell, templateColumn, evaluatedResults.getResults(), templateRenderedLog);
         } catch (InvalidExpressionException e) {
             log.error(e.getMessage(), e);
         }
@@ -95,7 +93,7 @@ public class ExpressionRenderingEngine {
 //        }
     }
 
-    private void evaluateAndRender(TemplateRenderedLog templateRenderedLog, String expression, Cell cell, Stack<Evaluator> evaluators, List<Object> results) {
+    private EvaluatedResults evaluate(String expression, Stack<Evaluator> evaluators, List<Object> results) {
         Object evaluatedValue;
         while (!evaluators.isEmpty()) {
             final Evaluator evaluator = evaluators.pop();
@@ -104,15 +102,14 @@ public class ExpressionRenderingEngine {
                 final Object renderer = evaluator.renderer();
                 if (renderer instanceof CellRenderer) {
                     log.info("Rendering cell " + expression + " with renderer " + renderer.getClass().getTypeName());
-                    CellRenderer cellRenderer = (CellRenderer) renderer;
-                    cellRenderer.render(cell, evaluatedValue, templateRenderedLog);
-                    return;
+                    return EvaluatedResults.builder().results(evaluatedValue).cellRenderer((CellRenderer) renderer).build();
                 }
             }
         }
+        return null;
     }
 
-    private List<Object> getDataList(TemplateRenderedLog templateRenderedLog, String data, String expression, Cell cell, Stack<Evaluator> evaluators) throws InvalidExpressionException {
+    private List<Object> getDataList(TemplateRenderedLog templateRenderedLog, String data, String expression, Cell cell, Stack<Evaluator> evaluators, TemplateColumn templateColumn) throws InvalidExpressionException {
         String parsedValue = expressionParser.parse(expression);
         List<Object> results = null;
         for (Parser parser : registeredParsers) {
@@ -125,7 +122,7 @@ public class ExpressionRenderingEngine {
                                         .path(parsedValue.split(":")).data(data).build());
                     if (evaluators.isEmpty()) {
                         final CellRenderer renderer = (CellRenderer) evaluator.renderer();
-                         renderer.render(cell, results, templateRenderedLog);
+                         renderer.render(cell,templateColumn, results, templateRenderedLog);
                     }
                     break;
                 }

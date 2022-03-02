@@ -1,5 +1,6 @@
 package com.dayosoft.excel.expression.renderer;
 
+import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRenderedLog;
 import org.apache.poi.ss.usermodel.Cell;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +30,7 @@ class ObjectRendererTest {
         List<Object> list = new ArrayList<>();
         list.add(value);
 
-        objectRenderer.render(cell, list, new TemplateRenderedLog());
+        objectRenderer.render(cell, TemplateColumn.builder().build(), list, new TemplateRenderedLog());
 
         verify(cell, times(1)).setCellValue(value);
     }
@@ -44,7 +45,7 @@ class ObjectRendererTest {
         list.add(hello);
         list.add(world);
 
-        objectRenderer.render(cell, list, new TemplateRenderedLog());
+        objectRenderer.render(cell, TemplateColumn.builder().build(), list, new TemplateRenderedLog());
 
         verify(cell, times(1)).setCellValue(hello+","+world);
     }
