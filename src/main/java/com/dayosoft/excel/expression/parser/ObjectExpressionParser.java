@@ -28,7 +28,7 @@ public class ObjectExpressionParser implements Parser {
 
     @Override
     public boolean hasEvaluation() {
-        return true;
+        return false;
     }
 
     @Override

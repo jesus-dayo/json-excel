@@ -8,14 +8,19 @@ import com.dayosoft.excel.model.KeyDataMap;
 import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRenderedLog;
 import com.dayosoft.excel.model.TemplateRow;
+import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -28,7 +33,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
     public void render(Cell cell, TemplateColumn templateColumn, List<Object> keyList, String data, String key, TemplateRenderedLog templateRenderedLog) {
         if (keyList != null && !keyList.isEmpty()) {
             final Sheet sheet = cell.getSheet();
-            final Workbook workbook = sheet.getWorkbook();
+            final XSSFWorkbook workbook = (XSSFWorkbook) sheet.getWorkbook();
             templateRenderedLog.setRenderedStartRow(cell.getRowIndex());
             templateRenderedLog.setRenderedStartCol(cell.getColumnIndex());
             templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());
@@ -68,38 +73,58 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                     .filter(tcol -> !tcol.isRendered() && tcol.getCol() != col)
                     .collect(Collectors.toList());
             for (TemplateColumn tcol : otherColumns) {
-                if(tcol.getValue() == null || tcol.isRendered()){
+                if (tcol.isRendered()) {
                     continue;
                 }
-                final String expression = tcol.getValue().toString();
-                if (ExpressionHelper.isValidExpression(expression, RegExpression.ROW_FUNC_EXPRESSION)) {
-                    int index = tcol.getTemplateRow().getRowNum();
-                    for(Object value: keyList) {
-                        final Row row = sheet.getRow(index);
-                        renderCell(row, expression, value, data, key,tcol.getCol());
-                        tcol.setRendered(true);
-                        index++;
-                    }
+                final String expression = tcol.getValue() == null? "": tcol.getValue().toString();
+                XSSFCellStyle newCellStyle = workbook.createCellStyle();
+                final Map<String, String> styles = tcol.getStyles();
+                if (!styles.isEmpty()) {
+                    final XSSFFont font = workbook.createFont();
+                    newCellStyle.setFont(font);
+                    StylesMapper.applyStyles(newCellStyle, styles);
+                }
+                int index = tcol.getTemplateRow().getRowNum();
+                for (Object value : keyList) {
+                    final Row row = sheet.getRow(index);
+                    boolean isRendered = renderCell(row, expression, value, data, key, tcol.getCol(), newCellStyle);
+                    tcol.setRendered(isRendered);
+                    index++;
                 }
             }
-            TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), keyList.size()-1);
+            TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
         }
     }
 
-    private void renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos) {
+    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, XSSFCellStyle xssfCellStyle) {
         if (ExpressionHelper.isValidExpression(expression, RegExpression.ROW_FUNC_EXPRESSION)) {
             try {
                 final KeyDataMap keyDataMap = rowParser.parse(expression, jsonData, jsonKey, value);
-                final Cell cell = row.createCell(colPos);
-                if(keyDataMap != null) {
+                Cell cell = row.getCell(colPos);
+                if (cell == null) {
+                    cell = row.createCell(colPos);
+                }
+                cell.setCellStyle(xssfCellStyle);
+                if (keyDataMap != null) {
                     CellUtil.setCellValue(cell, keyDataMap.getValue());
-                } else{
+                } else {
                     CellUtil.setCellValue(cell, expression);
                 }
+                return true;
             } catch (InvalidExpressionException e) {
                 e.printStackTrace();
+                return true;
             }
+        } else {
+            Cell cell = row.getCell(colPos);
+            if (cell == null) {
+                cell = row.createCell(colPos);
+            }
+            cell.setCellStyle(xssfCellStyle);
+            CellUtil.setCellValue(cell, expression);
+            return false;
         }
     }
+
 
 }
