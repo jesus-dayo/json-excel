@@ -9,6 +9,9 @@ import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.jsoniter.JsonIterator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 import org.springframework.stereotype.Component;
@@ -52,10 +55,10 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         xssfSheet.setPrintGridlines(sheet.isPrintGridlines());
         xssfSheet.setFitToPage(sheet.isFitToPage());
         xssfSheet.setDisplayGuts(sheet.isDisplayGuts());
-        final List<TemplateRenderedLog> templateRenderedLogs = new ArrayList<>();
+        final List<DelayedRender> delayedRendering = new ArrayList<>();
         final List<TemplateRow> templateRows = sheet.getRows();
         for (TemplateRow templateRow : templateRows) {
-            writeRows(jsonExcelRequest, xssfSheet, templateRenderedLogs, templateRow);
+            writeRows(jsonExcelRequest, xssfSheet, delayedRendering, templateRow);
         }
         final List<TemplateMerge> templateMerges = sheet.getMergeRegions();
         templateMerges.stream().forEach(templateMerge -> {
@@ -66,35 +69,46 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                     templateMerge.getEnd().getCol());
             xssfSheet.addMergedRegion(cellRangeAddress);
         });
-        log.info("templateRenderedLogs {}", templateRenderedLogs);
+        if(!delayedRendering.isEmpty()){
+            runDelayedRendering(delayedRendering, xssfSheet);
+        }
+
     }
 
-    private void writeRows(JsonExcelRequest jsonExcelRequest, XSSFSheet xssfSheet, List<TemplateRenderedLog> templateRenderedLogs, TemplateRow templateRow) {
-        final TemplateRenderedLog templateRenderedLog = new TemplateRenderedLog();
+    public void runDelayedRendering(List<DelayedRender> delayedRenders, XSSFSheet sheet){
+        final long count = delayedRenders.stream().filter(delayedRender -> !delayedRender.getTemplateColumn().isRendered()).count();
+        log.info("delayedRendering {}", count);
+        if(count == 0){
+            return;
+        }
+        List<DelayedRender> newDelayedRenders = new ArrayList<>();
+        for (DelayedRender delayedRender : delayedRenders) {
+            final TemplateRow templateRow = delayedRender.getTemplateColumn().getTemplateRow();
+            final Row row = sheet.getRow(templateRow.getRowNum());
+            final Cell cell = row.getCell(delayedRender.getTemplateColumn().getCol());
+            newDelayedRenders.addAll(renderingEngine.renderByExpression(delayedRender.getData(), delayedRender.getTemplateColumn(), cell));
+        }
+        runDelayedRendering(newDelayedRenders, sheet);
+    }
+
+    private void writeRows(JsonExcelRequest jsonExcelRequest, XSSFSheet xssfSheet, List<DelayedRender> delayedRenders, TemplateRow templateRow) {
         XSSFRow row = xssfSheet.createRow(templateRow.getRowNum());
         final List<TemplateColumn> templateColumns = templateRow.getColumns();
         for (TemplateColumn templateColumn : templateColumns) {
             if(templateColumn.isRendered()){
                 continue;
             }
-            templateRenderedLog.setTemplateRow(templateRow);
-            templateRenderedLog.setTemplateColumn(templateColumn);
-            writeColumns(jsonExcelRequest, templateRenderedLog, row, templateColumn);
+            writeColumns(jsonExcelRequest, delayedRenders, row, templateColumn);
         }
-        templateRenderedLogs.add(templateRenderedLog);
     }
 
     private void writeColumns(JsonExcelRequest jsonExcelRequest,
-                              TemplateRenderedLog templateRenderedLog,
+                              List<DelayedRender> delayedRenders,
                               XSSFRow row,
                               TemplateColumn templateColumn) {
         final XSSFSheet sheet = row.getSheet();
         final XSSFWorkbook wb = sheet.getWorkbook();
         final XSSFCell cell = row.createCell(templateColumn.getCol());
-        templateRenderedLog.setRenderedStartRow(cell.getRowIndex());
-        templateRenderedLog.setRenderedLastRow(cell.getRowIndex());
-        templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());
-        templateRenderedLog.setRenderedStartCol(cell.getColumnIndex());
         final Map<String, String> styles = templateColumn.getStyles();
         if (!styles.isEmpty()) {
             XSSFCellStyle newCellStyle = wb.createCellStyle();
@@ -105,13 +119,11 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         }
         if (templateColumn.getValue() instanceof String) {
             if (ExpressionHelper.isValidExpression(templateColumn.getValue().toString())) {
-                templateRenderedLog.setExpression(templateColumn.getValue().toString());
-                renderingEngine.renderByExpression(templateRenderedLog, jsonExcelRequest.getData(),
+                delayedRenders.addAll(renderingEngine.renderByExpression(jsonExcelRequest.getData(),
                         templateColumn,
-                        cell);
+                        cell));
             } else {
                 cell.setCellValue(templateColumn.getValue().toString());
-                templateRenderedLog.setValue(templateColumn.getValue().toString());
                 templateColumn.setRendered(true);
             }
         }

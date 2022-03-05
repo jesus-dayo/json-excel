@@ -1,7 +1,7 @@
 package com.dayosoft.excel.expression.renderer;
 
+import com.dayosoft.excel.model.DelayedRender;
 import com.dayosoft.excel.model.TemplateColumn;
-import com.dayosoft.excel.model.TemplateRenderedLog;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
-public class ObjectRenderer extends CellRenderer {
+public class ObjectRenderer extends CellRenderer<Object> {
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, Object value, String data,String key, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, Object value, String data,String key, List<DelayedRender> delayedRenders) {
         if(value instanceof List){
             List<Object> list = (List<Object>)value;
             if(!list.isEmpty()){
@@ -28,10 +28,7 @@ public class ObjectRenderer extends CellRenderer {
                     log.debug("setting value "+commaDelimitedString);
                     CellUtil.setCellValue(cell, commaDelimitedString);
                 }
-                templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());
-                templateRenderedLog.setRenderedStartCol(cell.getColumnIndex());
-                templateRenderedLog.setRenderedStartRow(cell.getRowIndex());
-                templateRenderedLog.setRenderedLastRow(cell.getRowIndex());
+
             }
         }
     }

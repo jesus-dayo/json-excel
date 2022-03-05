@@ -1,6 +1,7 @@
 package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.expression.renderer.RefRenderer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ class RefParserTest {
 
     @BeforeEach
     void init(){
-        refParser = new RefParser();
+        refParser = new RefParser(new RefRenderer());
     }
 
     @Test

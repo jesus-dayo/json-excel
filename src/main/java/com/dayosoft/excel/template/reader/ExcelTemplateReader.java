@@ -168,11 +168,12 @@ public class ExcelTemplateReader {
                         templateColumn.setCellComment(cell.getCellComment().getString().getString());
                     }
                     templateColumn.setCol(address.getColumn());
+                    templateColumn.setOriginalCol(address.getColumn());
                     columns.add(templateColumn);
                 }
 
             }
-            rows.add(TemplateRow.builder().rowNum(row.getRowNum()).columns(columns).build());
+            rows.add(TemplateRow.builder().rowNum(row.getRowNum()).originalRowNum(row.getRowNum()).columns(columns).build());
         }
 
         templateSheet.setRows(rows);

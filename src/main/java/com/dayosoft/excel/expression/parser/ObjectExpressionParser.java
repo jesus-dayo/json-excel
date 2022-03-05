@@ -2,8 +2,11 @@ package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.expression.evaluator.Evaluator;
 import com.dayosoft.excel.expression.evaluator.ObjectEvaluator;
+import com.dayosoft.excel.expression.renderer.CellRenderer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Stack;
 
 @Component
 @RequiredArgsConstructor
@@ -22,8 +25,8 @@ public class ObjectExpressionParser implements Parser {
     }
 
     @Override
-    public boolean done(String expression) {
-        return true;
+    public boolean shouldRender(Stack stack) {
+        return false;
     }
 
     @Override
@@ -34,5 +37,10 @@ public class ObjectExpressionParser implements Parser {
     @Override
     public Evaluator evaluator() {
         return objectEvaluator;
+    }
+
+    @Override
+    public CellRenderer renderer() {
+        return null;
     }
 }

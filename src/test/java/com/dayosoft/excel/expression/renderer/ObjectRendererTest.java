@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -30,7 +31,7 @@ class ObjectRendererTest {
         List<Object> list = new ArrayList<>();
         list.add(value);
 
-        objectRenderer.render(cell, TemplateColumn.builder().build(), list, null,null, new TemplateRenderedLog());
+        objectRenderer.render(cell, TemplateColumn.builder().build(), list, null,null, Collections.emptyList());
 
         verify(cell, times(1)).setCellValue(value);
     }
@@ -45,7 +46,7 @@ class ObjectRendererTest {
         list.add(hello);
         list.add(world);
 
-        objectRenderer.render(cell, TemplateColumn.builder().build(), list, null,null,new TemplateRenderedLog());
+        objectRenderer.render(cell, TemplateColumn.builder().build(), list, null,null,Collections.emptyList());
 
         verify(cell, times(1)).setCellValue(hello+","+world);
     }

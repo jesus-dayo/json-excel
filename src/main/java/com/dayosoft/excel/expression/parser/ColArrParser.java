@@ -3,8 +3,11 @@ package com.dayosoft.excel.expression.parser;
 import com.dayosoft.excel.exception.InvalidExpressionException;
 import com.dayosoft.excel.expression.evaluator.ColArrEvaluator;
 import com.dayosoft.excel.expression.evaluator.Evaluator;
+import com.dayosoft.excel.expression.renderer.CellRenderer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Stack;
 
 @RequiredArgsConstructor
 @Component
@@ -23,7 +26,7 @@ public class ColArrParser implements Parser{
     }
 
     @Override
-    public boolean done(String expression) {
+    public boolean shouldRender(Stack stack) {
         return false;
     }
 
@@ -35,5 +38,10 @@ public class ColArrParser implements Parser{
     @Override
     public Evaluator evaluator() {
         return colArrEvaluator;
+    }
+
+    @Override
+    public CellRenderer renderer() {
+        return null;
     }
 }

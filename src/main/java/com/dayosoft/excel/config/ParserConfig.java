@@ -20,12 +20,14 @@ public class ParserConfig {
     private final FirstFunctionParser firstFunctionParser;
     private final ColArrParser colArrParser;
     private final AnotherRowParser anotherRowParser;
+    private final RefParser refParser;
 
     @PostConstruct
     protected void registerParsers() {
         registeredParsers.add(firstFunctionParser);
         registeredParsers.add(colArrParser);
         registeredParsers.add(anotherRowParser);
+        registeredParsers.add(refParser);
     }
 
     @Bean

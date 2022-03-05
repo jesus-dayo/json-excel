@@ -4,15 +4,11 @@ import com.dayosoft.excel.exception.InvalidExpressionException;
 import com.dayosoft.excel.expression.parser.ExpressionHelper;
 import com.dayosoft.excel.expression.parser.RegExpression;
 import com.dayosoft.excel.expression.parser.RowParser;
-import com.dayosoft.excel.model.KeyDataMap;
-import com.dayosoft.excel.model.TemplateColumn;
-import com.dayosoft.excel.model.TemplateRenderedLog;
-import com.dayosoft.excel.model.TemplateRow;
+import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -30,13 +26,10 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
     private final RowParser rowParser;
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, List<Object> keyList, String data, String key, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, List<Object> keyList, String data, String key, List<DelayedRender> delayedRenders) {
         if (keyList != null && !keyList.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final XSSFWorkbook workbook = (XSSFWorkbook) sheet.getWorkbook();
-            templateRenderedLog.setRenderedStartRow(cell.getRowIndex());
-            templateRenderedLog.setRenderedStartCol(cell.getColumnIndex());
-            templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());
             CellUtil.setCellValue(cell, keyList.get(0));
             int rowIndex = cell.getAddress().getRow() + 1;
             if (keyList.size() > 1) {
@@ -65,7 +58,6 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                     templateColumn.setRendered(true);
                     rowIndex++;
                 }
-                templateRenderedLog.setRenderedLastRow(rowIndex - 1);
             }
             final TemplateRow templateRow = templateColumn.getTemplateRow();
             final int col = templateColumn.getCol();

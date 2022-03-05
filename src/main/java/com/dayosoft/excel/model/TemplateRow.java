@@ -13,6 +13,7 @@ import java.util.List;
 public class TemplateRow extends CommonTemplateProp {
 
     private Integer rowNum;
+    private Integer originalRowNum;
     private List<TemplateColumn> columns;
     @JsonIgnore
     private TemplateSheet templateSheet;

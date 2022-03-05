@@ -13,11 +13,12 @@
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Pension Asset Investment Results (Summary)",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -45,11 +46,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -77,11 +79,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -109,11 +112,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -141,11 +145,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -173,11 +178,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -205,11 +211,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -237,11 +244,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -269,11 +277,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -301,11 +310,12 @@
             },
             {
               "col": 10,
+              "templateRow": null,
+              "originalCol": 10,
               "columnWidth": 682,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -334,17 +344,19 @@
           ],
           "rowNum": 1,
           "templateSheet": null,
+          "originalRowNum": 1,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Shareholder Name",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -372,11 +384,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${first(Client Details:clientCode1)}",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -404,11 +417,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${first(Client Details:clientName)}",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -436,11 +450,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -468,11 +483,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Accounting Standard(2)",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -500,11 +516,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -532,11 +549,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Contract Basis/Accrual Basis",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -565,17 +583,19 @@
           ],
           "rowNum": 2,
           "templateSheet": null,
+          "originalRowNum": 2,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Investment Manager",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -603,11 +623,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": 1011,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -635,11 +656,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Goldman Sachs Asset Management Co.",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -667,11 +689,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "1",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -699,11 +722,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Department",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -731,11 +755,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -763,11 +788,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Operations",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -795,11 +821,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -828,17 +855,19 @@
           ],
           "rowNum": 3,
           "templateSheet": null,
+          "originalRowNum": 3,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Record Date(YYYY)(MM)",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -866,11 +895,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${first(Client Details:DateYear)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -898,11 +928,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${first(Client Details:DateMonth)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -930,11 +961,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Month End",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -962,11 +994,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Phone/Email Address",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -994,11 +1027,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -1026,11 +1060,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "81(3)0000-0000",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -1058,11 +1093,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -1090,11 +1126,12 @@
             },
             {
               "col": 10,
+              "templateRow": null,
+              "originalCol": 10,
               "columnWidth": 682,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1123,23 +1160,26 @@
           ],
           "rowNum": 4,
           "templateSheet": null,
+          "originalRowNum": 4,
           "styles": null
         },
         {
           "columns": [],
           "rowNum": 5,
           "templateSheet": null,
+          "originalRowNum": 5,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1167,11 +1207,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1199,11 +1240,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Previous Month-End\nMarket Capitalization(1)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1231,11 +1273,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Cash Inflow(5)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1263,11 +1306,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1295,11 +1339,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Cash Outflow(5)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1327,11 +1372,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1359,11 +1405,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Current Month-End \nMarket Capitalization (1)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1391,11 +1438,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Financial Exposure",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1423,11 +1471,12 @@
             },
             {
               "col": 10,
+              "templateRow": null,
+              "originalCol": 10,
               "columnWidth": 682,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -1455,11 +1504,12 @@
             },
             {
               "col": 11,
+              "templateRow": null,
+              "originalCol": 11,
               "columnWidth": 3840,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Allocation",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1487,11 +1537,12 @@
             },
             {
               "col": 13,
+              "templateRow": null,
+              "originalCol": 13,
               "columnWidth": 2304,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -1520,17 +1571,19 @@
           ],
           "rowNum": 6,
           "templateSheet": null,
+          "originalRowNum": 6,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1558,11 +1611,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1590,11 +1644,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1622,11 +1677,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Total Purchases",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1654,11 +1710,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Days(4)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1686,11 +1743,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Total Redemptions (Includes Interest and Dividend Income)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1718,11 +1776,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Days(4)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1750,11 +1809,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1782,11 +1842,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1814,11 +1875,12 @@
             },
             {
               "col": 10,
+              "templateRow": null,
+              "originalCol": 10,
               "columnWidth": 682,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -1846,11 +1908,12 @@
             },
             {
               "col": 11,
+              "templateRow": null,
+              "originalCol": 11,
               "columnWidth": 3840,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1879,17 +1942,19 @@
           ],
           "rowNum": 7,
           "templateSheet": null,
+          "originalRowNum": 7,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset NAV Details:assetCode)}",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1917,11 +1982,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset NAV Details:assetName)}",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -1949,11 +2015,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset NAV Details:previousMonthNAV)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -1981,11 +2048,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset Inflow Details:inflow)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2013,11 +2081,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset Inflow Details:daysInflow)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2045,11 +2114,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset Outflow Details:outflow)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2077,11 +2147,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset Outflow Details:daysOutflow)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2109,11 +2180,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset NAV Details:currentMonthNAV)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2141,11 +2213,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(assetCode#Asset NAV Details:exposure)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2173,12 +2246,13 @@
             },
             {
               "col": 11,
+              "templateRow": null,
+              "originalCol": 11,
               "columnWidth": 3840,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
-              "value": "${row(assetCode#formula(ref(9, 9)/ref(10, 9)))}",
+              "value": "${row(assetCode#formula(div(9, 9,10,9)))}",
               "styles": {
                 "fillForegroundColorColor": "43",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2205,11 +2279,12 @@
             },
             {
               "col": 14,
+              "templateRow": null,
+              "originalCol": 14,
               "columnWidth": 2432,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2238,17 +2313,19 @@
           ],
           "rowNum": 8,
           "templateSheet": null,
+          "originalRowNum": 8,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "zzz",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -2276,11 +2353,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Total",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -2308,12 +2386,13 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
-              "value": "${col(formula(total(ref(9,3))}",
+              "value": "${formula(totalCol(8,3)}",
               "styles": {
                 "fillForegroundColorColor": "41",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2340,12 +2419,13 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
-              "value": "${ref(D21)}",
+              "value": "${ref(14,3)}",
               "styles": {
                 "fillForegroundColorColor": "40",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2372,11 +2452,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": 0,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2404,12 +2485,13 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
-              "value": "${formula(sum(Asset Outflow Details:outflow)}",
+              "value": "${formula(sum(15,3,16,3)}",
               "styles": {
                 "fillForegroundColorColor": "40",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2436,11 +2518,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": 1,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2468,12 +2551,13 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
-              "value": "${formula(sum(Asset Inflow Details:currentMonthNAV)}",
+              "value": "${formula(totalCol(8,8)}",
               "styles": {
                 "fillForegroundColorColor": "41",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2500,12 +2584,13 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
-              "value": "${formula(sum(Asset Inflow Details:exposure)}",
+              "value": "${formula(totalCol(8,9)}",
               "styles": {
                 "fillForegroundColorColor": "41",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -2532,11 +2617,12 @@
             },
             {
               "col": 11,
+              "templateRow": null,
+              "originalCol": 11,
               "columnWidth": 3840,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": 1,
               "styles": {
                 "fillForegroundColorColor": "27",
@@ -2565,17 +2651,19 @@
           ],
           "rowNum": 9,
           "templateSheet": null,
+          "originalRowNum": 9,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2604,17 +2692,19 @@
           ],
           "rowNum": 10,
           "templateSheet": null,
+          "originalRowNum": 10,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2642,11 +2732,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2675,17 +2766,19 @@
           ],
           "rowNum": 11,
           "templateSheet": null,
+          "originalRowNum": 11,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Current Month Withdrawal/Deposit",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2713,11 +2806,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2745,11 +2839,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Cash Flow Reconciliation(6)",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2777,11 +2872,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2810,17 +2906,19 @@
           ],
           "rowNum": 13,
           "templateSheet": null,
+          "originalRowNum": 13,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Deposit",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -2848,11 +2946,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -2880,11 +2979,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${total(NAV Details:clientContribution)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -2912,11 +3012,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -2944,11 +3045,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Total Inflow",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -2976,11 +3078,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${total(Account Inflow Details:checkInflow)}",
               "styles": {
                 "fillForegroundColorColor": "40",
@@ -3009,17 +3112,19 @@
           ],
           "rowNum": 14,
           "templateSheet": null,
+          "originalRowNum": 14,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Earnings(3)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3047,11 +3152,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3079,11 +3185,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${total(NAV Details:managementFeeTrusteeFee)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -3111,11 +3218,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -3143,11 +3251,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Total Outflow",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3175,11 +3284,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${total(Account Outflow Details:checkInflow)}",
               "styles": {
                 "fillForegroundColorColor": "40",
@@ -3208,17 +3318,19 @@
           ],
           "rowNum": 15,
           "templateSheet": null,
+          "originalRowNum": 15,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Withdrawal",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3246,11 +3358,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3278,11 +3391,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${total(NAV Details:clientWithdrawal)}",
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -3310,11 +3424,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Net Cash Flow",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3342,11 +3457,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${totalNegative(Account Outflow Details:totalTransDaysOutflow)}",
               "styles": {
                 "fillForegroundColorColor": "40",
@@ -3375,17 +3491,19 @@
           ],
           "rowNum": 16,
           "templateSheet": null,
+          "originalRowNum": 16,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Net Change in Principal",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3413,11 +3531,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3445,11 +3564,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${totalNegative(NAV Details:netIncreaseDecrease)}",
               "styles": {
                 "fillForegroundColorColor": "27",
@@ -3477,11 +3597,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Difference",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3509,11 +3630,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": 0,
               "styles": {
                 "fillForegroundColorColor": "40",
@@ -3541,11 +3663,12 @@
             },
             {
               "col": 10,
+              "templateRow": null,
+              "originalCol": 10,
               "columnWidth": 682,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -3574,17 +3697,19 @@
           ],
           "rowNum": 17,
           "templateSheet": null,
+          "originalRowNum": 17,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "*Currency Overlay (if mandate is appointed individually)",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -3612,11 +3737,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -3644,11 +3770,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -3676,11 +3803,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -3708,11 +3836,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -3741,17 +3870,19 @@
           ],
           "rowNum": 20,
           "templateSheet": null,
+          "originalRowNum": 20,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3779,11 +3910,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3811,11 +3943,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Previous Month-End Unrealized Gain/Loss(10)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3843,11 +3976,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Current Month-End \nUnrealized Gain/Loss(10)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3875,11 +4009,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3907,11 +4042,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Current Month\nRealized Gain/Loss",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3939,11 +4075,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -3971,11 +4108,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Current Month \nUnrealized Gain/Loss Increment(10)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -4003,11 +4141,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Current Month Unrealized and Realized Gain/Loss",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -4036,17 +4175,19 @@
           ],
           "rowNum": 21,
           "templateSheet": null,
+          "originalRowNum": 21,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Off-Balance Sheet Swaps(9)",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -4074,11 +4215,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -4106,11 +4248,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -4138,11 +4281,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 8405,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -4170,11 +4314,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 2474,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -4202,11 +4347,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -4234,11 +4380,12 @@
             },
             {
               "col": 7,
+              "templateRow": null,
+              "originalCol": 7,
               "columnWidth": 2005,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -4266,11 +4413,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": "E23 - D23",
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "41",
@@ -4298,11 +4446,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": "I23+G23",
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "41",
@@ -4331,17 +4480,19 @@
           ],
           "rowNum": 22,
           "templateSheet": null,
+          "originalRowNum": 22,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4369,11 +4520,12 @@
             },
             {
               "col": 8,
+              "templateRow": null,
+              "originalCol": 8,
               "columnWidth": 7552,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4401,11 +4553,12 @@
             },
             {
               "col": 9,
+              "templateRow": null,
+              "originalCol": 9,
               "columnWidth": 7466,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4434,17 +4587,19 @@
           ],
           "rowNum": 23,
           "templateSheet": null,
+          "originalRowNum": 23,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 1066,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Currency Overlay Notional Amount",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -4472,11 +4627,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 7594,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -4504,11 +4660,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 6528,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "43",
@@ -4536,11 +4693,12 @@
             },
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4569,17 +4727,19 @@
           ],
           "rowNum": 24,
           "templateSheet": null,
+          "originalRowNum": 24,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4608,17 +4768,19 @@
           ],
           "rowNum": 25,
           "templateSheet": null,
+          "originalRowNum": 25,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4647,17 +4809,19 @@
           ],
           "rowNum": 26,
           "templateSheet": null,
+          "originalRowNum": 26,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4686,17 +4850,19 @@
           ],
           "rowNum": 27,
           "templateSheet": null,
+          "originalRowNum": 27,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4725,17 +4891,19 @@
           ],
           "rowNum": 28,
           "templateSheet": null,
+          "originalRowNum": 28,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4764,17 +4932,19 @@
           ],
           "rowNum": 29,
           "templateSheet": null,
+          "originalRowNum": 29,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4803,17 +4973,19 @@
           ],
           "rowNum": 30,
           "templateSheet": null,
+          "originalRowNum": 30,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4842,17 +5014,19 @@
           ],
           "rowNum": 31,
           "templateSheet": null,
+          "originalRowNum": 31,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 6,
+              "templateRow": null,
+              "originalCol": 6,
               "columnWidth": 14933,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -4881,6 +5055,7 @@
           ],
           "rowNum": 32,
           "templateSheet": null,
+          "originalRowNum": 32,
           "styles": null
         }
       ],
@@ -5140,11 +5315,12 @@
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5173,17 +5349,19 @@
           ],
           "rowNum": 0,
           "templateSheet": null,
+          "originalRowNum": 0,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Shareholder Name",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5211,11 +5389,12 @@
             },
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${first(Client Details:clientName)}",
               "styles": {
                 "fillForegroundColorColor": "65",
@@ -5243,11 +5422,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5276,17 +5456,19 @@
           ],
           "rowNum": 1,
           "templateSheet": null,
+          "originalRowNum": 1,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Investment Manager",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5314,11 +5496,12 @@
             },
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Goldman Sachs Asset Management Co.",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5346,11 +5529,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5379,17 +5563,19 @@
           ],
           "rowNum": 2,
           "templateSheet": null,
+          "originalRowNum": 2,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Record Date",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5417,11 +5603,12 @@
             },
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${today(DD/MM/YYYY)}",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5449,11 +5636,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5482,17 +5670,19 @@
           ],
           "rowNum": 3,
           "templateSheet": null,
+          "originalRowNum": 3,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Code",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5520,11 +5710,12 @@
             },
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Company Name",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5552,11 +5743,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "No of Shares",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5584,11 +5776,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Unit Price",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5616,11 +5809,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "JPY Market Value",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5648,11 +5842,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "Local Currency",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5681,17 +5876,19 @@
           ],
           "rowNum": 5,
           "templateSheet": null,
+          "originalRowNum": 5,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(security_cd#Syntax Report:security_cd)}",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5719,11 +5916,12 @@
             },
             {
               "col": 1,
+              "templateRow": null,
+              "originalCol": 1,
               "columnWidth": 15658,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(security_cd#Syntax Report:securityDescription)}",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5751,11 +5949,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
@@ -5783,11 +5982,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "23",
@@ -5815,11 +6015,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(security_cd#Syntax Report:market_value_bs)}",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5847,11 +6048,12 @@
             },
             {
               "col": 5,
+              "templateRow": null,
+              "originalCol": 5,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": "${row(security_cd#Syntax Report:trade_ccy_cd)}",
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5880,17 +6082,19 @@
           ],
           "rowNum": 6,
           "templateSheet": null,
+          "originalRowNum": 6,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5918,11 +6122,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5950,11 +6155,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -5982,11 +6188,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6015,17 +6222,19 @@
           ],
           "rowNum": 7,
           "templateSheet": null,
+          "originalRowNum": 7,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6053,11 +6262,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6085,11 +6295,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6117,11 +6328,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6150,17 +6362,19 @@
           ],
           "rowNum": 8,
           "templateSheet": null,
+          "originalRowNum": 8,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6188,11 +6402,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6220,11 +6435,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6253,17 +6469,19 @@
           ],
           "rowNum": 9,
           "templateSheet": null,
+          "originalRowNum": 9,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 0,
+              "templateRow": null,
+              "originalCol": 0,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6291,11 +6509,12 @@
             },
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6323,11 +6542,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6355,11 +6575,12 @@
             },
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6388,17 +6609,19 @@
           ],
           "rowNum": 10,
           "templateSheet": null,
+          "originalRowNum": 10,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 2,
+              "templateRow": null,
+              "originalCol": 2,
               "columnWidth": 3626,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6426,11 +6649,12 @@
             },
             {
               "col": 3,
+              "templateRow": null,
+              "originalCol": 3,
               "columnWidth": 2816,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6459,17 +6683,19 @@
           ],
           "rowNum": 11,
           "templateSheet": null,
+          "originalRowNum": 11,
           "styles": null
         },
         {
           "columns": [
             {
               "col": 4,
+              "templateRow": null,
+              "originalCol": 4,
               "columnWidth": 4266,
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "templateRow": null,
               "value": null,
               "styles": {
                 "fillForegroundColorColor": "64",
@@ -6498,6 +6724,7 @@
           ],
           "rowNum": 16,
           "templateSheet": null,
+          "originalRowNum": 16,
           "styles": null
         }
       ],

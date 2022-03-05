@@ -14,10 +14,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -34,43 +31,54 @@ public class ExpressionRenderingEngine {
     private final ColRowRenderer colRowRenderer;
     private final ObjectExpressionParser objectExpressionParser;
 
-    public void renderByExpression(TemplateRenderedLog templateRenderedLog,
-                                   String data,
+    public List<DelayedRender> renderByExpression(String data,
                                    TemplateColumn templateColumn,
                                    Cell cell) {
-        if(templateColumn.isRendered()){
-            return;
+        List<DelayedRender> delayedRenders = new ArrayList<>();
+        if (templateColumn.isRendered()) {
+            return delayedRenders;
         }
 
         String expression = templateColumn.getValue().toString();
         if (!expressionParser.isRegExMatch(expression)) {
             cell.setCellValue(expression);
-            return;
+            return delayedRenders;
         }
         try {
             Stack<Evaluator> evaluators = new Stack<>();
-            final String parsedValue = parse(expression, evaluators);
+            final ParsedResults parsedResults = parse(expression, evaluators);
+
+            if (parsedResults.getParser() != null && parsedResults.getParser().shouldRender(evaluators)) {
+                parsedResults.getParser().renderer().render(cell,
+                        templateColumn, parsedResults.getParsedValue(), data, null, delayedRenders);
+                return delayedRenders;
+            }
 
             // object mapping here
-            if(parsedValue.contains("#")){
-                final String[] split = parsedValue.split("#");
+            if (parsedResults.getParsedValue().contains("#")) {
+                final String[] split = parsedResults.getParsedValue().split("#");
                 final String[] path = split[1].split(":");
                 final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(data).build();
-                List<Object> results = (List<Object>)objectExpressionParser.evaluator().evaluate(jsonObjectPath);
-                colRowRenderer.render(cell, templateColumn, results, data, split[0], templateRenderedLog );
+                List<Object> results = (List<Object>) objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                colRowRenderer.render(cell, templateColumn, results, data, split[0], delayedRenders);
             } else {
-                final String[] path = parsedValue.split(":");
+                final String[] path = parsedResults.getParsedValue().split(":");
                 final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(data).build();
-                List<Object> results = (List<Object>)objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                List<Object> results = (List<Object>) objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                if(results == null || results.isEmpty()){
+                    templateColumn.setRendered(true);
+                    return delayedRenders;
+                }
                 final EvaluatedResults evaluatedResults = evaluate(expression, evaluators, results);
-                if(evaluatedResults != null) {
+                if (evaluatedResults != null) {
                     evaluatedResults.getCellRenderer()
-                            .render(cell, templateColumn, evaluatedResults.getResults(), data, null, templateRenderedLog);
+                            .render(cell, templateColumn, evaluatedResults.getResults(), data, null, delayedRenders);
                 }
             }
         } catch (InvalidExpressionException e) {
             log.error(e.getMessage(), e);
         }
+        return delayedRenders;
     }
 
     private EvaluatedResults evaluate(String expression, Stack<Evaluator> evaluators, List<Object> results) {
@@ -89,42 +97,24 @@ public class ExpressionRenderingEngine {
         return null;
     }
 
-    private String parse( String expression, Stack<Evaluator> evaluators) throws InvalidExpressionException {
+    private ParsedResults parse(String expression, Stack<Evaluator> evaluators) throws InvalidExpressionException {
         String parsedValue = expressionParser.parse(expression);
+        Parser last = null;
         for (Parser parser : registeredParsers) {
             if (parser.isRegExMatch(parsedValue)) {
                 parsedValue = parser.parse(parsedValue);
-                if (parser.hasEvaluation()) {
-                    evaluators.add(parser.evaluator());
-                }
-            }
-        }
-        return parsedValue;
-    }
-
-    private List<Object> getDataList(TemplateRenderedLog templateRenderedLog, String data, String expression, Cell cell, Stack<Evaluator> evaluators, TemplateColumn templateColumn) throws InvalidExpressionException {
-        String parsedValue = expressionParser.parse(expression);
-        List<Object> results = null;
-        for (Parser parser : registeredParsers) {
-            if (parser.isRegExMatch(parsedValue)) {
-                parsedValue = parser.parse(parsedValue);
-                if (parser instanceof ObjectExpressionParser) {
-                    final Evaluator evaluator = ((ObjectExpressionParser) parser).evaluator();
-                    results = (List<Object>) evaluator
-                                .evaluate(JsonObjectPath.builder()
-                                        .path(parsedValue.split(":")).data(data).build());
-                    if (evaluators.isEmpty()) {
-                        final CellRenderer renderer = (CellRenderer) evaluator.renderer();
-                         renderer.render(cell,templateColumn, results,data,null, templateRenderedLog);
-                    }
-                    break;
+                if (parser.shouldRender(evaluators)) {
+                    return ParsedResults.builder().parsedValue(parsedValue)
+                            .parser(parser).build();
                 }
                 if (parser.hasEvaluation()) {
                     evaluators.add(parser.evaluator());
                 }
+                last = parser;
             }
         }
-        return results;
+        return ParsedResults.builder().parsedValue(parsedValue)
+                .parser(last).build();
     }
 
 }

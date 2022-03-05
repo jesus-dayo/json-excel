@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
+
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,7 +27,7 @@ class FirstRendererTest {
         Cell cell = mock(Cell.class);
         String value = "test";
 
-        firstRenderer.render(cell, TemplateColumn.builder().build(), value, null, null,new TemplateRenderedLog());
+        firstRenderer.render(cell, TemplateColumn.builder().build(), value, null, null, Collections.emptyList());
 
         verify(cell, times(1)).setCellValue(value);
     }
