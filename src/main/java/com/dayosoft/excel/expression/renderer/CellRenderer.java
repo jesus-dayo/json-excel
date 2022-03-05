@@ -8,6 +8,6 @@ import org.apache.poi.ss.usermodel.Cell;
 @Slf4j
 public abstract class CellRenderer<T> extends Renderer{
 
-    public abstract void render(Cell cell, TemplateColumn templateColumn, T value, TemplateRenderedLog templateRenderedLog);
+    public abstract void render(Cell cell, TemplateColumn templateColumn, T value, String data, String key,TemplateRenderedLog templateRenderedLog);
 
 }

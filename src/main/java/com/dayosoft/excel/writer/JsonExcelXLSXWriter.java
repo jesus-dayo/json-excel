@@ -5,6 +5,7 @@ import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.expression.parser.ExpressionHelper;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.styles.StylesMapper;
+import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.jsoniter.JsonIterator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
 //        JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);
         // todo add delayedrendering list that will be executed after the workbook is written
         final List<TemplateSheet> sheets = template.getSheets();
+        TemplateHelper.fillDependencies(sheets);
         sheets.forEach(sheet -> {
             writeSheets(jsonExcelRequest, wb, sheet);
         });
@@ -53,7 +55,6 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         final List<TemplateRenderedLog> templateRenderedLogs = new ArrayList<>();
         final List<TemplateRow> templateRows = sheet.getRows();
         for (TemplateRow templateRow : templateRows) {
-            templateRow.setTemplateSheet(sheet);
             writeRows(jsonExcelRequest, xssfSheet, templateRenderedLogs, templateRow);
         }
         final List<TemplateMerge> templateMerges = sheet.getMergeRegions();
@@ -70,18 +71,12 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
     private void writeRows(JsonExcelRequest jsonExcelRequest, XSSFSheet xssfSheet, List<TemplateRenderedLog> templateRenderedLogs, TemplateRow templateRow) {
         final TemplateRenderedLog templateRenderedLog = new TemplateRenderedLog();
-        int rowNum = templateRow.getRowNum();
-        final Optional<TemplateRenderedLog> max = templateRenderedLogs.stream().max(Comparator.comparing(TemplateRenderedLog::getRenderedLastRow));
-        if (max.isPresent() && max.get().getRenderedLastRow() > rowNum) {
-            rowNum = max.get().getRenderedLastRow() + (rowNum - max.get().getTemplateRow().getRowNum());
-        }
-        XSSFRow row = xssfSheet.createRow(rowNum);
+        XSSFRow row = xssfSheet.createRow(templateRow.getRowNum());
         final List<TemplateColumn> templateColumns = templateRow.getColumns();
         for (TemplateColumn templateColumn : templateColumns) {
             if(templateColumn.isRendered()){
                 continue;
             }
-            templateColumn.setTemplateRow(templateRow);
             templateRenderedLog.setTemplateRow(templateRow);
             templateRenderedLog.setTemplateColumn(templateColumn);
             writeColumns(jsonExcelRequest, templateRenderedLog, row, templateColumn);
@@ -95,7 +90,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                               TemplateColumn templateColumn) {
         final XSSFSheet sheet = row.getSheet();
         final XSSFWorkbook wb = sheet.getWorkbook();
-        final XSSFCell cell = row.createCell(templateColumn.getPosition().getCol());
+        final XSSFCell cell = row.createCell(templateColumn.getCol());
         templateRenderedLog.setRenderedStartRow(cell.getRowIndex());
         templateRenderedLog.setRenderedLastRow(cell.getRowIndex());
         templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());

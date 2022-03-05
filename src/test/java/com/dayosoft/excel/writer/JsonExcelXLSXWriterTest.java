@@ -2,7 +2,12 @@ package com.dayosoft.excel.writer;
 
 import com.dayosoft.excel.TestDataHelper;
 import com.dayosoft.excel.expression.ExpressionRenderingEngine;
+import com.dayosoft.excel.expression.evaluator.ObjectEvaluator;
 import com.dayosoft.excel.expression.parser.ExpressionParser;
+import com.dayosoft.excel.expression.parser.ObjectExpressionParser;
+import com.dayosoft.excel.expression.parser.RowParser;
+import com.dayosoft.excel.expression.renderer.ColRowRenderer;
+import com.dayosoft.excel.expression.renderer.ObjectRenderer;
 import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.test.helper.ExcelXLSXFileAssertion;
 import com.dayosoft.excel.test.helper.TestFileUtils;
@@ -23,7 +28,10 @@ public class JsonExcelXLSXWriterTest {
     @BeforeEach
     void init(){
         jsonExcelXLSXWriter = new JsonExcelXLSXWriter(
-                new ExpressionRenderingEngine(TestDataHelper.registeredParsers(), new ExpressionParser()));
+                new ExpressionRenderingEngine(TestDataHelper.registeredParsers(),
+                        new ExpressionParser(),
+                        new ColRowRenderer(new RowParser(new ObjectExpressionParser(new ObjectEvaluator(new ObjectRenderer())), new ExpressionParser())),
+                new ObjectExpressionParser(new ObjectEvaluator(new ObjectRenderer()))));
     }
 
     @Test

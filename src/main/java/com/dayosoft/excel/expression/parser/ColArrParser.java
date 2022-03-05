@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class ColArrParser implements ParserEvaluator{
+public class ColArrParser implements Parser{
 
     private final ColArrEvaluator colArrEvaluator;
 
@@ -25,6 +25,11 @@ public class ColArrParser implements ParserEvaluator{
     @Override
     public boolean done(String expression) {
         return false;
+    }
+
+    @Override
+    public boolean hasEvaluation() {
+        return true;
     }
 
     @Override

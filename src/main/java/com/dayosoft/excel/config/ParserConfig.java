@@ -15,21 +15,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ParserConfig {
 
-    private List<ParserEvaluator> registeredParsers = new ArrayList<>();
+    private List<Parser> registeredParsers = new ArrayList<>();
 
-    private final ObjectExpressionParser objectExpressionParser;
     private final FirstFunctionParser firstFunctionParser;
     private final ColArrParser colArrParser;
+    private final AnotherRowParser anotherRowParser;
 
     @PostConstruct
     protected void registerParsers() {
-        registeredParsers.add(objectExpressionParser);
         registeredParsers.add(firstFunctionParser);
         registeredParsers.add(colArrParser);
+        registeredParsers.add(anotherRowParser);
     }
 
     @Bean
-    public List<ParserEvaluator> getRegisteredParsers() {
+    public List<Parser> getRegisteredParsers() {
         return registeredParsers;
     }
 }

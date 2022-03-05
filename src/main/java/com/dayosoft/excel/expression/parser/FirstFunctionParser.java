@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class FirstFunctionParser implements ParserEvaluator {
+public class FirstFunctionParser implements Parser {
 
     private final FirstEvaluator firstEvaluator;
 
@@ -25,6 +25,11 @@ public class FirstFunctionParser implements ParserEvaluator {
     @Override
     public boolean done(String expression) {
         return false;
+    }
+
+    @Override
+    public boolean hasEvaluation() {
+        return true;
     }
 
     @Override

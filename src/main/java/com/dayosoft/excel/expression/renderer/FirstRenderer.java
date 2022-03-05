@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class FirstRenderer extends CellRenderer<Object>{
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, Object value, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, Object value, String data,String key,TemplateRenderedLog templateRenderedLog) {
         log.debug("setting value "+value);
         CellUtil.setCellValue(cell, value);
         templateRenderedLog.setRenderedLastCol(cell.getColumnIndex());

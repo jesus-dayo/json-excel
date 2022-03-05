@@ -1,10 +1,13 @@
 package com.dayosoft.excel.model;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class TemplateSheet {
 
     private Integer index;

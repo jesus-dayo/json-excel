@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class ObjectRenderer extends CellRenderer {
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, Object value, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, Object value, String data,String key, TemplateRenderedLog templateRenderedLog) {
         if(value instanceof List){
             List<Object> list = (List<Object>)value;
             if(!list.isEmpty()){

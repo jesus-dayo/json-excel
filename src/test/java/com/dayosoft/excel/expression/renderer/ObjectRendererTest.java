@@ -30,7 +30,7 @@ class ObjectRendererTest {
         List<Object> list = new ArrayList<>();
         list.add(value);
 
-        objectRenderer.render(cell, TemplateColumn.builder().build(), list, new TemplateRenderedLog());
+        objectRenderer.render(cell, TemplateColumn.builder().build(), list, null,null, new TemplateRenderedLog());
 
         verify(cell, times(1)).setCellValue(value);
     }
@@ -45,7 +45,7 @@ class ObjectRendererTest {
         list.add(hello);
         list.add(world);
 
-        objectRenderer.render(cell, TemplateColumn.builder().build(), list, new TemplateRenderedLog());
+        objectRenderer.render(cell, TemplateColumn.builder().build(), list, null,null,new TemplateRenderedLog());
 
         verify(cell, times(1)).setCellValue(hello+","+world);
     }

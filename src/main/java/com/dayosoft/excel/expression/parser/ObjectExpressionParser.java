@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ObjectExpressionParser implements ParserEvaluator {
+public class ObjectExpressionParser implements Parser {
 
     private final ObjectEvaluator objectEvaluator;
 
@@ -23,6 +23,11 @@ public class ObjectExpressionParser implements ParserEvaluator {
 
     @Override
     public boolean done(String expression) {
+        return true;
+    }
+
+    @Override
+    public boolean hasEvaluation() {
         return true;
     }
 

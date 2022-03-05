@@ -4,6 +4,7 @@ import com.dayosoft.excel.exception.InvalidExpressionException;
 import com.dayosoft.excel.expression.evaluator.Evaluator;
 import com.dayosoft.excel.expression.parser.*;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
+import com.dayosoft.excel.expression.renderer.ColRowRenderer;
 import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
@@ -26,13 +29,19 @@ public class ExpressionRenderingEngine {
     //evaluate
     //render
 
-    private final List<ParserEvaluator> registeredParsers;
+    private final List<Parser> registeredParsers;
     private final ExpressionParser expressionParser;
+    private final ColRowRenderer colRowRenderer;
+    private final ObjectExpressionParser objectExpressionParser;
 
     public void renderByExpression(TemplateRenderedLog templateRenderedLog,
                                    String data,
                                    TemplateColumn templateColumn,
                                    Cell cell) {
+        if(templateColumn.isRendered()){
+            return;
+        }
+
         String expression = templateColumn.getValue().toString();
         if (!expressionParser.isRegExMatch(expression)) {
             cell.setCellValue(expression);
@@ -40,57 +49,28 @@ public class ExpressionRenderingEngine {
         }
         try {
             Stack<Evaluator> evaluators = new Stack<>();
-            List<Object> results = getDataList(templateRenderedLog, data, expression, cell, evaluators, templateColumn);
-            final EvaluatedResults evaluatedResults = evaluate(expression, evaluators, results);
-            evaluatedResults.getCellRenderer()
-                    .render(cell, templateColumn, evaluatedResults.getResults(), templateRenderedLog);
+            final String parsedValue = parse(expression, evaluators);
+
+            // object mapping here
+            if(parsedValue.contains("#")){
+                final String[] split = parsedValue.split("#");
+                final String[] path = split[1].split(":");
+                final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(data).build();
+                List<Object> results = (List<Object>)objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                colRowRenderer.render(cell, templateColumn, results, data, split[0], templateRenderedLog );
+            } else {
+                final String[] path = parsedValue.split(":");
+                final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(data).build();
+                List<Object> results = (List<Object>)objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                final EvaluatedResults evaluatedResults = evaluate(expression, evaluators, results);
+                if(evaluatedResults != null) {
+                    evaluatedResults.getCellRenderer()
+                            .render(cell, templateColumn, evaluatedResults.getResults(), data, null, templateRenderedLog);
+                }
+            }
         } catch (InvalidExpressionException e) {
             log.error(e.getMessage(), e);
         }
-    }
-
-    public void renderRowByExpression(List<TemplateRenderedLog> templateRenderedLogs,
-                                      String data,
-                                      Sheet sheet,
-                                      List<Object> keyData,
-                                      String key,
-                                      TemplateRow templateRow,
-                                      int rowIndex) throws InvalidExpressionException {
-        final List<TemplateColumn> columns = templateRow.getColumns();
-        final List<TemplateColumn> filteredColumn = columns.stream()
-                .filter(templateColumn -> ExpressionHelper.isValidExpressions(templateColumn.getValue().toString(), RegExpression.EXPRESSION) && ExpressionHelper.isValidExpressions(templateColumn.getValue().toString(), RegExpression.ROW_FUNC_EXPRESSION))
-                .collect(Collectors.toList());
-        for(Object value: keyData) {
-            final Row row = sheet.createRow(rowIndex);
-            for (int i =0; i < filteredColumn.size() ; i++) {
-                TemplateColumn templateColumn = filteredColumn.get(i);
-                TemplateRenderedLog templateRenderedLog = new TemplateRenderedLog();
-                templateRenderedLog.setExpression(templateColumn.getValue().toString());
-                templateRenderedLog.setTemplateColumn(templateColumn);
-                templateRenderedLog.setTemplateRow(templateRow);
-                final Cell cell = row.createCell(templateColumn.getPosition().getCol());
-                if(i == 0) {
-                    CellUtil.setCellValue(cell, value);
-                } else {
-                    Stack<Evaluator> evaluators = new Stack<>();
-//                    Any results = getDataList(templateRenderedLog, data, templateColumn.getValue().toString(), cell, evaluators);
-//                    results.stream().filter(r->r.)
-                }
-            }
-            rowIndex++;
-        }
-
-        //        if (expressionParser.isRegExMatch(expression)) {
-//            cell.setCellValue(expression);
-//            return;
-//        }
-//        try {
-//            Stack<Evaluator> evaluators = new Stack<>();
-//            List<Object> results = getDataList(templateRenderedLog, data, expression, cell, evaluators);
-//            evaluateAndRender(templateRenderedLog, expression, cell, evaluators, results);
-//        } catch (InvalidExpressionException e) {
-//            log.error(e.getMessage(), e);
-//        }
     }
 
     private EvaluatedResults evaluate(String expression, Stack<Evaluator> evaluators, List<Object> results) {
@@ -109,6 +89,19 @@ public class ExpressionRenderingEngine {
         return null;
     }
 
+    private String parse( String expression, Stack<Evaluator> evaluators) throws InvalidExpressionException {
+        String parsedValue = expressionParser.parse(expression);
+        for (Parser parser : registeredParsers) {
+            if (parser.isRegExMatch(parsedValue)) {
+                parsedValue = parser.parse(parsedValue);
+                if (parser.hasEvaluation()) {
+                    evaluators.add(parser.evaluator());
+                }
+            }
+        }
+        return parsedValue;
+    }
+
     private List<Object> getDataList(TemplateRenderedLog templateRenderedLog, String data, String expression, Cell cell, Stack<Evaluator> evaluators, TemplateColumn templateColumn) throws InvalidExpressionException {
         String parsedValue = expressionParser.parse(expression);
         List<Object> results = null;
@@ -122,12 +115,12 @@ public class ExpressionRenderingEngine {
                                         .path(parsedValue.split(":")).data(data).build());
                     if (evaluators.isEmpty()) {
                         final CellRenderer renderer = (CellRenderer) evaluator.renderer();
-                         renderer.render(cell,templateColumn, results, templateRenderedLog);
+                         renderer.render(cell,templateColumn, results,data,null, templateRenderedLog);
                     }
                     break;
                 }
-                if (parser instanceof ParserEvaluator) {
-                    evaluators.add(((ParserEvaluator) parser).evaluator());
+                if (parser.hasEvaluation()) {
+                    evaluators.add(parser.evaluator());
                 }
             }
         }

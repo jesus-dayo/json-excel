@@ -12,5 +12,6 @@ public class JsonObjectPath {
     private String[] path;
     private Map<String,Object> keyValue;
     private String data;
+    private String key;
 
 }

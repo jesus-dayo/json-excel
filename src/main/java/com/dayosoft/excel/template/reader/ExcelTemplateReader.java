@@ -80,7 +80,7 @@ public class ExcelTemplateReader {
             while (cellIterator.hasNext()) {
                 final Cell cell = cellIterator.next();
                 final CellType cellType = cell.getCellType();
-                TemplateColumn templateColumn = new TemplateColumn();
+                TemplateColumn templateColumn = TemplateColumn.builder().build();
                 templateColumn.setColumnWidth(sheet.getColumnWidth(cell.getColumnIndex()));
                 if (cellType != CellType.BLANK) {
                     switch (cellType) {
@@ -167,16 +167,12 @@ public class ExcelTemplateReader {
                     if (cell.getCellComment() != null) {
                         templateColumn.setCellComment(cell.getCellComment().getString().getString());
                     }
-                    templateColumn.setPosition(
-                            TemplatePosition.builder()
-                                    .col(address.getColumn())
-                                    .row(address.getRow())
-                                    .build());
+                    templateColumn.setCol(address.getColumn());
                     columns.add(templateColumn);
                 }
 
             }
-            rows.add(new TemplateRow(row.getRowNum(), columns));
+            rows.add(TemplateRow.builder().rowNum(row.getRowNum()).columns(columns).build());
         }
 
         templateSheet.setRows(rows);

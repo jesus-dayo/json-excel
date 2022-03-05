@@ -6,12 +6,19 @@ import lombok.*;
 import java.util.List;
 
 @NoArgsConstructor
-@Data
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
 public class TemplateRow extends CommonTemplateProp {
 
     private Integer rowNum;
     private List<TemplateColumn> columns;
     @JsonIgnore
     private TemplateSheet templateSheet;
+
+    public void shiftDown(int shiftCount){
+        setRowNum(rowNum+shiftCount);
+    }
 
 }

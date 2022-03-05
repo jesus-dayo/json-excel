@@ -11,8 +11,8 @@ import java.util.List;
 
 public final class TestDataHelper {
 
-    public static List<ParserEvaluator> registeredParsers(){
-        List<ParserEvaluator> parsers = new ArrayList<>();
+    public static List<Parser> registeredParsers(){
+        List<Parser> parsers = new ArrayList<>();
         parsers.add(new ObjectExpressionParser(new ObjectEvaluator(new ObjectRenderer())));
         parsers.add(new FirstFunctionParser(new FirstEvaluator(new FirstRenderer())));
         return parsers;

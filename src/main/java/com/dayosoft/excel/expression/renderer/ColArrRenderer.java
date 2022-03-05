@@ -12,7 +12,7 @@ import java.util.List;
 public class ColArrRenderer extends CellRenderer<List<Object>> {
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, List<Object> value, TemplateRenderedLog templateRenderedLog) {
+    public void render(Cell cell, TemplateColumn templateColumn, List<Object> value, String data, String key,TemplateRenderedLog templateRenderedLog) {
         if (!value.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final Workbook workbook = sheet.getWorkbook();

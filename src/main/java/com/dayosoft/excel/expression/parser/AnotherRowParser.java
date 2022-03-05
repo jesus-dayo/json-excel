@@ -5,16 +5,16 @@ import com.dayosoft.excel.expression.evaluator.Evaluator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ExpressionParser implements Parser{
+public class AnotherRowParser implements Parser{
 
     @Override
-    public String parse(String value) throws InvalidExpressionException {
-        return ExpressionHelper.extractStringFromExpression(value, RegExpression.EXPRESSION);
+    public String parse(String expression) throws InvalidExpressionException {
+        return ExpressionHelper.extractStringFromExpression(expression, RegExpression.ROW_FUNC_EXPRESSION);
     }
 
     @Override
     public boolean isRegExMatch(String expression) {
-        return ExpressionHelper.isValidExpression(expression, RegExpression.EXPRESSION);
+        return ExpressionHelper.isValidExpression(expression, RegExpression.ROW_FUNC_EXPRESSION);
     }
 
     @Override

@@ -1,15 +1,17 @@
 package com.dayosoft.excel.model;
 
 import com.jsoniter.annotation.JsonIgnore;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Builder
-@Data
 public class TemplateColumn extends CommonTemplateProp {
 
     private Object value;
-    private TemplatePosition position;
+    private int col;
     private TemplateRange arrayFormulaRange;
     private String cellFormula;
     private String cellComment;
