@@ -22,7 +22,8 @@ public final class ExpressionHelper {
     public static boolean isValidExpression(String value){
         return isValidExpressions(value, RegExpression.EXPRESSION,
                 RegExpression.FIRST_FUNC_EXPRESSION,
-                RegExpression.ROW_FUNC_EXPRESSION);
+                RegExpression.ROW_FUNC_EXPRESSION,
+                RegExpression.REF_FUNC_EXPRESSION);
     }
 
     public static String findExpressionMatch(String value){
