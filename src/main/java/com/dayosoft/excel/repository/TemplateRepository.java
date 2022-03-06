@@ -5,6 +5,7 @@ import io.jsondb.JsonDBTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -13,12 +14,18 @@ public class TemplateRepository {
 
     private final JsonDBTemplate jsonDBTemplate;
 
+    @PostConstruct
+    public void createCollection(){
+        if(!jsonDBTemplate.collectionExists(Template.class)) {
+            jsonDBTemplate.createCollection(Template.class);
+        }
+    }
+
     public List<Template> list(){
         return jsonDBTemplate.findAll(Template.class);
     }
 
     public void add(Template template){
-        jsonDBTemplate.createCollection(Template.class);
         jsonDBTemplate.insert(template);
     }
 

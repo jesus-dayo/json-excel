@@ -40,7 +40,7 @@ public class TemplateRestController {
         return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
     }
 
-    @DeleteMapping
+    @DeleteMapping("{name}")
     public TemplateResponse delete(@PathVariable String name){
         final Template template = templateRepository.find(name);
         templateRepository.delete(template);
