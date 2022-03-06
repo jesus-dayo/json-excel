@@ -15,14 +15,14 @@ import java.util.stream.Collectors;
 public class ObjectRenderer extends CellRenderer<Object> {
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, Object value, String data,String key, List<DelayedRender> delayedRenders) {
+    public void render(Cell cell,String type, TemplateColumn templateColumn, Object value, String data,String key, List<DelayedRender> delayedRenders) {
         if(value instanceof List){
             List<Object> list = (List<Object>)value;
             if(!list.isEmpty()){
                 if(list.size() == 1) {
                     final Object first = list.get(0);
                     log.debug("setting value "+first);
-                    CellUtil.setCellValue(cell, first);
+                    CellUtil.setCellValue(cell, first, type);
                 } else {
                     final String commaDelimitedString = list.stream().map(o -> o.toString()).collect(Collectors.joining(","));
                     log.debug("setting value "+commaDelimitedString);

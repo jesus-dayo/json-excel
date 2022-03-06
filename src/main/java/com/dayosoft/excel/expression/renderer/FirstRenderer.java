@@ -14,9 +14,9 @@ import java.util.List;
 public class FirstRenderer extends CellRenderer<Object>{
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, Object value, String data, String key, List<DelayedRender> delayedRenders) {
+    public void render(Cell cell, String type, TemplateColumn templateColumn, Object value, String data, String key, List<DelayedRender> delayedRenders) {
         log.debug("setting value "+value);
-        CellUtil.setCellValue(cell, value);
+        CellUtil.setCellValue(cell, value, type);
     }
 
 }

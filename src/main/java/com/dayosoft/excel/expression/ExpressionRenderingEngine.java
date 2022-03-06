@@ -49,7 +49,7 @@ public class ExpressionRenderingEngine {
             final ParsedResults parsedResults = parse(expression, evaluators);
 
             if (parsedResults.getParser() != null && parsedResults.getParser().shouldRender(evaluators)) {
-                parsedResults.getParser().renderer().render(cell,
+                parsedResults.getParser().renderer().render(cell, "string",
                         templateColumn, parsedResults.getParsedValue(), data, null, delayedRenders);
                 return delayedRenders;
             }
@@ -59,12 +59,20 @@ public class ExpressionRenderingEngine {
                 final String[] split = parsedResults.getParsedValue().split("#");
                 final String[] path = split[1].split(":");
                 final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(data).build();
-                List<Object> results = (List<Object>) objectExpressionParser.evaluator().evaluate(jsonObjectPath);
-                colRowRenderer.render(cell, templateColumn, results, data, split[0], delayedRenders);
+                final ObjectExpressionResults objectExpressionResults = (ObjectExpressionResults)objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                colRowRenderer.render(cell, objectExpressionResults.getType(), templateColumn, objectExpressionResults.getListOfValues(), data, split[0], delayedRenders);
             } else {
+                String specExpression = expressionParser.parse(expression);
+                if(!ExpressionHelper.isValidExpression(specExpression)){
+                    log.error(specExpression + " is not yet supported");
+                    templateColumn.setRendered(true);
+                    cell.setCellValue(expression);
+                    return delayedRenders;
+                }
                 final String[] path = parsedResults.getParsedValue().split(":");
                 final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(data).build();
-                List<Object> results = (List<Object>) objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                final ObjectExpressionResults objectExpressionResults = (ObjectExpressionResults)objectExpressionParser.evaluator().evaluate(jsonObjectPath);
+                final List<Object> results = objectExpressionResults.getListOfValues();
                 if(results == null || results.isEmpty()){
                     templateColumn.setRendered(true);
                     return delayedRenders;
@@ -72,7 +80,7 @@ public class ExpressionRenderingEngine {
                 final EvaluatedResults evaluatedResults = evaluate(expression, evaluators, results);
                 if (evaluatedResults != null) {
                     evaluatedResults.getCellRenderer()
-                            .render(cell, templateColumn, evaluatedResults.getResults(), data, null, delayedRenders);
+                            .render(cell,objectExpressionResults.getType(), templateColumn, evaluatedResults.getResults(), data, null, delayedRenders);
                 }
             }
         } catch (InvalidExpressionException e) {

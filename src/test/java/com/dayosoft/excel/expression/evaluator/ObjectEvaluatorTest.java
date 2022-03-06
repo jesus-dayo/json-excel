@@ -26,7 +26,7 @@ class ObjectEvaluatorTest {
         String[] jsonPath = new String[]{"Client Details", "clientCode1"};
         String data = TestDataHelper.SAMPLE_CLIENT_DETAILS;
 
-        final List<Object> actual = objectEvaluator.evaluate(JsonObjectPath.builder().path(jsonPath).data(data).build());
+        final List<Object> actual = objectEvaluator.evaluate(JsonObjectPath.builder().path(jsonPath).data(data).build()).getListOfValues();
 
         assertFalse(actual.isEmpty());
         assertEquals("1010", actual.get(0));
@@ -39,7 +39,7 @@ class ObjectEvaluatorTest {
         Map<String, Object> keyValue = new HashMap<>();
         keyValue.put("assetCode","200");
 
-        final List<Object> actual = objectEvaluator.evaluate(JsonObjectPath.builder().path(jsonPath).data(data).keyValue(keyValue).build());
+        final List<Object> actual = objectEvaluator.evaluate(JsonObjectPath.builder().path(jsonPath).data(data).keyValue(keyValue).build()).getListOfValues();
 
         assertFalse(actual.isEmpty());
         assertEquals("MONDAY(MON)", actual.get(0));

@@ -12,7 +12,7 @@ import java.util.List;
 public class ColArrRenderer extends CellRenderer<List<Object>> {
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, List<Object> value, String data, String key,List<DelayedRender> delayedRenders) {
+    public void render(Cell cell,String type, TemplateColumn templateColumn, List<Object> value, String data, String key,List<DelayedRender> delayedRenders) {
         if (!value.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final Workbook workbook = sheet.getWorkbook();
@@ -40,7 +40,7 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
                             newCell.setCellStyle(cellStyle);
                         }
                     }
-                    CellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), value.get(i));
+                    CellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), value.get(i), type);
                     rowIndex++;
                 }
             }

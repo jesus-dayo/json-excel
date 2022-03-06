@@ -4,6 +4,7 @@ import com.dayosoft.excel.exception.InvalidExpressionException;
 import com.dayosoft.excel.expression.evaluator.ObjectEvaluator;
 import com.dayosoft.excel.model.JsonObjectPath;
 import com.dayosoft.excel.model.KeyDataMap;
+import com.dayosoft.excel.model.ObjectExpressionResults;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -40,14 +41,15 @@ public class RowParser implements KeyExpressionParser{
         final String path = objectExpressionParser.parse(subExpression);
         Map<String, Object> keyValue = new HashMap<>();
         keyValue.put(key, value);
-        final List<Object> list = ((ObjectEvaluator) objectExpressionParser.evaluator()).evaluate(JsonObjectPath.builder()
+        final ObjectExpressionResults objectExpressionResults = ((ObjectEvaluator) objectExpressionParser.evaluator()).evaluate(JsonObjectPath.builder()
                 .path(path.split(":")).data(data).keyValue(keyValue).build());
+        final List<Object> list = objectExpressionResults.getListOfValues();
 
         if(list == null || list.isEmpty()){
             log.error("unsupported expression {}", expression);
             return null;
         }
 
-        return KeyDataMap.builder().key(key).value(list.get(0)).build();
+        return KeyDataMap.builder().key(key).value(list.get(0)).type(objectExpressionResults.getType()).build();
     }
 }

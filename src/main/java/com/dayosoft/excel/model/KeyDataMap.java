@@ -9,5 +9,5 @@ public class KeyDataMap {
 
     private String key;
     private Object value;
-
+    private String type;
 }

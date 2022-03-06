@@ -16,7 +16,7 @@ import java.util.List;
 public class TotalColRenderer extends CellRenderer<String>{
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
+    public void render(Cell cell, String type, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
         if (!value.contains(",")) {
             log.error("invalid use of totalCol, should be comma delimited row and column 0 index");
             return;

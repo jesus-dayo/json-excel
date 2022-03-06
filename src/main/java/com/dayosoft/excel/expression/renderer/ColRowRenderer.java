@@ -1,16 +1,21 @@
 package com.dayosoft.excel.expression.renderer;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
-import com.dayosoft.excel.expression.parser.DivideParser;
 import com.dayosoft.excel.expression.parser.ExpressionHelper;
 import com.dayosoft.excel.expression.parser.RegExpression;
 import com.dayosoft.excel.expression.parser.RowParser;
-import com.dayosoft.excel.model.*;
+import com.dayosoft.excel.model.DelayedRender;
+import com.dayosoft.excel.model.KeyDataMap;
+import com.dayosoft.excel.model.TemplateColumn;
+import com.dayosoft.excel.model.TemplateRow;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.RequiredArgsConstructor;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -27,7 +32,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
     private final RowParser rowParser;
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, List<Object> keyList, String data, String key, List<DelayedRender> delayedRenders) {
+    public void render(Cell cell, String type, TemplateColumn templateColumn, List<Object> keyList, String data, String key, List<DelayedRender> delayedRenders) {
         if (keyList != null && !keyList.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final XSSFWorkbook workbook = (XSSFWorkbook) sheet.getWorkbook();
@@ -55,7 +60,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                             newCell.setCellStyle(cellStyle);
                         }
                     }
-                    CellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), keyList.get(i));
+                    CellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), keyList.get(i), type);
                     templateColumn.setRendered(true);
                     rowIndex++;
                 }
@@ -101,7 +106,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                 }
                 cell.setCellStyle(xssfCellStyle);
                 if (keyDataMap != null) {
-                    CellUtil.setCellValue(cell, keyDataMap.getValue());
+                    CellUtil.setCellValue(cell, keyDataMap.getValue(),keyDataMap.getType());
                 } else {
                     CellUtil.setCellValue(cell, expression);
                 }

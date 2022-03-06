@@ -16,7 +16,7 @@ import java.util.Optional;
 public class DivRenderer extends CellRenderer<String> {
 
     @Override
-    public void render(Cell cell, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
+    public void render(Cell cell, String type, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
         if (!value.contains(",")) {
             log.error("invalid use of divide, should be comma delimited row and column 0 index");
             return;
@@ -45,7 +45,7 @@ public class DivRenderer extends CellRenderer<String> {
             templateColumn.setRendered(true);
         } else {
             if(dividend.getLastRow() != null && dividend.getLastRow() > 0) {
-                for (int i = cell.getAddress().getRow(); i < dividend.getLastRow();i++) {
+                for (int i = cell.getAddress().getRow(); i < dividend.getLastRow()+1;i++) {
                     final Row row = CellUtil.getRow(i, cell.getSheet());
                     String dividendAddress = com.dayosoft.excel.util.CellUtil
                             .getCellAddress(row.getRowNum(),col1);
@@ -57,9 +57,10 @@ public class DivRenderer extends CellRenderer<String> {
                             .getCellAddress(foundDivisorRow.getRowNum(),foundDivisorColumn.getCol());
                     Cell resultCell = row.getCell(templateColumn.getCol());
                     resultCell.setCellFormula(dividendAddress+"/"+divisorAddress);
+                    templateColumn.setRendered(true);
                 }
             } else {
-
+                templateColumn.setRendered(true);
             }
         }
     }

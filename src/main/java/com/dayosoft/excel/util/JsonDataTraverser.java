@@ -1,16 +1,12 @@
 package com.dayosoft.excel.util;
 
-import com.dayosoft.excel.exception.JsonMappingException;
 import com.dayosoft.excel.type.ExcelJsonType;
-import com.jsoniter.ValueType;
 import com.jsoniter.any.Any;
-import com.jsoniter.spi.JsonException;
-import io.swagger.v3.core.util.Json;
-import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.Type;
 import java.util.*;
 
+@Slf4j
 public class JsonDataTraverser extends JsonTraverser {
 
     public JsonDataTraverser(Any data) {
@@ -77,6 +73,10 @@ public class JsonDataTraverser extends JsonTraverser {
     }
 
     public final List<Object> rows(String groupName, String field, Map<String, Object> keyVal){
+        if(keyVal == null){
+            log.error("keyVal is null , check this line of code.");
+        }
+
         List<Object> results = new ArrayList<>();
         final Any rows = getJsonIfExist(json.get("body", groupName, "rows"));
         final Iterator<Any> rowsIterator = rows.iterator();

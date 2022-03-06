@@ -10,6 +10,6 @@ import java.util.List;
 @Slf4j
 public abstract class CellRenderer<T> extends Renderer{
 
-    public abstract void render(Cell cell, TemplateColumn templateColumn, T value, String data, String key, List<DelayedRender> delayedRenders);
+    public abstract void render(Cell cell, String type, TemplateColumn templateColumn, T value, String data, String key, List<DelayedRender> delayedRenders);
 
 }

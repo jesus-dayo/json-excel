@@ -27,7 +27,7 @@ class FirstRendererTest {
         Cell cell = mock(Cell.class);
         String value = "test";
 
-        firstRenderer.render(cell, TemplateColumn.builder().build(), value, null, null, Collections.emptyList());
+        firstRenderer.render(cell, "string", TemplateColumn.builder().build(), value, null, null, Collections.emptyList());
 
         verify(cell, times(1)).setCellValue(value);
     }
