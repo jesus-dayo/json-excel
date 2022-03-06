@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class DivideAddressResult {
+public class AddressResult {
 
     private String address;
     private Integer lastRow;

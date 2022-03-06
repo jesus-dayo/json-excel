@@ -2,7 +2,7 @@ package com.dayosoft.excel.expression.renderer;
 
 import com.dayosoft.excel.model.DelayedRender;
 import com.dayosoft.excel.model.TemplateColumn;
-import com.dayosoft.excel.util.CellUtil;
+import com.dayosoft.excel.util.CustomCellUtil;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
         if (!value.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final Workbook workbook = sheet.getWorkbook();
-            CellUtil.setCellValue(cell, value.get(0));
+            CustomCellUtil.setCellValue(cell, value.get(0));
             if (value.size() > 1) {
                 int rowIndex = cell.getAddress().getRow() + 1;
                 final Row row = cell.getRow();
@@ -40,7 +40,7 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
                             newCell.setCellStyle(cellStyle);
                         }
                     }
-                    CellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), value.get(i), type);
+                    CustomCellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), value.get(i), type);
                     rowIndex++;
                 }
             }

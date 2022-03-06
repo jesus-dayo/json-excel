@@ -11,7 +11,7 @@ import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRow;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
-import com.dayosoft.excel.util.CellUtil;
+import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
@@ -39,7 +39,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
         if (keyList != null && !keyList.isEmpty()) {
             final Sheet sheet = cell.getSheet();
             final XSSFWorkbook workbook = (XSSFWorkbook) sheet.getWorkbook();
-            CellUtil.setCellValue(cell, keyList.get(0));
+            CustomCellUtil.setCellValue(cell, keyList.get(0));
             int rowIndex = cell.getAddress().getRow() + 1;
             if (keyList.size() > 1) {
                 final Row row = cell.getRow();
@@ -63,7 +63,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                             newCell.setCellStyle(cellStyle);
                         }
                     }
-                    CellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), keyList.get(i), type);
+                    CustomCellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), keyList.get(i), type);
                     templateColumn.setRendered(true);
                     rowIndex++;
                 }
@@ -116,9 +116,9 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
             }
             cell.setCellStyle(xssfCellStyle);
             if (keyDataMap != null) {
-                CellUtil.setCellValue(cell, keyDataMap.getValue(), keyDataMap.getType());
+                CustomCellUtil.setCellValue(cell, keyDataMap.getValue(), keyDataMap.getType());
             } else {
-                CellUtil.setCellValue(cell, expression);
+                CustomCellUtil.setCellValue(cell, expression);
             }
             return true;
         } else {

@@ -1,11 +1,17 @@
 package com.dayosoft.excel.util;
 
+import com.dayosoft.excel.model.AddressResult;
+import com.dayosoft.excel.model.TemplateColumn;
+import com.dayosoft.excel.model.TemplateRow;
+import com.dayosoft.excel.model.TemplateSheet;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.util.CellReference;
 
+import java.util.Optional;
+
 @Slf4j
-public class CellUtil {
+public class CustomCellUtil {
 
     public static Object getCellValueAsObject(Cell cell){
         switch (cell.getCellType()){
@@ -54,6 +60,27 @@ public class CellUtil {
 
     public static String getCellAddress(Integer rowNum, Integer col){
         return new CellReference(rowNum,col).formatAsString();
+    }
+
+    public static AddressResult getAddressResults(Integer row,
+                                                  Integer col,
+                                                  TemplateSheet templateSheet) {
+        final Optional<TemplateRow> foundRow = templateSheet.getRows().stream().filter(r -> r.getOriginalRowNum() == row).findFirst();
+        if(foundRow.isPresent()){
+            final TemplateRow rowRef = foundRow.get();
+            final Optional<TemplateColumn> foundColumn = rowRef.getColumns().stream().filter(c -> c.getOriginalCol() == col).findFirst();
+            if(foundColumn.isPresent()){
+                final TemplateColumn colRef = foundColumn.get();
+                if(colRef.isRendered()){
+                    String address = new CellReference(rowRef.getRowNum(),colRef.getCol()).formatAsString();
+                    return AddressResult.builder()
+                            .lastRow(colRef.getLastRowNum())
+                            .address(address)
+                            .build();
+                }
+            }
+        }
+        return null;
     }
 
 }

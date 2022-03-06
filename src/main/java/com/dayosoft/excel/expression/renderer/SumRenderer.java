@@ -12,12 +12,12 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class DivRenderer extends CellRenderer<String> {
+public class SumRenderer extends CellRenderer<String> {
 
     @Override
     public void render(Cell cell, String type, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
         if (!value.contains(",")) {
-            log.error("invalid use of divide, should be comma delimited row and column 0 index");
+            log.error("invalid use of sum, should be comma delimited row and column 0 index");
             return;
         }
         final String[] split = value.replace(" ","").split(",");
@@ -28,34 +28,34 @@ public class DivRenderer extends CellRenderer<String> {
 
         final TemplateRow templateRow = templateColumn.getTemplateRow();
         final TemplateSheet templateSheet = templateRow.getTemplateSheet();
-        AddressResult dividend = CustomCellUtil.getAddressResults(row1, col1, templateSheet);
-        if(dividend == null){
+        AddressResult addend1 = CustomCellUtil.getAddressResults(row1, col1, templateSheet);
+        if(addend1 == null){
             delayedRenders.add(DelayedRender.builder().value(value).data(data).templateColumn(templateColumn).build());
             return;
         }
 
-        AddressResult divisor = CustomCellUtil.getAddressResults(row2, col2, templateSheet);
-        if(divisor == null){
+        AddressResult addend2 = CustomCellUtil.getAddressResults(row2, col2, templateSheet);
+        if(addend2 == null){
             delayedRenders.add(DelayedRender.builder().value(value).data(data).templateColumn(templateColumn).build());
             return;
         }
-        if(dividend.getLastRow() == null && dividend.getLastRow() == 0 && divisor.getLastRow() == null && divisor.getLastRow() == 0) {
-            cell.setCellFormula(Divide.builder().dividend(dividend.getAddress()).divisor(divisor.getAddress()).build().getFormula());
+        if((addend1.getLastRow() == null || addend1.getLastRow() == 0) && (addend2.getLastRow() == null || addend2.getLastRow() == 0)) {
+            cell.setCellFormula(Sum.builder().addend1(addend1.getAddress()).addend2(addend2.getAddress()).build().getFormula());
             templateColumn.setRendered(true);
         } else {
-            if(dividend.getLastRow() != null && dividend.getLastRow() > 0) {
-                for (int i = cell.getAddress().getRow(); i < dividend.getLastRow()+1;i++) {
+            if(addend1.getLastRow() != null && addend1.getLastRow() > 0) {
+                for (int i = cell.getAddress().getRow(); i < addend1.getLastRow()+1;i++) {
                     final Row row = CellUtil.getRow(i, cell.getSheet());
-                    String dividendAddress = CustomCellUtil
+                    String addendAddress1 = CustomCellUtil
                             .getCellAddress(row.getRowNum(),col1);
                     final List<TemplateRow> templateRowList = templateSheet.getRows();
-                    final TemplateRow foundDivisorRow
+                    final TemplateRow foundAddendRow
                             = templateRowList.stream().filter(t -> t.getOriginalRowNum() == row2).findFirst().get();
-                    final TemplateColumn foundDivisorColumn = foundDivisorRow.getColumns().stream().filter(t -> t.getOriginalCol() == col2).findFirst().get();
-                    String divisorAddress = CustomCellUtil
-                            .getCellAddress(foundDivisorRow.getRowNum(),foundDivisorColumn.getCol());
+                    final TemplateColumn foundAddendColumn = foundAddendRow.getColumns().stream().filter(t -> t.getOriginalCol() == col2).findFirst().get();
+                    String addendAddress2 = CustomCellUtil
+                            .getCellAddress(foundAddendRow.getRowNum(),foundAddendColumn.getCol());
                     Cell resultCell = row.getCell(templateColumn.getCol());
-                    resultCell.setCellFormula(dividendAddress+"/"+divisorAddress);
+                    resultCell.setCellFormula(addendAddress1+"+"+addendAddress2);
                     templateColumn.setRendered(true);
                 }
             } else {

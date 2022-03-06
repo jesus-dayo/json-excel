@@ -4,7 +4,7 @@ import com.dayosoft.excel.model.DelayedRender;
 import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRow;
 import com.dayosoft.excel.model.TemplateSheet;
-import com.dayosoft.excel.util.CellUtil;
+import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.springframework.stereotype.Component;
@@ -35,8 +35,8 @@ public class TotalColRenderer extends CellRenderer<String>{
         }
 
         // SUM(J9:J15)
-        final String addendFrom = CellUtil.getCellAddress(refTemplateRow.getRowNum(), refTemplateColumn.getCol());
-        final String addendTo = CellUtil.getCellAddress(refTemplateColumn.getLastRowNum(), refTemplateColumn.getCol());
+        final String addendFrom = CustomCellUtil.getCellAddress(refTemplateRow.getRowNum(), refTemplateColumn.getCol());
+        final String addendTo = CustomCellUtil.getCellAddress(refTemplateColumn.getLastRowNum(), refTemplateColumn.getCol());
         cell.setCellFormula("SUM("+addendFrom+":"+addendTo+")");
         templateColumn.setRendered(true);
     }
