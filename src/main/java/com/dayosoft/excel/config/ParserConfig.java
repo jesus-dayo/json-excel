@@ -25,6 +25,7 @@ public class ParserConfig {
     private final TotalColParser totalColParser;
     private final TotalParser totalParser;
     private final SumParser sumParser;
+    private final TodayParser todayParser;
 
     @PostConstruct
     protected void registerParsers() {
@@ -36,6 +37,7 @@ public class ParserConfig {
         registeredParsers.add(totalColParser);
         registeredParsers.add(totalParser);
         registeredParsers.add(sumParser);
+        registeredParsers.add(todayParser);
     }
 
     @Bean

@@ -5764,7 +5764,7 @@
               "cellFormula": null,
               "arrayFormulaRange": null,
               "cellComment": null,
-              "value": "${today(DD/MM/YYYY)}",
+              "value": "${today(dd/MM/YYYY)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",

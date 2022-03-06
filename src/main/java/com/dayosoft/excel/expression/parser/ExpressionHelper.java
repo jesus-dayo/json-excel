@@ -28,7 +28,8 @@ public final class ExpressionHelper {
                 RegExpression.COL_ARR_FUNC_EXPRESSION,
                 RegExpression.TOTAL_COL_FUNC_EXPRESSION,
                 RegExpression.TOTAL_FUNC_EXPRESSION,
-                RegExpression.TOTAL_NEGATIVE_FUNC_EXPRESSION);
+                RegExpression.TOTAL_NEGATIVE_FUNC_EXPRESSION,
+                RegExpression.TODAY_FUNC_EXPRESSION);
     }
 
     public static String extractStringFromExpression(String value, String regExpression) throws InvalidExpressionException {
