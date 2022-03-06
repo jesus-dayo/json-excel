@@ -26,6 +26,12 @@ public final class ExpressionHelper {
                 RegExpression.REF_FUNC_EXPRESSION);
     }
 
+    public static boolean isFormulaExpression(String value){
+        return isValidExpressions(value,
+                RegExpression.DIVIDE_FUNC_EXPRESSION,
+                RegExpression.REF_FUNC_EXPRESSION);
+    }
+
     public static String findExpressionMatch(String value){
         if(isValidExpression(value, RegExpression.EXPRESSION)){
             return RegExpression.EXPRESSION;

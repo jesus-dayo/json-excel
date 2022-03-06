@@ -2,6 +2,7 @@ package com.dayosoft.excel.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.util.CellReference;
 
 @Slf4j
 public class CellUtil {
@@ -33,6 +34,10 @@ public class CellUtil {
         } else {
             log.error("Unable to identify type " + value);
         }
+    }
+
+    public static String getCellAddress(Integer rowNum, Integer col){
+        return new CellReference(rowNum,col).formatAsString();
     }
 
 }

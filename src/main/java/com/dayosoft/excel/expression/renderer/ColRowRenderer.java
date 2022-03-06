@@ -1,6 +1,7 @@
 package com.dayosoft.excel.expression.renderer;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.expression.parser.DivideParser;
 import com.dayosoft.excel.expression.parser.ExpressionHelper;
 import com.dayosoft.excel.expression.parser.RegExpression;
 import com.dayosoft.excel.expression.parser.RowParser;
@@ -79,16 +80,18 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                 int index = tcol.getTemplateRow().getRowNum();
                 for (Object value : keyList) {
                     final Row row = sheet.getRow(index);
-                    boolean isRendered = renderCell(row, expression, value, data, key, tcol.getCol(), newCellStyle);
+                    boolean isRendered = renderCell(row, expression, value, data, key, tcol.getCol(), newCellStyle, delayedRenders);
                     tcol.setRendered(isRendered);
                     index++;
                 }
+                tcol.setLastRowNum(rowIndex);
             }
+            templateColumn.setLastRowNum(rowIndex);
             TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
         }
     }
 
-    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, XSSFCellStyle xssfCellStyle) {
+    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, XSSFCellStyle xssfCellStyle, List<DelayedRender> delayedRenders) {
         if (ExpressionHelper.isValidExpression(expression, RegExpression.ROW_FUNC_EXPRESSION)) {
             try {
                 final KeyDataMap keyDataMap = rowParser.parse(expression, jsonData, jsonKey, value);
@@ -113,7 +116,6 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                 cell = row.createCell(colPos);
             }
             cell.setCellStyle(xssfCellStyle);
-            CellUtil.setCellValue(cell, expression);
             return false;
         }
     }

@@ -13,6 +13,7 @@ public class TemplateColumn extends CommonTemplateProp {
     private Object value;
     private int col;
     private int originalCol;
+    private int lastRowNum;
     private TemplateRange arrayFormulaRange;
     private String cellFormula;
     private String cellComment;

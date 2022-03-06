@@ -21,6 +21,7 @@ public class ParserConfig {
     private final ColArrParser colArrParser;
     private final AnotherRowParser anotherRowParser;
     private final RefParser refParser;
+    private final DivideParser divideParser;
 
     @PostConstruct
     protected void registerParsers() {
@@ -28,6 +29,7 @@ public class ParserConfig {
         registeredParsers.add(colArrParser);
         registeredParsers.add(anotherRowParser);
         registeredParsers.add(refParser);
+        registeredParsers.add(divideParser);
     }
 
     @Bean

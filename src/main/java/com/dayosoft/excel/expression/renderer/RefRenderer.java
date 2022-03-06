@@ -36,8 +36,8 @@ public class RefRenderer extends CellRenderer<String> {
                 final TemplateColumn colRef = foundColumn.get();
                 if(colRef.isRendered()){
                     String address = new CellReference(rowRef.getRowNum(),colRef.getCol()).formatAsString();
-                    cell.setCellValue(address);
-                    colRef.setRendered(true);
+                    cell.setCellFormula(address);
+                    templateColumn.setRendered(true);
                 } else{
                     delayedRenders.add(DelayedRender.builder().value(value).data(data).templateColumn(templateColumn).build());
                 }
