@@ -1,6 +1,7 @@
 package com.dayosoft.excel.template.helper;
 
 import com.dayosoft.excel.model.TemplateColumn;
+import com.dayosoft.excel.model.TemplateMerge;
 import com.dayosoft.excel.model.TemplateRow;
 import com.dayosoft.excel.model.TemplateSheet;
 
@@ -25,6 +26,15 @@ public class TemplateHelper {
         templateRowList.stream().filter(templateRow -> templateRow.getRowNum() > greaterThan)
                 .forEach(templateRow -> {
                     templateRow.shiftDown(count);
+                });
+    }
+
+    public static void shiftMergedRegionsDown(TemplateSheet templateSheet, int greaterThan, int count){
+        final List<TemplateMerge> mergeRegions = templateSheet.getMergeRegions();
+        mergeRegions.stream().filter(m->m.getStart().getRow() > greaterThan)
+                .forEach(m->{
+                    m.getStart().setRow(m.getStart().getRow()+count);
+                    m.getEnd().setRow(m.getEnd().getRow()+count);
                 });
     }
 

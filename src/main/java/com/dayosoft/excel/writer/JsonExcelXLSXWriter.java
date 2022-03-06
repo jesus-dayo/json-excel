@@ -60,6 +60,9 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
         for (TemplateRow templateRow : templateRows) {
             writeRows(jsonExcelRequest, xssfSheet, delayedRendering, templateRow);
         }
+        if(!delayedRendering.isEmpty()){
+            runDelayedRendering(delayedRendering, xssfSheet);
+        }
         final List<TemplateMerge> templateMerges = sheet.getMergeRegions();
         templateMerges.stream().forEach(templateMerge -> {
             CellRangeAddress cellRangeAddress = new CellRangeAddress(
@@ -69,10 +72,6 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
                     templateMerge.getEnd().getCol());
             xssfSheet.addMergedRegion(cellRangeAddress);
         });
-        if(!delayedRendering.isEmpty()){
-            runDelayedRendering(delayedRendering, xssfSheet);
-        }
-
     }
 
     public void runDelayedRendering(List<DelayedRender> delayedRenders, XSSFSheet sheet){

@@ -93,6 +93,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
             }
             templateColumn.setLastRowNum(rowIndex-1);
             TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
+            TemplateHelper.shiftMergedRegionsDown(templateRow.getTemplateSheet(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
         }
     }
 
