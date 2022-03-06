@@ -68,7 +68,7 @@ public class JsonDataTraverser extends JsonTraverser {
         while(rowsIterator.hasNext()){
             final Any row = rowsIterator.next();
             final Any value = row.get(field);
-            results.add(value.toString());
+            results.add(value.toString().trim());
         }
         return results;
     }
@@ -92,7 +92,7 @@ public class JsonDataTraverser extends JsonTraverser {
             }
             if(match) {
                 final Any value = row.get(field);
-                results.add(value.toString());
+                results.add(value.toString().trim());
             }
         }
         return results;

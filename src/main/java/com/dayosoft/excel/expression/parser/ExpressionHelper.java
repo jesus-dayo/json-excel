@@ -27,26 +27,8 @@ public final class ExpressionHelper {
                 RegExpression.DIVIDE_FUNC_EXPRESSION,
                 RegExpression.COL_ARR_FUNC_EXPRESSION,
                 RegExpression.TOTAL_COL_FUNC_EXPRESSION,
-                RegExpression.TOTAL_FUNC_EXPRESSION);
-    }
-
-    public static boolean isFormulaExpression(String value){
-        return isValidExpressions(value,
-                RegExpression.DIVIDE_FUNC_EXPRESSION,
-                RegExpression.REF_FUNC_EXPRESSION);
-    }
-
-    public static String findExpressionMatch(String value){
-        if(isValidExpression(value, RegExpression.EXPRESSION)){
-            return RegExpression.EXPRESSION;
-        }
-        if(isValidExpression(value, RegExpression.FIRST_FUNC_EXPRESSION)){
-            return RegExpression.FIRST_FUNC_EXPRESSION;
-        }
-        if(value.contains(RegExpression.OBJECT_EXPRESSION)){
-            return RegExpression.OBJECT_EXPRESSION;
-        }
-        return null;
+                RegExpression.TOTAL_FUNC_EXPRESSION,
+                RegExpression.TOTAL_NEGATIVE_FUNC_EXPRESSION);
     }
 
     public static String extractStringFromExpression(String value, String regExpression) throws InvalidExpressionException {
