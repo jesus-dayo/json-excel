@@ -1,6 +1,7 @@
 package com.dayosoft.excel.expression.renderer;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
 import com.dayosoft.excel.expression.parser.ExpressionHelper;
 import com.dayosoft.excel.expression.parser.RegExpression;
 import com.dayosoft.excel.expression.parser.RowParser;
@@ -12,6 +13,7 @@ import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.dayosoft.excel.util.CellUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -25,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class ColRowRenderer extends CellRenderer<List<Object>> {
@@ -74,7 +77,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                 if (tcol.isRendered()) {
                     continue;
                 }
-                final String expression = tcol.getValue() == null? "": tcol.getValue().toString();
+                final String expression = tcol.getValue() == null ? "" : tcol.getValue().toString();
                 XSSFCellStyle newCellStyle = workbook.createCellStyle();
                 final Map<String, String> styles = tcol.getStyles();
                 if (!styles.isEmpty()) {
@@ -85,37 +88,39 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                 int index = tcol.getTemplateRow().getRowNum();
                 for (Object value : keyList) {
                     final Row row = sheet.getRow(index);
-                    boolean isRendered = renderCell(row, expression, value, data, key, tcol.getCol(), newCellStyle, delayedRenders);
+                    boolean isRendered;
+                    try {
+                        isRendered = renderCell(row, expression, value, data, key, tcol.getCol(), newCellStyle, delayedRenders);
+                    } catch (Exception e) {
+                        log.error(e.getMessage(),e);
+                        tcol.setRendered(true);
+                        continue;
+                    }
                     tcol.setRendered(isRendered);
                     index++;
                 }
-                tcol.setLastRowNum(rowIndex-1);
+                tcol.setLastRowNum(rowIndex - 1);
             }
-            templateColumn.setLastRowNum(rowIndex-1);
+            templateColumn.setLastRowNum(rowIndex - 1);
             TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
             TemplateHelper.shiftMergedRegionsDown(templateRow.getTemplateSheet(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
         }
     }
 
-    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, XSSFCellStyle xssfCellStyle, List<DelayedRender> delayedRenders) {
+    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, XSSFCellStyle xssfCellStyle, List<DelayedRender> delayedRenders) throws InvalidExpressionException, InvalidObjectExpressionException {
         if (ExpressionHelper.isValidExpression(expression, RegExpression.ROW_FUNC_EXPRESSION)) {
-            try {
-                final KeyDataMap keyDataMap = rowParser.parse(expression, jsonData, jsonKey, value);
-                Cell cell = row.getCell(colPos);
-                if (cell == null) {
-                    cell = row.createCell(colPos);
-                }
-                cell.setCellStyle(xssfCellStyle);
-                if (keyDataMap != null) {
-                    CellUtil.setCellValue(cell, keyDataMap.getValue(),keyDataMap.getType());
-                } else {
-                    CellUtil.setCellValue(cell, expression);
-                }
-                return true;
-            } catch (InvalidExpressionException e) {
-                e.printStackTrace();
-                return true;
+            final KeyDataMap keyDataMap = rowParser.parse(expression, jsonData, jsonKey, value);
+            Cell cell = row.getCell(colPos);
+            if (cell == null) {
+                cell = row.createCell(colPos);
             }
+            cell.setCellStyle(xssfCellStyle);
+            if (keyDataMap != null) {
+                CellUtil.setCellValue(cell, keyDataMap.getValue(), keyDataMap.getType());
+            } else {
+                CellUtil.setCellValue(cell, expression);
+            }
+            return true;
         } else {
             Cell cell = row.getCell(colPos);
             if (cell == null) {

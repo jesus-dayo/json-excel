@@ -2,6 +2,7 @@ package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.TestDataHelper;
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
 import com.dayosoft.excel.expression.evaluator.ObjectEvaluator;
 import com.dayosoft.excel.expression.renderer.ObjectRenderer;
 import com.dayosoft.excel.model.KeyDataMap;
@@ -20,7 +21,7 @@ class RowParserTest {
     }
 
     @Test
-    void givenExpression_whenParsed_shouldReturnKeyData() throws InvalidExpressionException {
+    void givenExpression_whenParsed_shouldReturnKeyData() throws InvalidExpressionException, InvalidObjectExpressionException {
         String given = "row(assetCode#Asset Inflow Details:assetName)";
         String data = TestDataHelper.SAMPLE_ASSETS;
 
@@ -32,7 +33,7 @@ class RowParserTest {
     }
 
     @Test
-    void givenExpressionAndCheckKey_whenParsed_shouldReturnKeyData() throws InvalidExpressionException {
+    void givenExpressionAndCheckKey_whenParsed_shouldReturnKeyData() throws InvalidExpressionException, InvalidObjectExpressionException {
         String given = "row(assetCode#Asset Inflow Details:assetCode)";
         String data = TestDataHelper.SAMPLE_ASSETS;
 

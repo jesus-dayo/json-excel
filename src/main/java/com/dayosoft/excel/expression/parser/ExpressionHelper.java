@@ -26,7 +26,8 @@ public final class ExpressionHelper {
                 RegExpression.REF_FUNC_EXPRESSION,
                 RegExpression.DIVIDE_FUNC_EXPRESSION,
                 RegExpression.COL_ARR_FUNC_EXPRESSION,
-                RegExpression.TOTAL_COL_FUNC_EXPRESSION);
+                RegExpression.TOTAL_COL_FUNC_EXPRESSION,
+                RegExpression.TOTAL_FUNC_EXPRESSION);
     }
 
     public static boolean isFormulaExpression(String value){

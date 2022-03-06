@@ -30,6 +30,9 @@ public class ObjectRenderer extends CellRenderer<Object> {
                 }
 
             }
+        } else {
+            log.error("given value is not a list");
+            templateColumn.setRendered(true);
         }
     }
 }

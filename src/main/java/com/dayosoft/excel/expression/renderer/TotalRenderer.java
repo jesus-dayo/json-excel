@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class FirstRenderer extends CellRenderer<Object>{
+public class TotalRenderer extends CellRenderer<Object>{
 
     @Override
     public void render(Cell cell, String type, TemplateColumn templateColumn, Object value, String data, String key, List<DelayedRender> delayedRenders) {

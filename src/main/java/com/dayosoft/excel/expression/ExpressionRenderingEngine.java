@@ -1,6 +1,7 @@
 package com.dayosoft.excel.expression;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
 import com.dayosoft.excel.expression.evaluator.Evaluator;
 import com.dayosoft.excel.expression.parser.*;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
@@ -42,6 +43,7 @@ public class ExpressionRenderingEngine {
         String expression = templateColumn.getValue().toString();
         if (!expressionParser.isRegExMatch(expression)) {
             cell.setCellValue(expression);
+            templateColumn.setRendered(true);
             return delayedRenders;
         }
         try {
@@ -83,13 +85,15 @@ public class ExpressionRenderingEngine {
                             .render(cell,objectExpressionResults.getType(), templateColumn, evaluatedResults.getResults(), data, null, delayedRenders);
                 }
             }
-        } catch (InvalidExpressionException e) {
+        } catch (Exception e) {
+            templateColumn.setRendered(true);
+            cell.setCellValue(expression);
             log.error(e.getMessage(), e);
         }
         return delayedRenders;
     }
 
-    private EvaluatedResults evaluate(String expression, Stack<Evaluator> evaluators, List<Object> results) {
+    private EvaluatedResults evaluate(String expression, Stack<Evaluator> evaluators, List<Object> results) throws InvalidObjectExpressionException {
         Object evaluatedValue;
         while (!evaluators.isEmpty()) {
             final Evaluator evaluator = evaluators.pop();

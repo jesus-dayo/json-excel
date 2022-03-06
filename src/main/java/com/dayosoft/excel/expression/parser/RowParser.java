@@ -1,6 +1,7 @@
 package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
 import com.dayosoft.excel.expression.evaluator.ObjectEvaluator;
 import com.dayosoft.excel.model.JsonObjectPath;
 import com.dayosoft.excel.model.KeyDataMap;
@@ -23,7 +24,7 @@ public class RowParser implements KeyExpressionParser{
     private final ExpressionParser expressionParser;
 
     @Override
-    public KeyDataMap parse(String expression, String data, String checkKey, Object value) throws InvalidExpressionException {
+    public KeyDataMap parse(String expression, String data, String checkKey, Object value) throws InvalidExpressionException, InvalidObjectExpressionException {
         if(ExpressionHelper.isValidExpression(expression, RegExpression.EXPRESSION)){
             expression = expressionParser.parse(expression);
         }

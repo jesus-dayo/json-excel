@@ -10,6 +10,7 @@ public final class RegExpression {
     public static final String REF_FUNC_EXPRESSION = "ref"+FUNC_EXPRESSION;
     public static final String DIVIDE_FUNC_EXPRESSION = "divide"+FUNC_EXPRESSION;
     public static final String TOTAL_COL_FUNC_EXPRESSION = "totalCol"+FUNC_EXPRESSION;
+    public static final String TOTAL_FUNC_EXPRESSION = "total"+FUNC_EXPRESSION;
     public static final String OBJECT_EXPRESSION = ":";
 
 }

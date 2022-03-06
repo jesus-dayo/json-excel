@@ -44,6 +44,7 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
                     rowIndex++;
                 }
             }
+            templateColumn.setRendered(true);
         }
     }
 }

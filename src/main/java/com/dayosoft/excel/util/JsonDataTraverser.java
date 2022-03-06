@@ -1,5 +1,6 @@
 package com.dayosoft.excel.util;
 
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
 import com.dayosoft.excel.type.ExcelJsonType;
 import com.jsoniter.any.Any;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,7 @@ public class JsonDataTraverser extends JsonTraverser {
         return getJsonIfExist(obj.get("field")).toString();
     }
 
-    public final ExcelJsonType typeByField(String groupName, String field){
+    public final ExcelJsonType typeByField(String groupName, String field) throws InvalidObjectExpressionException {
         final Any columns = getJsonIfExist(json.get("body", groupName, "columns"));
         final Iterator<Any> columnsIterator = columns.iterator();
         while(columnsIterator.hasNext()){
@@ -57,7 +58,7 @@ public class JsonDataTraverser extends JsonTraverser {
             }
         }
 
-        return null;
+        throw new InvalidObjectExpressionException("group name "+groupName+" field "+field+" is invalid.");
     }
 
     public final List<Object> rows(String groupName, String field){

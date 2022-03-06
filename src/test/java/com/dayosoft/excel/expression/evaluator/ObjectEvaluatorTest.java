@@ -1,6 +1,7 @@
 package com.dayosoft.excel.expression.evaluator;
 
 import com.dayosoft.excel.TestDataHelper;
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
 import com.dayosoft.excel.expression.renderer.ObjectRenderer;
 import com.dayosoft.excel.model.JsonObjectPath;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +23,7 @@ class ObjectEvaluatorTest {
     }
 
     @Test
-    void givenJsonPathAndData_whenEvaluate_shouldReturnListObjects(){
+    void givenJsonPathAndData_whenEvaluate_shouldReturnListObjects() throws InvalidObjectExpressionException {
         String[] jsonPath = new String[]{"Client Details", "clientCode1"};
         String data = TestDataHelper.SAMPLE_CLIENT_DETAILS;
 
@@ -33,7 +34,7 @@ class ObjectEvaluatorTest {
     }
 
     @Test
-    void givenJsonPathAndKeyValueAndData_whenEvaluate_shouldReturnListObjects(){
+    void givenJsonPathAndKeyValueAndData_whenEvaluate_shouldReturnListObjects() throws InvalidObjectExpressionException {
         String[] jsonPath = new String[]{"Asset Inflow Details", "assetName"};
         String data = TestDataHelper.SAMPLE_ASSETS;
         Map<String, Object> keyValue = new HashMap<>();
