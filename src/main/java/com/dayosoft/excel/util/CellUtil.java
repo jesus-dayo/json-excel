@@ -24,6 +24,22 @@ public class CellUtil {
         }
     }
 
+    public static void setCellValue(Cell cell, Object value, String type){
+        switch (type){
+            case "string":{
+                cell.setCellValue(value.toString());
+                break;
+            }
+            case "decimal":{
+                cell.setCellValue(Double.parseDouble(value.toString()));
+                break;
+            }
+            default:{
+                log.error("Unable to identify type " + type);
+            }
+        }
+    }
+
     public static void setCellValue(Cell cell, Object value){
         if (value instanceof String) {
             cell.setCellValue(value.toString());

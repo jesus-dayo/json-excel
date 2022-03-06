@@ -84,9 +84,9 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                     tcol.setRendered(isRendered);
                     index++;
                 }
-                tcol.setLastRowNum(rowIndex);
+                tcol.setLastRowNum(rowIndex-1);
             }
-            templateColumn.setLastRowNum(rowIndex);
+            templateColumn.setLastRowNum(rowIndex-1);
             TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
         }
     }
