@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class TemplateAddResponse {
+public class TemplateResponse {
 
     private boolean success;
     private String name;

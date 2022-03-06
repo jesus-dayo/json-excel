@@ -2,7 +2,7 @@ package com.dayosoft.excel.rest;
 
 import com.dayosoft.excel.model.Template;
 import com.dayosoft.excel.repository.TemplateRepository;
-import com.dayosoft.excel.response.TemplateAddResponse;
+import com.dayosoft.excel.response.TemplateResponse;
 import com.dayosoft.excel.template.reader.ExcelTemplateReader;
 import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.util.FileUtil;
@@ -34,9 +34,23 @@ public class TemplateRestController {
     }
 
     @PostMapping
-    public TemplateAddResponse add(@RequestBody String json){
+    public TemplateResponse add(@RequestBody String json){
         Template template = JsonIterator.deserialize(json, Template.class);
         templateRepository.add(template);
-        return TemplateAddResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
+        return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
+    }
+
+    @DeleteMapping
+    public TemplateResponse delete(@PathVariable String name){
+        final Template template = templateRepository.find(name);
+        templateRepository.delete(template);
+        return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
+    }
+
+    @PutMapping
+    public TemplateResponse update(@PathVariable String name, @RequestBody String json){
+        Template template = JsonIterator.deserialize(json, Template.class);
+        templateRepository.update(name, template);
+        return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
     }
 }
