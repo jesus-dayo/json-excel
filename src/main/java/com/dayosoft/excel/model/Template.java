@@ -15,6 +15,7 @@ import java.util.List;
 public class Template {
 
     @Id
+
     private String name;
     private String description;
     private String format;

@@ -30,9 +30,7 @@ public class JsonExcelXLSXWriter implements JsonExcelWriter {
 
     public File write(JsonExcelRequest jsonExcelRequest) throws IOException {
         XSSFWorkbook wb = new XSSFWorkbook();
-        Template template = JsonIterator.deserialize(jsonExcelRequest.getTemplate(), Template.class);
-//        Any data = JsonIterator.deserialize(jsonExcelRequest.getData());
-//        JsonDataTraverser jsonTraverser = new JsonDataTraverser(data);
+        Template template = jsonExcelRequest.getTemplate();
         // todo add delayedrendering list that will be executed after the workbook is written
         final List<TemplateSheet> sheets = template.getSheets();
         TemplateHelper.fillDependencies(sheets);
