@@ -7,6 +7,8 @@ import com.dayosoft.excel.template.reader.ExcelTemplateReader;
 import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.util.FileUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,6 +41,15 @@ public class TemplateRestController {
     public TemplateResponse add(@RequestBody Template template) {
         templateRepository.add(template);
         return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
+    }
+
+    @GetMapping("{name}")
+    public ResponseEntity<Template> find(@PathVariable String name) {
+        final Template template = templateRepository.find(name);
+        if(template == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(template);
     }
 
     @DeleteMapping("{name}")
