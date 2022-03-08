@@ -6,7 +6,6 @@ import com.dayosoft.excel.response.TemplateResponse;
 import com.dayosoft.excel.template.reader.ExcelTemplateReader;
 import com.dayosoft.excel.type.ExcelReportType;
 import com.dayosoft.excel.util.FileUtil;
-import com.jsoniter.JsonIterator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +27,7 @@ public class TemplateRestController {
     }
 
     @PostMapping("/upload")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
+    public Template handleFileUpload(@RequestParam("file") MultipartFile file,
                                    @RequestParam("name") String name,
                                    @RequestParam("description") String description) throws IOException {
         return excelTemplateReader.excelToJsonTemplate(name, description,
@@ -37,8 +36,7 @@ public class TemplateRestController {
     }
 
     @PostMapping
-    public TemplateResponse add(@RequestBody String json) {
-        Template template = JsonIterator.deserialize(json, Template.class);
+    public TemplateResponse add(@RequestBody Template template) {
         templateRepository.add(template);
         return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
     }

@@ -1,11 +1,9 @@
 package com.dayosoft.excel.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,10 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Template {
 
     @Id
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String description;
     private String format;
     private List<TemplateSheet> sheets;

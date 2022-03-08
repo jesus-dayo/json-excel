@@ -1,8 +1,9 @@
 package com.dayosoft.excel.template.reader;
 
+import com.dayosoft.excel.model.Template;
 import com.dayosoft.excel.test.helper.TestFileUtils;
 import com.dayosoft.excel.type.ExcelReportType;
-import org.json.JSONObject;
+import com.jsoniter.JsonIterator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,10 +27,11 @@ class ExcelTemplateReaderTest {
         String file = "src/test/resources/complex/Complex_template.xlsx";
         InputStream inputStream = new FileInputStream(new File(file));
 
-        String actual = excelTemplateReader.excelToJsonTemplate("test","test",inputStream, ExcelReportType.EXCEL_2007);
+        Template actual = excelTemplateReader.excelToJsonTemplate("test","test",inputStream, ExcelReportType.EXCEL_2007);
 
         final String expected = TestFileUtils.readJsonFileAsString("src/test/resources/complex/complex-template.json");
-        assertEquals(expected, new JSONObject(actual).toString(4));
+        final Template expectedTemplate = JsonIterator.deserialize(expected, Template.class);
+        assertEquals(expectedTemplate.getFormat(), actual.getFormat());
     }
 
 }

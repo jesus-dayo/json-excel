@@ -2,7 +2,6 @@ package com.dayosoft.excel.template.reader;
 
 import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.type.ExcelReportType;
-import com.jsoniter.output.JsonStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -18,7 +17,7 @@ import java.util.*;
 @Component
 public class ExcelTemplateReader {
 
-    public String excelToJsonTemplate(String name, String description, InputStream file, ExcelReportType reportType) throws IOException {
+    public Template excelToJsonTemplate(String name, String description, InputStream file, ExcelReportType reportType) throws IOException {
         Workbook workbook;
         if (ExcelReportType.EXCEL_2003 == reportType) {
             workbook = new HSSFWorkbook(file);
@@ -43,31 +42,16 @@ public class ExcelTemplateReader {
 
             List<TemplateMerge> merges = new ArrayList<>();
             sheet.getMergedRegions().stream().forEach(cellAddresses -> {
-                merges.add(new TemplateMerge(TemplatePosition.builder()
-                        .col(cellAddresses.getFirstColumn())
-                        .row(cellAddresses.getFirstRow())
-                        .build(), TemplatePosition.builder()
-                        .col(cellAddresses.getLastColumn())
-                        .row(cellAddresses.getLastRow()).build()));
+                merges.add(new TemplateMerge(TemplatePosition.builder().col(cellAddresses.getFirstColumn()).row(cellAddresses.getFirstRow()).build(), TemplatePosition.builder().col(cellAddresses.getLastColumn()).row(cellAddresses.getLastRow()).build()));
             });
             templateSheet.setMergeRegions(merges);
             sheets.add(templateSheet);
             sheetIndex++;
         }
         if (reportType == ExcelReportType.EXCEL_2003) {
-            return JsonStream.serialize(
-                    Template.builder()
-                            .name(name)
-                            .description(description)
-                            .format(ExcelReportType.EXCEL_2003.getExtension())
-                            .sheets(sheets).build());
+            return Template.builder().name(name).description(description).format(ExcelReportType.EXCEL_2003.getExtension()).sheets(sheets).build();
         } else {
-            return JsonStream.serialize(
-                    Template.builder()
-                            .name(name)
-                            .description(description)
-                            .format(ExcelReportType.EXCEL_2007.getExtension())
-                            .sheets(sheets).build());
+            return Template.builder().name(name).description(description).format(ExcelReportType.EXCEL_2007.getExtension()).sheets(sheets).build();
         }
     }
 
@@ -164,13 +148,7 @@ public class ExcelTemplateReader {
                     if (cell.isPartOfArrayFormulaGroup()) {
                         final CellRangeAddress arrayFormulaRange = cell.getArrayFormulaRange();
                         if (arrayFormulaRange != null) {
-                            templateColumn.setArrayFormulaRange(TemplateRange.builder()
-                                    .start(TemplatePosition
-                                            .builder().col(arrayFormulaRange.getFirstColumn())
-                                            .row(arrayFormulaRange.getFirstRow()).build())
-                                    .end(TemplatePosition.builder().col(arrayFormulaRange.getLastColumn())
-                                            .row(arrayFormulaRange.getLastRow()).build())
-                                    .build());
+                            templateColumn.setArrayFormulaRange(TemplateRange.builder().start(TemplatePosition.builder().col(arrayFormulaRange.getFirstColumn()).row(arrayFormulaRange.getFirstRow()).build()).end(TemplatePosition.builder().col(arrayFormulaRange.getLastColumn()).row(arrayFormulaRange.getLastRow()).build()).build());
                         }
                     }
 

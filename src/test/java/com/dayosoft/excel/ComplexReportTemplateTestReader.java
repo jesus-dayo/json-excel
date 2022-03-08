@@ -1,5 +1,6 @@
 package com.dayosoft.excel;
 
+import com.dayosoft.excel.model.Template;
 import com.dayosoft.excel.template.reader.ExcelTemplateReader;
 import com.dayosoft.excel.type.ExcelReportType;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -15,9 +16,9 @@ public class ComplexReportTemplateTestReader {
         File sampleExcel = new File("src/test/resources/complex/Complex_template.xlsx");
         final FileInputStream excelFileStream = new FileInputStream(sampleExcel);
 
-        final String json = excelTemplateReader.excelToJsonTemplate("test","test",excelFileStream, ExcelReportType.EXCEL_2007);
+        final Template template = excelTemplateReader.excelToJsonTemplate("test","test",excelFileStream, ExcelReportType.EXCEL_2007);
 
-        System.out.println(json);
+        System.out.println(template);
     }
 
 }
