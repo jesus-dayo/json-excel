@@ -28,8 +28,8 @@ public class TemplateRestController {
 
     @PostMapping("/upload")
     public Template handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   @RequestParam("name") String name,
-                                   @RequestParam("description") String description) throws IOException {
+                                   @RequestParam(value = "name", required = false) String name,
+                                   @RequestParam(value = "description", required = false) String description) throws IOException {
         return excelTemplateReader.excelToJsonTemplate(name, description,
                 file.getInputStream(), FileUtil.isExcel2007(file.getOriginalFilename()) ?
                         ExcelReportType.EXCEL_2007 : ExcelReportType.EXCEL_2003);

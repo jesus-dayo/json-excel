@@ -49,10 +49,14 @@ public class ExcelTemplateReader {
             sheetIndex++;
         }
         if (reportType == ExcelReportType.EXCEL_2003) {
-            return Template.builder().name(name).description(description).format(ExcelReportType.EXCEL_2003.getExtension()).sheets(sheets).build();
+            return Template.builder().name(getValueOrBlank(name)).description(getValueOrBlank(description)).format(ExcelReportType.EXCEL_2003.getExtension()).sheets(sheets).build();
         } else {
-            return Template.builder().name(name).description(description).format(ExcelReportType.EXCEL_2007.getExtension()).sheets(sheets).build();
+            return Template.builder().name(getValueOrBlank(name)).description(getValueOrBlank(description)).format(ExcelReportType.EXCEL_2007.getExtension()).sheets(sheets).build();
         }
+    }
+
+    private String getValueOrBlank(String name) {
+        return StringUtils.isNotEmpty(name) ? name : StringUtils.EMPTY;
     }
 
     private void fillSheetMapping(Workbook workbook, Sheet sheet, TemplateSheet templateSheet, ExcelReportType reportType) {
