@@ -5,6 +5,7 @@ import com.dayosoft.excel.model.TemplateColumn;
 import com.dayosoft.excel.model.TemplateRow;
 import com.dayosoft.excel.model.TemplateSheet;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.util.CellReference;
 
@@ -13,32 +14,23 @@ import java.util.Optional;
 @Slf4j
 public class CustomCellUtil {
 
-    public static Object getCellValueAsObject(Cell cell){
-        switch (cell.getCellType()){
-            case STRING:{
-                return cell.getStringCellValue();
-            }
-            case NUMERIC:{
-                return cell.getNumericCellValue();
-            }
-            case BOOLEAN:{
-                return cell.getBooleanCellValue();
-            }
-            default:{
-                return "";
-            }
-        }
-    }
-
     public static void setCellValue(Cell cell, Object value, String type){
         switch (type){
             case "string":{
-                cell.setCellValue(value.toString());
+                if(value == null || value.equals("null")){
+                    cell.setCellValue(StringUtils.EMPTY);
+                } else {
+                    cell.setCellValue(value.toString());
+                }
                 break;
             }
             case "decimal":
             case "double":{
-                cell.setCellValue(Double.parseDouble(value.toString()));
+                if(value == null || value.equals("null")){
+                    cell.setCellValue(0.0);
+                } else {
+                    cell.setCellValue(Double.parseDouble(value.toString()));
+                }
                 break;
             }
             default:{
@@ -48,6 +40,10 @@ public class CustomCellUtil {
     }
 
     public static void setCellValue(Cell cell, Object value){
+        if(value == null || value.equals("null")){
+            cell.setCellValue(StringUtils.EMPTY);
+            return;
+        }
         if (value instanceof String) {
             cell.setCellValue(value.toString());
         } else if (value instanceof Integer) {

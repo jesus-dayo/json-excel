@@ -36,7 +36,8 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
                 if (newCell == null) {
                     newCell = newRow.createCell(column);
                 }
-                CustomCellUtil.setCellValue(newCell, value.get(i), type);
+                final Object dataValue = value.get(i);
+                CustomCellUtil.setCellValue(newCell, dataValue, type);
                 if (newCellStyle != null) {
                     newCell.setCellStyle(newCellStyle);
                 }
