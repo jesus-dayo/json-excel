@@ -56,11 +56,17 @@ public class ExcelTemplateReader {
         }
         if (reportType == ExcelReportType.EXCEL_2003) {
             return JsonStream.serialize(
-                    Template.builder().format(ExcelReportType.EXCEL_2003.getExtension())
+                    Template.builder()
+                            .name(name)
+                            .description(description)
+                            .format(ExcelReportType.EXCEL_2003.getExtension())
                             .sheets(sheets).build());
         } else {
             return JsonStream.serialize(
-                    Template.builder().format(ExcelReportType.EXCEL_2007.getExtension())
+                    Template.builder()
+                            .name(name)
+                            .description(description)
+                            .format(ExcelReportType.EXCEL_2007.getExtension())
                             .sheets(sheets).build());
         }
     }

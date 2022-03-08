@@ -49,11 +49,4 @@ public class TemplateRestController {
         templateRepository.delete(template);
         return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
     }
-
-    @PutMapping
-    public TemplateResponse update(@PathVariable String name, @RequestBody String json) {
-        Template template = JsonIterator.deserialize(json, Template.class);
-        templateRepository.update(name, template);
-        return TemplateResponse.builder().format(template.getFormat()).name(template.getName()).success(true).build();
-    }
 }

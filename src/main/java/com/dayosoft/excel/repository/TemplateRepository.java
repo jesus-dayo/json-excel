@@ -26,13 +26,12 @@ public class TemplateRepository {
     }
 
     public void add(Template template){
-        jsonDBTemplate.insert(template);
-    }
-
-    public void update(String name, Template template){
-        final Template foundTemplate = find(name);
-        delete(foundTemplate);
-        add(template);
+        final Template foundTemplate = find(template.getName());
+        if(foundTemplate != null){
+            jsonDBTemplate.upsert(template);
+        } else {
+            jsonDBTemplate.insert(template);
+        }
     }
 
     public void delete(Template template){
