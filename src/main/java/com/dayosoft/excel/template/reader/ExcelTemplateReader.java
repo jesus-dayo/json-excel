@@ -4,11 +4,10 @@ import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.type.ExcelReportType;
 import com.jsoniter.output.JsonStream;
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellAddress;
 import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
@@ -19,48 +18,54 @@ import java.util.*;
 @Component
 public class ExcelTemplateReader {
 
-    public String excelToJsonTemplate(InputStream file, ExcelReportType reportType) throws IOException, InvalidFormatException {
-        if (ExcelReportType.EXCEL_2007 == reportType) {
-            XSSFWorkbook xssfWorkbook = new XSSFWorkbook(file);
-            final Iterator<Sheet> sheetIterator = xssfWorkbook.iterator();
-            List<TemplateSheet> sheets = new ArrayList<>();
-            int sheetIndex = 0;
-            while (sheetIterator.hasNext()) {
-                final Sheet sheet = sheetIterator.next();
-                final TemplateSheet templateSheet = new TemplateSheet();
-                fillSheetMapping(xssfWorkbook, sheet, templateSheet);
-                templateSheet.setIndex(sheetIndex);
-                templateSheet.setName(sheet.getSheetName());
-                templateSheet.setPrintGridlines(sheet.isPrintGridlines());
-                templateSheet.setFitToPage(sheet.getFitToPage());
-                templateSheet.setDisplayGuts(sheet.getDisplayGuts());
-                templateSheet.setDisplayGridlines(sheet.isDisplayGridlines());
-                templateSheet.setDefaultColumnWidth(sheet.getDefaultColumnWidth());
-
-                List<TemplateMerge> merges = new ArrayList<>();
-                sheet.getMergedRegions().stream().forEach(cellAddresses -> {
-                    merges.add(new TemplateMerge(TemplatePosition.builder()
-                            .col(cellAddresses.getFirstColumn())
-                            .row(cellAddresses.getFirstRow())
-                            .build(), TemplatePosition.builder()
-                            .col(cellAddresses.getLastColumn())
-                            .row(cellAddresses.getLastRow()).build()));
-                });
-                templateSheet.setMergeRegions(merges);
-                sheets.add(templateSheet);
-                sheetIndex++;
-            }
-            return JsonStream.serialize(new Template(
-                    "Add Unique Template Name",
-                    "Add description",
-                    ExcelReportType.EXCEL_2007.getExtension(),
-                    sheets));
+    public String excelToJsonTemplate(String name, String description, InputStream file, ExcelReportType reportType) throws IOException {
+        Workbook workbook;
+        if (ExcelReportType.EXCEL_2003 == reportType) {
+            workbook = new HSSFWorkbook(file);
         } else {
-            return "";
+            workbook = new XSSFWorkbook(file);
+        }
+
+        final Iterator<Sheet> sheetIterator = workbook.iterator();
+        List<TemplateSheet> sheets = new ArrayList<>();
+        int sheetIndex = 0;
+        while (sheetIterator.hasNext()) {
+            final Sheet sheet = sheetIterator.next();
+            final TemplateSheet templateSheet = new TemplateSheet();
+            fillSheetMapping(workbook, sheet, templateSheet, reportType);
+            templateSheet.setIndex(sheetIndex);
+            templateSheet.setName(sheet.getSheetName());
+            templateSheet.setPrintGridlines(sheet.isPrintGridlines());
+            templateSheet.setFitToPage(sheet.getFitToPage());
+            templateSheet.setDisplayGuts(sheet.getDisplayGuts());
+            templateSheet.setDisplayGridlines(sheet.isDisplayGridlines());
+            templateSheet.setDefaultColumnWidth(sheet.getDefaultColumnWidth());
+
+            List<TemplateMerge> merges = new ArrayList<>();
+            sheet.getMergedRegions().stream().forEach(cellAddresses -> {
+                merges.add(new TemplateMerge(TemplatePosition.builder()
+                        .col(cellAddresses.getFirstColumn())
+                        .row(cellAddresses.getFirstRow())
+                        .build(), TemplatePosition.builder()
+                        .col(cellAddresses.getLastColumn())
+                        .row(cellAddresses.getLastRow()).build()));
+            });
+            templateSheet.setMergeRegions(merges);
+            sheets.add(templateSheet);
+            sheetIndex++;
+        }
+        if (reportType == ExcelReportType.EXCEL_2003) {
+            return JsonStream.serialize(
+                    Template.builder().format(ExcelReportType.EXCEL_2003.getExtension())
+                            .sheets(sheets).build());
+        } else {
+            return JsonStream.serialize(
+                    Template.builder().format(ExcelReportType.EXCEL_2007.getExtension())
+                            .sheets(sheets).build());
         }
     }
 
-    private void fillSheetMapping(XSSFWorkbook xssfWorkbook, Sheet sheet, TemplateSheet templateSheet) {
+    private void fillSheetMapping(Workbook workbook, Sheet sheet, TemplateSheet templateSheet, ExcelReportType reportType) {
         List<TemplateRow> rows = new ArrayList<>();
 
         final Iterator<Row> rowIterator = sheet.iterator();
@@ -124,8 +129,7 @@ public class ExcelTemplateReader {
                     final boolean shrinkToFit = cellStyle.getShrinkToFit();
                     final boolean wrapText = cellStyle.getWrapText();
 
-                    final XSSFFont font = xssfWorkbook.getFontAt(cellStyle.getFontIndex());
-
+                    final Font font = reportType == ExcelReportType.EXCEL_2007 ? ((XSSFWorkbook) workbook).getFontAt(cellStyle.getFontIndex()) : ((HSSFWorkbook) workbook).getFontAt(cellStyle.getFontIndex());
 
                     addToStyles(cellStyles, "fillForegroundColorColor", fillForegroundColor);
                     addToStyles(cellStyles, "fillPatternType", fillPatternType);

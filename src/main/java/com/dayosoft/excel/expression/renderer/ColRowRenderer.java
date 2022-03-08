@@ -14,10 +14,8 @@ import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -38,7 +36,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
     public void render(Cell cell, String type, TemplateColumn templateColumn, List<Object> keyList, String data, String key, List<DelayedRender> delayedRenders) {
         if (keyList != null && !keyList.isEmpty()) {
             final Sheet sheet = cell.getSheet();
-            final XSSFWorkbook workbook = (XSSFWorkbook) sheet.getWorkbook();
+            final Workbook workbook = sheet.getWorkbook();
             CustomCellUtil.setCellValue(cell, keyList.get(0));
             int rowIndex = cell.getAddress().getRow() + 1;
             if (keyList.size() > 1) {
@@ -78,10 +76,10 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                     continue;
                 }
                 final String expression = tcol.getValue() == null ? "" : tcol.getValue().toString();
-                XSSFCellStyle newCellStyle = workbook.createCellStyle();
+                CellStyle newCellStyle = workbook.createCellStyle();
                 final Map<String, String> styles = tcol.getStyles();
                 if (!styles.isEmpty()) {
-                    final XSSFFont font = workbook.createFont();
+                    final Font font = workbook.createFont();
                     newCellStyle.setFont(font);
                     StylesMapper.applyStyles(newCellStyle, styles);
                 }
@@ -107,14 +105,14 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
         }
     }
 
-    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, XSSFCellStyle xssfCellStyle, List<DelayedRender> delayedRenders) throws InvalidExpressionException, InvalidObjectExpressionException {
+    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, CellStyle cellStyle, List<DelayedRender> delayedRenders) throws InvalidExpressionException, InvalidObjectExpressionException {
         if (ExpressionHelper.isValidExpression(expression, RegExpression.ROW_FUNC_EXPRESSION)) {
             final KeyDataMap keyDataMap = rowParser.parse(expression, jsonData, jsonKey, value);
             Cell cell = row.getCell(colPos);
             if (cell == null) {
                 cell = row.createCell(colPos);
             }
-            cell.setCellStyle(xssfCellStyle);
+            cell.setCellStyle(cellStyle);
             if (keyDataMap != null) {
                 CustomCellUtil.setCellValue(cell, keyDataMap.getValue(), keyDataMap.getType());
             } else {
@@ -126,7 +124,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
             if (cell == null) {
                 cell = row.createCell(colPos);
             }
-            cell.setCellStyle(xssfCellStyle);
+            cell.setCellStyle(cellStyle);
             return false;
         }
     }

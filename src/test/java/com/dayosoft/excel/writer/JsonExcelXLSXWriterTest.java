@@ -3,7 +3,6 @@ package com.dayosoft.excel.writer;
 import com.dayosoft.excel.TestDataHelper;
 import com.dayosoft.excel.expression.ExpressionRenderingEngine;
 import com.dayosoft.excel.expression.evaluator.ObjectEvaluator;
-import com.dayosoft.excel.expression.parser.DivideParser;
 import com.dayosoft.excel.expression.parser.ExpressionParser;
 import com.dayosoft.excel.expression.parser.ObjectExpressionParser;
 import com.dayosoft.excel.expression.parser.RowParser;
@@ -24,11 +23,11 @@ public class JsonExcelXLSXWriterTest {
     @TempDir
     File tempDir;
 
-    JsonExcelXLSXWriter jsonExcelXLSXWriter;
+    JsonExcelWriter jsonExcelXLSXWriter;
 
     @BeforeEach
     void init(){
-        jsonExcelXLSXWriter = new JsonExcelXLSXWriter(
+        jsonExcelXLSXWriter = new JsonExcelWriter(
                 new ExpressionRenderingEngine(TestDataHelper.registeredParsers(),
                         new ExpressionParser(),
                         new ColRowRenderer(new RowParser(new ObjectExpressionParser(new ObjectEvaluator(new ObjectRenderer())), new ExpressionParser())),
@@ -43,7 +42,7 @@ public class JsonExcelXLSXWriterTest {
                 .reportType(ExcelReportType.EXCEL_2007)
                 .directory(tempDir.getAbsolutePath()).fileName("sample").build();
 
-        File actual = jsonExcelXLSXWriter.write(request);
+        File actual = jsonExcelXLSXWriter.write(request, ExcelReportType.EXCEL_2007);
 
         File expected = new File(this.getClass().getResource("/complex/Complex.xlsx").getFile());
         ExcelXLSXFileAssertion.isEqual(expected, actual);

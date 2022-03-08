@@ -15,7 +15,7 @@ public class ComplexReportTemplateTestReader {
         File sampleExcel = new File("src/test/resources/complex/Complex_template.xlsx");
         final FileInputStream excelFileStream = new FileInputStream(sampleExcel);
 
-        final String json = excelTemplateReader.excelToJsonTemplate(excelFileStream, ExcelReportType.EXCEL_2007);
+        final String json = excelTemplateReader.excelToJsonTemplate("test","test",excelFileStream, ExcelReportType.EXCEL_2007);
 
         System.out.println(json);
     }

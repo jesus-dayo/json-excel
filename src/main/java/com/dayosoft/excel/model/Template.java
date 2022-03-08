@@ -3,6 +3,7 @@ package com.dayosoft.excel.model;
 import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,10 +13,10 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Template {
 
     @Id
-
     private String name;
     private String description;
     private String format;

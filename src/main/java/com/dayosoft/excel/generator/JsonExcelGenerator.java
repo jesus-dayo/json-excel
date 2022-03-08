@@ -1,8 +1,7 @@
 package com.dayosoft.excel.generator;
 
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.type.ExcelReportType;
-import com.dayosoft.excel.writer.JsonExcelWriterFactory;
+import com.dayosoft.excel.writer.JsonExcelWriter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,15 +12,10 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JsonExcelGenerator {
 
-    private final JsonExcelWriterFactory jsonExcelWriterFactory;
+    private final JsonExcelWriter jsonExcelWriter;
 
     public File generateReport(JsonExcelRequest request) throws IOException {
-        if (ExcelReportType.EXCEL_2003 == request.getReportType()) {
-            return jsonExcelWriterFactory.getByReportType(ExcelReportType.EXCEL_2003)
-                    .write(request);
-        }
-        return jsonExcelWriterFactory.getByReportType(ExcelReportType.EXCEL_2007)
-                .write(request);
+        return jsonExcelWriter.write(request, request.getReportType());
     }
 
 }

@@ -14,6 +14,5 @@ public final class RegExpression {
     public static final String TOTAL_NEGATIVE_FUNC_EXPRESSION = "totalNegative"+FUNC_EXPRESSION;
     public static final String SUM_FUNC_EXPRESSION = "sum"+FUNC_EXPRESSION;
     public static final String TODAY_FUNC_EXPRESSION = "today"+FUNC_EXPRESSION;
-    public static final String OBJECT_EXPRESSION = ":";
 
 }

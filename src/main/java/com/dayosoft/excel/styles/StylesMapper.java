@@ -1,12 +1,9 @@
 package com.dayosoft.excel.styles;
 
 import lombok.AllArgsConstructor;
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -42,7 +39,9 @@ public enum StylesMapper {
     }),
     bold((cellStyle, styles)->{
         if(styles.containsKey(StyleProps.bold.name())) {
-            cellStyle.getFont().setBold(Boolean.valueOf(styles.get(StyleProps.bold.name())));
+            if(cellStyle instanceof XSSFCellStyle) {
+                ((XSSFCellStyle) cellStyle).getFont().setBold(Boolean.valueOf(styles.get(StyleProps.bold.name())));
+            }
         }
     }),
     fillBackgroundColorColor((cellStyle, styles)->{
@@ -57,7 +56,9 @@ public enum StylesMapper {
     }),
     italic((cellStyle, styles)->{
         if(styles.containsKey(StyleProps.italic.name())) {
-            cellStyle.getFont().setItalic(Boolean.valueOf(styles.get(StyleProps.italic.name())));
+            if(cellStyle instanceof XSSFCellStyle) {
+                ((XSSFCellStyle) cellStyle).getFont().setItalic(Boolean.valueOf(styles.get(StyleProps.italic.name())));
+            }
         }
     }),
     borderLeft((cellStyle, styles)->{
@@ -77,7 +78,9 @@ public enum StylesMapper {
     }),
     fontFamily((cellStyle, styles)->{
         if(styles.containsKey(StyleProps.fontFamily.name())) {
-            cellStyle.getFont().setFontName(styles.get(StyleProps.fontFamily.name()));
+            if(cellStyle instanceof XSSFCellStyle) {
+                ((XSSFCellStyle) cellStyle).getFont().setFontName(styles.get(StyleProps.fontFamily.name()));
+            }
         }
     }),
     leftBorderColor((cellStyle, styles)->{
@@ -92,7 +95,9 @@ public enum StylesMapper {
     }),
     fontHeight((cellStyle, styles)->{
         if(styles.containsKey(StyleProps.fontHeight.name())) {
-            cellStyle.getFont().setFontHeight(Short.valueOf(styles.get(StyleProps.fontHeight.name())));
+            if(cellStyle instanceof XSSFCellStyle) {
+                ((XSSFCellStyle)cellStyle).getFont().setFontHeight(Short.valueOf(styles.get(StyleProps.fontHeight.name())));
+            }
         }
     }),
     alignment((cellStyle, styles)->{
@@ -117,13 +122,15 @@ public enum StylesMapper {
     }),
     fontColor((cellStyle, styles)->{
         if(styles.containsKey(StyleProps.fontColor.name())) {
-            cellStyle.getFont().setColor(Short.valueOf(styles.get(StyleProps.fontColor.name())));
+            if(cellStyle instanceof XSSFCellStyle) {
+                ((XSSFCellStyle)cellStyle).getFont().setColor(Short.valueOf(styles.get(StyleProps.fontColor.name())));
+            }
         }
     });
 
-    private BiConsumer<XSSFCellStyle, Map<String,String>> xssfStyleSetter;
+    private BiConsumer<CellStyle, Map<String,String>> xssfStyleSetter;
 
-    public static void applyStyles(XSSFCellStyle cellStyle, Map<String, String> styles){
+    public static void applyStyles(CellStyle cellStyle, Map<String, String> styles){
         Arrays.stream(StylesMapper.values()).forEach(stylesMapper -> {
             stylesMapper.xssfStyleSetter.accept(cellStyle, styles);
         });

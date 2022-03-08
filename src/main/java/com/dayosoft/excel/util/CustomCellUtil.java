@@ -36,7 +36,8 @@ public class CustomCellUtil {
                 cell.setCellValue(value.toString());
                 break;
             }
-            case "decimal":{
+            case "decimal":
+            case "double":{
                 cell.setCellValue(Double.parseDouble(value.toString()));
                 break;
             }
