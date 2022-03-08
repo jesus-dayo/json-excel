@@ -1,26 +1,18 @@
 {
-  "name": "Add Unique Template Name",
-  "description": "Add description",
+  "name": "simple report",
+  "description": "try simple",
   "format": "xls",
   "sheets": [
     {
-      "isPrintGridlines": false,
-      "fitToPage": true,
-      "displayGuts": false,
-      "displayGridlines": true,
+      "index": 0,
+      "name": "Holdings",
       "rows": [
         {
+          "styles": null,
+          "rowNum": 0,
+          "originalRowNum": 0,
           "columns": [
             {
-              "col": 0,
-              "templateRow": null,
-              "originalCol": 0,
-              "lastRowNum": 0,
-              "columnWidth": 4949,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Position Date",
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -43,18 +35,54 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
+              },
+              "value": "Position Date",
+              "col": 0,
+              "originalCol": 0,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 4949,
+              "templateRow": null,
+              "rendered": false
             },
             {
+              "styles": {
+                "fillForegroundColorColor": "62",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "43",
+                "bottomBorderColor": "64",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "9",
+                "shrinkToFit": "false",
+                "fontFamily": "Arial",
+                "leftBorderColor": "9",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "9"
+              },
+              "value": "Portfolio",
               "col": 1,
-              "templateRow": null,
               "originalCol": 1,
               "lastRowNum": 0,
-              "columnWidth": 4096,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "Portfolio",
+              "columnWidth": 4096,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -77,18 +105,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
-            },
-            {
+              },
+              "value": "Instrument Type",
               "col": 2,
-              "templateRow": null,
               "originalCol": 2,
               "lastRowNum": 0,
-              "columnWidth": 6058,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "Instrument Type",
+              "columnWidth": 6058,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -111,18 +140,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
-            },
-            {
+              },
+              "value": "ISIN",
               "col": 3,
-              "templateRow": null,
               "originalCol": 3,
               "lastRowNum": 0,
-              "columnWidth": 4224,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "ISIN",
+              "columnWidth": 4224,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -145,18 +175,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
-            },
-            {
+              },
+              "value": "Ticker",
               "col": 4,
-              "templateRow": null,
               "originalCol": 4,
               "lastRowNum": 0,
-              "columnWidth": 3541,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "Ticker",
+              "columnWidth": 3541,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -179,52 +210,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
-            },
-            {
+              },
+              "value": "Contract Code",
               "col": 5,
-              "templateRow": null,
               "originalCol": 5,
               "lastRowNum": 0,
-              "columnWidth": 5632,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "Contract Code",
-              "styles": {
-                "fillForegroundColorColor": "62",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "43",
-                "bottomBorderColor": "64",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "9",
-                "shrinkToFit": "false",
-                "fontFamily": "Arial",
-                "leftBorderColor": "9",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "9"
-              }
+              "columnWidth": 5632,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 6,
-              "templateRow": null,
-              "originalCol": 6,
-              "lastRowNum": 0,
-              "columnWidth": 3498,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Coupon",
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -247,18 +245,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
+              },
+              "value": "Coupon",
+              "col": 6,
+              "originalCol": 6,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 3498,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 7,
-              "templateRow": null,
-              "originalCol": 7,
-              "lastRowNum": 0,
-              "columnWidth": 3669,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Maturity",
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -281,18 +280,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
+              },
+              "value": "Maturity",
+              "col": 7,
+              "originalCol": 7,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 3669,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 8,
-              "templateRow": null,
-              "originalCol": 8,
-              "lastRowNum": 0,
-              "columnWidth": 4224,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Currency",
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -315,18 +315,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
+              },
+              "value": "Currency",
+              "col": 8,
+              "originalCol": 8,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 4224,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 9,
-              "templateRow": null,
-              "originalCol": 9,
-              "lastRowNum": 0,
-              "columnWidth": 5248,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Current Face",
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -349,18 +350,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
+              },
+              "value": "Current Face",
+              "col": 9,
+              "originalCol": 9,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 5248,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 10,
-              "templateRow": null,
-              "originalCol": 10,
-              "lastRowNum": 0,
-              "columnWidth": 5248,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "Original Face",
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -383,18 +385,54 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
+              },
+              "value": "Original Face",
+              "col": 10,
+              "originalCol": 10,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 5248,
+              "templateRow": null,
+              "rendered": false
             },
             {
+              "styles": {
+                "fillForegroundColorColor": "62",
+                "fillPatternType": "SOLID_FOREGROUND",
+                "topBorderColor": "64",
+                "dataFormat": "43",
+                "bottomBorderColor": "64",
+                "bold": "true",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "9",
+                "shrinkToFit": "false",
+                "fontFamily": "Arial",
+                "leftBorderColor": "9",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "CENTER",
+                "borderBottom": "NONE",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "9"
+              },
+              "value": "Price",
               "col": 11,
-              "templateRow": null,
               "originalCol": 11,
               "lastRowNum": 0,
-              "columnWidth": 3285,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "Price",
+              "columnWidth": 3285,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "62",
                 "fillPatternType": "SOLID_FOREGROUND",
@@ -417,60 +455,62 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "9"
-              }
-            },
-            {
+              },
+              "value": "Market Value",
               "col": 12,
-              "templateRow": null,
               "originalCol": 12,
               "lastRowNum": 0,
-              "columnWidth": 5290,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "Market Value",
-              "styles": {
-                "fillForegroundColorColor": "62",
-                "fillPatternType": "SOLID_FOREGROUND",
-                "topBorderColor": "64",
-                "dataFormat": "43",
-                "bottomBorderColor": "64",
-                "bold": "true",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "9",
-                "shrinkToFit": "false",
-                "fontFamily": "Arial",
-                "leftBorderColor": "9",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "NONE",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "9"
-              }
+              "columnWidth": 5290,
+              "templateRow": null,
+              "rendered": false
             }
           ],
-          "rowNum": 0,
-          "templateSheet": null,
-          "originalRowNum": 0,
-          "styles": null
+          "templateSheet": null
         },
         {
+          "styles": null,
+          "rowNum": 1,
+          "originalRowNum": 1,
           "columns": [
             {
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "64",
+                "dataFormat": "0",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "Arial",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "CENTER",
+                "borderBottom": "THIN",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "32767"
+              },
+              "value": "${colArr(SIMPLE_REPORT:positionDate)}",
               "col": 0,
-              "templateRow": null,
               "originalCol": 0,
               "lastRowNum": 0,
-              "columnWidth": 4949,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:positionDate)}",
+              "columnWidth": 4949,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -492,53 +532,20 @@
                 "borderBottom": "THIN",
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
-                "fontColor": "32767"
-              }
-            },
-            {
+                "fontColor": "8"
+              },
+              "value": "${colArr(SIMPLE_REPORT:portfolio)}",
               "col": 1,
-              "templateRow": null,
               "originalCol": 1,
               "lastRowNum": 0,
-              "columnWidth": 4096,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:portfolio)}",
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "0",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "Arial",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "CENTER",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "8"
-              }
+              "columnWidth": 4096,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 2,
-              "templateRow": null,
-              "originalCol": 2,
-              "lastRowNum": 0,
-              "columnWidth": 6058,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:instrumentType)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -561,18 +568,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "8"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:instrumentType)}",
+              "col": 2,
+              "originalCol": 2,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 6058,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 3,
-              "templateRow": null,
-              "originalCol": 3,
-              "lastRowNum": 0,
-              "columnWidth": 4224,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:ISIN)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -595,18 +603,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "32767"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:ISIN)}",
+              "col": 3,
+              "originalCol": 3,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 4224,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 4,
-              "templateRow": null,
-              "originalCol": 4,
-              "lastRowNum": 0,
-              "columnWidth": 3541,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:ticker)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -629,18 +638,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "8"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:ticker)}",
+              "col": 4,
+              "originalCol": 4,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 3541,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 5,
-              "templateRow": null,
-              "originalCol": 5,
-              "lastRowNum": 0,
-              "columnWidth": 5632,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:contractCode)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -663,18 +673,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "32767"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:contractCode)}",
+              "col": 5,
+              "originalCol": 5,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 5632,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 6,
-              "templateRow": null,
-              "originalCol": 6,
-              "lastRowNum": 0,
-              "columnWidth": 3498,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:coupon)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -697,18 +708,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "32767"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:coupon)}",
+              "col": 6,
+              "originalCol": 6,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 3498,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 7,
-              "templateRow": null,
-              "originalCol": 7,
-              "lastRowNum": 0,
-              "columnWidth": 3669,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:maturityDate)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -731,18 +743,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "BOTTOM",
                 "fontColor": "8"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:maturityDate)}",
+              "col": 7,
+              "originalCol": 7,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 3669,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 8,
-              "templateRow": null,
-              "originalCol": 8,
-              "lastRowNum": 0,
-              "columnWidth": 4224,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:currency)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -765,18 +778,54 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "32767"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:currency)}",
+              "col": 8,
+              "originalCol": 8,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 4224,
+              "templateRow": null,
+              "rendered": false
             },
             {
+              "styles": {
+                "fillForegroundColorColor": "64",
+                "fillPatternType": "NO_FILL",
+                "topBorderColor": "64",
+                "dataFormat": "39",
+                "bottomBorderColor": "64",
+                "bold": "false",
+                "fillBackgroundColorColor": "64",
+                "borderTop": "THIN",
+                "italic": "false",
+                "borderLeft": "THIN",
+                "rightBorderColor": "64",
+                "shrinkToFit": "false",
+                "fontFamily": "Arial",
+                "leftBorderColor": "64",
+                "borderRight": "THIN",
+                "fontHeight": "220",
+                "alignment": "RIGHT",
+                "borderBottom": "THIN",
+                "wrapText": "false",
+                "verticalAlignment": "CENTER",
+                "fontColor": "32767"
+              },
+              "value": "${colArr(SIMPLE_REPORT:currentFace)}",
               "col": 9,
-              "templateRow": null,
               "originalCol": 9,
               "lastRowNum": 0,
-              "columnWidth": 5248,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:currentFace)}",
+              "columnWidth": 5248,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -799,18 +848,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "32767"
-              }
-            },
-            {
+              },
+              "value": "${colArr(SIMPLE_REPORT:originalFace)}",
               "col": 10,
-              "templateRow": null,
               "originalCol": 10,
               "lastRowNum": 0,
-              "columnWidth": 5248,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:originalFace)}",
+              "columnWidth": 5248,
+              "templateRow": null,
+              "rendered": false
+            },
+            {
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -833,52 +883,19 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "32767"
-              }
-            },
-            {
+              },
+              "value": "${colArr(SIMPLE_REPORT:price)}",
               "col": 11,
-              "templateRow": null,
               "originalCol": 11,
               "lastRowNum": 0,
-              "columnWidth": 3285,
-              "cellFormula": null,
               "arrayFormulaRange": null,
+              "cellFormula": null,
               "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:price)}",
-              "styles": {
-                "fillForegroundColorColor": "64",
-                "fillPatternType": "NO_FILL",
-                "topBorderColor": "64",
-                "dataFormat": "39",
-                "bottomBorderColor": "64",
-                "bold": "false",
-                "fillBackgroundColorColor": "64",
-                "borderTop": "THIN",
-                "italic": "false",
-                "borderLeft": "THIN",
-                "rightBorderColor": "64",
-                "shrinkToFit": "false",
-                "fontFamily": "Arial",
-                "leftBorderColor": "64",
-                "borderRight": "THIN",
-                "fontHeight": "220",
-                "alignment": "RIGHT",
-                "borderBottom": "THIN",
-                "wrapText": "false",
-                "verticalAlignment": "CENTER",
-                "fontColor": "32767"
-              }
+              "columnWidth": 3285,
+              "templateRow": null,
+              "rendered": false
             },
             {
-              "col": 12,
-              "templateRow": null,
-              "originalCol": 12,
-              "lastRowNum": 0,
-              "columnWidth": 5290,
-              "cellFormula": null,
-              "arrayFormulaRange": null,
-              "cellComment": null,
-              "value": "${row(positionDate#SIMPLE_REPORT:marketValue)}",
               "styles": {
                 "fillForegroundColorColor": "64",
                 "fillPatternType": "NO_FILL",
@@ -901,20 +918,28 @@
                 "wrapText": "false",
                 "verticalAlignment": "CENTER",
                 "fontColor": "32767"
-              }
+              },
+              "value": "${colArr(SIMPLE_REPORT:marketValue)}",
+              "col": 12,
+              "originalCol": 12,
+              "lastRowNum": 0,
+              "arrayFormulaRange": null,
+              "cellFormula": null,
+              "cellComment": null,
+              "columnWidth": 5290,
+              "templateRow": null,
+              "rendered": false
             }
           ],
-          "rowNum": 1,
-          "templateSheet": null,
-          "originalRowNum": 1,
-          "styles": null
+          "templateSheet": null
         }
       ],
-      "defaultColumnWidth": 10,
       "mergeRegions": [],
-      "name": "Holdings",
-      "index": 0
+      "fitToPage": true,
+      "displayGuts": false,
+      "displayGridlines": true,
+      "defaultColumnWidth": 10,
+      "printGridlines": false
     }
-  ],
-  "createdBy": "Jed Dayo"
+  ]
 }
