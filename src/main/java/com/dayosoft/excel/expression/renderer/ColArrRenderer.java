@@ -23,7 +23,7 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
             if (!styles.isEmpty()) {
                 final Font font = workbook.createFont();
                 newCellStyle.setFont(font);
-                StylesMapper.applyStyles(newCellStyle, styles);
+                StylesMapper.applyStyles(workbook, newCellStyle, styles);
             }
             int rowIndex = cell.getAddress().getRow();
             for (int i = 0; i < value.size(); i++) {

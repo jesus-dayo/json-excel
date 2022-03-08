@@ -81,7 +81,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                 if (!styles.isEmpty()) {
                     final Font font = workbook.createFont();
                     newCellStyle.setFont(font);
-                    StylesMapper.applyStyles(newCellStyle, styles);
+                    StylesMapper.applyStyles(workbook, newCellStyle, styles);
                 }
                 int index = tcol.getTemplateRow().getRowNum();
                 for (Object value : keyList) {

@@ -113,7 +113,7 @@ public class JsonExcelWriter {
             CellStyle newCellStyle = wb.createCellStyle();
             final Font font = wb.createFont();
             newCellStyle.setFont(font);
-            StylesMapper.applyStyles(newCellStyle, styles);
+            StylesMapper.applyStyles(wb, newCellStyle, styles);
             cell.setCellStyle(newCellStyle);
         }
         if (templateColumn.getValue() instanceof String) {
