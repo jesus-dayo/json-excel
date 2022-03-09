@@ -8,5 +8,6 @@ $ export NVM_DIR="$HOME/.nvm"
 $ [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 $ [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-## URL
+## Sandbox URL
 https://jesus-dayo-zuhlke-com.solutions.apixplatform.com/
+https://jesus-dayo-zuhlke-com.solutions.apixplatform.com/swagger-ui/index.html
