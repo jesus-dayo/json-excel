@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import Modal from "react-modal/lib/components/Modal";
 import { IoCloseCircle } from "react-icons/io5";
 import Header from "../../../../../components/Header/Header";
-import JSONInput from "react-json-editor-ajrm";
+import Performance from "./Performance/index";
+import ReportGenerator from "./ReportGenerator";
+import RightActionBar from "../../../../../components/layout/RightActionBar/index";
 import Button from "../../../../../components/Button/Button";
-import { generateReport } from "../../../../../services/service";
-import download from "downloadjs";
+import Divider from "../../../../../components/Divider/Divider";
 
 const defaultCustomStyles = {
   content: {
@@ -26,36 +27,7 @@ const TemplateTestModal = ({
   customStyles = defaultCustomStyles,
   onClose,
 }) => {
-  const [json, setJson] = useState();
-  const [jsonObj, setJsonObj] = useState({ test: "excel" });
-  const [hasError, setHasError] = useState(false);
-
-  const onChange = ({ json, error }) => {
-    if (error) {
-      setHasError(true);
-    }
-    setJsonObj(JSON.parse(json));
-    setJson(json);
-  };
-
-  const handleGenerate = async () => {
-    let filename = null;
-    generateReport(template.name, json)
-      .then((response) => {
-        if (response.status === 200) {
-          filename = response.headers
-            .get("content-disposition")
-            .split(";")[1]
-            .split("=")[1];
-          return response.blob();
-        } else {
-          return;
-        }
-      })
-      .then((body) => {
-        download(body, filename, "application/octet-stream");
-      });
-  };
+  const [showPerf, setShowPerf] = useState(false);
 
   return (
     <div className="w-full">
@@ -63,30 +35,17 @@ const TemplateTestModal = ({
         <button onClick={onClose} className="absolute top-0 right-0 text-xl">
           <IoCloseCircle />
         </button>
-        <Header title={"Test Your Template"} />
-        <div className="p-2">
-          <div className="p-2">
-            <h2 className="font-bold">{template.name}</h2>
-            <div className="p-2">
-              <JSONInput
-                id={template.name}
-                placeholder={jsonObj}
-                height={"550px"}
-                width={"700px"}
-                onChange={onChange}
-              />
-            </div>
-          </div>
+        <Header title={`Test Your Template - ${template.name}`} />
+        <div className="w-full">
+          <RightActionBar>
+            <Button onClick={() => setShowPerf(!showPerf)} variant="error">{`${
+              showPerf ? "<< Back to Generator" : "Show Performance >>"
+            }`}</Button>
+          </RightActionBar>
         </div>
-        <div className="p-2">
-          <Button
-            variant="tertiary"
-            onClick={() => handleGenerate(template.name)}
-            disabled={hasError}
-          >
-            Generate Report
-          </Button>
-        </div>
+        <Divider />
+        {showPerf && <Performance template={template} />}
+        {!showPerf && <ReportGenerator template={template} />}
       </Modal>
     </div>
   );

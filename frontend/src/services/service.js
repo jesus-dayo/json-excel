@@ -47,12 +47,30 @@ const deleteTemplate = async (name) => {
   return response.json();
 };
 
-const generateReport = async (name, template) => {
+const generateReport = async (name, data) => {
   const response = await fetch(`${reportUrl}/generate/${name}`, {
     method: "POST",
-    body: template,
+    body: data,
   });
   return response;
+};
+
+const perfTestReport = async (name, data, count = 1) => {
+  const response = await fetch(
+    `${reportUrl}/performance/generate/${name}/${count}`,
+    {
+      method: "POST",
+      body: data,
+    }
+  );
+  return response.json();
+};
+
+const perfList = async (name) => {
+  const response = await fetch(`${reportUrl}/performance/${name}`, {
+    method: "GET",
+  });
+  return response.json();
 };
 
 export {
@@ -62,4 +80,6 @@ export {
   deleteTemplate,
   generateReport,
   getTemplate,
+  perfTestReport,
+  perfList,
 };
