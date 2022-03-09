@@ -2,12 +2,13 @@ package com.dayosoft.excel.model;
 
 import com.jsoniter.annotation.JsonIgnore;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Getter
 @Setter
 public class TemplateRow extends CommonTemplateProp {

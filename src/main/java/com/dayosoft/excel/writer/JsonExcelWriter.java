@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -75,8 +76,8 @@ public class JsonExcelWriter {
     }
 
     public void runDelayedRendering(List<DelayedRender> delayedRenders, Sheet sheet) {
-        final long count = delayedRenders.stream().filter(delayedRender -> !delayedRender.getTemplateColumn().isRendered()).count();
-        log.info("delayedRendering {}", count);
+        final List<DelayedRender> delayedRenderList = delayedRenders.stream().filter(delayedRender -> !delayedRender.getTemplateColumn().isRendered()).collect(Collectors.toList());
+        final long count = delayedRenderList.size();
         if (count == 0) {
             return;
         }
@@ -87,7 +88,20 @@ public class JsonExcelWriter {
             final Cell cell = row.getCell(delayedRender.getTemplateColumn().getCol());
             newDelayedRenders.addAll(renderingEngine.renderByExpression(delayedRender.getData(), delayedRender.getTemplateColumn(), cell));
         }
+        if(newDelayedRenders.size() == delayedRenders.size()) {
+            log.error("Delayed rendering will end up in infinite loop , stopping it.");
+            printDelayedRenders(delayedRenderList);
+            return;
+        }
         runDelayedRendering(newDelayedRenders, sheet);
+    }
+
+    private void printDelayedRenders(List<DelayedRender> delayedRenderList) {
+        delayedRenderList.forEach(delayedRender -> {
+            log.error("delayedRendering col {} value {}",
+                    delayedRender.getTemplateColumn().getOriginalCol(),
+                    delayedRender.getTemplateColumn().getValue());
+        });
     }
 
     private void writeRows(JsonExcelRequest jsonExcelRequest, Sheet wbSheet, List<DelayedRender> delayedRenders, TemplateRow templateRow) {

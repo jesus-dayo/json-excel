@@ -2,12 +2,13 @@ package com.dayosoft.excel.model;
 
 import com.jsoniter.annotation.JsonIgnore;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 public class TemplateColumn extends CommonTemplateProp {
 
     private Object value;

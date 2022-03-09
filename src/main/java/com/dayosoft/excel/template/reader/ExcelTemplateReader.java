@@ -65,13 +65,10 @@ public class ExcelTemplateReader {
         final Iterator<Row> rowIterator = sheet.iterator();
         while (rowIterator.hasNext()) {
             final Row row = rowIterator.next();
-            Map<String, String> styles = new HashMap<>();
+            Map<String, String> copyOfRowStyles = new HashMap<>();
             final CellStyle rowStyle = row.getRowStyle();
             if (rowStyle != null) {
-                final Color fillForegroundColorColor = rowStyle.getFillForegroundColorColor();
-                final FillPatternType fillPatternType = rowStyle.getFillPattern();
-                styles.put("fillForegroundColorColor", fillForegroundColorColor.toString());
-                styles.put("fillPatternType", fillPatternType.name());
+                copyStyles(workbook, reportType, copyOfRowStyles, rowStyle);
             }
 
             List<TemplateColumn> columns = new ArrayList<>();
@@ -103,51 +100,11 @@ public class ExcelTemplateReader {
 
                 final CellAddress address = cell.getAddress();
 
-                Map<String, String> cellStyles = new HashMap<>();
+                Map<String, String> copyOfCellStyles = new HashMap<>();
                 final CellStyle cellStyle = cell.getCellStyle();
                 if (cellStyle != null) {
-                    final short fillForegroundColor = cellStyle.getFillForegroundColor();
-                    final FillPatternType fillPatternType = cellStyle.getFillPattern();
-                    final short fillBackgroundColor = cellStyle.getFillBackgroundColor();
-                    final short dataFormat = cellStyle.getDataFormat();
-                    final HorizontalAlignment alignment = cellStyle.getAlignment();
-                    final VerticalAlignment verticalAlignment = cellStyle.getVerticalAlignment();
-                    final BorderStyle borderBottom = cellStyle.getBorderBottom();
-                    final BorderStyle borderLeft = cellStyle.getBorderLeft();
-                    final BorderStyle borderRight = cellStyle.getBorderRight();
-                    final BorderStyle borderTop = cellStyle.getBorderTop();
-                    final short bottomBorderColor = cellStyle.getBottomBorderColor();
-                    final short leftBorderColor = cellStyle.getLeftBorderColor();
-                    final short rightBorderColor = cellStyle.getRightBorderColor();
-                    final short topBorderColor = cellStyle.getTopBorderColor();
-                    final boolean shrinkToFit = cellStyle.getShrinkToFit();
-                    final boolean wrapText = cellStyle.getWrapText();
-
-                    final Font font = reportType == ExcelReportType.EXCEL_2007 ? ((XSSFWorkbook) workbook).getFontAt(cellStyle.getFontIndex()) : ((HSSFWorkbook) workbook).getFontAt(cellStyle.getFontIndex());
-
-                    addToStyles(cellStyles, "fillForegroundColorColor", fillForegroundColor);
-                    addToStyles(cellStyles, "fillPatternType", fillPatternType);
-                    addToStyles(cellStyles, "fillBackgroundColorColor", fillBackgroundColor);
-                    addToStyles(cellStyles, "dataFormat", dataFormat);
-                    addToStyles(cellStyles, "alignment", alignment);
-                    addToStyles(cellStyles, "verticalAlignment", verticalAlignment);
-                    addToStyles(cellStyles, "borderBottom", borderBottom);
-                    addToStyles(cellStyles, "borderLeft", borderLeft);
-                    addToStyles(cellStyles, "borderRight", borderRight);
-                    addToStyles(cellStyles, "borderTop", borderTop);
-                    addToStyles(cellStyles, "bottomBorderColor", bottomBorderColor);
-                    addToStyles(cellStyles, "leftBorderColor", leftBorderColor);
-                    addToStyles(cellStyles, "rightBorderColor", rightBorderColor);
-                    addToStyles(cellStyles, "topBorderColor", topBorderColor);
-                    addToStyles(cellStyles, "shrinkToFit", shrinkToFit);
-                    addToStyles(cellStyles, "wrapText", wrapText);
-                    addToStyles(cellStyles, "fontFamily", font.getFontName());
-                    addToStyles(cellStyles, "bold", font.getBold());
-                    addToStyles(cellStyles, "fontColor", font.getColor());
-                    addToStyles(cellStyles, "italic", font.getItalic());
-                    addToStyles(cellStyles, "fontHeight", font.getFontHeight());
-
-                    templateColumn.setStyles(cellStyles);
+                    copyStyles(workbook, reportType, copyOfCellStyles, cellStyle);
+                    templateColumn.setStyles(copyOfCellStyles);
 
                     if (cell.isPartOfArrayFormulaGroup()) {
                         final CellRangeAddress arrayFormulaRange = cell.getArrayFormulaRange();
@@ -165,10 +122,57 @@ public class ExcelTemplateReader {
                 }
 
             }
-            rows.add(TemplateRow.builder().rowNum(row.getRowNum()).originalRowNum(row.getRowNum()).columns(columns).build());
+            rows.add(TemplateRow.builder()
+                    .rowNum(row.getRowNum())
+                    .styles(copyOfRowStyles)
+                    .originalRowNum(row.getRowNum())
+                    .columns(columns).build());
         }
 
         templateSheet.setRows(rows);
+    }
+
+    private void copyStyles(Workbook workbook, ExcelReportType reportType, Map<String, String> cellStyles, CellStyle cellStyle) {
+        final short fillForegroundColor = cellStyle.getFillForegroundColor();
+        final FillPatternType fillPatternType = cellStyle.getFillPattern();
+        final short fillBackgroundColor = cellStyle.getFillBackgroundColor();
+        final short dataFormat = cellStyle.getDataFormat();
+        final HorizontalAlignment alignment = cellStyle.getAlignment();
+        final VerticalAlignment verticalAlignment = cellStyle.getVerticalAlignment();
+        final BorderStyle borderBottom = cellStyle.getBorderBottom();
+        final BorderStyle borderLeft = cellStyle.getBorderLeft();
+        final BorderStyle borderRight = cellStyle.getBorderRight();
+        final BorderStyle borderTop = cellStyle.getBorderTop();
+        final short bottomBorderColor = cellStyle.getBottomBorderColor();
+        final short leftBorderColor = cellStyle.getLeftBorderColor();
+        final short rightBorderColor = cellStyle.getRightBorderColor();
+        final short topBorderColor = cellStyle.getTopBorderColor();
+        final boolean shrinkToFit = cellStyle.getShrinkToFit();
+        final boolean wrapText = cellStyle.getWrapText();
+
+        final Font font = reportType == ExcelReportType.EXCEL_2007 ? ((XSSFWorkbook) workbook).getFontAt(cellStyle.getFontIndex()) : ((HSSFWorkbook) workbook).getFontAt(cellStyle.getFontIndex());
+
+        addToStyles(cellStyles, "fillForegroundColorColor", fillForegroundColor);
+        addToStyles(cellStyles, "fillPatternType", fillPatternType);
+        addToStyles(cellStyles, "fillBackgroundColorColor", fillBackgroundColor);
+        addToStyles(cellStyles, "dataFormat", dataFormat);
+        addToStyles(cellStyles, "alignment", alignment);
+        addToStyles(cellStyles, "verticalAlignment", verticalAlignment);
+        addToStyles(cellStyles, "borderBottom", borderBottom);
+        addToStyles(cellStyles, "borderLeft", borderLeft);
+        addToStyles(cellStyles, "borderRight", borderRight);
+        addToStyles(cellStyles, "borderTop", borderTop);
+        addToStyles(cellStyles, "bottomBorderColor", bottomBorderColor);
+        addToStyles(cellStyles, "leftBorderColor", leftBorderColor);
+        addToStyles(cellStyles, "rightBorderColor", rightBorderColor);
+        addToStyles(cellStyles, "topBorderColor", topBorderColor);
+        addToStyles(cellStyles, "shrinkToFit", shrinkToFit);
+        addToStyles(cellStyles, "wrapText", wrapText);
+        addToStyles(cellStyles, "fontFamily", font.getFontName());
+        addToStyles(cellStyles, "bold", font.getBold());
+        addToStyles(cellStyles, "fontColor", font.getColor());
+        addToStyles(cellStyles, "italic", font.getItalic());
+        addToStyles(cellStyles, "fontHeight", font.getFontHeight());
     }
 
     private void addToStyles(Map<String, String> cellStyles, String key, Object value) {

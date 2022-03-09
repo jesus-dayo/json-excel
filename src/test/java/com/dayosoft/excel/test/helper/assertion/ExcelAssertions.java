@@ -1,7 +1,10 @@
 package com.dayosoft.excel.test.helper.assertion;
+
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.BiPredicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,6 +15,20 @@ public class ExcelAssertions {
    public static final BiPredicate<Workbook, Workbook> assertEqualNumOfSheets = (w1, w2) -> {
       assertEquals(w1.getNumberOfSheets(), w2.getNumberOfSheets(), "number of sheets are not equal");
       return w1.getNumberOfSheets() == w2.getNumberOfSheets();
+   };
+
+   public static final BiPredicate<Workbook, Workbook> assertEqualMergedRegions = (w1, w2) -> {
+      for (int sheetIndex = 0; sheetIndex < w1.getNumberOfSheets(); sheetIndex++) {
+         Sheet sheet1 = w1.getSheetAt(sheetIndex);
+         Sheet sheet2 = w2.getSheetAt(sheetIndex);
+         final List<CellRangeAddress> mergedRegions1 = sheet1.getMergedRegions();
+         final List<CellRangeAddress> mergedRegions2 = sheet2.getMergedRegions();
+         if(mergedRegions1.size() != mergedRegions2.size()){
+            fail("Merged regions are not equal "+mergedRegions1.size()+" vs "+mergedRegions2.size());
+            return false;
+         }
+      }
+      return true;
    };
 
    public static final BiPredicate<Workbook, Workbook> assertEqualSheetColumnsAndRows = (w1, w2) ->{

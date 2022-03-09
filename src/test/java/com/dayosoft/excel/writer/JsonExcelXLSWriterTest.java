@@ -1,46 +1,44 @@
 package com.dayosoft.excel.writer;
 
-import com.dayosoft.excel.expression.ExpressionRenderingEngine;
+import com.dayosoft.excel.model.Template;
 import com.dayosoft.excel.request.JsonExcelRequest;
-import com.dayosoft.excel.test.helper.ExcelXLSFileAssertion;
+import com.dayosoft.excel.test.helper.ExcelFileAssertion;
 import com.dayosoft.excel.test.helper.TestFileUtils;
 import com.dayosoft.excel.type.ExcelReportType;
-import org.junit.jupiter.api.BeforeEach;
+import com.jsoniter.JsonIterator;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 class JsonExcelXLSWriterTest {
 
     @TempDir
     File tempDir;
-    @Mock
-    ExpressionRenderingEngine expressionRenderingEngine;
 
+
+    @Autowired
     JsonExcelWriter jsonExcelWriter;
-
-    @BeforeEach
-    void init() {
-        jsonExcelWriter = new JsonExcelWriter(expressionRenderingEngine);
-    }
 
     @Test
     void givenSimpleJson_whenWriteExcel_thenContentIsCorrect() throws Exception {
-        String file = "src/test/resources/simple/Simple.json";
+        String simpleDataFile = "src/test/resources/simple/Simple.json";
+        String simpleTemplateFile = "src/test/resources/simple/Simple_template.json";
+        final String templateAsStr = TestFileUtils.readJsonFileAsString(simpleTemplateFile);
+        final Template template = JsonIterator.deserialize(templateAsStr, Template.class);
         JsonExcelRequest request = JsonExcelRequest.builder()
-                .data(TestFileUtils.readJsonFileAsString(file))
+                .data(TestFileUtils.readJsonFileAsString(simpleDataFile))
                 .reportType(ExcelReportType.EXCEL_2003)
+                .template(template)
                 .directory(tempDir.getAbsolutePath()).fileName("sample").build();
 
         File actual = jsonExcelWriter.write(request, ExcelReportType.EXCEL_2003);
 
         File expected = new File(this.getClass().getResource("/simple/Simple.xls").getFile());
-        ExcelXLSFileAssertion.isEqual(expected, actual);
+        ExcelFileAssertion.isExcel2004Equal(expected, actual);
     }
 
 }
