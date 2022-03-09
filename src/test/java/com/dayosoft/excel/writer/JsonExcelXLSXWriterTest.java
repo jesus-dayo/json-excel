@@ -36,7 +36,7 @@ public class JsonExcelXLSXWriterTest {
 
         File actual = jsonExcelXLSXWriter.write(request, ExcelReportType.EXCEL_2007);
 
-        File expected = new File(this.getClass().getResource("/complex/Complex.xlsx").getFile());
+        File expected = new File(this.getClass().getResource("/complex/Complex_generated.xlsx").getFile());
         ExcelFileAssertion.isExcel2007Equal(expected, actual);
     }
 }
