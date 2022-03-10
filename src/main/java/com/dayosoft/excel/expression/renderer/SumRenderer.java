@@ -9,6 +9,7 @@ import org.apache.poi.ss.util.CellUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Component
@@ -16,25 +17,23 @@ public class SumRenderer extends CellRenderer<String> {
 
     @Override
     public void render(Cell cell, String type, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
-        if (!value.contains(",")) {
-            log.error("invalid use of sum, should be comma delimited row and column 0 index");
+        final Optional<TemplateRange> positionRangeOptional = CustomCellUtil.getPositionRange(value);
+        if (positionRangeOptional.isEmpty()) {
+            log.error("invalid use of sum, should be comma delimited range");
             return;
         }
-        final String[] split = value.replace(" ","").split(",");
-        final Integer row1 = Integer.parseInt(split[0]);
-        final Integer col1 = Integer.parseInt(split[1]);
-        final Integer row2 = Integer.parseInt(split[2]);
-        final Integer col2 = Integer.parseInt(split[3]);
-
+        final TemplateRange templateRange = positionRangeOptional.get();
         final TemplateRow templateRow = templateColumn.getTemplateRow();
         final TemplateSheet templateSheet = templateRow.getTemplateSheet();
-        AddressResult addend1 = CustomCellUtil.getAddressResults(row1, col1, templateSheet);
+        AddressResult addend1 = CustomCellUtil.getAddressResults(templateRange.getStart().getRow(),
+                templateRange.getStart().getCol(), templateSheet);
         if(addend1 == null){
             delayedRenders.add(DelayedRender.builder().value(value).data(data).templateColumn(templateColumn).build());
             return;
         }
 
-        AddressResult addend2 = CustomCellUtil.getAddressResults(row2, col2, templateSheet);
+        AddressResult addend2 = CustomCellUtil.getAddressResults(templateRange.getEnd().getRow(),
+                templateRange.getEnd().getCol(), templateSheet);
         if(addend2 == null){
             delayedRenders.add(DelayedRender.builder().value(value).data(data).templateColumn(templateColumn).build());
             return;
@@ -47,11 +46,11 @@ public class SumRenderer extends CellRenderer<String> {
                 for (int i = cell.getAddress().getRow(); i < addend1.getLastRow()+1;i++) {
                     final Row row = CellUtil.getRow(i, cell.getSheet());
                     String addendAddress1 = CustomCellUtil
-                            .getCellAddress(row.getRowNum(),col1);
+                            .getCellAddress(row.getRowNum(),templateRange.getStart().getCol());
                     final List<TemplateRow> templateRowList = templateSheet.getRows();
                     final TemplateRow foundAddendRow
-                            = templateRowList.stream().filter(t -> t.getOriginalRowNum() == row2).findFirst().get();
-                    final TemplateColumn foundAddendColumn = foundAddendRow.getColumns().stream().filter(t -> t.getOriginalCol() == col2).findFirst().get();
+                            = templateRowList.stream().filter(t -> t.getOriginalRowNum() == templateRange.getStart().getRow()).findFirst().get();
+                    final TemplateColumn foundAddendColumn = foundAddendRow.getColumns().stream().filter(t -> t.getOriginalCol() == templateRange.getEnd().getCol()).findFirst().get();
                     String addendAddress2 = CustomCellUtil
                             .getCellAddress(foundAddendRow.getRowNum(),foundAddendColumn.getCol());
                     Cell resultCell = row.getCell(templateColumn.getCol());

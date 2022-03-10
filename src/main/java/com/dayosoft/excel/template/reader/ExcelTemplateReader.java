@@ -85,7 +85,11 @@ public class ExcelTemplateReader {
                             break;
                         }
                         case NUMERIC: {
-                            templateColumn.setValue(cell.getNumericCellValue());
+                            if (DateUtil.isCellDateFormatted(cell)) {
+                                templateColumn.setValue(cell.getDateCellValue());
+                            } else {
+                                templateColumn.setValue(cell.getNumericCellValue());
+                            }
                             break;
                         }
                         case FORMULA: {
@@ -136,7 +140,7 @@ public class ExcelTemplateReader {
         final short fillForegroundColor = cellStyle.getFillForegroundColor();
         final FillPatternType fillPatternType = cellStyle.getFillPattern();
         final short fillBackgroundColor = cellStyle.getFillBackgroundColor();
-        final short dataFormat = cellStyle.getDataFormat();
+        final String dataFormatString = cellStyle.getDataFormatString();
         final HorizontalAlignment alignment = cellStyle.getAlignment();
         final VerticalAlignment verticalAlignment = cellStyle.getVerticalAlignment();
         final BorderStyle borderBottom = cellStyle.getBorderBottom();
@@ -155,7 +159,6 @@ public class ExcelTemplateReader {
         addToStyles(cellStyles, "fillForegroundColorColor", fillForegroundColor);
         addToStyles(cellStyles, "fillPatternType", fillPatternType);
         addToStyles(cellStyles, "fillBackgroundColorColor", fillBackgroundColor);
-        addToStyles(cellStyles, "dataFormat", dataFormat);
         addToStyles(cellStyles, "alignment", alignment);
         addToStyles(cellStyles, "verticalAlignment", verticalAlignment);
         addToStyles(cellStyles, "borderBottom", borderBottom);
@@ -173,6 +176,7 @@ public class ExcelTemplateReader {
         addToStyles(cellStyles, "fontColor", font.getColor());
         addToStyles(cellStyles, "italic", font.getItalic());
         addToStyles(cellStyles, "fontHeight", font.getFontHeight());
+        addToStyles(cellStyles, "dataFormatString", dataFormatString);
     }
 
     private void addToStyles(Map<String, String> cellStyles, String key, Object value) {

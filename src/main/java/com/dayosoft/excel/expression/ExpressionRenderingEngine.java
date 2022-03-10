@@ -6,6 +6,7 @@ import com.dayosoft.excel.expression.evaluator.Evaluator;
 import com.dayosoft.excel.expression.parser.*;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
 import com.dayosoft.excel.expression.renderer.ColRowRenderer;
+import com.dayosoft.excel.expression.renderer.ObjectRenderer;
 import com.dayosoft.excel.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -79,6 +80,8 @@ public class ExpressionRenderingEngine {
                 if (evaluatedResults != null) {
                     evaluatedResults.getCellRenderer()
                             .render(cell,objectExpressionResults.getType(), templateColumn, evaluatedResults.getResults(), data, null, delayedRenders);
+                } else {
+                    new ObjectRenderer().render(cell, objectExpressionResults.getType(), templateColumn, results, data, null, delayedRenders);
                 }
             }
         } catch (Exception e) {
@@ -97,7 +100,6 @@ public class ExpressionRenderingEngine {
             if (evaluators.isEmpty() && evaluatedValue != null) {
                 final Object renderer = evaluator.renderer();
                 if (renderer instanceof CellRenderer) {
-                    log.info("Rendering cell " + expression + " with renderer " + renderer.getClass().getTypeName());
                     return EvaluatedResults.builder().results(evaluatedValue).cellRenderer((CellRenderer) renderer).build();
                 }
             }

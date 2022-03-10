@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import JSONInput from "react-json-editor-ajrm";
 import Button from "../../../../../../components/Button/Button";
 import { perfTestReport, perfList } from "../../../../../../services/service";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import JsonInputText from "../JsonInputText";
 
 const Performance = ({ template }) => {
   const [json, setJson] = useState();
-  const [jsonObj, setJsonObj] = useState({ test: "excel" });
   const [hasError, setHasError] = useState(false);
   const [setupRun, setSetupRun] = useState(false);
   const [perfData, setPerfData] = useState([]);
@@ -20,14 +19,6 @@ const Performance = ({ template }) => {
   useEffect(() => {
     getList();
   }, []);
-
-  const onChange = ({ json, error }) => {
-    if (error) {
-      setHasError(true);
-    }
-    setJsonObj(JSON.parse(json));
-    setJson(json);
-  };
 
   const handlePerformance = async () => {
     let count = prompt("How many reports? enter valid number", 1);
@@ -107,15 +98,11 @@ const Performance = ({ template }) => {
         <>
           <div className="p-2">
             <div className="p-2">
-              <div className="p-2">
-                <JSONInput
-                  id={template.name}
-                  placeholder={jsonObj}
-                  height={"550px"}
-                  width={"700px"}
-                  onChange={onChange}
-                />
-              </div>
+              <JsonInputText
+                setHasError={setHasError}
+                setJson={setJson}
+                template={template}
+              />
             </div>
           </div>
           <div className="p-2 flex gap-2">

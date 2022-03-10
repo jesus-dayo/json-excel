@@ -4,7 +4,7 @@ public enum StyleProps {
 
     fillForegroundColorColor,
     fillPatternType,
-    dataFormat,
+    dataFormatString,
     topBorderColor,
     bottomBorderColor,
     bold,

@@ -11,6 +11,7 @@ const TemplateForm = ({
   save,
   doesNameExist,
   exist,
+  isUpdate,
 }) => {
   const handleUpload = async (file) => {
     const json = await uploadTemplate(
@@ -51,6 +52,7 @@ const TemplateForm = ({
             value={template.name}
             maxLength={20}
             placeholder="Enter template name without spaces (min 6 , max 20 char)"
+            disabled={isUpdate}
           />
           {exist && template.name?.length >= 6 && (
             <span className="flex flex-wrap m-1 text-red-400 text-sm">
@@ -101,6 +103,7 @@ TemplateForm.propTypes = {
   save: PropTypes.func,
   doesNameExist: PropTypes.func,
   exist: PropTypes.bool,
+  isUpdate: PropTypes.bool,
 };
 
 export default TemplateForm;

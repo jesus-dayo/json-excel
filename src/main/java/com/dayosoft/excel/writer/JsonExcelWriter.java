@@ -7,6 +7,7 @@ import com.dayosoft.excel.request.JsonExcelRequest;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
 import com.dayosoft.excel.type.ExcelReportType;
+import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -88,7 +89,7 @@ public class JsonExcelWriter {
             final Cell cell = row.getCell(delayedRender.getTemplateColumn().getCol());
             newDelayedRenders.addAll(renderingEngine.renderByExpression(delayedRender.getData(), delayedRender.getTemplateColumn(), cell));
         }
-        if(newDelayedRenders.size() == delayedRenders.size()) {
+        if (newDelayedRenders.size() == delayedRenders.size()) {
             log.error("Delayed rendering will end up in infinite loop , stopping it.");
             printDelayedRenders(delayedRenderList);
             return;
@@ -130,22 +131,12 @@ public class JsonExcelWriter {
             StylesMapper.applyStyles(wb, newCellStyle, styles);
             cell.setCellStyle(newCellStyle);
         }
-        if (templateColumn.getValue() instanceof String) {
-            if (ExpressionHelper.isValidExpression(templateColumn.getValue().toString())) {
-                delayedRenders.addAll(renderingEngine.renderByExpression(jsonExcelRequest.getData(),
-                        templateColumn,
-                        cell));
-            } else {
-                cell.setCellValue(templateColumn.getValue().toString());
-                templateColumn.setRendered(true);
-            }
-        }
-        if (templateColumn.getValue() instanceof Double) {
-            cell.setCellValue((Double) templateColumn.getValue());
-            templateColumn.setRendered(true);
-        }
-        if (templateColumn.getValue() instanceof Integer) {
-            cell.setCellValue((Integer) templateColumn.getValue());
+        if (ExpressionHelper.isValidExpression(templateColumn.getValue())) {
+            delayedRenders.addAll(renderingEngine.renderByExpression(jsonExcelRequest.getData(),
+                    templateColumn,
+                    cell));
+        } else {
+            CustomCellUtil.setCellValue(cell, templateColumn.getValue());
             templateColumn.setRendered(true);
         }
         sheet.setColumnWidth(cell.getColumnIndex(), templateColumn.getColumnWidth());

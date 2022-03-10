@@ -1,22 +1,13 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import JSONInput from "react-json-editor-ajrm";
 import Button from "../../../../../../components/Button/Button";
 import { generateReport } from "../../../../../../services/service";
 import download from "downloadjs";
+import JsonInputText from "../JsonInputText";
 
 const ReportGenerator = ({ template }) => {
   const [json, setJson] = useState();
-  const [jsonObj, setJsonObj] = useState({ test: "excel" });
   const [hasError, setHasError] = useState(false);
-
-  const onChange = ({ json, error }) => {
-    if (error) {
-      setHasError(true);
-    }
-    setJsonObj(JSON.parse(json));
-    setJson(json);
-  };
 
   const handleGenerate = async () => {
     let filename = null;
@@ -41,15 +32,11 @@ const ReportGenerator = ({ template }) => {
     <>
       <div className="p-2">
         <div className="p-2">
-          <div className="p-2">
-            <JSONInput
-              id={template.name}
-              placeholder={jsonObj}
-              height={"550px"}
-              width={"700px"}
-              onChange={onChange}
-            />
-          </div>
+          <JsonInputText
+            setHasError={setHasError}
+            setJson={setJson}
+            template={template}
+          />
         </div>
       </div>
       <div className="p-2 flex gap-2">

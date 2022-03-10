@@ -1,9 +1,7 @@
 package com.dayosoft.excel.expression.renderer;
 
-import com.dayosoft.excel.model.DelayedRender;
-import com.dayosoft.excel.model.TemplateColumn;
-import com.dayosoft.excel.model.TemplateRow;
-import com.dayosoft.excel.model.TemplateSheet;
+import com.dayosoft.excel.model.*;
+import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.util.CellReference;
@@ -18,20 +16,18 @@ public class RefRenderer extends CellRenderer<String> {
 
     @Override
     public void render(Cell cell,String type, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
-        if (!value.contains(",")) {
+        final Optional<TemplatePosition> positionOpt = CustomCellUtil.getPosition(value);
+        if (positionOpt.isEmpty()) {
             log.error("invalid use of ref, should be comma delimited row and column 0 index");
             return;
         }
-        final String[] split = value.split(",");
-        final Integer row = Integer.parseInt(split[0]);
-        final Integer col = Integer.parseInt(split[1]);
-
+        TemplatePosition position = positionOpt.get();
         final TemplateRow templateRow = templateColumn.getTemplateRow();
         final TemplateSheet templateSheet = templateRow.getTemplateSheet();
-        final Optional<TemplateRow> foundRow = templateSheet.getRows().stream().filter(r -> r.getOriginalRowNum() == row).findFirst();
+        final Optional<TemplateRow> foundRow = templateSheet.getRows().stream().filter(r -> r.getOriginalRowNum() == position.getRow()).findFirst();
         if(foundRow.isPresent()){
             final TemplateRow rowRef = foundRow.get();
-            final Optional<TemplateColumn> foundColumn = rowRef.getColumns().stream().filter(c -> c.getOriginalCol() == col).findFirst();
+            final Optional<TemplateColumn> foundColumn = rowRef.getColumns().stream().filter(c -> c.getOriginalCol() == position.getCol()).findFirst();
             if(foundColumn.isPresent()){
                 final TemplateColumn colRef = foundColumn.get();
                 if(colRef.isRendered()){

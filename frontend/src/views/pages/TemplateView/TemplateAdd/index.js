@@ -101,7 +101,7 @@ const reducer = (state, action) => {
   }
 };
 
-const TemplateAdd = ({ back, existingTemplate }) => {
+const TemplateAdd = ({ back, existingTemplate, isUpdate }) => {
   const [template, dispatchTemplate] = useReducer(
     reducer,
     existingTemplate || initialTemplate,
@@ -113,7 +113,7 @@ const TemplateAdd = ({ back, existingTemplate }) => {
   const doesNameExist = async (name) => {
     try {
       const response = await getTemplate(name);
-      if(response.status === 200){
+      if (response.status === 200) {
         setExist(true);
       } else {
         setExist(false);
@@ -149,6 +149,7 @@ const TemplateAdd = ({ back, existingTemplate }) => {
           save={save}
           doesNameExist={doesNameExist}
           exist={exist}
+          isUpdate={isUpdate}
         />
         {showPreview && <TemplatePreview template={template} />}
       </div>
@@ -159,6 +160,7 @@ const TemplateAdd = ({ back, existingTemplate }) => {
 TemplateAdd.propTypes = {
   back: PropTypes.func,
   existingTemplate: PropTypes.object,
+  isUpdate: PropTypes.bool,
 };
 
 export default TemplateAdd;
