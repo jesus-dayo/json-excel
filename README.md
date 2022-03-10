@@ -14,3 +14,6 @@
 ## Sandbox URL
 - https://jesus-dayo-zuhlke-com.solutions.apixplatform.com/
 - https://jesus-dayo-zuhlke-com.solutions.apixplatform.com/swagger-ui/index.html
+
+## sandbox
+https://ide.apixplatform.com/
