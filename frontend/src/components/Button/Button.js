@@ -19,6 +19,7 @@ const Button = ({
   children,
   customStyle = "",
   disabled = false,
+  className,
   onClick = () => {},
 }) => {
   return (
@@ -26,7 +27,10 @@ const Button = ({
       {disabled ? (
         <button
           onClick={onClick}
-          className={`bg-gray-500 text-white cursor-not-allowed ${sizes[size]}`}
+          className={
+            `bg-gray-500 text-white cursor-not-allowed ${sizes[size]} ` +
+            className
+          }
           disabled={disabled}
         >
           {children}
@@ -34,7 +38,9 @@ const Button = ({
       ) : (
         <button
           onClick={onClick}
-          className={`${colors[variant]} ${sizes[size]} ${customStyle}`}
+          className={
+            `${colors[variant]} ${sizes[size]} ${customStyle}` + className
+          }
           disabled={disabled}
         >
           {children}
@@ -51,6 +57,7 @@ Button.propTypes = {
   size: PropTypes.string,
   variant: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
   disabled: PropTypes.bool,
+  className: PropTypes.object,
 };
 
 export default Button;

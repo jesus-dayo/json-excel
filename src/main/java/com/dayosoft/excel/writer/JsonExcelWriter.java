@@ -62,7 +62,7 @@ public class JsonExcelWriter {
         for (TemplateRow templateRow : templateRows) {
             writeRows(jsonExcelRequest, wbSheet, delayedRendering, templateRow);
         }
-        if (!delayedRendering.isEmpty()) {
+        if (!delayedRendering.isEmpty() && !jsonExcelRequest.isSkipRendering()) {
             runDelayedRendering(delayedRendering, wbSheet);
         }
         final List<TemplateMerge> templateMerges = sheet.getMergeRegions();
@@ -131,7 +131,7 @@ public class JsonExcelWriter {
             StylesMapper.applyStyles(wb, newCellStyle, styles);
             cell.setCellStyle(newCellStyle);
         }
-        if (ExpressionHelper.isValidExpression(templateColumn.getValue())) {
+        if (!jsonExcelRequest.isSkipRendering() && ExpressionHelper.isValidExpression(templateColumn.getValue())) {
             delayedRenders.addAll(renderingEngine.renderByExpression(jsonExcelRequest.getData(),
                     templateColumn,
                     cell));

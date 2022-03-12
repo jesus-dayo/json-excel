@@ -20,10 +20,6 @@ import java.util.*;
 @RequiredArgsConstructor
 public class ExpressionRenderingEngine {
 
-    //parse
-    //evaluate
-    //render
-
     private final List<Parser> registeredParsers;
     private final ExpressionParser expressionParser;
     private final ColRowRenderer colRowRenderer;

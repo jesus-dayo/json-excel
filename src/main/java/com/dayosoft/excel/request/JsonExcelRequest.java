@@ -14,5 +14,6 @@ public class JsonExcelRequest {
     private String fileName;
     private String directory;
     private ExcelReportType reportType;
+    private boolean skipRendering;
 
 }

@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
 import React, { useReducer, useState } from "react";
 import Button from "../../../../components/Button/Button";
-import { getTemplate, saveTemplate } from "../../../../services/service";
+import {
+  downloadTemplate,
+  getTemplate,
+  saveTemplate,
+} from "../../../../services/service";
 import TemplateForm from "./components/TemplateForm";
 import TemplatePreview from "./components/TemplatePreview";
 import { EXCEL_2007 } from "../../../../enums/fileFormats";
+import download from "downloadjs";
+import Divider from "../../../../components/Divider/Divider";
 
 const initialTemplate = {
   name: null,
@@ -133,15 +139,42 @@ const TemplateAdd = ({ back, existingTemplate, isUpdate }) => {
       alert("Error saving the template. Unable to contact server.");
     }
   };
+
+  const handleDownload = async () => {
+    let filename = null;
+    downloadTemplate(template.name)
+      .then((response) => {
+        if (response.status === 200) {
+          filename = response.headers
+            .get("content-disposition")
+            .split(";")[1]
+            .split("=")[1];
+          return response.blob();
+        } else {
+          return;
+        }
+      })
+      .then((body) => {
+        download(body, filename, "application/octet-stream");
+      });
+  };
+
   return (
     <div className="m-2 w-full h-full">
-      <div className="w-full p-2 h-full border-l border-gray-200 ">
-        <div className="w-full text-right pr-4">
-          <Button onClick={() => setShowPreview(!showPreview)}>{`${
-            showPreview ? "Close Preview" : "Open Preview"
-          }`}</Button>
-        </div>
+      <Divider />
+      <div className="w-full h-full border-l border-gray-200 gap-2 flex justify-end">
+        {isUpdate && (
+          <Button variant="tertiary" onClick={handleDownload}>
+            Download Template
+          </Button>
+        )}
+        <Button
+          variant="tertiary"
+          onClick={() => setShowPreview(!showPreview)}
+          className={"mr-3"}
+        >{`${showPreview ? "Close Preview" : "Open Preview"}`}</Button>
       </div>
+      <Divider />
       <div className="m-2 flex w-full h-full">
         <TemplateForm
           template={template}

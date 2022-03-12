@@ -47,6 +47,13 @@ const deleteTemplate = async (name) => {
   return response.json();
 };
 
+const downloadTemplate = async (name) => {
+  const response = await fetch(`${templateUrl}/download/${name}`, {
+    method: "POST",
+  });
+  return response;
+};
+
 const generateReport = async (name, data) => {
   const response = await fetch(`${reportUrl}/generate/${name}`, {
     method: "POST",
@@ -82,4 +89,5 @@ export {
   getTemplate,
   perfTestReport,
   perfList,
+  downloadTemplate,
 };
