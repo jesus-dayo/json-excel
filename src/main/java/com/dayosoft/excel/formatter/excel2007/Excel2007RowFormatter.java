@@ -19,7 +19,7 @@ class Excel2007RowFormatter implements Formatter {
         final Sheet sheet = renderRequest.getSheet();
         final Workbook workbook = sheet.getWorkbook();
         final Map<String, String> styles = renderRequest.getTemplateRow().getStyles();
-        if (!styles.isEmpty()) {
+        if (styles != null && !styles.isEmpty()) {
             CellStyle newCellStyle = workbook.createCellStyle();
             final Font font = workbook.createFont();
             newCellStyle.setFont(font);
