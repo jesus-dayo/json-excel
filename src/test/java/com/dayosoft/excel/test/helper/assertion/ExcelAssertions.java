@@ -1,5 +1,6 @@
 package com.dayosoft.excel.test.helper.assertion;
 
+import com.google.common.collect.ComparisonChain;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
@@ -61,12 +62,29 @@ public class ExcelAssertions {
 
             for(int cellIndex = 0; cellIndex < cellCounts1; cellIndex++) {
                final Cell cell1 = rowInSheet1.getCell(cellIndex);
-               final Cell cell2 =  rowInSheet2.getCell(cellIndex);
+               final Cell cell2 = rowInSheet2.getCell(cellIndex);
                DataFormatter dataFormatter = new DataFormatter();
                String formattedCell1Str = dataFormatter.formatCellValue(cell1);
                String formattedCell2Str = dataFormatter.formatCellValue(cell2);
-               if(!formattedCell1Str.equals(formattedCell2Str)){
-                  fail("Cell are not equal, expected "+ formattedCell1Str +" but got "+ formattedCell2Str + " on cell "+cellIndex + " and row "+ row);
+               if (!formattedCell1Str.equals(formattedCell2Str)) {
+                  fail("Cell are not equal, expected " + formattedCell1Str + " but got " + formattedCell2Str + " on cell " + cellIndex + " and row " + row);
+                  return false;
+               }
+
+               if (cell1 == null && cell2 == null) {
+                  continue;
+               } else if ((cell1 == null) || ((cell1 != null) && (cell2 == null))) {
+                  fail("1 of the cells are null, both should be equal , expected cell 1" + cell1 + " but got cell 2 " + cell2 + " on cell " + cellIndex + " and row " + row);
+                  return false;
+               }
+
+               final CellStyle cellStyle1 = cell1.getCellStyle();
+               final CellStyle cellStyle2 = cell2.getCellStyle();
+
+
+               int comparisonResult = compareStyles(cellStyle1, cellStyle2);
+               if (comparisonResult < 0) {
+                  fail("Cell styles are not equal,  on cell " + cellIndex + " and row " + row);
                   return false;
                }
             }
@@ -75,6 +93,17 @@ public class ExcelAssertions {
       }
       return true;
    };
+
+   private static int compareStyles(CellStyle cellStyle1, CellStyle cellStyle2) {
+      return ComparisonChain.start()
+              .compare(cellStyle1.getLeftBorderColor(), cellStyle2.getLeftBorderColor())
+              .compare(cellStyle1.getBorderLeft().getCode(), cellStyle2.getBorderLeft().getCode())
+              .compare(cellStyle1.getAlignment().getCode(), cellStyle2.getAlignment().getCode())
+              .compare(cellStyle1.getDataFormat(), cellStyle2.getDataFormat())
+              .compare(cellStyle1.getBorderRight().getCode(), cellStyle2.getBorderRight().getCode())
+              .compare(cellStyle1.getRightBorderColor(), cellStyle2.getRightBorderColor())
+              .result();
+   }
 
 
 }
