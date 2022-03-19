@@ -5,20 +5,14 @@ import com.dayosoft.excel.exception.InvalidObjectExpressionException;
 import com.dayosoft.excel.expression.parser.ExpressionHelper;
 import com.dayosoft.excel.expression.parser.RegExpression;
 import com.dayosoft.excel.expression.parser.RowParser;
-import com.dayosoft.excel.model.DelayedRender;
-import com.dayosoft.excel.model.KeyDataMap;
-import com.dayosoft.excel.model.TemplateColumn;
-import com.dayosoft.excel.model.TemplateRow;
+import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
+import com.dayosoft.excel.type.ExcelJsonType;
 import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -61,7 +55,11 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                             newCell.setCellStyle(cellStyle);
                         }
                     }
-                    CustomCellUtil.setCellValue(newRow.getCell(cell.getAddress().getColumn()), keyList.get(i), type);
+                    ExcelJsonType.getByJsonType(type).getValueSetter().accept(Value.builder()
+                            .value(keyList.get(i))
+                            .cell(newRow.getCell(cell.getAddress().getColumn()))
+                            .type(type)
+                            .build());
                     templateColumn.setRendered(true);
                     rowIndex++;
                 }
@@ -114,7 +112,11 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
             }
             cell.setCellStyle(cellStyle);
             if (keyDataMap != null) {
-                CustomCellUtil.setCellValue(cell, keyDataMap.getValue(), keyDataMap.getType());
+                ExcelJsonType.getByJsonType(keyDataMap.getType()).getValueSetter().accept(Value.builder()
+                        .value(keyDataMap.getValue())
+                        .cell(cell)
+                        .type(keyDataMap.getType())
+                        .build());
             } else {
                 CustomCellUtil.setCellValue(cell, expression);
             }

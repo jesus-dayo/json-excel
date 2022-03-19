@@ -9,39 +9,11 @@ import org.apache.poi.ss.util.CellReference;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.Optional;
 
 @Slf4j
 public class CustomCellUtil {
-
-    public static void setCellValue(Cell cell, Object value, String type){
-        switch (type){
-            case "string":{
-                if(value == null || value.equals("null")){
-                    cell.setCellValue(StringUtils.EMPTY);
-                } else {
-                    cell.setCellValue(value.toString());
-                }
-                break;
-            }
-            case "decimal":
-            case "double":{
-                if(value == null || value.equals("null")){
-                    cell.setCellValue(0.0);
-                } else {
-                    cell.setCellValue(Double.parseDouble(value.toString()));
-                }
-                break;
-            }
-            default:{
-                log.error("Unable to identify type " + type);
-            }
-        }
-    }
 
     public static void setCellValue(Cell cell, Object value){
         if(value == null || value.equals("null")){

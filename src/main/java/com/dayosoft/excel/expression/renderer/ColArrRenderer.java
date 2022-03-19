@@ -2,8 +2,9 @@ package com.dayosoft.excel.expression.renderer;
 
 import com.dayosoft.excel.model.DelayedRender;
 import com.dayosoft.excel.model.TemplateColumn;
+import com.dayosoft.excel.model.Value;
 import com.dayosoft.excel.styles.StylesMapper;
-import com.dayosoft.excel.util.CustomCellUtil;
+import com.dayosoft.excel.type.ExcelJsonType;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 
@@ -37,7 +38,11 @@ public class ColArrRenderer extends CellRenderer<List<Object>> {
                     newCell = newRow.createCell(column);
                 }
                 final Object dataValue = value.get(i);
-                CustomCellUtil.setCellValue(newCell, dataValue, type);
+                ExcelJsonType.getByJsonType(type).getValueSetter().accept(Value.builder()
+                        .value(dataValue)
+                        .cell(newCell)
+                        .type(type)
+                        .build());
                 if (newCellStyle != null) {
                     newCell.setCellStyle(newCellStyle);
                 }
