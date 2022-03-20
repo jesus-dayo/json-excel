@@ -35,10 +35,7 @@ public class RefRenderer extends NonDataRelatedRenderer {
                     renderRequest.getCell().setCellFormula(address);
                     templateColumn.setRendered(true);
                 } else {
-                    renderRequest.getDelayedRenders().add(DelayedRender.builder()
-                            .value(value)
-                            .data(renderRequest.getData())
-                            .templateColumn(templateColumn).build());
+                    renderRequest.delayRendering();
                 }
             }
         }

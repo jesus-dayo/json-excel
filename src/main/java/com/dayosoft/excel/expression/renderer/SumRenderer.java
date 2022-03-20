@@ -31,20 +31,14 @@ public class SumRenderer extends NonDataRelatedRenderer {
         AddressResult addend1 = CustomCellUtil.getAddressResults(templateRange.getStart().getRow(),
                 templateRange.getStart().getCol(), templateSheet);
         if(addend1 == null) {
-            renderRequest.getDelayedRenders()
-                    .add(DelayedRender.builder().value(value)
-                            .data(renderRequest.getData())
-                            .templateColumn(templateColumn).build());
+            renderRequest.delayRendering();
             return;
         }
 
         AddressResult addend2 = CustomCellUtil.getAddressResults(templateRange.getEnd().getRow(),
                 templateRange.getEnd().getCol(), templateSheet);
         if(addend2 == null) {
-            renderRequest.getDelayedRenders()
-                    .add(DelayedRender.builder().value(value)
-                            .data(renderRequest.getData())
-                            .templateColumn(templateColumn).build());
+            renderRequest.delayRendering();
             return;
         }
         final Cell cell = renderRequest.getCell();

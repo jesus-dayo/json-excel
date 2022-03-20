@@ -26,9 +26,7 @@ public class TotalColRenderer extends NonDataRelatedRenderer {
         final TemplateColumn refTemplateColumn = refTemplateRow.getColumns().stream().filter(c -> c.getOriginalCol() == position.getCol()).findFirst().get();
 
         if(!refTemplateColumn.isRendered()) {
-            renderRequest.getDelayedRenders().add(DelayedRender.builder()
-                    .value(value).data(renderRequest.getData())
-                    .templateColumn(templateColumn).build());
+            renderRequest.delayRendering();
             return;
         }
 

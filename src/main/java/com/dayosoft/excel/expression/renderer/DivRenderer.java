@@ -29,24 +29,14 @@ public class DivRenderer extends NonDataRelatedRenderer {
         AddressResult dividend = CustomCellUtil.getAddressResults(templateRange.getStart().getRow(),
                 templateRange.getStart().getCol(), templateSheet);
         if(dividend == null) {
-            renderRequest.getDelayedRenders().add(DelayedRender.builder()
-                    // todo replace null, might be good to replace with render request
-                    // for delayed renders
-                    .value(null)
-                    .data(renderRequest.getData())
-                    .templateColumn(templateColumn).build());
+            renderRequest.delayRendering();
             return;
         }
 
         AddressResult divisor = CustomCellUtil.getAddressResults(templateRange.getEnd().getRow(),
                 templateRange.getEnd().getCol(), templateSheet);
         if(divisor == null) {
-            renderRequest.getDelayedRenders().add(DelayedRender.builder()
-                    // todo replace null, might be good to replace with render request
-                    // for delayed renders
-                    .value(null)
-                    .data(renderRequest.getData())
-                    .templateColumn(templateColumn).build());
+            renderRequest.delayRendering();
             return;
         }
         final Cell cell = renderRequest.getCell();

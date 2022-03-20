@@ -29,4 +29,11 @@ public class RenderRequest {
     @Builder.Default
     private List<DelayedRender> delayedRenders = new ArrayList<>();
 
+    public void delayRendering() {
+        this.delayedRenders.add(DelayedRender.builder()
+                .templateColumn(templateColumn)
+                .data(data)
+                .build());
+    }
+
 }

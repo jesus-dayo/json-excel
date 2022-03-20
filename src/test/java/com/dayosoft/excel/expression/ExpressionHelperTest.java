@@ -16,7 +16,7 @@ class ExpressionHelperTest {
 
     @Test
     void givenDateExpression_whenIsValidExpression_shouldReturnTrue() {
-        String given = "Client Details:clientCode1";
+        String given = "${Client Details:clientCode1}";
 
         assertTrue(ExpressionHelper.isValidExpression(given));
     }
