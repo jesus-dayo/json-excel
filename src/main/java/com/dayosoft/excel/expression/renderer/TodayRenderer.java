@@ -1,26 +1,22 @@
 package com.dayosoft.excel.expression.renderer;
 
-import com.dayosoft.excel.model.*;
-import com.dayosoft.excel.util.CustomCellUtil;
+import com.dayosoft.excel.model.MappedResults;
+import com.dayosoft.excel.model.RenderRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.util.CellUtil;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
 @Component
-public class TodayRenderer extends CellRenderer<String> {
+public class TodayRenderer extends NonDataRelatedRenderer {
 
     @Override
-    public void render(Cell cell, String type, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
-        templateColumn.setRendered(true);
-        cell.setCellValue(LocalDate.now().format(DateTimeFormatter.ofPattern(value)));
+    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+        final List<String> results = mappedResults.getResults();
+        renderRequest.getCell().setCellValue(LocalDate.now().format(DateTimeFormatter.ofPattern(results.get(0))));
+        renderRequest.getTemplateColumn().setRendered(true);
     }
 }

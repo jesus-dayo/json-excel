@@ -10,6 +10,5 @@ public class Value {
 
     private Cell cell;
     private Object value;
-    private String type;
 
 }

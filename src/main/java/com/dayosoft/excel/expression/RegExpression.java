@@ -1,4 +1,4 @@
-package com.dayosoft.excel.expression.parser;
+package com.dayosoft.excel.expression;
 
 public final class RegExpression {
 

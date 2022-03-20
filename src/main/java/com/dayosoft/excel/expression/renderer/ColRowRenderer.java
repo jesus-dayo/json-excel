@@ -1,20 +1,20 @@
 package com.dayosoft.excel.expression.renderer;
 
-import com.dayosoft.excel.exception.InvalidExpressionException;
-import com.dayosoft.excel.exception.InvalidObjectExpressionException;
-import com.dayosoft.excel.expression.parser.ExpressionHelper;
-import com.dayosoft.excel.expression.parser.RegExpression;
-import com.dayosoft.excel.expression.parser.RowParser;
+import com.dayosoft.excel.exception.ExpressionException;
+import com.dayosoft.excel.expression.ExpressionHelper;
+import com.dayosoft.excel.expression.RegExpression;
+import com.dayosoft.excel.expression.mapper.ListMapper;
 import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.styles.StylesMapper;
 import com.dayosoft.excel.template.helper.TemplateHelper;
-import com.dayosoft.excel.type.ExcelJsonType;
 import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -22,20 +22,23 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class ColRowRenderer extends CellRenderer<List<Object>> {
+public class ColRowRenderer implements CellRenderer {
 
-    private final RowParser rowParser;
+    private final ListMapper jsonListMapper;
 
     @Override
-    public void render(Cell cell, String type, TemplateColumn templateColumn, List<Object> keyList, String data, String key, List<DelayedRender> delayedRenders) {
-        if (keyList != null && !keyList.isEmpty()) {
-            final Sheet sheet = cell.getSheet();
+    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+        final List<String> results = mappedResults.getResults();
+        if (results != null && !results.isEmpty()) {
+            final Sheet sheet = renderRequest.getSheet();
             final Workbook workbook = sheet.getWorkbook();
-            CustomCellUtil.setCellValue(cell, keyList.get(0));
+            final Cell cell = renderRequest.getCell();
+            CustomCellUtil.setCellValue(cell, results.get(0));
             int rowIndex = cell.getAddress().getRow() + 1;
-            if (keyList.size() > 1) {
+            final TemplateColumn templateColumn = renderRequest.getTemplateColumn();
+            if (results.size() > 1) {
                 final Row row = cell.getRow();
-                for (int i = 1; i < keyList.size(); i++) {
+                for (int i = 1; i < results.size(); i++) {
                     Row newRow = sheet.getRow(rowIndex);
                     if (newRow == null) {
                         newRow = sheet.createRow(rowIndex);
@@ -55,11 +58,11 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                             newCell.setCellStyle(cellStyle);
                         }
                     }
-                    ExcelJsonType.getByJsonType(type).getValueSetter().accept(Value.builder()
-                            .value(keyList.get(i))
-                            .cell(newRow.getCell(cell.getAddress().getColumn()))
-                            .type(type)
-                            .build());
+                    mappedResults.getExcelJsonType().getValueSetter().accept(
+                            Value.builder()
+                                    .value(results.get(i))
+                                    .cell(newRow.getCell(cell.getAddress().getColumn()))
+                                    .build());
                     templateColumn.setRendered(true);
                     rowIndex++;
                 }
@@ -82,13 +85,13 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                     StylesMapper.applyStyles(workbook, newCellStyle, styles);
                 }
                 int index = tcol.getTemplateRow().getRowNum();
-                for (Object value : keyList) {
+                for (Object value : results) {
                     final Row row = sheet.getRow(index);
                     boolean isRendered;
                     try {
-                        isRendered = renderCell(row, expression, value, data, key, tcol.getCol(), newCellStyle, delayedRenders);
+                        isRendered = renderCell(row, expression, value, renderRequest.getData(), mappedResults.getKey(), tcol.getCol(), newCellStyle);
                     } catch (Exception e) {
-                        log.error(e.getMessage(),e);
+                        log.error(e.getMessage(), e);
                         tcol.setRendered(true);
                         continue;
                     }
@@ -98,29 +101,44 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
                 tcol.setLastRowNum(rowIndex - 1);
             }
             templateColumn.setLastRowNum(rowIndex - 1);
-            TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
-            TemplateHelper.shiftMergedRegionsDown(templateRow.getTemplateSheet(), templateColumn.getTemplateRow().getRowNum(), keyList.size() - 1);
+            TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), results.size() - 1);
+            TemplateHelper.shiftMergedRegionsDown(templateRow.getTemplateSheet(), templateColumn.getTemplateRow().getRowNum(), results.size() - 1);
         }
     }
 
-    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, CellStyle cellStyle, List<DelayedRender> delayedRenders) throws InvalidExpressionException, InvalidObjectExpressionException {
+    private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, CellStyle cellStyle) {
         if (ExpressionHelper.isValidExpression(expression, RegExpression.ROW_FUNC_EXPRESSION)) {
-            final KeyDataMap keyDataMap = rowParser.parse(expression, jsonData, jsonKey, value);
-            Cell cell = row.getCell(colPos);
-            if (cell == null) {
-                cell = row.createCell(colPos);
+            String rowExpression;
+            try {
+                rowExpression = ExpressionHelper.extractStringFromExpression(expression, RegExpression.ROW_FUNC_EXPRESSION);
+                final String[] split = rowExpression.split("#");
+                final String key = split[0];
+                if (StringUtils.isNotEmpty(jsonKey)) {
+                    if (!jsonKey.equals(key)) {
+                        return false;
+                    }
+                }
+
+                Map<String, Object> keyValueDependency = new HashMap<>();
+                keyValueDependency.put(key, value);
+                final MappedResults mappedResults = jsonListMapper.map(expression, jsonData, keyValueDependency);
+                Cell cell = row.getCell(colPos);
+                if (cell == null) {
+                    cell = row.createCell(colPos);
+                }
+                cell.setCellStyle(cellStyle);
+                if (mappedResults != null) {
+                    mappedResults.getExcelJsonType().getValueSetter().accept(Value.builder()
+                            .value(mappedResults.getResults())
+                            .cell(cell)
+                            .build());
+                } else {
+                    CustomCellUtil.setCellValue(cell, expression);
+                }
+                return true;
+            } catch (ExpressionException e) {
+                log.error(e.getMessage(), e);
             }
-            cell.setCellStyle(cellStyle);
-            if (keyDataMap != null) {
-                ExcelJsonType.getByJsonType(keyDataMap.getType()).getValueSetter().accept(Value.builder()
-                        .value(keyDataMap.getValue())
-                        .cell(cell)
-                        .type(keyDataMap.getType())
-                        .build());
-            } else {
-                CustomCellUtil.setCellValue(cell, expression);
-            }
-            return true;
         } else {
             Cell cell = row.getCell(colPos);
             if (cell == null) {
@@ -129,6 +147,7 @@ public class ColRowRenderer extends CellRenderer<List<Object>> {
             cell.setCellStyle(cellStyle);
             return false;
         }
+        return false;
     }
 
 

@@ -1,15 +1,10 @@
 package com.dayosoft.excel.expression.renderer;
 
-import com.dayosoft.excel.model.DelayedRender;
-import com.dayosoft.excel.model.TemplateColumn;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Cell;
+import com.dayosoft.excel.exception.ExpressionException;
+import com.dayosoft.excel.model.MappedResults;
+import com.dayosoft.excel.model.RenderRequest;
 
-import java.util.List;
+public interface CellRenderer {
 
-@Slf4j
-public abstract class CellRenderer<T> extends Renderer{
-
-    public abstract void render(Cell cell, String type, TemplateColumn templateColumn, T value, String data, String key, List<DelayedRender> delayedRenders);
-
+    void render(RenderRequest renderRequest, MappedResults mappedResults) throws ExpressionException;
 }

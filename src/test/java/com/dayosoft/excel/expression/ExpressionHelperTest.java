@@ -1,8 +1,9 @@
-package com.dayosoft.excel.expression.parser;
+package com.dayosoft.excel.expression;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExpressionHelperTest {
 

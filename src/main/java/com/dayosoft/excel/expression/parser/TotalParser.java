@@ -1,19 +1,17 @@
 package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
-import com.dayosoft.excel.expression.evaluator.Evaluator;
-import com.dayosoft.excel.expression.evaluator.TotalEvaluator;
+import com.dayosoft.excel.expression.ExpressionHelper;
+import com.dayosoft.excel.expression.RegExpression;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.Stack;
 
 @Component
 @RequiredArgsConstructor
 public class TotalParser implements Parser {
 
-    private final TotalEvaluator totalEvaluator;
+    private final CellRenderer totalRenderer;
 
     @Override
     public String parse(String expression) throws InvalidExpressionException {
@@ -26,22 +24,7 @@ public class TotalParser implements Parser {
     }
 
     @Override
-    public boolean shouldRender(Stack stack) {
-        return false;
-    }
-
-    @Override
-    public boolean hasEvaluation() {
-        return true;
-    }
-
-    @Override
-    public Evaluator evaluator() {
-        return totalEvaluator;
-    }
-
-    @Override
     public CellRenderer renderer() {
-        return null;
+        return totalRenderer;
     }
 }

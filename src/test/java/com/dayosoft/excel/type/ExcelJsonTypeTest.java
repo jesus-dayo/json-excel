@@ -16,7 +16,7 @@ class ExcelJsonTypeTest {
         Cell cell = spy(Cell.class);
         final String type = "string";
         final Object sample = "sample";
-        final Value givenValue = Value.builder().value(sample).type(type).cell(cell).build();
+        final Value givenValue = Value.builder().value(sample).cell(cell).build();
 
         ExcelJsonType.getByJsonType(type).getValueSetter().accept(givenValue);
 
@@ -28,7 +28,7 @@ class ExcelJsonTypeTest {
         Cell cell = spy(Cell.class);
         final String type = "double";
         final Double sample = 1.2;
-        final Value givenValue = Value.builder().value(sample).type(type).cell(cell).build();
+        final Value givenValue = Value.builder().value(sample).cell(cell).build();
 
         ExcelJsonType.getByJsonType(type).getValueSetter().accept(givenValue);
 

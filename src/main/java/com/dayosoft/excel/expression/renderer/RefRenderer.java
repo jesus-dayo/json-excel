@@ -3,25 +3,25 @@ package com.dayosoft.excel.expression.renderer;
 import com.dayosoft.excel.model.*;
 import com.dayosoft.excel.util.CustomCellUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.util.CellReference;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Component
-public class RefRenderer extends CellRenderer<String> {
+public class RefRenderer extends NonDataRelatedRenderer {
 
     @Override
-    public void render(Cell cell,String type, TemplateColumn templateColumn, String value, String data, String key, List<DelayedRender> delayedRenders) {
+    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+        final String value = mappedResults.getResults().get(0);
         final Optional<TemplatePosition> positionOpt = CustomCellUtil.getPosition(value);
         if (positionOpt.isEmpty()) {
             log.error("invalid use of ref, should be comma delimited row and column 0 index");
             return;
         }
         TemplatePosition position = positionOpt.get();
+        final TemplateColumn templateColumn = renderRequest.getTemplateColumn();
         final TemplateRow templateRow = templateColumn.getTemplateRow();
         final TemplateSheet templateSheet = templateRow.getTemplateSheet();
         final Optional<TemplateRow> foundRow = templateSheet.getRows().stream().filter(r -> r.getOriginalRowNum() == position.getRow()).findFirst();
@@ -32,10 +32,13 @@ public class RefRenderer extends CellRenderer<String> {
                 final TemplateColumn colRef = foundColumn.get();
                 if(colRef.isRendered()){
                     String address = new CellReference(rowRef.getRowNum(),colRef.getCol()).formatAsString();
-                    cell.setCellFormula(address);
+                    renderRequest.getCell().setCellFormula(address);
                     templateColumn.setRendered(true);
-                } else{
-                    delayedRenders.add(DelayedRender.builder().value(value).data(data).templateColumn(templateColumn).build());
+                } else {
+                    renderRequest.getDelayedRenders().add(DelayedRender.builder()
+                            .value(value)
+                            .data(renderRequest.getData())
+                            .templateColumn(templateColumn).build());
                 }
             }
         }

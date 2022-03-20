@@ -53,19 +53,19 @@ public class JsonDataTraverser extends JsonTraverser {
         while(columnsIterator.hasNext()){
             final Any column = columnsIterator.next();
             final String nextField = column.get("field").toString();
-            if(field.equalsIgnoreCase(nextField)){
+            if (field.equalsIgnoreCase(nextField)) {
                 return ExcelJsonType.getByJsonType(column.get("type").toString());
             }
         }
 
-        throw new InvalidObjectExpressionException("group name "+groupName+" field "+field+" is invalid.");
+        throw new InvalidObjectExpressionException("group name " + groupName + " field " + field + " is invalid.");
     }
 
-    public final List<Object> rows(String groupName, String field){
-        List<Object> results = new ArrayList<>();
+    public final List<String> rows(String groupName, String field) {
+        List<String> results = new ArrayList<>();
         final Any rows = getJsonIfExist(json.get("body", groupName, "rows"));
         final Iterator<Any> rowsIterator = rows.iterator();
-        while(rowsIterator.hasNext()){
+        while (rowsIterator.hasNext()) {
             final Any row = rowsIterator.next();
             final Any value = row.get(field);
             results.add(value.toString().trim());
@@ -73,15 +73,15 @@ public class JsonDataTraverser extends JsonTraverser {
         return results;
     }
 
-    public final List<Object> rows(String groupName, String field, Map<String, Object> keyVal){
-        if(keyVal == null){
-            log.error("keyVal is null , check this line of code.");
+    public final List<String> rows(String groupName, String field, Map<String, Object> keyVal) {
+        if (keyVal == null) {
+            return rows(groupName, field);
         }
 
-        List<Object> results = new ArrayList<>();
+        List<String> results = new ArrayList<>();
         final Any rows = getJsonIfExist(json.get("body", groupName, "rows"));
         final Iterator<Any> rowsIterator = rows.iterator();
-        while(rowsIterator.hasNext()){
+        while (rowsIterator.hasNext()) {
             final Any row = rowsIterator.next();
             boolean match = true;
             for (Map.Entry<String, Object> entry : keyVal.entrySet()) {

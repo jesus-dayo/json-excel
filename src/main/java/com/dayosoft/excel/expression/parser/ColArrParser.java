@@ -1,19 +1,17 @@
 package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
-import com.dayosoft.excel.expression.evaluator.ColArrEvaluator;
-import com.dayosoft.excel.expression.evaluator.Evaluator;
+import com.dayosoft.excel.expression.ExpressionHelper;
+import com.dayosoft.excel.expression.RegExpression;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.Stack;
 
 @RequiredArgsConstructor
 @Component
 public class ColArrParser implements Parser{
 
-    private final ColArrEvaluator colArrEvaluator;
+    private final CellRenderer colArrRenderer;
 
     @Override
     public String parse(String expression) throws InvalidExpressionException {
@@ -26,22 +24,7 @@ public class ColArrParser implements Parser{
     }
 
     @Override
-    public boolean shouldRender(Stack stack) {
-        return false;
-    }
-
-    @Override
-    public boolean hasEvaluation() {
-        return true;
-    }
-
-    @Override
-    public Evaluator evaluator() {
-        return colArrEvaluator;
-    }
-
-    @Override
     public CellRenderer renderer() {
-        return null;
+        return colArrRenderer;
     }
 }
