@@ -121,7 +121,7 @@ public class ColRowRenderer implements CellRenderer {
 
                 Map<String, Object> keyValueDependency = new HashMap<>();
                 keyValueDependency.put(key, value);
-                final MappedResults mappedResults = jsonListMapper.map(expression, jsonData, keyValueDependency);
+                final MappedResults mappedResults = jsonListMapper.map(split[1], jsonData, keyValueDependency);
                 Cell cell = row.getCell(colPos);
                 if (cell == null) {
                     cell = row.createCell(colPos);
@@ -129,7 +129,7 @@ public class ColRowRenderer implements CellRenderer {
                 cell.setCellStyle(cellStyle);
                 if (mappedResults != null) {
                     mappedResults.getExcelJsonType().getValueSetter().accept(Value.builder()
-                            .value(mappedResults.getResults())
+                            .value(mappedResults.getResults().get(0))
                             .cell(cell)
                             .build());
                 } else {

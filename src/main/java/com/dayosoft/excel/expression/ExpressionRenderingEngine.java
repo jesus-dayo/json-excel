@@ -36,11 +36,13 @@ public class ExpressionRenderingEngine {
         final Optional<Parser> parserMatch = registeredParsers.stream()
                 .filter(parser -> parser.isRegExMatch(subExpression)).findFirst();
         if (parserMatch.isEmpty()) {
+            log.warn("didnt found parser for {}", subExpression);
             defaultRender(renderRequest, expression);
         }
 
         if (parserMatch.isPresent()) {
             final Parser foundParser = parserMatch.get();
+            log.info("found Parser {} for {}", foundParser, subExpression);
             final String jsonPath = foundParser.parse(subExpression);
             final MappedResults mappedResults = jsonListMapper.map(jsonPath, renderRequest.getData(), null);
             foundParser.renderer().render(renderRequest, mappedResults);

@@ -1,7 +1,6 @@
 package com.dayosoft.excel.expression;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
-import com.dayosoft.excel.util.CustomCellUtil;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -21,20 +20,11 @@ public final class ExpressionHelper {
     }
 
     public static boolean isValidExpression(Object value){
-        if(value == null){
+        if (value == null) {
             return false;
         }
-        final boolean validExpressions = isValidExpressions(value.toString(), RegExpression.EXPRESSION,
-                RegExpression.FIRST_FUNC_EXPRESSION,
-                RegExpression.ROW_FUNC_EXPRESSION,
-                RegExpression.REF_FUNC_EXPRESSION,
-                RegExpression.DIVIDE_FUNC_EXPRESSION,
-                RegExpression.COL_ARR_FUNC_EXPRESSION,
-                RegExpression.TOTAL_COL_FUNC_EXPRESSION,
-                RegExpression.TOTAL_FUNC_EXPRESSION,
-                RegExpression.TOTAL_NEGATIVE_FUNC_EXPRESSION,
-                RegExpression.TODAY_FUNC_EXPRESSION);
-        return validExpressions || (!validExpressions && value.toString().contains(":") && !CustomCellUtil.isValidDate(value.toString()));
+        final boolean validExpressions = isValidExpressions(value.toString(), RegExpression.EXPRESSION);
+        return validExpressions;
     }
 
     public static String extractStringFromExpression(String value, String regExpression) throws InvalidExpressionException {
