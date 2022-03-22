@@ -6,7 +6,4 @@ public class JsonMappingException extends RuntimeException{
         super(message);
     }
 
-    public JsonMappingException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

@@ -55,7 +55,7 @@ public class DivRenderer extends NonDataRelatedRenderer {
                     final TemplateColumn foundDivisorColumn = foundDivisorRow.getColumns().stream().filter(t -> t.getOriginalCol() == templateRange.getEnd().getCol()).findFirst().get();
                     String divisorAddress = CustomCellUtil
                             .getCellAddress(foundDivisorRow.getRowNum(), foundDivisorColumn.getCol());
-                    Cell resultCell = row.getCell(templateColumn.getCol());
+                    Cell resultCell = getOrCreateCell(row, templateColumn.getCol());
                     resultCell.setCellFormula(dividendAddress+"/"+divisorAddress);
                     templateColumn.setRendered(true);
                 }
