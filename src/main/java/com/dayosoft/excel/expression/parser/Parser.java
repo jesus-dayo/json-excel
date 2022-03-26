@@ -1,13 +1,20 @@
 package com.dayosoft.excel.expression.parser;
 
 import com.dayosoft.excel.exception.InvalidExpressionException;
+import com.dayosoft.excel.expression.ExpressionHelper;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
 
 public interface Parser {
 
-    String parse(String expression) throws InvalidExpressionException;
+    String regExpression();
 
-    boolean isRegExMatch(String expression);
+    default String parse(String expression) throws InvalidExpressionException {
+        return ExpressionHelper.extractStringFromExpression(expression, regExpression());
+    }
+
+    default boolean isRegExMatch(String expression) {
+        return ExpressionHelper.isValidExpression(expression, regExpression());
+    }
 
     CellRenderer renderer();
 }

@@ -12,13 +12,13 @@ import java.util.Optional;
 public class TotalColRenderer extends NonDataRelatedRenderer {
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) {
         final TemplateColumn templateColumn = renderRequest.getTemplateColumn();
         String value = mappedResults.getResults().get(0);
         final Optional<TemplatePosition> positionOptional = CustomCellUtil.getPosition(value);
         if (positionOptional.isEmpty()) {
             log.error("invalid use of totalCol, should be comma delimited row and column 0 index");
-            return;
+            return mappedResults;
         }
         final TemplatePosition position = positionOptional.get();
         final TemplateSheet templateSheet = templateColumn.getTemplateRow().getTemplateSheet();
@@ -27,12 +27,13 @@ public class TotalColRenderer extends NonDataRelatedRenderer {
 
         if(!refTemplateColumn.isRendered()) {
             renderRequest.delayRendering();
-            return;
+            return mappedResults;
         }
 
         final String addendFrom = CustomCellUtil.getCellAddress(refTemplateRow.getRowNum(), refTemplateColumn.getCol());
         final String addendTo = CustomCellUtil.getCellAddress(refTemplateColumn.getLastRowNum(), refTemplateColumn.getCol());
         renderRequest.getCell().setCellFormula("SUM(" + addendFrom + ":" + addendTo + ")");
         templateColumn.setRendered(true);
+        return mappedResults;
     }
 }

@@ -1,7 +1,7 @@
 package com.dayosoft.excel.expression.renderer;
 
 import com.dayosoft.excel.exception.InvalidObjectExpressionException;
-import com.dayosoft.excel.expression.evaluator.Evaluator;
+import com.dayosoft.excel.expression.evaluator.DataEvaluator;
 import com.dayosoft.excel.model.MappedResults;
 import com.dayosoft.excel.model.RenderRequest;
 import com.dayosoft.excel.model.Value;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class TotalRenderer implements CellRenderer {
 
-    private final Evaluator totalEvaluator;
+    private final DataEvaluator<Object> totalEvaluator;
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) throws InvalidObjectExpressionException {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) throws InvalidObjectExpressionException {
         final Object evaluate = totalEvaluator.evaluate(mappedResults);
         log.debug("setting value " + evaluate.toString());
         mappedResults.getExcelJsonType()
@@ -26,6 +26,7 @@ public class TotalRenderer implements CellRenderer {
                         .cell(renderRequest.getCell())
                         .build());
         renderRequest.getTemplateColumn().setRendered(true);
+        return mappedResults;
     }
 
 }

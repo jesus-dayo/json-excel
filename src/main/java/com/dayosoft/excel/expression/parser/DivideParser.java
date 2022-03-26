@@ -1,7 +1,5 @@
 package com.dayosoft.excel.expression.parser;
 
-import com.dayosoft.excel.exception.InvalidExpressionException;
-import com.dayosoft.excel.expression.ExpressionHelper;
 import com.dayosoft.excel.expression.RegExpression;
 import com.dayosoft.excel.expression.renderer.CellRenderer;
 import lombok.RequiredArgsConstructor;
@@ -13,14 +11,10 @@ public class DivideParser implements Parser{
 
     private final CellRenderer divRenderer;
 
-    @Override
-    public String parse(String expression) throws InvalidExpressionException {
-        return ExpressionHelper.extractStringFromExpression(expression, RegExpression.DIVIDE_FUNC_EXPRESSION);
-    }
 
     @Override
-    public boolean isRegExMatch(String expression) {
-        return ExpressionHelper.isValidExpression(expression, RegExpression.DIVIDE_FUNC_EXPRESSION);
+    public String regExpression() {
+        return RegExpression.DIVIDE_FUNC_EXPRESSION;
     }
 
     @Override

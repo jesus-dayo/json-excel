@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface CellRenderer {
 
-    void render(RenderRequest renderRequest, MappedResults mappedResults) throws ExpressionException;
+    MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) throws ExpressionException;
 
     default CellStyle applyTemplateCellStyle(RenderRequest renderRequest) {
         Workbook workbook = renderRequest.getWorkbook();

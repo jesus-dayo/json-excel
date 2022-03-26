@@ -13,12 +13,12 @@ import java.util.Optional;
 public class RefRenderer extends NonDataRelatedRenderer {
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) {
         final String value = mappedResults.getResults().get(0);
         final Optional<TemplatePosition> positionOpt = CustomCellUtil.getPosition(value);
         if (positionOpt.isEmpty()) {
             log.error("invalid use of ref, should be comma delimited row and column 0 index");
-            return;
+            return mappedResults;
         }
         TemplatePosition position = positionOpt.get();
         final TemplateColumn templateColumn = renderRequest.getTemplateColumn();
@@ -39,5 +39,6 @@ public class RefRenderer extends NonDataRelatedRenderer {
                 }
             }
         }
+        return mappedResults;
     }
 }

@@ -15,12 +15,13 @@ import java.util.List;
 public class ColArrRenderer implements CellRenderer {
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) {
         final List<String> results = mappedResults.getResults();
         if (!results.isEmpty() && results.size() > 1) {
             renderRows(renderRequest, mappedResults, results);
         }
         renderRequest.getTemplateColumn().setRendered(true);
+        return mappedResults;
     }
 
     private void renderRows(RenderRequest renderRequest, MappedResults mappedResults, List<String> results) {

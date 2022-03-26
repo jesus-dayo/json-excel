@@ -16,11 +16,11 @@ import java.util.Optional;
 public class DivRenderer extends NonDataRelatedRenderer {
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) {
         final Optional<TemplateRange> positionRangeOptional = CustomCellUtil.getPositionRange(mappedResults.getResults().get(0));
         if (positionRangeOptional.isEmpty()) {
             log.error("invalid use of divide, should be comma delimited range");
-            return;
+            return mappedResults;
         }
         final TemplateRange templateRange = positionRangeOptional.get();
         final TemplateColumn templateColumn = renderRequest.getTemplateColumn();
@@ -30,14 +30,14 @@ public class DivRenderer extends NonDataRelatedRenderer {
                 templateRange.getStart().getCol(), templateSheet);
         if(dividend == null) {
             renderRequest.delayRendering();
-            return;
+            return mappedResults;
         }
 
         AddressResult divisor = CustomCellUtil.getAddressResults(templateRange.getEnd().getRow(),
                 templateRange.getEnd().getCol(), templateSheet);
         if(divisor == null) {
             renderRequest.delayRendering();
-            return;
+            return mappedResults;
         }
         final Cell cell = renderRequest.getCell();
         if(dividend.getLastRow() == null && dividend.getLastRow() == 0 && divisor.getLastRow() == null && divisor.getLastRow() == 0) {
@@ -63,5 +63,7 @@ public class DivRenderer extends NonDataRelatedRenderer {
                 templateColumn.setRendered(true);
             }
         }
+        return mappedResults;
     }
+
 }

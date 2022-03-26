@@ -19,17 +19,32 @@ public class JsonListMapper implements ListMapper {
 
     @Override
     public MappedResults map(String expression, String data, KeyValue... dependencyKeyValue) throws InvalidObjectExpressionException {
-        if (expression.contains("#")) {
+        String[] parameters = null;
+        String derivedExpression = expression;
+        if (derivedExpression.contains(",")) {
+            final String commaDelimitedParams = derivedExpression.substring(derivedExpression.indexOf(","),
+                    derivedExpression.length() - 1);
+            parameters = commaDelimitedParams
+                    .split(",");
+            derivedExpression = derivedExpression.substring(0, derivedExpression.indexOf(","));
+        }
+        if (derivedExpression.contains("#")) {
             final String[] keyExpression = expression.split("#");
             return buildList(keyExpression[1], data, dependencyKeyValue);
         }
-        if (!expression.contains(":")) {
+        if (!derivedExpression.contains(":")) {
             return MappedResults.builder()
                     .results(Collections.singletonList(expression))
                     .build();
         }
 
-        return buildList(expression, data, dependencyKeyValue);
+        final MappedResults mappedResults = buildList(derivedExpression, data, dependencyKeyValue);
+
+        if (parameters != null) {
+            mappedResults.setParameters(parameters);
+        }
+
+        return mappedResults;
     }
 
     private MappedResults buildList(String expression, String data, KeyValue... dependencyKeyValue) {

@@ -26,7 +26,7 @@ public class ColRowRenderer implements CellRenderer {
     private final ListMapper jsonListMapper;
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) {
         final List<String> results = mappedResults.getResults();
         if (results != null && !results.isEmpty()) {
             final Sheet sheet = renderRequest.getSheet();
@@ -103,6 +103,7 @@ public class ColRowRenderer implements CellRenderer {
             TemplateHelper.shiftRowsDown(templateRow.getTemplateSheet().getRows(), templateColumn.getTemplateRow().getRowNum(), results.size() - 1);
             TemplateHelper.shiftMergedRegionsDown(templateRow.getTemplateSheet(), templateColumn.getTemplateRow().getRowNum(), results.size() - 1);
         }
+        return mappedResults;
     }
 
     private boolean renderCell(Row row, String expression, Object value, String jsonData, String jsonKey, int colPos, CellStyle cellStyle) {

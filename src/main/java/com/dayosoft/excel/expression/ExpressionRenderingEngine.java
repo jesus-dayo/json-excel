@@ -10,8 +10,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -33,20 +35,38 @@ public class ExpressionRenderingEngine {
         }
 
         final String subExpression = ExpressionHelper.extractStringFromExpression(expression, RegExpression.EXPRESSION);
-        final Optional<Parser> parserMatch = registeredParsers.stream()
-                .filter(parser -> parser.isRegExMatch(subExpression)).findFirst();
-        if (parserMatch.isEmpty()) {
+        final Deque<Parser> parserMatches = getMatchedParsers(subExpression);
+        if (parserMatches.isEmpty()) {
             log.warn("didnt found parser for {}", subExpression);
             defaultRender(renderRequest, expression);
+            return;
         }
 
-        if (parserMatch.isPresent()) {
-            final Parser foundParser = parserMatch.get();
-            log.info("found Parser {} for {}", foundParser, subExpression);
-            final String jsonPath = foundParser.parse(subExpression);
-            final MappedResults mappedResults = jsonListMapper.map(jsonPath, renderRequest.getData(), null);
+        final MappedResults mappedResults = runParser(renderRequest, subExpression, parserMatches);
+        runChainRendering(renderRequest, parserMatches, mappedResults);
+    }
+
+    public MappedResults runParser(RenderRequest renderRequest, String subExpression, Deque<Parser> parserMatches) throws ExpressionException {
+        final Parser foundParser = parserMatches.pop();
+        log.info("found Parser {} for {}", foundParser, subExpression);
+        final String parsedResults = foundParser.parse(subExpression);
+        final MappedResults mappedResults = jsonListMapper.map(parsedResults, renderRequest.getData());
+        mappedResults.setParserChain(parserMatches);
+        foundParser.renderer().render(renderRequest, mappedResults);
+        return mappedResults;
+    }
+
+    public void runChainRendering(RenderRequest renderRequest, Deque<Parser> parserMatches, MappedResults mappedResults) throws ExpressionException {
+        while (!parserMatches.isEmpty()) {
+            final Parser foundParser = parserMatches.pop();
+            log.info("chain render {} ", foundParser, renderRequest.getTemplateColumn().getValue());
             foundParser.renderer().render(renderRequest, mappedResults);
         }
+    }
+
+    public Deque<Parser> getMatchedParsers(String subExpression) {
+        return registeredParsers.stream()
+                .filter(parser -> parser.isRegExMatch(subExpression)).collect(Collectors.toCollection(ArrayDeque::new));
     }
 
     private void defaultRender(RenderRequest renderRequest, String value) {

@@ -6,19 +6,19 @@ import com.dayosoft.excel.model.RenderRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class ObjectMapRenderer implements CellRenderer {
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) throws ExpressionException {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) throws ExpressionException {
         final List<String> results = mappedResults.getResults();
         if (results == null || results.isEmpty()) {
             renderRequest.getTemplateColumn().setRendered(true);
-            return;
+            return mappedResults;
         }
-        renderRequest.getCell().setCellValue(results.stream().collect(Collectors.joining(",")));
+        renderRequest.getCell().setCellValue(String.join(",", results));
         renderRequest.getTemplateColumn().setRendered(true);
+        return mappedResults;
     }
 }

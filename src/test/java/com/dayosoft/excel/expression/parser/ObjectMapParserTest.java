@@ -19,6 +19,7 @@ class ObjectMapParserTest {
     @Test
     void givenString_whenIsRegExMatch_shouldReturnTrue() {
         assertTrue(objectMapParser.isRegExMatch("Client Details:clientName"));
+        assertTrue(objectMapParser.isRegExMatch("Client Details:clientName:firstName"));
     }
 
     @Test

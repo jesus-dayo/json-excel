@@ -5,19 +5,19 @@ import com.dayosoft.excel.expression.renderer.CellRenderer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
-public class RowParser implements Parser {
+@Component
+public class RegExParser implements Parser {
 
-    private final CellRenderer colRowRenderer;
+    private final CellRenderer regExpressionRenderer;
 
     @Override
     public String regExpression() {
-        return RegExpression.ROW_FUNC_EXPRESSION;
+        return RegExpression.REGEX_FUNC_EXPRESSION;
     }
 
     @Override
     public CellRenderer renderer() {
-        return colRowRenderer;
+        return regExpressionRenderer;
     }
 }

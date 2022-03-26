@@ -14,9 +14,10 @@ import java.util.List;
 public class TodayRenderer extends NonDataRelatedRenderer {
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) {
         final List<String> results = mappedResults.getResults();
         renderRequest.getCell().setCellValue(LocalDate.now().format(DateTimeFormatter.ofPattern(results.get(0))));
         renderRequest.getTemplateColumn().setRendered(true);
+        return mappedResults;
     }
 }

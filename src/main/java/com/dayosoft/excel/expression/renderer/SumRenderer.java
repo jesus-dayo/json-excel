@@ -17,13 +17,13 @@ import java.util.Optional;
 public class SumRenderer extends NonDataRelatedRenderer {
 
     @Override
-    public void render(RenderRequest renderRequest, MappedResults mappedResults) throws InvalidExpressionException {
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) throws InvalidExpressionException {
         final TemplateColumn templateColumn = renderRequest.getTemplateColumn();
         final String value = mappedResults.getResults().get(0);
         final Optional<TemplateRange> positionRangeOptional = CustomCellUtil.getPositionRange(value);
         if (positionRangeOptional.isEmpty()) {
             log.error("invalid use of sum, should be comma delimited range");
-            return;
+            return mappedResults;
         }
         final TemplateRange templateRange = positionRangeOptional.get();
         final TemplateRow templateRow = templateColumn.getTemplateRow();
@@ -32,14 +32,14 @@ public class SumRenderer extends NonDataRelatedRenderer {
                 templateRange.getStart().getCol(), templateSheet);
         if(addend1 == null) {
             renderRequest.delayRendering();
-            return;
+            return mappedResults;
         }
 
         AddressResult addend2 = CustomCellUtil.getAddressResults(templateRange.getEnd().getRow(),
                 templateRange.getEnd().getCol(), templateSheet);
         if(addend2 == null) {
             renderRequest.delayRendering();
-            return;
+            return mappedResults;
         }
         final Cell cell = renderRequest.getCell();
         if((addend1.getLastRow() == null || addend1.getLastRow() == 0) && (addend2.getLastRow() == null || addend2.getLastRow() == 0)) {
@@ -65,5 +65,6 @@ public class SumRenderer extends NonDataRelatedRenderer {
                 templateColumn.setRendered(true);
             }
         }
+        return mappedResults;
     }
 }
