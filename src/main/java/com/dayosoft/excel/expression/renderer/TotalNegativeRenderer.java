@@ -1,7 +1,7 @@
 package com.dayosoft.excel.expression.renderer;
 
 import com.dayosoft.excel.exception.InvalidObjectExpressionException;
-import com.dayosoft.excel.expression.evaluator.DataEvaluator;
+import com.dayosoft.excel.expression.evaluator.Evaluator;
 import com.dayosoft.excel.model.MappedResults;
 import com.dayosoft.excel.model.RenderRequest;
 import com.dayosoft.excel.model.Value;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class TotalNegativeRenderer implements CellRenderer {
 
-    private final DataEvaluator<Object> totalNegativeEvaluator;
+    private final Evaluator totalNegativeEvaluator;
 
     @Override
     public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) throws InvalidObjectExpressionException {
