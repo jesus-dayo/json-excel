@@ -1,6 +1,7 @@
 package com.dayosoft.excel.expression.mapper;
 
 import com.dayosoft.excel.exception.InvalidObjectExpressionException;
+import com.dayosoft.excel.model.KeyValue;
 import com.dayosoft.excel.model.MappedResults;
 import com.dayosoft.excel.util.JsonDataTraverser;
 import com.jsoniter.JsonIterator;
@@ -9,15 +10,15 @@ import com.jsoniter.spi.JsonException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Map;
 
 @Component
 @Slf4j
 public class JsonListMapper implements ListMapper {
 
     @Override
-    public MappedResults map(String expression, String data, Map<String, Object> dependencyKeyValue) throws InvalidObjectExpressionException {
+    public MappedResults map(String expression, String data, KeyValue... dependencyKeyValue) throws InvalidObjectExpressionException {
         if (expression.contains("#")) {
             final String[] keyExpression = expression.split("#");
             return buildList(keyExpression[1], data, dependencyKeyValue);
@@ -31,7 +32,7 @@ public class JsonListMapper implements ListMapper {
         return buildList(expression, data, dependencyKeyValue);
     }
 
-    private MappedResults buildList(String expression, String data, Map<String, Object> dependencyKeyValue) {
+    private MappedResults buildList(String expression, String data, KeyValue... dependencyKeyValue) {
         final String[] path = expression.split(":");
         if (path.length <= 1) {
             return MappedResults.builder()
@@ -42,12 +43,12 @@ public class JsonListMapper implements ListMapper {
         JsonDataTraverser jsonTraverser = new JsonDataTraverser(any);
 
         final String groupName = path[0];
-        final String key = path[1];
+        final String field = path[path.length - 1];
         try {
             return MappedResults.builder()
-                    .results(jsonTraverser.rows(groupName, key, dependencyKeyValue))
-                    .excelJsonType(jsonTraverser.typeByField(groupName, key))
-                    .key(key)
+                    .results(jsonTraverser.rows(groupName, Arrays.copyOfRange(path, 1, path.length), dependencyKeyValue))
+                    .excelJsonType(jsonTraverser.typeByField(groupName, field))
+                    .key(field)
                     .build();
         } catch (JsonException jsonException) {
             log.error(expression + " not found");
@@ -57,7 +58,7 @@ public class JsonListMapper implements ListMapper {
 
         return MappedResults.builder()
                 .results(Collections.emptyList())
-                .key(key)
+                .key(field)
                 .build();
     }
 

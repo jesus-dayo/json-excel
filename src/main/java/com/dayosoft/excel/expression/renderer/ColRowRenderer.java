@@ -14,7 +14,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -119,9 +118,7 @@ public class ColRowRenderer implements CellRenderer {
                     }
                 }
 
-                Map<String, Object> keyValueDependency = new HashMap<>();
-                keyValueDependency.put(key, value);
-                final MappedResults mappedResults = jsonListMapper.map(split[1], jsonData, keyValueDependency);
+                final MappedResults mappedResults = jsonListMapper.map(split[1], jsonData, new KeyValue(key, value));
                 Cell cell = row.getCell(colPos);
                 if (cell == null) {
                     cell = row.createCell(colPos);

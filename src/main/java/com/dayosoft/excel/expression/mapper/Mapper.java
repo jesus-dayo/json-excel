@@ -1,11 +1,10 @@
 package com.dayosoft.excel.expression.mapper;
 
 import com.dayosoft.excel.exception.InvalidObjectExpressionException;
-
-import java.util.Map;
+import com.dayosoft.excel.model.KeyValue;
 
 public interface Mapper<T> {
 
-    T map(String expression, String data, Map<String, Object> dependencyKeyValue) throws InvalidObjectExpressionException;
+    T map(String expression, String data, KeyValue... dependencyKeyValue) throws InvalidObjectExpressionException;
 
 }
