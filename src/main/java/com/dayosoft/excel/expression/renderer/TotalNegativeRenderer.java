@@ -1,23 +1,32 @@
 package com.dayosoft.excel.expression.renderer;
 
-import com.dayosoft.excel.model.DelayedRender;
-import com.dayosoft.excel.model.TemplateColumn;
-import com.dayosoft.excel.util.CustomCellUtil;
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
+import com.dayosoft.excel.expression.evaluator.Evaluator;
+import com.dayosoft.excel.model.MappedResults;
+import com.dayosoft.excel.model.RenderRequest;
+import com.dayosoft.excel.model.Value;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Cell;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Slf4j
 @Component
-public class TotalNegativeRenderer extends CellRenderer<Object>{
+@RequiredArgsConstructor
+public class TotalNegativeRenderer implements CellRenderer {
+
+    private final Evaluator totalNegativeEvaluator;
 
     @Override
-    public void render(Cell cell, String type, TemplateColumn templateColumn, Object value, String data, String key, List<DelayedRender> delayedRenders) {
-        log.debug("setting value "+value);
-        CustomCellUtil.setCellValue(cell, value, type);
-        templateColumn.setRendered(true);
+    public MappedResults render(RenderRequest renderRequest, MappedResults mappedResults) throws InvalidObjectExpressionException {
+        final Object evaluate = totalNegativeEvaluator.evaluate(mappedResults);
+        log.debug("setting value " + evaluate.toString());
+        mappedResults.getExcelJsonType()
+                .getValueSetter().accept(Value.builder()
+                        .value(evaluate.toString())
+                        .cell(renderRequest.getCell())
+                        .build());
+        renderRequest.getTemplateColumn().setRendered(true);
+        return mappedResults;
     }
 
 }

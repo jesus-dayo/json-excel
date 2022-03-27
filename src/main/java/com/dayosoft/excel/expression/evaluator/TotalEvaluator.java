@@ -1,7 +1,7 @@
 package com.dayosoft.excel.expression.evaluator;
 
-import com.dayosoft.excel.expression.renderer.CellRenderer;
-import com.dayosoft.excel.expression.renderer.TotalRenderer;
+import com.dayosoft.excel.exception.InvalidObjectExpressionException;
+import com.dayosoft.excel.model.MappedResults;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,21 +10,18 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class TotalEvaluator implements Evaluator<List<Object>, Object, CellRenderer>{
-
-    private final TotalRenderer totalRenderer;
+public class TotalEvaluator implements DataEvaluator<BigDecimal> {
 
     @Override
-    public Object evaluate(List<Object> list) {
-        if(list.size() <= 1){
-            return list.get(0);
+    public BigDecimal evaluate(MappedResults mappedResults) throws InvalidObjectExpressionException {
+        final List<String> results = mappedResults.getResults();
+        if (results == null || results.isEmpty()) {
+            return BigDecimal.ZERO;
         }
-        return list.stream().reduce(0, (o1, o2)-> new BigDecimal(o1.toString()).add(new BigDecimal(o2.toString())).toString());
+        if (results.size() <= 1) {
+            return new BigDecimal(results.get(0));
+        }
+        return new BigDecimal(results.stream().reduce((o1, o2) -> new BigDecimal(o1)
+                .add(new BigDecimal(o2)).toString()).get());
     }
-
-    @Override
-    public CellRenderer renderer() {
-        return totalRenderer;
-    }
-
 }

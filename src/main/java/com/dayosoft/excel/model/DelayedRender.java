@@ -10,9 +10,7 @@ import lombok.*;
 @ToString
 public class DelayedRender {
 
-    private String value;
     private TemplateColumn templateColumn;
     private String data;
-    private boolean isComplete;
 
 }

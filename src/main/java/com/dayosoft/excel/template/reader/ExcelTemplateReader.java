@@ -18,16 +18,19 @@ import java.util.*;
 public class ExcelTemplateReader {
 
     public Template excelToJsonTemplate(String name, String description, InputStream file, ExcelReportType reportType) throws IOException {
-        Workbook workbook;
-        if (ExcelReportType.EXCEL_2003 == reportType) {
-            workbook = new HSSFWorkbook(file);
+        Workbook workbook = getWorkbookByType(file, reportType);
+        List<TemplateSheet> sheets = getTemplateSheets(reportType, workbook);
+        if (reportType == ExcelReportType.EXCEL_2003) {
+            return Template.builder().name(getValueOrBlank(name)).description(getValueOrBlank(description)).format(ExcelReportType.EXCEL_2003.getExtension()).sheets(sheets).build();
         } else {
-            workbook = new XSSFWorkbook(file);
+            return Template.builder().name(getValueOrBlank(name)).description(getValueOrBlank(description)).format(ExcelReportType.EXCEL_2007.getExtension()).sheets(sheets).build();
         }
+    }
 
-        final Iterator<Sheet> sheetIterator = workbook.iterator();
+    private List<TemplateSheet> getTemplateSheets(ExcelReportType reportType, Workbook workbook) {
         List<TemplateSheet> sheets = new ArrayList<>();
         int sheetIndex = 0;
+        final Iterator<Sheet> sheetIterator = workbook.iterator();
         while (sheetIterator.hasNext()) {
             final Sheet sheet = sheetIterator.next();
             final TemplateSheet templateSheet = new TemplateSheet();
@@ -48,11 +51,17 @@ public class ExcelTemplateReader {
             sheets.add(templateSheet);
             sheetIndex++;
         }
-        if (reportType == ExcelReportType.EXCEL_2003) {
-            return Template.builder().name(getValueOrBlank(name)).description(getValueOrBlank(description)).format(ExcelReportType.EXCEL_2003.getExtension()).sheets(sheets).build();
+        return sheets;
+    }
+
+    private Workbook getWorkbookByType(InputStream file, ExcelReportType reportType) throws IOException {
+        Workbook workbook;
+        if (ExcelReportType.EXCEL_2003 == reportType) {
+            workbook = new HSSFWorkbook(file);
         } else {
-            return Template.builder().name(getValueOrBlank(name)).description(getValueOrBlank(description)).format(ExcelReportType.EXCEL_2007.getExtension()).sheets(sheets).build();
+            workbook = new XSSFWorkbook(file);
         }
+        return workbook;
     }
 
     private String getValueOrBlank(String name) {
@@ -65,67 +74,8 @@ public class ExcelTemplateReader {
         final Iterator<Row> rowIterator = sheet.iterator();
         while (rowIterator.hasNext()) {
             final Row row = rowIterator.next();
-            Map<String, String> copyOfRowStyles = new HashMap<>();
-            final CellStyle rowStyle = row.getRowStyle();
-            if (rowStyle != null) {
-                copyStyles(workbook, reportType, copyOfRowStyles, rowStyle);
-            }
-
-            List<TemplateColumn> columns = new ArrayList<>();
-            final Iterator<Cell> cellIterator = row.iterator();
-            while (cellIterator.hasNext()) {
-                final Cell cell = cellIterator.next();
-                final CellType cellType = cell.getCellType();
-                TemplateColumn templateColumn = TemplateColumn.builder().build();
-                templateColumn.setColumnWidth(sheet.getColumnWidth(cell.getColumnIndex()));
-                if (cellType != CellType.BLANK) {
-                    switch (cellType) {
-                        case STRING: {
-                            templateColumn.setValue(cell.getStringCellValue());
-                            break;
-                        }
-                        case NUMERIC: {
-                            if (DateUtil.isCellDateFormatted(cell)) {
-                                templateColumn.setValue(cell.getDateCellValue());
-                            } else {
-                                templateColumn.setValue(cell.getNumericCellValue());
-                            }
-                            break;
-                        }
-                        case FORMULA: {
-                            final String cellFormula = cell.getCellFormula();
-                            if (StringUtils.isNotEmpty(cellFormula)) {
-                                templateColumn.setCellFormula(cellFormula);
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                final CellAddress address = cell.getAddress();
-
-                Map<String, String> copyOfCellStyles = new HashMap<>();
-                final CellStyle cellStyle = cell.getCellStyle();
-                if (cellStyle != null) {
-                    copyStyles(workbook, reportType, copyOfCellStyles, cellStyle);
-                    templateColumn.setStyles(copyOfCellStyles);
-
-                    if (cell.isPartOfArrayFormulaGroup()) {
-                        final CellRangeAddress arrayFormulaRange = cell.getArrayFormulaRange();
-                        if (arrayFormulaRange != null) {
-                            templateColumn.setArrayFormulaRange(TemplateRange.builder().start(TemplatePosition.builder().col(arrayFormulaRange.getFirstColumn()).row(arrayFormulaRange.getFirstRow()).build()).end(TemplatePosition.builder().col(arrayFormulaRange.getLastColumn()).row(arrayFormulaRange.getLastRow()).build()).build());
-                        }
-                    }
-
-                    if (cell.getCellComment() != null) {
-                        templateColumn.setCellComment(cell.getCellComment().getString().getString());
-                    }
-                    templateColumn.setCol(address.getColumn());
-                    templateColumn.setOriginalCol(address.getColumn());
-                    columns.add(templateColumn);
-                }
-
-            }
+            Map<String, String> copyOfRowStyles = cloneRowStyles(workbook, reportType, row);
+            List<TemplateColumn> columns = getTemplateColumns(workbook, sheet, reportType, row);
             rows.add(TemplateRow.builder()
                     .rowNum(row.getRowNum())
                     .styles(copyOfRowStyles)
@@ -136,7 +86,89 @@ public class ExcelTemplateReader {
         templateSheet.setRows(rows);
     }
 
-    private void copyStyles(Workbook workbook, ExcelReportType reportType, Map<String, String> cellStyles, CellStyle cellStyle) {
+    private List<TemplateColumn> getTemplateColumns(Workbook workbook, Sheet sheet, ExcelReportType reportType, Row row) {
+        List<TemplateColumn> columns = new ArrayList<>();
+        final Iterator<Cell> cellIterator = row.iterator();
+        while (cellIterator.hasNext()) {
+            final Cell cell = cellIterator.next();
+            final CellType cellType = cell.getCellType();
+            TemplateColumn templateColumn = TemplateColumn.builder().build();
+            templateColumn.setColumnWidth(sheet.getColumnWidth(cell.getColumnIndex()));
+            deriveValueByCellType(cell, cellType, templateColumn);
+
+            final CellAddress address = cell.getAddress();
+
+            Map<String, String> copyOfCellStyles = new HashMap<>();
+            final CellStyle cellStyle = cell.getCellStyle();
+            if (cellStyle != null) {
+                cloneStyles(workbook, reportType, copyOfCellStyles, cellStyle);
+                templateColumn.setStyles(copyOfCellStyles);
+                cloneArrayFormulaRange(cell, templateColumn);
+                cloneCellComments(cell, templateColumn);
+                cloneCellPosition(templateColumn, address);
+                columns.add(templateColumn);
+            }
+
+        }
+        return columns;
+    }
+
+    private void cloneCellPosition(TemplateColumn templateColumn, CellAddress address) {
+        templateColumn.setCol(address.getColumn());
+        templateColumn.setOriginalCol(address.getColumn());
+    }
+
+    private void cloneCellComments(Cell cell, TemplateColumn templateColumn) {
+        if (cell.getCellComment() != null) {
+            templateColumn.setCellComment(cell.getCellComment().getString().getString());
+        }
+    }
+
+    private void cloneArrayFormulaRange(Cell cell, TemplateColumn templateColumn) {
+        if (cell.isPartOfArrayFormulaGroup()) {
+            final CellRangeAddress arrayFormulaRange = cell.getArrayFormulaRange();
+            if (arrayFormulaRange != null) {
+                templateColumn.setArrayFormulaRange(TemplateRange.builder().start(TemplatePosition.builder().col(arrayFormulaRange.getFirstColumn()).row(arrayFormulaRange.getFirstRow()).build()).end(TemplatePosition.builder().col(arrayFormulaRange.getLastColumn()).row(arrayFormulaRange.getLastRow()).build()).build());
+            }
+        }
+    }
+
+    private Map<String, String> cloneRowStyles(Workbook workbook, ExcelReportType reportType, Row row) {
+        Map<String, String> copyOfRowStyles = new HashMap<>();
+        final CellStyle rowStyle = row.getRowStyle();
+        if (rowStyle != null) {
+            cloneStyles(workbook, reportType, copyOfRowStyles, rowStyle);
+        }
+        return copyOfRowStyles;
+    }
+
+    private void deriveValueByCellType(Cell cell, CellType cellType, TemplateColumn templateColumn) {
+        if (cellType != CellType.BLANK) {
+            switch (cellType) {
+                case STRING: {
+                    templateColumn.setValue(cell.getStringCellValue());
+                    break;
+                }
+                case NUMERIC: {
+                    if (DateUtil.isCellDateFormatted(cell)) {
+                        templateColumn.setValue(cell.getDateCellValue());
+                    } else {
+                        templateColumn.setValue(cell.getNumericCellValue());
+                    }
+                    break;
+                }
+                case FORMULA: {
+                    final String cellFormula = cell.getCellFormula();
+                    if (StringUtils.isNotEmpty(cellFormula)) {
+                        templateColumn.setCellFormula(cellFormula);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    private void cloneStyles(Workbook workbook, ExcelReportType reportType, Map<String, String> cellStyles, CellStyle cellStyle) {
         final short fillForegroundColor = cellStyle.getFillForegroundColor();
         final FillPatternType fillPatternType = cellStyle.getFillPattern();
         final short fillBackgroundColor = cellStyle.getFillBackgroundColor();

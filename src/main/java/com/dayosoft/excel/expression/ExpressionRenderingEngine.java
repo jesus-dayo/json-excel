@@ -1,22 +1,19 @@
 package com.dayosoft.excel.expression;
 
-import com.dayosoft.excel.exception.InvalidExpressionException;
-import com.dayosoft.excel.exception.InvalidObjectExpressionException;
-import com.dayosoft.excel.expression.evaluator.Evaluator;
-import com.dayosoft.excel.expression.parser.ExpressionHelper;
-import com.dayosoft.excel.expression.parser.ExpressionParser;
-import com.dayosoft.excel.expression.parser.ObjectExpressionParser;
+import com.dayosoft.excel.exception.ExpressionException;
+import com.dayosoft.excel.expression.mapper.ListMapper;
 import com.dayosoft.excel.expression.parser.Parser;
-import com.dayosoft.excel.expression.renderer.CellRenderer;
-import com.dayosoft.excel.expression.renderer.ColRowRenderer;
-import com.dayosoft.excel.expression.renderer.ObjectRenderer;
-import com.dayosoft.excel.model.*;
+import com.dayosoft.excel.model.MappedResults;
+import com.dayosoft.excel.model.RenderRequest;
+import com.dayosoft.excel.model.TemplateColumn;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -24,104 +21,57 @@ import java.util.Stack;
 public class ExpressionRenderingEngine {
 
     private final List<Parser> registeredParsers;
-    private final ExpressionParser expressionParser;
-    private final ColRowRenderer colRowRenderer;
-    private final ObjectExpressionParser objectExpressionParser;
+    private final ListMapper jsonListMapper;
 
-    public void renderByExpression(RenderRequest renderRequest) {
+    public void renderByExpression(RenderRequest renderRequest) throws ExpressionException {
         final TemplateColumn templateColumn = renderRequest.getTemplateColumn();
         if (templateColumn.isRendered()) {
             return;
         }
-
         String expression = templateColumn.getValue().toString();
-        if (!expressionParser.isRegExMatch(expression)) {
-            renderRequest.getCell().setCellValue(expression);
-            templateColumn.setRendered(true);
+        if (!ExpressionHelper.isValidExpression(expression, RegExpression.EXPRESSION)) {
+            defaultRender(renderRequest, expression);
             return;
         }
-        try {
-            Stack<Evaluator> evaluators = new Stack<>();
-            final ParsedResults parsedResults = parse(expression, evaluators);
 
-            if (parsedResults.getParser() != null && parsedResults.getParser().shouldRender(evaluators)) {
-                parsedResults.getParser().renderer().render(renderRequest.getCell(), "string",
-                        templateColumn, parsedResults.getParsedValue(), renderRequest.getData(), null, renderRequest.getDelayedRenders());
-                return;
-            }
-
-            // object mapping here
-            if (parsedResults.getParsedValue().contains("#")) {
-                final String[] split = parsedResults.getParsedValue().split("#");
-                final String[] path = split[1].split(":");
-                final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(renderRequest.getData()).build();
-                final ObjectExpressionResults objectExpressionResults = (ObjectExpressionResults) objectExpressionParser.evaluator().evaluate(jsonObjectPath);
-                colRowRenderer.render(renderRequest.getCell(), objectExpressionResults.getType(), templateColumn, objectExpressionResults.getListOfValues(), renderRequest.getData(), split[0], renderRequest.getDelayedRenders());
-            } else {
-                String specExpression = expressionParser.parse(expression);
-                if (!ExpressionHelper.isValidExpression(specExpression)) {
-                    log.error(specExpression + " is not yet supported");
-                    templateColumn.setRendered(true);
-                    renderRequest.getCell().setCellValue(expression);
-                    return;
-                }
-                final String[] path = parsedResults.getParsedValue().split(":");
-                final JsonObjectPath jsonObjectPath = JsonObjectPath.builder().path(path).data(renderRequest.getData()).build();
-                final ObjectExpressionResults objectExpressionResults = (ObjectExpressionResults) objectExpressionParser.evaluator().evaluate(jsonObjectPath);
-                final List<Object> results = objectExpressionResults.getListOfValues();
-                if (results == null || results.isEmpty()) {
-                    templateColumn.setRendered(true);
-                    return;
-                }
-                final EvaluatedResults evaluatedResults = evaluate(expression, evaluators, results);
-                if (evaluatedResults != null) {
-                    evaluatedResults.getCellRenderer()
-                            .render(renderRequest.getCell(), objectExpressionResults.getType(), templateColumn, evaluatedResults.getResults(), renderRequest.getData(), null, renderRequest.getDelayedRenders());
-                } else {
-                    new ObjectRenderer().render(renderRequest.getCell(), objectExpressionResults.getType(), templateColumn, results, renderRequest.getData(), null, renderRequest.getDelayedRenders());
-                }
-            }
-        } catch (Exception e) {
-            templateColumn.setRendered(true);
-            renderRequest.getCell().setCellValue(expression);
-            log.error(e.getMessage(), e);
+        final String subExpression = ExpressionHelper.extractStringFromExpression(expression, RegExpression.EXPRESSION);
+        final Deque<Parser> parserMatches = getMatchedParsers(subExpression);
+        if (parserMatches.isEmpty()) {
+            log.warn("didnt found parser for {}", subExpression);
+            defaultRender(renderRequest, expression);
+            return;
         }
-        return;
+
+        final MappedResults mappedResults = runParser(renderRequest, subExpression, parserMatches);
+        runChainRendering(renderRequest, parserMatches, mappedResults);
     }
 
-    private EvaluatedResults evaluate(String expression, Stack<Evaluator> evaluators, List<Object> results) throws InvalidObjectExpressionException {
-        Object evaluatedValue;
-        while (!evaluators.isEmpty()) {
-            final Evaluator evaluator = evaluators.pop();
-            evaluatedValue = evaluator.evaluate(results);
-            if (evaluators.isEmpty() && evaluatedValue != null) {
-                final Object renderer = evaluator.renderer();
-                if (renderer instanceof CellRenderer) {
-                    return EvaluatedResults.builder().results(evaluatedValue).cellRenderer((CellRenderer) renderer).build();
-                }
-            }
-        }
-        return null;
+    public MappedResults runParser(RenderRequest renderRequest, String subExpression, Deque<Parser> parserMatches) throws ExpressionException {
+        final Parser foundParser = parserMatches.pop();
+        log.info("found Parser {} for {}", foundParser, subExpression);
+        final String parsedResults = foundParser.parse(subExpression);
+        final MappedResults mappedResults = jsonListMapper.map(parsedResults, renderRequest.getData());
+        mappedResults.setParserChain(parserMatches);
+        foundParser.renderer().render(renderRequest, mappedResults);
+        return mappedResults;
     }
 
-    private ParsedResults parse(String expression, Stack<Evaluator> evaluators) throws InvalidExpressionException {
-        String parsedValue = expressionParser.parse(expression);
-        Parser last = null;
-        for (Parser parser : registeredParsers) {
-            if (parser.isRegExMatch(parsedValue)) {
-                parsedValue = parser.parse(parsedValue);
-                if (parser.shouldRender(evaluators)) {
-                    return ParsedResults.builder().parsedValue(parsedValue)
-                            .parser(parser).build();
-                }
-                if (parser.hasEvaluation()) {
-                    evaluators.add(parser.evaluator());
-                }
-                last = parser;
-            }
+    public void runChainRendering(RenderRequest renderRequest, Deque<Parser> parserMatches, MappedResults mappedResults) throws ExpressionException {
+        while (!parserMatches.isEmpty()) {
+            final Parser foundParser = parserMatches.pop();
+            log.info("chain render {} ", foundParser, renderRequest.getTemplateColumn().getValue());
+            foundParser.renderer().render(renderRequest, mappedResults);
         }
-        return ParsedResults.builder().parsedValue(parsedValue)
-                .parser(last).build();
+    }
+
+    public Deque<Parser> getMatchedParsers(String subExpression) {
+        return registeredParsers.stream()
+                .filter(parser -> parser.isRegExMatch(subExpression)).collect(Collectors.toCollection(ArrayDeque::new));
+    }
+
+    private void defaultRender(RenderRequest renderRequest, String value) {
+        renderRequest.getCell().setCellValue(value);
+        renderRequest.getTemplateColumn().setRendered(true);
     }
 
 }
