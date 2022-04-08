@@ -9,11 +9,26 @@
 - $ [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 ## How to run
+
 - nohup mvn spring-boot:run &
 
 ## Sandbox URL
+
 - https://jesus-dayo-zuhlke-com.solutions.apixplatform.com/
 - https://jesus-dayo-zuhlke-com.solutions.apixplatform.com/swagger-ui/index.html
 
 ## sandbox
-https://ide.apixplatform.com/
+- sudo apt update
+- sudo apt install maven
+- sudo apt install default-jdk
+- /home/coder/json-excel
+- https://ide.apixplatform.com/
+
+## presentation
+
+- see slides.pptx
+- see https://slides.com/jeddayo/gsengage
+
+## user guide
+
+- in UI open "Documentation"

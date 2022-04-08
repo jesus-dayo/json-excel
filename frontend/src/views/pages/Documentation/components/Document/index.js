@@ -7,7 +7,9 @@ const Document = ({doc}) => {
     <div className="mt-2 ml-10 mr-10">
       {doc.content.map((cont) => (
         <div key={doc.name}>
-          <h2 className="text-lg text-left font-semibold">{cont.header}</h2>
+          <h2 className="text-lg text-left font-semibold mt-2">
+            {cont.header}
+          </h2>
           <Divider/>
           <div className="text-left">{cont.body}</div>
         </div>
