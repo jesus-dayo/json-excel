@@ -7,7 +7,7 @@ const NavBar = ({ ...props }) => {
   return (
     <div className="w-full flex bg-blue-500 text-white h-20" {...props}>
       <img
-        alt={'logo'}
+        alt={"logo"}
         src={logo}
         className="m-3 cursor-pointer"
         onClick={() => navigate("/")}

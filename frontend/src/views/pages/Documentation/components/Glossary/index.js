@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import {expressiondoc} from "./json-doc/expression-doc";
 import {templatedoc} from "./json-doc/template-doc";
 
 const Glosarry = ({setDoc}) => {
@@ -13,6 +14,12 @@ const Glosarry = ({setDoc}) => {
         onClick={() => setDoc(templatedoc)}
       >
         Templates
+      </h4>
+      <h4
+        className="ml-6 underline cursor-pointer"
+        onClick={() => setDoc(expressiondoc)}
+      >
+        Expressions
       </h4>
     </div>
   );
