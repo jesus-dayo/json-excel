@@ -18,7 +18,10 @@
 - https://jesus-dayo-zuhlke-com.solutions.apixplatform.com/swagger-ui/index.html
 
 ## sandbox
-
+- sudo apt update
+- sudo apt install maven
+- sudo apt install default-jdk
+- /home/coder/json-excel
 - https://ide.apixplatform.com/
 
 ## presentation
