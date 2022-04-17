@@ -1,17 +1,20 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import JSONInput from "react-json-editor-ajrm";
-import { perfList } from "../../../../../services/service";
+import {perfList} from "../../../../../services/service";
 
 const JsonInputText = ({ setHasError, setJson, template }) => {
-  const [jsonObj, setJsonObj] = useState({ test: "excel" });
+  const [jsonObj, setJsonObj] = useState({test: "excel"});
+  const [errorMessage, setErrorMessage] = useState();
 
   const onChange = ({ json, error }) => {
     if (error) {
+      setErrorMessage(error);
       setHasError(true);
+    } else {
+      setJsonObj(JSON.parse(json));
+      setJson(json);
     }
-    setJsonObj(JSON.parse(json));
-    setJson(json);
   };
 
   const handleUseLast = async () => {
@@ -38,6 +41,7 @@ const JsonInputText = ({ setHasError, setJson, template }) => {
         height={"550px"}
         width={"700px"}
         onChange={onChange}
+        error={errorMessage}
       />
     </div>
   );
